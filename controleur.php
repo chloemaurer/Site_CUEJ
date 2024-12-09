@@ -34,7 +34,7 @@
                 <li><a class="dropdown-item" href="controleur.php?page=article&action=new">Création d'un Article</a></li>
             </ul>
             </li>
-            <li class="nav-item"><a class="nav-link active text-light" href="controleur.php?page=article&action=read">Les Chapitres</a></li>
+            <li class="nav-item"><a class="nav-link active text-light" href="controleur.php?page=chapitre&action=read">Les Chapitres</a></li>
             </ul>
         </nav>
     </header>

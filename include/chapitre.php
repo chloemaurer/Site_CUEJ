@@ -64,7 +64,7 @@ class Chapitre
 
 
 
-    function readOne()
+    function readOne($id_chapitre)
     {
         $sql = 'select * from chapitre where id_chapitre = :valeur';
 
@@ -75,8 +75,7 @@ class Chapitre
         $query = $pdo->prepare($sql);
 
         // on lie le paramètre :valeur à la variable $id reçue
-        $query->bindValue(':valeur', $this->id_chapitre, PDO::PARAM_INT);
-
+        $query->bindValue(':valeur', $id_chapitre, PDO::PARAM_INT);
 
 
         // exécution de la requête

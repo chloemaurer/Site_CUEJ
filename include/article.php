@@ -59,7 +59,6 @@ class Article
         } else {
             $this->auteur = 'sans auteur';
         }
-        
     }
 
     function affiche()
@@ -124,7 +123,7 @@ class Article
     {
         $this->titre = $t;
         $this->chapo = $te;
-        $this->auteur = $s;  
+        $this->auteur = $s;
     }
 
     function create()
@@ -222,6 +221,4 @@ class Article
     </div>
 </form>';
     }
-
-    
 }

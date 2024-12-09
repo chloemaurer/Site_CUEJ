@@ -1,10 +1,10 @@
-<h1 class="text-center p-5">Liste des Articles</h1>
-{% for article in listearticle %}
-<h2>{{article.titre}}</h2>
+<h1 class="text-center p-5">Liste des Chapitres</h1>
+{% for chapitre in listechapitre %}
+<h2>{{chapitre.titre}}</h2>
 <p>
-    <a href="controleur.php?page=article&action=read&id={{ article.id_article }}">Voir</a>
-    <a href="controleur.php?page=article&action=modifier&id={{ article.id_article }}">Modifier</a>
-    <a href="controleur.php?page=article&action=delete&id={{ article.id_article }}">Supprimer</a>
+    <a href="controleur.php?page=chapitre&action=read&id={{ chapitre.id_chapitre }}">Voir</a>
+    <a href="controleur.php?page=chapitre&action=modifier&id={{ chapitre.id_chapitre }}">Modifier</a>
+    <a href="controleur.php?page=chapitre&action=delete&id={{ chapitre.id_chapitre }}">Supprimer</a>
 </p>
 {% endfor %}
-<a href="controleur.php?page=article&action=new">Ajouter un article</a>
+<a href="controleur.php?page=chapitre&action=new">Ajouter un chapitre</a>

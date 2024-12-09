@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : lun. 09 déc. 2024 à 14:49
--- Version du serveur : 10.4.32-MariaDB
--- Version de PHP : 8.0.30
+-- Hôte : 127.0.0.1:3306
+-- Généré le : lun. 09 déc. 2024 à 14:43
+-- Version du serveur : 9.1.0
+-- Version de PHP : 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,12 +27,16 @@ SET time_zone = "+00:00";
 -- Structure de la table `article`
 --
 
-CREATE TABLE `article` (
-  `id_article` int(11) NOT NULL,
-  `titre` varchar(60) NOT NULL,
-  `chapo` varchar(60) NOT NULL,
-  `auteur` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `article`;
+CREATE TABLE IF NOT EXISTS `article` (
+  `id_article` int NOT NULL AUTO_INCREMENT,
+  `titre` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
+  `chapo` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
+  `auteur` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `id_chapitre` int NOT NULL,
+  PRIMARY KEY (`id_article`),
+  KEY `id_chapitre` (`id_chapitre`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -40,52 +44,44 @@ CREATE TABLE `article` (
 -- Structure de la table `bloc`
 --
 
-CREATE TABLE `bloc` (
-  `id` int(11) NOT NULL,
-  `type` varchar(60) NOT NULL,
-  `texte` text NOT NULL,
-  `style` varchar(60) NOT NULL,
-  `src` text NOT NULL,
-  `alt` varchar(60) NOT NULL,
-  `id_article` int(11) NOT NULL
+DROP TABLE IF EXISTS `bloc`;
+CREATE TABLE IF NOT EXISTS `bloc` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `type` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
+  `texte` text COLLATE utf8mb4_general_ci NOT NULL,
+  `style` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
+  `src` text COLLATE utf8mb4_general_ci NOT NULL,
+  `alt` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
+  `id_article` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_article` (`id_article`)
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `chapitre`
+--
+
+DROP TABLE IF EXISTS `chapitre`;
+CREATE TABLE IF NOT EXISTS `chapitre` (
+  `id_chapitre` int NOT NULL AUTO_INCREMENT,
+  `titre` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
+  `chapo` text COLLATE utf8mb4_general_ci NOT NULL,
+  `src` text COLLATE utf8mb4_general_ci NOT NULL,
+  `alt` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id_chapitre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `article`
---
-ALTER TABLE `article`
-  ADD PRIMARY KEY (`id_article`);
-
---
--- Index pour la table `bloc`
---
-ALTER TABLE `bloc`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_article` (`id_article`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `article`
---
-ALTER TABLE `article`
-  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT pour la table `bloc`
---
-ALTER TABLE `bloc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `article`
+--
+ALTER TABLE `article`
+  ADD CONSTRAINT `article_ibfk_1` FOREIGN KEY (`id_chapitre`) REFERENCES `chapitre` (`id_chapitre`);
 
 --
 -- Contraintes pour la table `bloc`

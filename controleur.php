@@ -39,6 +39,7 @@
     <main class="ps-2">
 
         <?php
+        include('include/chapitre.php');
         include('include/article.php');
         include('include/bloc.php');
         include('include/connexion.php');
@@ -157,6 +158,55 @@
                 }
                 break;
 
+            case 'chapitre':
+                switch ($action) {
+                    case 'read':
+                        if ($id > 0) {
+                            $modele = 'chapitre.twig.html';
+                            $data = [
+                                'chapitre' => Chapitre::readOne($id),
+                                'listebloc' => Bloc::readByArticle($id)
+                            ];
+                        } else {
+                            $modele = 'liste_chapitres.twig.html';
+                            $data = ['listechapitre' => Chapitre::readAll()];
+                        }
+                        break;
+                        ////////////////////////////////////
+                    case 'new':
+                        $modele = 'newarticle.twig.html';
+                        $data = [];
+                        break;
+
+                    case 'create':
+                        $chapitre = new Chapitre();
+                        $chapitre->chargePOST();
+                        $chapitre->create();
+                        header('Location: controleur.php?page=chapitre&action=read');
+                        break;
+                        ////////////////////////////////////
+                    case 'delete':
+                        Chapitre::delete($id);
+                        header('Location: controleur.php?page=chapitre&action=read');
+                        break;
+                        ////////////////////////////////////
+                    case 'modifier':
+                        $chapitre = Chapitre::readOne($id);
+                        $modele = 'updatearticle.twig.html';
+                        $data = [$chapitre->afficheForm()];
+                        break;
+
+                    case 'update':
+                        $chapitre = new Chapitre();
+                        $chapitre->chargePOST();
+                        $chapitre->update();
+                        header('Location: controleur.php?page=chapitre&action=read');
+                        break;
+
+                    default:
+                        echo 'Action non reconnue';
+                }
+                break;
             default:
                 $modele = 'accueil.twig.html';
                 $data = [];

@@ -1,0 +1,12 @@
+<h1>Les Chapitres</h1>
+<p>Type : {{ article.titre }}</p>
+<p>Chapo : {{ article.chapo }}</p>
+<p>style : {{ article.auteur }}</p>
+
+<a href="controleur.php?page=article&action=modifier&id={{ article.id_article }}">Modifier</a>
+<a href="controleur.php?page=article&action=delete&id={{ article.id_article }}">Supprimer</a>
+<a href="controleur.php?page=article&action=read">Retour à la liste</a>
+
+{% for article in listearticle %}
+
+{% endfor %}

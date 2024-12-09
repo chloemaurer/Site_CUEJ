@@ -78,6 +78,7 @@ class Chapitre
         $query->bindValue(':valeur', $id_chapitre, PDO::PARAM_INT);
 
 
+
         // exécution de la requête
         $query->execute();
 
@@ -148,13 +149,11 @@ class Chapitre
         $query = $pdo->prepare($sql);
 
         // on donne une valeur aux paramètres à partir des attributs de l'objet courant
-        $query->bindValue(':id', $this->id, PDO::PARAM_INT);
-        $query->bindValue(':type', $this->type, PDO::PARAM_STR);
-        $query->bindValue(':texte', $this->texte, PDO::PARAM_STR);
-        $query->bindValue(':style', $this->style, PDO::PARAM_STR);
+        $query->bindValue(':id', $this->id_chapitre, PDO::PARAM_INT);
+        $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
+        $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
         $query->bindValue(':src', $this->src, PDO::PARAM_STR);
         $query->bindValue(':alt', $this->alt, PDO::PARAM_STR);
-        $query->bindValue(':id_article', $this->id_article, PDO::PARAM_STR);
 
         // exécution de la requête
         $query->execute();

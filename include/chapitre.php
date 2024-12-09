@@ -40,7 +40,7 @@ class Chapitre
     }
 
 
-    function readAll()
+    static function readAll()
     {
         // définition de la requête SQL
         $sql = 'select * from chapitre';
@@ -64,7 +64,7 @@ class Chapitre
 
 
 
-    function readOne($id_chapitre)
+    static function readOne($id_chapitre)
     {
         $sql = 'select * from chapitre where id_chapitre = :valeur';
 

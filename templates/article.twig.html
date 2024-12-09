@@ -1,0 +1,24 @@
+<h1>Les Articles</h1>
+<p>Type : {{ article.titre }}</p>
+<p>Chapo : {{ article.chapo }}</p>
+<p>style : {{ article.auteur }}</p>
+
+<a href="controleur.php?page=article&action=modifier&id={{ article.id_article }}">Modifier</a>
+<a href="controleur.php?page=article&action=delete&id={{ article.id_article }}">Supprimer</a>
+<a href="controleur.php?page=article&action=read">Retour à la liste</a>
+
+{% for bloc in listebloc %}
+{% if bloc.type == "h1" %}
+<h1>{{ bloc.texte }}</h1>
+{% elseif bloc.type == "h2" %}
+<h2>{{ bloc.texte }}</h2>
+{% elseif bloc.type == "h3" %}
+<h3>{{ bloc.texte }}</h3>
+{% elseif bloc.type == "paragraphe" %}
+<p class="{{ bloc.css }}">{{ bloc.texte }}</p>
+{% elseif bloc.type == "image" %}
+<img src="{{ bloc.src }}" alt="{{ bloc.alt }}">
+{% else %}
+<p>Type de bloc inconnu : {{ bloc.type }}</p>
+{% endif %}
+{% endfor %}

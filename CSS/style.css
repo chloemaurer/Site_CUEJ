@@ -1,0 +1,27 @@
+.bleu {
+    color: rgb(67, 124, 216);
+}
+
+.rouge {
+    color: red;
+}
+
+.vert {
+    color: rgb(86, 182, 86);
+}
+
+.violet {
+    color: rgb(128, 26, 201);
+}
+
+.rose {
+    color: rgb(255, 113, 215);
+}
+
+.jaune {
+    color: rgb(231, 225, 56);
+}
+
+.aucun {
+    color: black;
+}

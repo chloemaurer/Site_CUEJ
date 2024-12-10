@@ -1,3 +1,5 @@
+{% extends "base.twig.html" %} {% block content %}
+
 <h1>Modification Chapitre</h1>
 <form
   action="controleur.php?page=chapitre&action=update"
@@ -67,5 +69,4 @@
       Modifier
     </button>
   </div>
-</form>
-';
+</form> {% endblock %}

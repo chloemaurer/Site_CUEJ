@@ -1,8 +1,7 @@
+{% extends "base.twig.html" %} {% block content %}
+
 <h1 class="text-center p-5">Liste des blocs</h1>
-{% for bloc in listebloc %}
-
-
-{% if bloc.type == "h1" %}
+{% for bloc in listebloc %} {% if bloc.type == "h1" %}
 <h1 class="{{bloc.style}}">{{ bloc.texte }}</h1>
 {% elseif bloc.type == "h2" %}
 <h2 class="{{bloc.style}}">{{ bloc.texte }}</h2>
@@ -11,18 +10,23 @@
 {% elseif bloc.type == "paragraphe" %}
 <p class="{{bloc.style}}">{{ bloc.texte }}</p>
 {% elseif bloc.type == "image" %}
-<img src="{{ bloc.src }}" alt="{{ bloc.alt }}">
+<img src="{{ bloc.src }}" alt="{{ bloc.alt }}" />
 {% else %}
 <p>Type de bloc inconnu : {{ bloc.type }}</p>
 {% endif %}
 
-
 <p>
-    <a href="controleur.php?page=bloc&action=read&id={{ bloc.id }}">Voir</a>
-    <a href="controleur.php?page=bloc&action=modifier&id={{ bloc.id }}">Modifier</a>
-    <a href="controleur.php?page=bloc&action=delete&id={{ bloc.id }}">Supprimer</a>
+  <a href="controleur.php?page=bloc&action=read&id={{ bloc.id }}">Voir</a>
+  <a href="controleur.php?page=bloc&action=modifier&id={{ bloc.id }}"
+    >Modifier</a
+  >
+  <a href="controleur.php?page=bloc&action=delete&id={{ bloc.id }}"
+    >Supprimer</a
+  >
 </p>
 
 {% endfor %}
 
 <a href="controleur.php?page=bloc&action=new">Ajouter un bloc</a>
+
+{% endblock %}

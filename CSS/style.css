@@ -44,9 +44,17 @@
 
 /*----------------------- ACCUEIL ---------------------------------------*/
 
+#menu-icon:hover {
+  cursor: pointer;
+}
+
 .menu-nav {
   background-color: #643408;
   height: 90vh;
+}
+
+.x-icon:hover {
+  cursor: pointer;
 }
 
 .background-image {

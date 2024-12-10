@@ -52,11 +52,31 @@
     </figcaption>
     </figure>
 
-    {% elseif choix.type == "vidéo" %}
-    <video src="" class="object-fit-cover" autoplay></video>
+    {% elseif choix.type == "video" %}
 
-    {% elseif choix.type == "" %}
+    
 
+
+    {% elseif choix.type == "audio" %}
+    <div class="container">
+  <div class="podcast">
+    <h3 class="podcast__episode_title">Debugging Tools + Tips</h3>
+    <h5 class="podcast__title">
+      Syntax.fm
+      <i>Episode 152</i>
+    </h5>
+
+    <div class="podcast__meta">
+      <audio controls width="100%">
+  <source src="https://hwcdn.libsyn.com/p/5/1/8/518b62b2d896549d/Syntax152.mp3?c_id=44542285&cs_id=44542285&expiration=1561491578&hwt=40b42995123424c9086441d814f8a1ba">
+  Your browser does not support the audio tag.
+</audio>
+      <a href="#" class="artwork">
+ <img src="https://images.unsplash.com/photo-1490821872962-f2e55097079b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&h=300" alt="">
+</a>
+    </div>
+  </div>
+</div>
 
         
     {% else %}

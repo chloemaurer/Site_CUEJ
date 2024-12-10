@@ -164,8 +164,7 @@ switch ($page) {
                 if ($id > 0) {
                     $modele = 'choix.twig.html';
                     $data = [
-                        'chapitre' => Chapitre::readOne($id),
-                        'listebloc' => Bloc::readByArticle($id),
+                        'choix' => Choix::readOne($id),
                     ];
                 } else {
                     $modele = 'liste_choix_bloc.twig.html';

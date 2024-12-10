@@ -31,6 +31,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="<li class=" nav-item"><a class="nav-link active text-light" href="controleur.php?">Accueil</a></li>">Liste des article</a>
                 </li>
+
                 <li><a class="dropdown-item" href="controleur.php?page=article&action=new">Création d'un Article</a></li>
             </ul>
             </li>
@@ -192,19 +193,20 @@
                         header('Location: controleur.php?page=chapitre&action=read');
                         break;
                         ////////////////////////////////////
-                    case 'modifier':
-                        $chapitre = Chapitre::readOne($id);
-                        $modele = 'updatearticle.twig.html';
-                        $data = [$chapitre->afficheForm()];
-                        break;
+                        // case 'modifier':
+                        //     $chapitre = Chapitre::readOne($id);
+                        //     $modele = 'updatearticle.twig.html';
+                        //     $data = [$chapitre->afficheForm()];
+                        //     break;
 
                     case 'update':
-                        $chapitre = new Chapitre();
+                        $chapitre = Chapitre::readOne($id);
+                        $modele = 'updatearticle.twig.html';
+                        $data = [$chapitre];
                         $chapitre->chargePOST();
                         $chapitre->update();
                         header('Location: controleur.php?page=chapitre&action=read');
                         break;
-
                     default:
                         echo 'Action non reconnue';
                 }

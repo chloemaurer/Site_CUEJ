@@ -1,52 +1,52 @@
-{% switch bloc.type %}
-    {% case "h1" %}
-        <h1 class="">Webdoc</h1>
+{% if choix.type == "h1" %}
+    <h1 class="">Webdoc</h1>
 
-    {% case "h2" %}
-        <h2 class="">Titre chapitre</h2>
+{% elseif choix.type == "h2" %}
+    <h2 class="">Titre chapitre</h2>
 
-    {% case "h3" %}
-        <h3 class="">Titre Article</h3>
+{% elseif choix.type == "h3" %}
+    <h3 class="">Titre Article</h3>
+
+{% elseif choix.type == "h4" %}
+    <h4 class="">Sous-partie</h4>
+
+{% elseif choix.type == "h5" %}
+    <h5 class="">Sous-partie</h5>
+
+{% elseif choix.type == "paragraphe" %}
+    <p class="">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
+        born and I will give you a complete account of the system, and expound the actual teachings of the great
+        explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure
+        itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally
+        encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires
+        to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and
+        pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious
+        physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man
+        who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no
+        resultant pleasure?
+    </p>
+
+{% elseif choix.type == "image" %}
+    <img src="https://www.rhone.mfr.fr/media/FD%20MFR%20RHONE/Metiers/agriculture.jpg" alt="tracteur">
     
-    {% case "h4" %}
-        <h4 class="">Sous-partie</h4>
+{% elseif choix.type == "citation" %}
+    <figure class="text-end">
+        <blockquote class="blockquote">
+            <p>A well-known quote, contained in a choixkquote element.</p>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+            Someone famous in <cite title="Source Title">Source Title</cite>
+        </figcaption>
+    </figure>
+
+{% elseif choix.type == "vidéo" %}
+    <video src="" class="object-fit-cover" autoplay></video>
+
+{% elseif choix.type == "" %}
+
+
     
-    {% case "h5" %}
-        <h5 class="">Sous-partie</h5>
+{% else %}
+    <p>Type de choix inconnu : {{ choix.type }}</p>
 
-    {% case "paragraphe" %}
-        <p class="">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
-            born and I will give you a complete account of the system, and expound the actual teachings of the great
-            explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure
-            itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally
-            encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires
-            to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and
-            pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious
-            physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man
-            who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no
-            resultant pleasure?</p>
-
-    {% case "image" %}
-        <img src="https://www.rhone.mfr.fr/media/FD%20MFR%20RHONE/Metiers/agriculture.jpg" alt="tracteur">
-
-    {% case "citation" %}
-            <figure class="text-end">
-                <blockquote class="blockquote">
-                    <p>A well-known quote, contained in a blockquote element.</p>
-                </blockquote>
-                <figcaption class="blockquote-footer">
-                    Someone famous in <cite title="Source Title">Source Title</cite>
-                </figcaption>
-            </figure>
-            
-    
-
-
-
-
-
-
-
-    {% default %}
-    <p>Type de bloc inconnu : {{ bloc.type }}</p>
-{% endswitch %} 
+{% endif %}

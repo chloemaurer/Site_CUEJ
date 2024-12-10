@@ -1,4 +1,5 @@
 <?php
+include('include/choix.php');
 include('include/chapitre.php');
 include('include/article.php');
 include('include/bloc.php');
@@ -167,8 +168,8 @@ switch ($page) {
                         'listebloc' => Bloc::readByArticle($id),
                     ];
                 } else {
-                    $modele = 'liste_chapitres.twig.html';
-                    $data = ['listechapitre' => Chapitre::readAll()];
+                    $modele = 'liste_choix_bloc.twig.html';
+                    $data = ['listechoix' => Choix::readAll()];
                 }
                 break;
 

@@ -139,8 +139,8 @@ class Chapitre
 
     function update()
     {
-        // construction de la requête :type, :texte sont les valeurs à insérées
-        $sql = 'UPDATE chapitre SET titre = :titre, chapo = :chapo, src = :src, alt = :alt, id_chapitre = :id_chapitre WHERE id = :id;';
+        // construction de la requête :titre, :chapo sont les valeurs à insérées
+        $sql = 'UPDATE chapitre SET titre = :titre , chapo = :chapo, src = :src, alt = :alt WHERE id_chapitre = :id_chapitre;';
 
         // connexion à la base de données
         $pdo = connexion();
@@ -149,19 +149,20 @@ class Chapitre
         $query = $pdo->prepare($sql);
 
         // on donne une valeur aux paramètres à partir des attributs de l'objet courant
-        $query->bindValue(':id', $this->id_chapitre, PDO::PARAM_INT);
+        $query->bindValue(':id_chapitre', $this->id_chapitre, PDO::PARAM_INT);
         $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
         $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
         $query->bindValue(':src', $this->src, PDO::PARAM_STR);
-        $query->bindValue(':alt', $this->alt, PDO::PARAM_STR);
+        $query->bindValue(':alt', $this->src, PDO::PARAM_STR);
+
 
         // exécution de la requête
         $query->execute();
     }
 
-         function afficheForm()
-         {
-             echo '
+    function afficheForm()
+    {
+        echo '
                  <form action="controleur.php?page=chapitre&action=update" method="post" class="row g-4 needs-validation" novalidate>
                  <div class="col-md-4">
                  <label for="id_chapitre" class="form-label mt-4">id :</label>
@@ -192,5 +193,5 @@ class Chapitre
                  class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2">Modifier</button>
          </div>
      </form>';
-         }
+    }
 }

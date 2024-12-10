@@ -1,8 +1,10 @@
+{% extends "base.twig.html" %} {% block content %}
 <h1 class="text-center p-5">Accueil</h1>
 <h2>Bienvenue au futur site du CUEJ</h2>
 
-<h3>Blocs : </h3>
+<h3>Blocs :</h3>
 <p><a href="controleur.php?page=bloc&action=read">Liste des Blocs</a></p>
 
-<h3>Article : </h3>
+<h3>Articles :</h3>
 <p><a href="controleur.php?page=article&action=read">Liste des Articles</a></p>
+{% endblock %}

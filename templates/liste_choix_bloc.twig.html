@@ -1,0 +1,14 @@
+{% switch bloc.type %}
+{% case "h1" %}
+<h1 class="{{ bloc.style }}">{{ bloc.texte }}</h1>
+{% case "h2" %}
+<h2 class="{{ bloc.style }}">{{ bloc.texte }}</h2>
+{% case "h3" %}
+<h3 class="{{ bloc.style }}">{{ bloc.texte }}</h3>
+{% case "paragraphe" %}
+<p class="{{ bloc.style }}">{{ bloc.texte }}</p>
+{% case "image" %}
+<img src="{{ bloc.src }}" alt="{{ bloc.alt }}">
+{% default %}
+<p>Type de bloc inconnu : {{ bloc.type }}</p>
+{% endswitch %} 

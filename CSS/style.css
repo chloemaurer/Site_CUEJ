@@ -6,13 +6,6 @@
   box-sizing: border-box;
 }
 
-.background-image {
-  background-image: url("../images/hero.png");
-  background-size: cover;
-  height: 100vh;
-  overflow: hidden;
-}
-
 /*----------------------- Couleurs ---------------------------------------*/
 .bleu {
   color: rgb(67, 124, 216);
@@ -40,4 +33,25 @@
 
 .aucun {
   color: black;
+}
+
+/*----------------------- Boutons ---------------------------------------*/
+
+.btn {
+  background-color: #be8b1b;
+  border-radius: 100px;
+}
+
+/*----------------------- ACCUEIL ---------------------------------------*/
+
+.menu-nav {
+  background-color: #643408;
+  height: 90vh;
+}
+
+.background-image {
+  background-image: url("../images/hero.png");
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
 }

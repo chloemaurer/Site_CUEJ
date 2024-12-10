@@ -30,13 +30,11 @@
                         Les Articles
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="<li class=" nav-item"><a class="nav-link active text-light" href="controleur.php?">Accueil</a></li>Liste des article</a>
+                        <li><a class="dropdown-item" href="controleur.php?page=article&action=read">liste des articles</a></li>
+                        <li><a class="dropdown-item" href="controleur.php?page=article&action=new">Création d'un article</a></li>
+                    </ul>
                 </li>
-
-                <li><a class="dropdown-item" href="controleur.php?page=article&action=new">Création d'un Article</a></li>
-            </ul>
-            </li>
-            <li class="nav-item"><a class="nav-link active text-light" href="controleur.php?page=chapitre&action=read">Les Chapitres</a></li>
+                <li class="nav-item"><a class="nav-link active text-light" href="controleur.php?page=chapitre&action=read">Les Chapitres</a></li>
             </ul>
         </nav>
     </header>

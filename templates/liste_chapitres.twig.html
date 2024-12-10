@@ -2,19 +2,9 @@
 {% for chapitre in listechapitre %}
 <h2>{{chapitre.titre}}</h2>
 <p>
-  <a
-    href="controleur.php?page=chapitre&action=read&id={{ chapitre.id_chapitre }}"
-    >Voir</a
-  >
-  <a
-    href="controleur.php?page=chapitre&action=modifier&id={{ chapitre.id_chapitre }}"
-    >Modifier</a
-  >
-  >
-  <a
-    href="controleur.php?page=chapitre&action=delete&id={{ chapitre.id_chapitre }}"
-    >Supprimer</a
-  >
+    <a href="controleur.php?page=chapitre&action=read&id={{ chapitre.id_chapitre }}">Voir</a>
+    <a href="controleur.php?page=chapitre&action=modifier&id={{ chapitre.id_chapitre }}">Modifier</a>
+    <a href="controleur.php?page=chapitre&action=delete&id={{ chapitre.id_chapitre }}">Supprimer</a>
 </p>
 {% endfor %}
 <a href="controleur.php?page=chapitre&action=new">Ajouter un chapitre</a>

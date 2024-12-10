@@ -49,7 +49,11 @@
 {% elseif choix.type == "vidéo" %}
 <video src="" class="object-fit-cover" autoplay></video>
 
-{% elseif choix.type == "" %} {% else %}
-<p>Type de choix inconnu : {{ choix.type }}</p>
+{% elseif choix.type == "" %}
+
+
+    
+{% else %}
+    <p>Type de choix inconnu : {{ choix.type }}</p>
 
 {% endif %} {% endblock %}

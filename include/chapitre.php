@@ -35,7 +35,7 @@ class Chapitre
         if (isset($_POST['alt'])) {
             $this->alt = $_POST['alt'];
         } else {
-            $this->alt = 'image sans description';
+            $this->alt = 'image sans description'; 
         }
     }
 
@@ -190,7 +190,7 @@ class Chapitre
         <input type="text" name="alt" placeholder="description de l\'image (si type = image)"
             class="form-control w-75 ms-5 border-black" value= "' . $this->alt . '">
     </div>
-    
+
     <div class="d-flex justify-content-center">
         <button type="submit"
             class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2">Modifier</button>

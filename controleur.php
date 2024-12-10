@@ -15,6 +15,7 @@
         <nav class="navbar navbar-expand-lg ">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                 <li class="nav-item"><a class="nav-link active text-light" href="controleur.php?">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link active text-light" href="./templates/liste_choix_bloc.twig.html">Choix des Blocs</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-light" href="controleur.php?page=bloc&action=read" role="button" data-bs-toggle="dropdown">
                         Les Blocs

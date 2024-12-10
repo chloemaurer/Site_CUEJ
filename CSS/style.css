@@ -1,27 +1,43 @@
+/*----------------------- Initialisation globale ---------------------------------------*/
+/* Réinitialisation globale */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.background-image {
+  background-image: url("../images/hero.png");
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/*----------------------- Couleurs ---------------------------------------*/
 .bleu {
-    color: rgb(67, 124, 216);
+  color: rgb(67, 124, 216);
 }
 
 .rouge {
-    color: red;
+  color: red;
 }
 
 .vert {
-    color: rgb(86, 182, 86);
+  color: rgb(86, 182, 86);
 }
 
 .violet {
-    color: rgb(128, 26, 201);
+  color: rgb(128, 26, 201);
 }
 
 .rose {
-    color: rgb(255, 113, 215);
+  color: rgb(255, 113, 215);
 }
 
 .jaune {
-    color: rgb(231, 225, 56);
+  color: rgb(231, 225, 56);
 }
 
 .aucun {
-    color: black;
+  color: black;
 }

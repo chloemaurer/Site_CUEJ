@@ -35,7 +35,7 @@ class Chapitre
         if (isset($_POST['alt'])) {
             $this->alt = $_POST['alt'];
         } else {
-            $this->alt = 'image sans description'; 
+            $this->alt = 'image sans description';
         }
     }
 
@@ -162,39 +162,39 @@ class Chapitre
     //     function afficheForm()
     //     {
     //         echo '
-    //         <form action="controleur.php?page=chapitre&action=update" method="post" class="row g-4 needs-validation" novalidate>
+    //             <form action="controleur.php?page=chapitre&action=update" method="post" class="row g-4 needs-validation" novalidate>
+    //             <div class="col-md-4">
+    //             <label for="id_article" class="form-label mt-4">id :</label>
+    //             <input type="text" name="id_article" placeholder="Titre" value= "' . $this->id_chapitre . '"
+    //                 class="form-control w-75 ms-5 border-black">
+    //         </div>
     //         <div class="col-md-4">
-    //         <label for="id_article" class="form-label mt-4">id :</label>
-    //         <input type="text" name="id_article" placeholder="Titre" value= "' . $this->id_chapitre . '"
-    //             class="form-control w-75 ms-5 border-black">
-    //     </div>
-    //     <div class="col-md-4">
-    //         <label for="titre" class="form-label mt-4">Titre :</label>
-    //         <input type="text" name="titre" placeholder="Titre" value= "' . $this->titre . '"
-    //             class="form-control w-75 ms-5 border-black">
-    //     </div>
+    //             <label for="titre" class="form-label mt-4">Titre :</label>
+    //             <input type="text" name="titre" placeholder="Titre" value= "' . $this->titre . '"
+    //                 class="form-control w-75 ms-5 border-black">
+    //         </div>
+
+    //         <div class="col-md-4">
+    //             <label for="chapo" class="form-label mt-4">Chapô : </label>
+    //             <input type="text" name="chapo" placeholder="Saisir le texte" value= "' . $this->chapo . '" class="form-control w-75 ms-5 border-black">
+    //         </div>
+
+    //         <div class="col-md-4">
+    //             <label for="auteur" class="form-label mt-4">Auteur : </label>
+    //             <input type="text" name="auteur" placeholder="Qui est l\'auteur ?" value= "' . $this->src . '"
+    //                 class="form-control w-75 ms-5 border-black">
+    //         </div>
 
     //     <div class="col-md-4">
-    //         <label for="chapo" class="form-label mt-4">Chapô : </label>
-    //         <input type="text" name="chapo" placeholder="Saisir le texte" value= "' . $this->chapo . '" class="form-control w-75 ms-5 border-black">
+    //         <label for="alt" class="form-label mt-4">Description de l\'image : </label>
+    //         <input type="text" name="alt" placeholder="description de l\'image (si type = image)"
+    //             class="form-control w-75 ms-5 border-black" value= "' . $this->alt . '">
     //     </div>
 
-    //     <div class="col-md-4">
-    //         <label for="auteur" class="form-label mt-4">Auteur : </label>
-    //         <input type="text" name="auteur" placeholder="Qui est l\'auteur ?" value= "' . $this->src . '"
-    //             class="form-control w-75 ms-5 border-black">
+    //     <div class="d-flex justify-content-center">
+    //         <button type="submit"
+    //             class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2">Modifier</button>
     //     </div>
-
-    <div class="col-md-4">
-        <label for="alt" class="form-label mt-4">Description de l\'image : </label>
-        <input type="text" name="alt" placeholder="description de l\'image (si type = image)"
-            class="form-control w-75 ms-5 border-black" value= "' . $this->alt . '">
-    </div>
-    
-    <div class="d-flex justify-content-center">
-        <button type="submit"
-            class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2">Modifier</button>
-    </div>
-</form>';
-    }
+    // </form>';
+    //     }
 }

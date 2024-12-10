@@ -168,7 +168,7 @@
                             $modele = 'chapitre.twig.html';
                             $data = [
                                 'chapitre' => Chapitre::readOne($id),
-                                'listebloc' => Bloc::readByArticle($id)
+                                'listebloc' => Bloc::readByArticle($id),
                             ];
                         } else {
                             $modele = 'liste_chapitres.twig.html';

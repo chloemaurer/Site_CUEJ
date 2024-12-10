@@ -156,6 +156,26 @@ switch ($page) {
                 echo 'Action non reconnue';
         }
         break;
+
+    case 'choix':
+        switch ($action) {
+            case 'read':
+                if ($id > 0) {
+                    $modele = 'choix.twig.html';
+                    $data = [
+                        'chapitre' => Chapitre::readOne($id),
+                        'listebloc' => Bloc::readByArticle($id),
+                    ];
+                } else {
+                    $modele = 'liste_chapitres.twig.html';
+                    $data = ['listechapitre' => Chapitre::readAll()];
+                }
+                break;
+
+            default:
+                echo 'Action non reconnue';
+        }
+        break;
     default:
         $modele = 'accueil.twig.html';
         $data = [];

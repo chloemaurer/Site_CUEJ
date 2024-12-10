@@ -164,8 +164,8 @@ class Chapitre
              echo '
                  <form action="controleur.php?page=chapitre&action=update" method="post" class="row g-4 needs-validation" novalidate>
                  <div class="col-md-4">
-                 <label for="id_article" class="form-label mt-4">id :</label>
-                 <input type="text" name="id_article" placeholder="Titre" value= "' . $this->id_chapitre . '"
+                 <label for="id_chapitre" class="form-label mt-4">id :</label>
+                 <input type="text" name="id_chapitre" placeholder="Titre" value= "' . $this->id_chapitre . '"
                      class="form-control w-75 ms-5 border-black">
              </div>
              <div class="col-md-4">
@@ -178,8 +178,8 @@ class Chapitre
                  <input type="text" name="chapo" placeholder="Saisir le texte" value= "' . $this->chapo . '" class="form-control w-75 ms-5 border-black">
              </div
              <div class="col-md-4">
-                 <label for="auteur" class="form-label mt-4">Auteur : </label>
-                 <input type="text" name="auteur" placeholder="Qui est l\'auteur ?" value= "' . $this->src . '"
+                 <label for="src" class="form-label mt-4">Auteur : </label>
+                 <input type="text" name="src" placeholder="Qui est l\'auteur ?" value= "' . $this->src . '"
                      class="form-control w-75 ms-5 border-black">
              </div
          <div class="col-md-4">

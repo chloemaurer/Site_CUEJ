@@ -174,34 +174,22 @@
                             $data = ['listechapitre' => Chapitre::readAll()];
                         }
                         break;
-                        ////////////////////////////////////
-                    case 'new':
-                        $modele = 'newarticle.twig.html';
-                        $data = [];
-                        break;
 
-                    case 'create':
-                        $chapitre = new Chapitre();
-                        $chapitre->chargePOST();
-                        $chapitre->create();
-                        header('Location: controleur.php?page=chapitre&action=read');
-                        break;
+
                         ////////////////////////////////////
                     case 'delete':
                         Chapitre::delete($id);
                         header('Location: controleur.php?page=chapitre&action=read');
                         break;
                         ////////////////////////////////////
-                        // case 'modifier':
-                        //     $chapitre = Chapitre::readOne($id);
-                        //     $modele = 'updatearticle.twig.html';
-                        //     $data = [$chapitre->afficheForm()];
-                        //     break;
+                    case 'modifier':
+                        $chapitre = Chapitre::readOne($id);
+                        $modele = 'updatechapitre.twig.html';
+                        $data = [$chapitre->afficheForm()];
+                        break;
 
                     case 'update':
-                        $chapitre = Chapitre::readOne($id);
-                        $modele = 'updatearticle.twig.html';
-                        $data = [$chapitre];
+                        $chapitre = new Chapitre();
                         $chapitre->chargePOST();
                         $chapitre->update();
                         header('Location: controleur.php?page=chapitre&action=read');

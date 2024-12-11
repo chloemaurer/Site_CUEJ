@@ -27,11 +27,13 @@ class Chapitre
         } else {
             $this->chapo = 'pas de chapo';
         }
+
         if (isset($_POST['src'])) {
             $this->src = $_POST['src'];
         } else {
             $this->src = 'image sans lien';
         }
+
         if (isset($_POST['alt'])) {
             $this->alt = $_POST['alt'];
         } else {
@@ -90,32 +92,6 @@ class Chapitre
     }
 
 
-    function create()
-    {
-        // construction de la requête :type, :texte sont les valeurs à insérées
-        $sql = 'INSERT INTO chapitre (titre, chapo, src, alt, id_chapitre) VALUES (:titre, :chapo, :src, :alt, id_chapitre);';
-
-        // connexion à la base de données
-        $pdo = connexion();
-
-        // préparation de la requête
-        $query = $pdo->prepare($sql);
-
-        // on donne une valeur aux paramètres à partir des attributs de l'objet courant
-        $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
-        $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
-        $query->bindValue(':src', $this->src, PDO::PARAM_STR);
-        $query->bindValue(':alt', $this->alt, PDO::PARAM_STR);
-        $query->bindValue(':id_chapitre', $this->id_chapitre, PDO::PARAM_STR);
-
-        // exécution de la requête
-        $query->execute();
-
-        // on récupère la clé de l'bloc inséré
-        $this->id_chapitre = $pdo->lastInsertId();
-    }
-
-
 
     static function delete($id)
     {
@@ -145,15 +121,15 @@ class Chapitre
         // connexion à la base de données
         $pdo = connexion();
 
-        // préparation de la requête
+
         $query = $pdo->prepare($sql);
 
-        // on donne une valeur aux paramètres à partir des attributs de l'objet courant
+
         $query->bindValue(':id_chapitre', $this->id_chapitre, PDO::PARAM_INT);
         $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
         $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
         $query->bindValue(':src', $this->src, PDO::PARAM_STR);
-        $query->bindValue(':alt', $this->src, PDO::PARAM_STR);
+        $query->bindValue(':alt', $this->alt, PDO::PARAM_STR);
 
 
         // exécution de la requête

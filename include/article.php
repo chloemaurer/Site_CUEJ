@@ -189,6 +189,36 @@ class Article
         $query->execute();
     }
 
+
+    static function readByChapitre($id_chapitre)
+    {
+        // Requête SQL corrigée
+        $sql = 'SELECT article.* 
+            FROM article 
+            INNER JOIN chapitre 
+            ON article.id_chapitre = chapitre.id_chapitre 
+            WHERE chapitre.id_chapitre = :valeur';
+
+        // Connexion à la base de données
+        $pdo = connexion();
+
+        // Préparation de la requête
+        $query = $pdo->prepare($sql);
+
+        // Liaison du paramètre :valeur
+        $query->bindValue(':valeur', $id_chapitre, PDO::PARAM_INT);
+
+        // Exécution de la requête
+        $query->execute();
+
+        // Récupération des résultats sous forme de tableau d'objets de type Article
+        $articles = $query->fetchAll(PDO::FETCH_CLASS, 'Article');
+
+        // Retourne les articles
+        return $articles;
+    }
+
+
     function afficheForm()
     {
         echo '

@@ -162,7 +162,7 @@ switch ($page) {
                 $chapitre = new Chapitre();
                 $chapitre->chargePOST();
                 $chapitre->update();
-                header('Location: controleur.php?page=chapitre&action=read');
+                header('Location: controleur.php?page=admin');
                 break;
             default:
                 echo 'Action non reconnue';
@@ -171,7 +171,16 @@ switch ($page) {
 
     default:
         $modele = 'accueil.twig.html';
-        $data = [];
+
+        $listechapitre = Chapitre::readAll(); // Méthode qui retourne tous les chapitres
+
+        // Pour chaque chapitre, récupérer les articles associés
+        foreach ($listechapitre as $chapitre) {
+            $chapitre->articles = Article::readByChapitre($chapitre->id_chapitre);
+        }
+
+        // Passer les données à la vue
+        $data = ['listechapitre' => $listechapitre];
 }
 
 echo $twig->render($modele, $data);

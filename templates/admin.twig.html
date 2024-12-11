@@ -22,9 +22,9 @@
           ><i class="fa-solid fa-pen"></i
         ></a>
         <h2 class="text-white">{{chapitre.titre}}</h2>
-        <h3 class="text-white">Titre Article</h3>
-        <h3 class="text-white">Titre Article</h3>
-        <h3 class="text-white">Titre Article</h3>
+        {% for article in listearticle %}
+        <h3 class="text-white">{{ article.titre }}</h3>
+        {% endfor %}
       </div>
       {% endfor %} {#
       <div class="col d-flex flex-column align-items-center p-5">

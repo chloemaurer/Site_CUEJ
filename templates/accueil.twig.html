@@ -2,9 +2,9 @@
 
 <div class="background-image">
   <div class="d-flex justify-content-between">
-    <img id="menu-icon" src="images/logo.png" alt="village" />
-    <a class="fs-1 px-3 text-light" href="controleur.php?page=admin"
-      ><i class="fa-solid fa-user-tie"></i
+    <img id="menu-icon" src="images/logo.png" alt="menu icon" />
+    <a href="controleur.php?page=admin"
+      ><i class="fa-solid fa-user p-3 fs-1 text-light"></i
     ></a>
   </div>
 
@@ -19,37 +19,18 @@
     <h1 class="text-white">Web Documentaire De La Société</h1>
 
     <div class="row gx-5">
+      {% for chapitre in listechapitre %}
       <div class="col d-flex flex-column align-items-center p-5">
-        <h2 class="text-white">Faire collectif, se mobiliser</h2>
-        <h3 class="text-white">Titre Article</h3>
-        <h3 class="text-white">Titre Article</h3>
-        <h3 class="text-white">Titre Article</h3>
+        <h2 class="text-white">{{ chapitre.titre }}</h2>
+        {% if chapitre.articles is not empty %} {% for article in
+        chapitre.articles %}
+        <h3 class="text-white">{{ article.titre }}</h3>
+        {% endfor %} {% else %}
+        <p class="text-white">Aucun article pour ce chapitre.</p>
+        {% endif %}
       </div>
-      <div class="col d-flex flex-column align-items-center p-5">
-        <h2 class="text-white">Faire collectif, se mobiliser</h2>
-        <h3 class="text-white">Titre Article</h3>
-        <h3 class="text-white">Titre Article</h3>
-        <h3 class="text-white">Titre Article</h3>
-      </div>
-      <div class="col d-flex flex-column align-items-center p-5">
-        <h2 class="text-white">Faire collectif, se mobiliser</h2>
-        <h3 class="text-white">Titre Article</h3>
-        <h3 class="text-white">Titre Article</h3>
-        <h3 class="text-white">Titre Article</h3>
-      </div>
+      {% endfor %}
     </div>
-
-    <div class="d-flex g-5">
-      <a href="#" class="btn btn-lg text-white">Accueil</a>
-      <a href="#" class="btn btn-lg text-white">Crédits</a>
-    </div>
-  </div>
-
-  <div
-    class="container-fluid d-flex justify-content-center align-items-center bottom-3 position-relative"
-    style="height: 100%; bottom: 50px"
-  >
-    <h1 class="text-white">On vit dans une société</h1>
   </div>
 </div>
 {% endblock %}

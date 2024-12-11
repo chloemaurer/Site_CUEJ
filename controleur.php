@@ -120,7 +120,7 @@ switch ($page) {
 
     case 'admin':
         $modele = 'admin.twig.html';
-        $data = [];
+        $data = ['listechapitre' => Chapitre::readAll()];
         break;
 
     case 'chapitre':
@@ -146,10 +146,17 @@ switch ($page) {
                 break;
                 ////////////////////////////////////
             case 'modifier':
-                $chapitre = Chapitre::readOne($id);
-                $modele = 'updatechapitre.twig.html';
-                $data = [$chapitre->afficheForm()];
+                $chapitre = Chapitre::readOne($id); // Remplacez Article::readOne($id) si nécessaire
+                if ($chapitre) {
+                    $modele = 'updatechapitre.twig.html';
+                    $data = ['chapitre' => $chapitre];
+                } else {
+                    // Gérer le cas où l'ID n'existe pas
+                    echo "Erreur : le chapitre avec l'ID $id n'existe pas.";
+                    exit;
+                }
                 break;
+
 
             case 'update':
                 $chapitre = new Chapitre();

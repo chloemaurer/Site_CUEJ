@@ -41,12 +41,12 @@
   background: none !important;
 }
 .mejs__time {
-  color: #777;
+  color: #777777;
   font-weight: normal;
 }
 
 .podcast {
-  background: #f0f0f0;
+  background: #a47016;
   padding: 30px;
   border-radius: 3px;
 }
@@ -63,7 +63,7 @@
   margin-top: 10px;
   text-transform: uppercase;
   font-size: 11px;
-  color: #555;
+  color: #1d1d1d;
 }
 .podcast__title i {
   font-style: normal;
@@ -72,7 +72,7 @@
   margin-left: 10px;
 }
 .podcast__meta {
-  background: #ddd;
+  background: #bf8226;
   margin: 40px -30px -30px -30px;
   padding: 0 30px 30px 30px;
   display: flex;
@@ -92,6 +92,10 @@
   margin-bottom: -80px;
 }
 
+.podcast__meta audio{
+  color: #bf8226;
+}
+
 .mejs-prepended-buttons {
   display: flex;
 }
@@ -101,39 +105,41 @@
   justify-content: space-evenly;
 }
 
-.mejs__play > button {
+.mejs__play>button {
   background: transparent url("https://cdn.jsdelivr.net/gh/ivorpad/images-src/mediaplayer-sprite-gray.svg") no-repeat;
 }
 
-.mejs__pause > button {
+.mejs__pause>button {
   background: transparent url("https://cdn.jsdelivr.net/gh/ivorpad/images-src/mediaplayer-sprite-gray.svg") no-repeat;
   background-position: -20px 0;
 }
 
-.mejs__mute > button {
+.mejs__mute>button {
   background: transparent url("https://cdn.jsdelivr.net/gh/ivorpad/images-src/mediaplayer-sprite-gray.svg") no-repeat;
   background-position: -60px 0;
 }
 
-.mejs__unmute > button {
+.mejs__unmute>button {
   background: transparent url("https://cdn.jsdelivr.net/gh/ivorpad/images-src/mediaplayer-sprite-gray.svg") no-repeat;
   background-position: -40px 0;
 }
 
-.mejs-skip-back-button > button,
-.mejs__skip-back-button > button {
+.mejs-skip-back-button>button,
+.mejs__skip-back-button>button {
   background: transparent url("https://cdn.jsdelivr.net/gh/ivorpad/images-src/skipback.svg");
 }
 
-.mejs-jump-forward-button > button,
-.mejs__jump-forward-button > button {
+.mejs-jump-forward-button>button,
+.mejs__jump-forward-button>button {
   background: url("https://cdn.jsdelivr.net/gh/ivorpad/images-src/jumpforward.svg") no-repeat;
 }
 
-.mejs__button > button {
+.mejs__button>button {
   color: #555;
 }
 
 .mejs__horizontal-volume-slider {
   display: none !important;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */

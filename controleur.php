@@ -118,6 +118,11 @@ switch ($page) {
         }
         break;
 
+    case 'admin':
+        $modele = 'admin.twig.html';
+        $data = [];
+        break;
+
     case 'chapitre':
         switch ($action) {
             case 'read':
@@ -156,6 +161,7 @@ switch ($page) {
                 echo 'Action non reconnue';
         }
         break;
+
     default:
         $modele = 'accueil.twig.html';
         $data = [];

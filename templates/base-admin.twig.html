@@ -21,6 +21,30 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-dark">
+        <ul
+          class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+          style="--bs-scroll-height: 100px"
+        >
+          <li class="nav-item">
+            <a
+              class="nav-link active text-light"
+              href="controleur.php?page=accueil"
+            >
+              <i class="fa-solid fa-house"></i
+            ></a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link active text-light"
+              href="controleur.php?page=article&action=new"
+              ><i class="fa-solid fa-plus"></i
+            ></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <main class="ps-2">
       {% block content %}
       <!-- Contenu par défaut -->

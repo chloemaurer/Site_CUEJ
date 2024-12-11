@@ -5,22 +5,22 @@
 {% for choix in listechoix %}
 
 {% if choix.type == "h1" %}
-<h1 class=" border border-solid m-3 border-dark p-2">Webdoc</h1>
+<h1 class="  mb-5 border border-solid m-3 border-dark p-2">Webdoc</h1>
 
 {% elseif choix.type == "h2" %}
-<h2 class=" border border-solid m-3 border-dark p-2">Titre chapitre</h2>
+<h2 class="  mb-5 border border-solid m-3 border-dark p-2">Titre chapitre</h2>
 
 {% elseif choix.type == "h3" %}
-<h3 class=" border border-solid m-3 border-dark p-2">Titre Article</h3>
+<h3 class="  mb-5 border border-solid m-3 border-dark p-2">Titre Article</h3>
 
 {% elseif choix.type == "h4" %}
-<h4 class=" border border-solid m-3 border-dark p-2">Sous-partie</h4>
+<h4 class="  mb-5 border border-solid m-3 border-dark p-2">Sous-partie</h4>
 
 {% elseif choix.type == "h5" %}
-<h5 class=" border border-solid m-3 border-dark p-2">Inter-partie</h5>
+<h5 class="  mb-5 border border-solid m-3 border-dark p-2">Inter-partie</h5>
 
 {% elseif choix.type == "paragraphe" %}
-<p class=" border border-solid m-3 border-dark p-2">
+<p class="  mb-5 border border-solid m-3 border-dark p-2">
   But I must explain to you how all this mistaken idea of denouncing pleasure
   and praising pain was born and I will give you a complete account of the
   system, and expound the actual teachings of the great explorer of the truth,
@@ -37,14 +37,14 @@
 </p>
 
 {% elseif choix.type == "image" %}
-<figure class="figure w-50 border border-solid m-3 border-dark p-2">
+<figure class="figure w-50  mb-5 border border-solid m-3 border-dark p-2">
   <img src="https://www.rhone.mfr.fr/media/FD%20MFR%20RHONE/Metiers/agriculture.jpg"
     class="figure-img img-fluid rounded" alt="...">
   <figcaption class="figure-caption text-end">A caption for the above image.</figcaption>
 </figure>
 
 {% elseif choix.type == "citation" %}
-<figure class="text-end border border-solid m-3 border-dark p-2">
+<figure class="text-end  mb-5 border border-solid m-3 border-dark p-2">
   <blockquote class="blockquote">
     <p>A well-known quote, contained in a choixkquote element.</p>
   </blockquote>
@@ -54,7 +54,7 @@
 </figure>
 
 {% elseif choix.type == "video" %}
-<video controls width="640" class="border border-solid m-3 border-dark p-2">
+<video controls width="640" class=" mb-5 border border-solid m-3 border-dark p-2">
   <source src="video/grTP01_maurerchloe_TP01.mp4" type="video/mp4">
   Votre navigateur ne supporte pas la vidéo.
 </video>
@@ -62,7 +62,7 @@
 
 
 {% elseif choix.type == "audio" %}
-<div class="container border border-solid m-3 border-dark p-2">
+<div class="container  mb-5 border border-solid m-3 border-dark p-2">
   <div class="podcast">
     <h3 class="podcast__episode_title">La Campagne</h3>
     <h5 class="podcast__title">
@@ -85,33 +85,164 @@
   </div>
 </div>
 {% elseif choix.type == "carousel" %}
+<div class="  mb-5 border border-solid m-3 border-dark p-2">
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
 
-<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="10000">
-      <img
-        src="https://cdn.discordapp.com/attachments/1304396491422568543/1316329825811693668/1_dmHVApAJvqSy2j3umjJUXg.jpg?ex=675aa72e&is=675955ae&hm=ea9f8132b7a6a1bf917afa30903057b1bea33e89f4745318a27e39dd1782a70b&"
-        class="d-block w-100" alt="...">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <div class="d-flex row">
+          <div class="col p-3">
+            <h3>Titre du carousel</h3>
+            <p>crédit : Maurer Chloé</p>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+              rem
+              aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+              explicabo.
+              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+              dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est qui dolorem ipsum quia dolor
+              sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore
+              magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
+              suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui
+              in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas
+              nulla pariatur?"</p>
+          </div>
+          <div class=" col d-flex align-items-center">
+            <img
+              src="https://cdn.discordapp.com/attachments/1304396491422568543/1316329825811693668/1_dmHVApAJvqSy2j3umjJUXg.jpg?ex=675aa72e&is=675955ae&hm=ea9f8132b7a6a1bf917afa30903057b1bea33e89f4745318a27e39dd1782a70b&"
+              class="d-block w-100" alt="...">
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item" data-bs-interval="2000">
+        <div class="d-flex row">
+          <div class="col">
+            <h3>Titre du carousel</h3>
+            <p>crédit : Maurer Chloé</p>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+              rem
+              aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+              explicabo.
+              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+              dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est</p>
+          </div>
+          <div class="col d-flex align-items-center">
+            <img
+              src="https://img.freepik.com/photos-gratuite/troupeau-betail-paissant-dans-champs-verts_181624-29943.jpg?t=st=1733923127~exp=1733926727~hmac=8613f94177d682ed0df698b52b2e7f9cf63d342ac7ccef51a7f471fba310340c&w=826"
+              class="d-block w-100" alt="...">
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="d-flex row">
+          <div class="col">
+            <h3>Titre du carousel</h3>
+            <p>crédit : Maurer Chloé</p>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+              rem
+              aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+              explicabo.
+              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+              dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est</p>
+          </div>
+          <div class="col d-flex align-items-center">
+            <img
+              src="https://img.freepik.com/photos-gratuite/toile-fond-produits-naturels-ferme-lumiere-du-soleil_53876-143219.jpg?t=st=1733924297~exp=1733927897~hmac=f1d5a65e361d88b54186ee51312a0b3b07095d4d494013b6ac5e4690842a6798&w=826"
+              class="d-block w-100" alt="...">
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="carousel-item" data-bs-interval="2000">
-      <img
-        src="https://cdn.discordapp.com/attachments/1154354505568239637/1316019805438083124/925eb2dc9e9fb6d99533e43c192184fd.jpg?ex=675ad7f4&is=67598674&hm=523b48d332d70374e458d23e27bcd482fb602f8e90a55164c35756acf19b609b&"
-        class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img
-        src="https://img.freepik.com/photos-gratuite/troupeau-betail-paissant-dans-champs-verts_181624-29943.jpg?t=st=1733923127~exp=1733926727~hmac=8613f94177d682ed0df698b52b2e7f9cf63d342ac7ccef51a7f471fba310340c&w=826"
-        class="d-block w-100" alt="...">
-    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+</div>
+
+{% elseif choix.type == "texte_image" %}
+<div class=" d-flex  mb-5 border border-solid m-3 border-dark p-2">
+  <p class="m-4">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will
+    give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the
+    master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but
+    because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
+    Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because
+    occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial
+    example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who
+    has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who
+    avoids a pain that produces no resultant pleasure?</p>
+  <img class="w-50"
+    src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
+    alt="">
+</div>
+
+{% elseif choix.type == "image_texte" %}
+<div class=" d-flex  mb-5 border border-solid m-3 border-dark p-2">
+  <img class="w-50"
+    src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
+    alt="">
+  <p class="m-4">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born
+    and I will
+    give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the
+    master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but
+    because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
+    Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because
+    occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial
+    example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who
+    has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who
+    avoids a pain that produces no resultant pleasure?</p>
+</div>
+
+{% elseif choix.type == "titre_texte_image" %}
+<div class=" d-flex  mb-5 border border-solid m-3 border-dark p-2">
+  <div class="m-4">
+  <h4>Titre</h4>
+  <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born
+    and I will
+    give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the
+    master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but
+    because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
+    Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because
+    occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial
+    example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who
+    has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who
+    avoids a pain that produces no resultant pleasure?</p>
+  </div>
+    <img class="w-50"
+    src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
+    alt="">
+</div>
+
+{% elseif choix.type == "image_titre_texte" %}
+<div class=" d-flex  mb-5 border border-solid m-3 border-dark p-2">
+  <img class="w-50"
+    src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
+    alt="">
+  <div class="m-4">
+    <h4>Titre</h4>
+    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
+      born
+      and I will
+      give you a complete account of the system, and expound the actual teachings of the great explorer of the truth,
+      the
+      master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure,
+      but
+      because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
+      Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but
+      because
+      occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial
+      example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who
+      has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one
+      who
+      avoids a pain that produces no resultant pleasure?</p>
+  </div>
 </div>
 
 

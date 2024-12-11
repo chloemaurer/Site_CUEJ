@@ -37,10 +37,11 @@
     </p>
 
     {% elseif choix.type == "image" %}
-    <img
-    src="https://www.rhone.mfr.fr/media/FD%20MFR%20RHONE/Metiers/agriculture.jpg"
-    alt="tracteur"
-    />
+    <figure class="figure w-50">
+      <img src="https://www.rhone.mfr.fr/media/FD%20MFR%20RHONE/Metiers/agriculture.jpg"
+        class="figure-img img-fluid rounded" alt="...">
+      <figcaption class="figure-caption text-end">A caption for the above image.</figcaption>
+    </figure>
 
     {% elseif choix.type == "citation" %}
     <figure class="text-end">

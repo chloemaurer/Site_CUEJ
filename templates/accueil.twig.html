@@ -1,5 +1,45 @@
-{% extends 'base.twig.html' %}
+{% extends 'base.twig.html' %} {% block main %}
 
-{% block main %}
-    
+<!-- Hero Section -->
+<section class="hero-section">
+  <img src="images/Menu.png" alt="Logo" class="nav" id="nav" />
+
+  <a href="controleur.php?page=admin"><i class="fa-solid fa-user"></i></a>
+  <h1>Les mobilisations du monde rural</h1>
+  <div class="line"></div>
+</section>
+
+<!-- Menu Overlay -->
+<div class="menu-overlay" id="menu">
+  <div class="menu-close" id="closeMenu">&times;</div>
+  <h1>Les mobilisations du monde rural</h1>
+  <div class="menu-columns">
+    <div class="menu-column">
+      <h2>Faire collectif, se mobiliser</h2>
+      <p>titre de Article</p>
+      <p>titre de Article</p>
+      <p>titre de Article</p>
+      <p>titre de Article</p>
+    </div>
+    <div class="menu-column">
+      <h2>Faire collectif, se mobiliser</h2>
+      <p>titre de Article</p>
+      <p>titre de Article</p>
+      <p>titre de Article</p>
+      <p>titre de Article</p>
+    </div>
+    <div class="menu-column">
+      <h2>Faire collectif, se mobiliser</h2>
+      <p>titre de Article</p>
+      <p>titre de Article</p>
+      <p>titre de Article</p>
+      <p>titre de Article</p>
+    </div>
+  </div>
+  <div class="menu-buttons">
+    <button class="btn">Accueil</button>
+    <button class="btn">Crédits</button>
+  </div>
+</div>
+
 {% endblock %}

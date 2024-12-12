@@ -1,3 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/*------------------------------- COULEUR -----------------------------------------*/
 .bleu {
   color: rgb(67, 124, 216);
 }
@@ -26,6 +33,105 @@
   color: black;
 }
 
+/*------------------------------- ACCUEIL -----------------------------------------*/
+
+/*------ Hero ----*/
+
+.hero-section {
+  height: 100vh; /* Prend toute la hauteur de l'écran */
+  background: url("../images/Hero.png") no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.nav {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 50px; /* Ajuster la taille selon vos besoins */
+  cursor: pointer;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #426d81;
+  color: white;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.menu-overlay.active {
+  display: flex;
+}
+
+.menu-overlay h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.menu-overlay .menu-columns {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.menu-overlay .menu-column {
+  text-align: center;
+}
+
+.menu-overlay .menu-column h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.menu-overlay .menu-column p {
+  margin: 0.5rem 0;
+}
+
+.menu-overlay .menu-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.menu-overlay .btn {
+  background-color: #d4a047;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.menu-overlay .btn:hover {
+  transform: scale(1.1);
+}
+
+.menu-close {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+}
+
+/*-------------------------------  -----------------------------------------*/
+
 .container {
   width: 800px;
   margin: 30px auto;
@@ -37,7 +143,8 @@
 .mejs__controls {
   display: block;
 }
-.mejs__controls, .mejs__container {
+.mejs__controls,
+.mejs__container {
   background: none !important;
 }
 .mejs__time {
@@ -117,4 +224,4 @@
 
 .mejs__horizontal-volume-slider {
   display: none !important;
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */

@@ -176,8 +176,12 @@ switch ($page) {
                 echo 'Action non reconnue';
         }
         break;
-    default:
+    case 'admin':
         $modele = 'admin.twig.html';
+        $data = [];
+        break;
+    default:
+        $modele = 'accueil.twig.html';
         $data = [];
 }
 

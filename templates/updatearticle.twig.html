@@ -34,7 +34,7 @@
       type="text"
       name="chapo"
       placeholder="Saisir le texte"
-      value="' . $this->chapo . '"
+      value="{{chapitre.chapo}}"
       class="form-control w-75 ms-5 border-black"
     />
   </div>
@@ -45,7 +45,7 @@
       type="text"
       name="auteur"
       placeholder="Qui est l\'auteur ?"
-      value="' . $this->src . '"
+      value="{{chapitre.auteur}}"
       class="form-control w-75 ms-5 border-black"
     />
   </div>
@@ -57,7 +57,7 @@
       name="alt"
       placeholder="description de l\'image (si type = image)"
       class="form-control w-75 ms-5 border-black"
-      value="' . $this->alt . '"
+      value="{{chapitre.src}}"
     />
   </div>
 

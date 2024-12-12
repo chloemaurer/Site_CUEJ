@@ -144,7 +144,7 @@ switch ($page) {
             case 'modifier':
                 $chapitre = Chapitre::readOne($id);
                 $modele = 'updatechapitre.twig.html';
-                $data = [$chapitre->afficheForm()];
+                $data = ['chapitre' => $chapitre];
                 break;
 
             case 'update':

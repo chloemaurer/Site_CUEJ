@@ -104,7 +104,7 @@ switch ($page) {
             case 'modifier':
                 $article = Article::readOne($id);
                 $modele = 'updatearticle.twig.html';
-                $data = [$article->afficheForm()];
+                $data = ['article' => $article];
                 break;
 
             case 'update':

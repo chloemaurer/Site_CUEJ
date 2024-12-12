@@ -1,8 +1,8 @@
 {% extends "base.twig.html" %} {% block content %}
 
-<h1>Modification Chapitre</h1>
+<h1>Modification article</h1>
 <form
-  action="controleur.php?page=chapitre&action=update"
+  action="controleur.php?page=article&action=update"
   method="post"
   class="row g-4 needs-validation"
   novalidate
@@ -13,7 +13,7 @@
       type="text"
       name="id_article"
       placeholder="Titre"
-      value="{{ chapitre.id_chapitre }}"
+      value="{{ article.id_article }}"
       class="form-control w-75 ms-5 border-black"
     />
   </div>
@@ -23,7 +23,7 @@
       type="text"
       name="titre"
       placeholder="Titre"
-      value="' . $this->titre . '"
+      value="{{article.titre}}"
       class="form-control w-75 ms-5 border-black"
     />
   </div>
@@ -34,7 +34,7 @@
       type="text"
       name="chapo"
       placeholder="Saisir le texte"
-      value="{{chapitre.chapo}}"
+      value="{{article.chapo}}"
       class="form-control w-75 ms-5 border-black"
     />
   </div>
@@ -45,7 +45,7 @@
       type="text"
       name="auteur"
       placeholder="Qui est l\'auteur ?"
-      value="{{chapitre.auteur}}"
+      value="{{article.auteur}}"
       class="form-control w-75 ms-5 border-black"
     />
   </div>
@@ -57,7 +57,7 @@
       name="alt"
       placeholder="description de l\'image (si type = image)"
       class="form-control w-75 ms-5 border-black"
-      value="{{chapitre.src}}"
+      value="{{article.src}}"
     />
   </div>
 
@@ -69,4 +69,5 @@
       Modifier
     </button>
   </div>
-</form> {% endblock %}
+</form>
+{% endblock %}

@@ -176,7 +176,7 @@ switch ($page) {
         }
         break;
     default:
-        $modele = 'accueil.twig.html';
+        $modele = 'admin.twig.html';
         $data = [];
 }
 

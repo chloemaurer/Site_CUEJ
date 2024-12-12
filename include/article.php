@@ -155,7 +155,7 @@ class Article
     static function delete($id_article)
     {
         // construction de la requête :titre, :chapo sont les valeurs à insérées
-        $sql = 'DELETE FROM article WHERE id_article = :id_article;';
+        $sql = 'DELETE FROM article WHERE id_article = :id_article';
 
         // connexion à la base de données
         $pdo = connexion();

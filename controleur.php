@@ -134,7 +134,6 @@ switch ($page) {
                 }
                 break;
 
-
                 ////////////////////////////////////
             case 'delete':
                 Chapitre::delete($id);

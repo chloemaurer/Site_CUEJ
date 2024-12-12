@@ -7,6 +7,7 @@ class Article
     public $titre;
     public $chapo;
     public $auteur;
+    public $id_chapitre;
     public $attribut_complementaire;
 
     // exemple de constructeur qui corrige et complète des valeurs
@@ -119,17 +120,18 @@ class Article
     }
 
 
-    function modifier($t, $te, $s,)
+    function modifier($t, $te, $s, $c)
     {
         $this->titre = $t;
         $this->chapo = $te;
         $this->auteur = $s;
+        $this->id_chapitre = $c;
     }
 
     function create()
     {
         // construction de la requête :titre, :chapo sont les valeurs à insérées
-        $sql = 'INSERT INTO article (titre, chapo, auteur) VALUES (:titre, :chapo, :auteur);';
+        $sql = 'INSERT INTO article (titre, chapo, auteur, id_chapitre) VALUES (:titre, :chapo, :auteur, :id_chapitre);';
 
         // connexion à la base de données
         $pdo = connexion();
@@ -141,6 +143,7 @@ class Article
         $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
         $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
         $query->bindValue(':auteur', $this->auteur, PDO::PARAM_STR);
+        $query->bindValue(':id_chapitre', $this->id_chapitre, PDO::PARAM_STR);
 
         // exécution de la requête
         $query->execute();
@@ -170,7 +173,7 @@ class Article
     function update()
     {
         // construction de la requête :titre, :chapo sont les valeurs à insérées
-        $sql = 'UPDATE article SET titre = :titre , chapo = :chapo, auteur = :auteur WHERE id_article = :id_article;';
+        $sql = 'UPDATE article SET titre = :titre , chapo = :chapo, auteur = :auteur, id_chapitre = :id_chapitre WHERE id_article = :id_article;';
 
         // connexion à la base de données
         $pdo = connexion();
@@ -183,7 +186,7 @@ class Article
         $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
         $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
         $query->bindValue(':auteur', $this->auteur, PDO::PARAM_STR);
-
+        $query->bindValue(':id_chapiter', $this->id_chapitre, PDO::PARAM_STR);
 
         // exécution de la requête
         $query->execute();
@@ -212,6 +215,12 @@ class Article
     <div class="col-md-4">
         <label for="auteur" class="form-label mt-4">Auteur : </label>
         <input type="text" name="auteur" placeholder="Qui est l\'auteur ?" value= "' . $this->auteur . '"
+            class="form-control w-75 ms-5 border-black">
+    </div>
+    
+    <div class="col-md-4">
+        <label for="id_chapitre" class="form-label mt-4">Auteur : </label>
+        <input type="text" name="id_chapitre" placeholder="dans quel chapitre" value= "' . $this->id_chapitre . '"
             class="form-control w-75 ms-5 border-black">
     </div>
 

@@ -149,6 +149,9 @@ body {
 }
 .mejs__time {
   font-weight: normal;
+  padding-left: 170px;
+  display: flex;
+  gap: 5px;
 }
 .mejs__time-total {
   width: 200px;
@@ -224,4 +227,4 @@ body {
 
 .mejs__horizontal-volume-slider {
   display: none !important;
-} /*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

@@ -75,15 +75,36 @@
         <source src="video/Vaiana, la légende du bout du monde - Notre Terre I Disney.mp3">
         Your browser does not support the audio tag.
       </audio>
+
+      <div class="volume">
+        <!-- Bouton pour activer/désactiver les contrôles de volume -->
+        <div class="volume-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path fill="#566574" fill-rule="evenodd"
+              d="M14.667 0v2.747c3.853 1.146 6.666 4.72 6.666 8.946 0 4.227-2.813 7.787-6.666 8.934v2.76C20 22.173 24 17.4 24 11.693 24 5.987 20 1.213 14.667 0zM18 11.693c0-2.36-1.333-4.386-3.333-5.373v10.707c2-.947 3.333-2.987 3.333-5.334zm-18-4v8h5.333L12 22.36V1.027L5.333 7.693H0z"
+              id="speaker" />
+          </svg>
+        </div>
+        <!-- Contrôles de volume (initialement cachés) -->
+        <div class="volume-controls hidden">
+          <div class="slider" data-direction="vertical">
+            <div class="progress">
+              <div class="pin" id="volume-pin" data-method="changeVolume"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <a href="#" class="artwork">
         <img
-          src="https://media.discordapp.net/attachments/1304396491422568543/1316329826205827123/bb12b4c8cdc8bad12da9d58c8cedc01a.jpg?ex=675aa72e&is=675955ae&hm=a5b0d73d9762d27d96d02042d3701364acf7bc5dfd50541d888b8f25e92a8228&=&format=webp&width=732&height=487"
+          src="https://img.freepik.com/photos-gratuite/arbres-colline_1160-645.jpg?t=st=1734010858~exp=1734014458~hmac=3df6e8d588cae10e149c58b2e8f1d64bff1fa99677ccda16289ca1704d5a7edc&w=826"
           alt="">
       </a>
 
     </div>
   </div>
 </div>
+
 {% elseif choix.type == "carousel" %}
 <div class="  mb-5 border border-solid m-3 border-dark p-2">
   <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
@@ -108,7 +129,7 @@
           </div>
           <div class=" col d-flex align-items-center">
             <img
-              src="https://cdn.discordapp.com/attachments/1304396491422568543/1316329825811693668/1_dmHVApAJvqSy2j3umjJUXg.jpg?ex=675aa72e&is=675955ae&hm=ea9f8132b7a6a1bf917afa30903057b1bea33e89f4745318a27e39dd1782a70b&"
+              src="https://img.freepik.com/photos-gratuite/bois-givres-foret_23-2147741988.jpg?ga=GA1.1.272524588.1727105271&semt=ais_hybrid"
               class="d-block w-100" alt="...">
           </div>
         </div>
@@ -155,8 +176,7 @@
       </div>
 
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-      data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
@@ -169,7 +189,8 @@
 
 {% elseif choix.type == "texte_image" %}
 <div class=" d-flex  mb-5 border border-solid m-3 border-dark p-2">
-  <p class="m-4">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will
+  <p class="m-4">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born
+    and I will
     give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the
     master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but
     because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
@@ -203,19 +224,23 @@
 {% elseif choix.type == "titre_texte_image" %}
 <div class=" d-flex  mb-5 border border-solid m-3 border-dark p-2">
   <div class="m-4">
-  <h4>Titre</h4>
-  <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born
-    and I will
-    give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the
-    master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but
-    because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
-    Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because
-    occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial
-    example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who
-    has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who
-    avoids a pain that produces no resultant pleasure?</p>
+    <h4>Titre</h4>
+    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born
+      and I will
+      give you a complete account of the system, and expound the actual teachings of the great explorer of the truth,
+      the
+      master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure,
+      but
+      because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
+      Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but
+      because
+      occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial
+      example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who
+      has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one
+      who
+      avoids a pain that produces no resultant pleasure?</p>
   </div>
-    <img class="w-50"
+  <img class="w-50"
     src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
     alt="">
 </div>

@@ -95,6 +95,7 @@ switch ($page) {
                 $article->chargePOST();
                 var_dump($_POST);
                 $article->create();
+                header('Location: controleur.php?page=article&action=read');
                 break;
                 ////////////////////////////////////
             case 'delete':

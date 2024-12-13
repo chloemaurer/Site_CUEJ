@@ -77,7 +77,7 @@ class Article
     static function readAll()
     {
         // définition de la requête SQL
-        $sql = 'select * from article ';
+        $sql = 'select * from article';
 
         // connexion
         $pdo = connexion();
@@ -143,7 +143,7 @@ class Article
         $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
         $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
         $query->bindValue(':auteur', $this->auteur, PDO::PARAM_STR);
-        $query->bindValue(':id_chapitre', $this->id_chapitre, PDO::PARAM_STR);
+        $query->bindValue(':id_chapitre', $this->id_chapitre, PDO::PARAM_INT);
 
         // exécution de la requête
         $query->execute();
@@ -186,7 +186,7 @@ class Article
         $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
         $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
         $query->bindValue(':auteur', $this->auteur, PDO::PARAM_STR);
-        $query->bindValue(':id_chapiter', $this->id_chapitre, PDO::PARAM_STR);
+        $query->bindValue(':id_chapiter', $this->id_chapitre, PDO::PARAM_INT);
 
         // exécution de la requête
         $query->execute();

@@ -4,12 +4,13 @@ use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 require_once('fonctions.php');
 
-class Element
+class Bloc
 {
     public $id;
     public $ordre;
     public $type;
-    public $contenu;
+    public $texte;
+    public $style;
     public $image;
     public $id_article;
 
@@ -24,29 +25,29 @@ class Element
 
     static function readOne($id)
     {
-        $sql = 'SELECT * FROM element WHERE id = :id';
+        $sql = 'SELECT * FROM bloc WHERE id = :id';
         $pdo = connexion();
         $query = $pdo->prepare($sql);
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
-        return $query->fetchObject('Element');
+        return $query->fetchObject('Bloc');
     }
 
     // Récupère les elements d'un thème
     static function readAllByArticle($id)
     {
-        $sql = 'SELECT * FROM element WHERE id_article = :id ORDER BY ordre';
+        $sql = 'SELECT * FROM bloc WHERE id_article = :id ORDER BY ordre';
         $pdo = connexion();
         $query = $pdo->prepare($sql);
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
-        return $query->fetchAll(PDO::FETCH_CLASS, 'Element');
+        return $query->fetchAll(PDO::FETCH_CLASS, 'Bloc');
     }
 
     // Récupère l'ordre maximal des elements d'un thème
     static function readOrderMax($id)
     {
-        $sql = 'SELECT max(ordre) AS maximum FROM element WHERE id_article = :id';
+        $sql = 'SELECT max(ordre) AS maximum FROM bloc WHERE id_article = :id';
         $pdo = connexion();
         $query = $pdo->prepare($sql);
         $query->bindValue(':id', $id, PDO::PARAM_INT);
@@ -58,11 +59,11 @@ class Element
     // Echange l'ordre de deux elements
     function exchangeOrder()
     {
-        // Recherche l'element précédent (dans le même thème)
-        // C'est l'element le plus grand, parmi les elements d'ordre inférieur
+        // Recherche l'bloc précédent (dans le même thème)
+        // C'est l'bloc le plus grand, parmi les elements d'ordre inférieur
 
         // étape 1 : cherche les elements du même thème ayant un ordre inférieur
-        $sql = 'SELECT * FROM element
+        $sql = 'SELECT * FROM bloc
 				WHERE id_article = :id_article AND ordre < :ordre ORDER BY ordre DESC';
         $pdo = connexion();
         $query = $pdo->prepare($sql);
@@ -71,10 +72,10 @@ class Element
         $query->execute();
 
         // étape 2 : les elements sont triés par ordre décroissant
-        // donc le premier element est le plus grand des plus petits, donc le précédent
-        $before = $query->fetchObject('Element');
+        // donc le premier bloc est le plus grand des plus petits, donc le précédent
+        $before = $query->fetchObject('Bloc');
 
-        // Si le précédent existe (l'element courant n'est pas le premier)
+        // Si le précédent existe (l'bloc courant n'est pas le premier)
         if ($before) {
             // Échange les valeurs d'ordre et enregistre dans la BDD
             $tmp = $this->ordre;
@@ -87,17 +88,18 @@ class Element
 
     function create()
     {
-        // Récupère l'ordre maximum pour créer l'element en dernière position
+        // Récupère l'ordre maximum pour créer l'bloc en dernière position
         $maximum = self::readOrderMax($this->id_article);
         $this->ordre = $maximum + 1;
 
-        $sql = "INSERT INTO element (ordre, type, contenu, image, id_article)
-				VALUES (:ordre, :type, :contenu, :image, :id_article)";
+        $sql = "INSERT INTO bloc (ordre, type, texte, style, image, id_article)
+				VALUES (:ordre, :type, :texte, :style, :image, :id_article)";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
         $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
         $query->bindValue(':type', $this->type, PDO::PARAM_STR);
-        $query->bindValue(':contenu', $this->contenu, PDO::PARAM_STR);
+        $query->bindValue(':texte', $this->texte, PDO::PARAM_STR);
+        $query->bindValue(':style', $this->style, PDO::PARAM_STR);
         $query->bindValue(':image', $this->image, PDO::PARAM_STR);
         $query->bindValue(':id_article', $this->id_article, PDO::PARAM_INT);
         $query->execute();
@@ -106,15 +108,16 @@ class Element
 
     function update()
     {
-        $sql = "UPDATE element
-				SET ordre=:ordre, type=:type, contenu=:contenu, image=:image
+        $sql = "UPDATE bloc
+				SET ordre=:ordre, type=:type, texte=:texte, style=:style, image=:image
 				WHERE id=:id";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
         $query->bindValue(':id', $this->id, PDO::PARAM_INT);
         $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
         $query->bindValue(':type', $this->type, PDO::PARAM_STR);
-        $query->bindValue(':contenu', $this->contenu, PDO::PARAM_STR);
+        $query->bindValue(':texte', $this->texte, PDO::PARAM_STR);
+        $query->bindValue(':style', $this->style, PDO::PARAM_STR);
         $query->bindValue(':image', $this->image, PDO::PARAM_STR);
         $query->execute();
     }
@@ -124,7 +127,7 @@ class Element
         // Suppression du fichier lié
         if (!empty($this->image)) unlink('upload/' . $this->image);
 
-        $sql = "DELETE FROM element WHERE id=:id";
+        $sql = "DELETE FROM bloc WHERE id=:id";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
         $query->bindValue(':id', $this->id, PDO::PARAM_INT);
@@ -136,7 +139,8 @@ class Element
         $this->id = postInt('id');
         $this->ordre = postInt('ordre');
         $this->type = postString('type');
-        $this->contenu = postString('contenu');
+        $this->texte = postString('texte');
+        $this->texte = postString('style');
         $this->image = postString('old-image');
         $this->id_article = postInt('id_article');
 
@@ -156,7 +160,7 @@ class Element
             default:
                 $view = 'visit_element.twig';
                 $data = [
-                    'element' => Element::readOne($id)
+                    'bloc' => Bloc::readOne($id)
                 ];
                 break;
         }
@@ -170,34 +174,34 @@ class Element
                 header('Location: admin.php?page=article&id=' . $id);
                 break;
             case 'new':
-                $view = "element/form_element.twig";
+                $view = "bloc/form_element.twig";
                 $data = ['id_article' => $id];
                 break;
             case 'create':
-                $element = new Element();
-                $element->chargePOST();
-                $element->create();
-                header('Location: admin.php?page=article&id=' . $element->id_article);
+                $bloc = new Bloc();
+                $bloc->chargePOST();
+                $bloc->create();
+                header('Location: admin.php?page=article&id=' . $bloc->id_article);
                 break;
             case 'edit':
-                $view = "element/edit_element.twig";
-                $data = ['element' => Element::readOne($id)];
+                $view = "bloc/edit_element.twig";
+                $data = ['bloc' => Bloc::readOne($id)];
                 break;
             case 'update':
-                $element = new Element();
-                $element->chargePOST();
-                $element->update();
-                header('Location: admin.php?page=article&id=' . $element->id_article);
+                $bloc = new Bloc();
+                $bloc->chargePOST();
+                $bloc->update();
+                header('Location: admin.php?page=article&id=' . $bloc->id_article);
                 break;
             case 'delete':
-                $element = Element::readOne($id);
-                $element->delete();
-                header('Location: admin.php?page=article&id=' . $element->id_article);
+                $bloc = Bloc::readOne($id);
+                $bloc->delete();
+                header('Location: admin.php?page=article&id=' . $bloc->id_article);
                 break;
             case 'exchange':
-                $element = Element::readOne($id);
-                $element->exchangeOrder();
-                header('Location: admin.php?page=article&id=' . $element->id_article);
+                $bloc = Bloc::readOne($id);
+                $bloc->exchangeOrder();
+                header('Location: admin.php?page=article&id=' . $bloc->id_article);
                 break;
             default:
                 // Pas d'action connue => retour à la page article
@@ -212,16 +216,16 @@ class Element
         $pdo = connexion();
 
         // suppression des données existantes le cas échéant
-        $sql = 'drop table if exists element';
+        $sql = 'drop table if exists bloc';
         $query = $pdo->prepare($sql);
         $query->execute();
 
         // création de la table 'theme'
-        $sql = 'create table element (
+        $sql = 'create table bloc (
 				id serial primary key,
 				ordre int,
 				type varchar(128),
-				contenu text,
+				texte text,
 				image varchar(512),
 				id_article bigint unsigned,
     			foreign key (id_article) references article(id))';

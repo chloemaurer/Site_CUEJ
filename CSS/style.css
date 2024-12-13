@@ -227,4 +227,8 @@ body {
 
 .mejs__horizontal-volume-slider {
   display: none !important;
+}
+
+.mejs__controls {
+  width: 110%;
 }/*# sourceMappingURL=style.css.map */

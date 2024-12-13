@@ -7,6 +7,7 @@ class Chapitre
     public $chapo;
     public $src;
     public $alt;
+    public $articles = [];
 
 
     function chargePOST()
@@ -159,6 +160,4 @@ class Chapitre
         // exécution de la requête
         $query->execute();
     }
-
-
 }

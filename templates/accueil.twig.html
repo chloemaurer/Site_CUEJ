@@ -59,4 +59,33 @@
   </div>
 </section>
 
+<section class="decouvrir d-flex align-items-center justify-content-start">
+  <div
+    class="container-chapitres d-flex flex-column justify-content-center align-items-center"
+  >
+    {% for chapitre in listechapitre %}
+    <img
+      class="chapitre-image"
+      src="{{ chapitre.src }}"
+      alt="{{ chapitre.alt }}"
+    />
+    {% endfor %}
+  </div>
+  <div class="chapitre-details d-flex">
+    <div
+      class="description-chapitre p-4 d-flex flex-column justify-content-center"
+    >
+      <i class="x-icon fa-solid fa-x fs-1"></i>
+      <div class="description-chapitre-contenu">
+        <div class="titre-chapitre">
+          <h3>{{ listechapitre.0.titre }}</h3>
+          <div class="ligne-titre"></div>
+        </div>
+
+        <p>{{ listechapitre.0.chapo }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}

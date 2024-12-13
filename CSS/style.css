@@ -1,12 +1,78 @@
+:root {
+  --blue: #446278; /* Bleu */
+  --light-beige: #ece6db; /* Beige clair */
+  --yellow: #efc030; /* Jaune */
+  --red: #8a151b; /* Rouge */
+  --green: #6a7920; /* Vert */
+}
+
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
 }
 
-/*------------------------------- COULEUR -----------------------------------------*/
+/*------------------------------- POLICES -----------------------------------------*/
+h1 {
+  font-family: "Anybody", sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--light-beige);
+}
+
+.titre-chapitre-menu {
+  font-family: "Montserrat", sans-serif; /* Police Montserrat */
+  font-weight: bold; /* Style de police : Bold */
+  font-size: 24px; /* Taille de police : 24px */
+  line-height: 1.2; /* Hauteur de ligne à 120% */
+  letter-spacing: 0; /* Espacement des lettres : 0 */
+  margin: 0; /* Aucune marge par défaut */
+}
+
+h4 {
+  font-family: "Montserrat", sans-serif; /* Police Montserrat */
+  font-weight: 600; /* SemiBold */
+  font-size: 18px; /* Taille de police : 18px */
+  line-height: 24px; /* Hauteur de ligne : 24px */
+  letter-spacing: 0; /* Espacement des lettres : 0 */
+  margin: 0; /* Supprime les marges par défaut */
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+/*------------------------------- Boutons -----------------------------------------*/
+.menu-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.btn {
+  background-color: var(--yellow);
+  color: white;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  border-radius: 25px;
+  padding: 10px 20px;
+  transition: transform 0.2s ease-in-out;
+  
+}
+
+.menu-overlay .btn:hover {
+  transform: scale(1.1);
+}
+
+/*------------------------------- COULEUR - ADMIN -----------------------------------------*/
 .bleu {
-  color: rgb(67, 124, 216);
+  color: #446278;
 }
 
 .rouge {
@@ -99,26 +165,6 @@ body {
 
 .menu-overlay .menu-column p {
   margin: 0.5rem 0;
-}
-
-.menu-overlay .menu-buttons {
-  margin-top: 2rem;
-  display: flex;
-  gap: 2rem;
-}
-
-.menu-overlay .btn {
-  background-color: #d4a047;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 20px;
-  transition: transform 0.2s ease-in-out;
-}
-
-.menu-overlay .btn:hover {
-  transform: scale(1.1);
 }
 
 .menu-close {
@@ -231,4 +277,4 @@ body {
 
 .mejs__controls {
   width: 110%;
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */

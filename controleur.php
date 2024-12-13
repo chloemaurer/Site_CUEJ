@@ -182,7 +182,7 @@ switch ($page) {
         break;
     default:
         $modele = 'accueil.twig.html';
-        $data = [];
+        $data = ['listearticle' => Article::readAll(), 'listechapitre' => Chapitre::readAll()];
 }
 
 echo $twig->render($modele, $data);

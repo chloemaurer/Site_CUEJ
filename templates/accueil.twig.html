@@ -14,27 +14,14 @@
   <div class="menu-close" id="closeMenu">&times;</div>
   <h1>Les mobilisations du monde rural</h1>
   <div class="menu-columns">
+    {% for chapitre in listechapitre %}
     <div class="menu-column">
-      <h2>Faire collectif, se mobiliser</h2>
-      <p>titre de Article</p>
-      <p>titre de Article</p>
-      <p>titre de Article</p>
-      <p>titre de Article</p>
+      <h2>{{ chapitre.titre }}</h2>
+      {% for article in listearticle %}
+      <p>{{ article.titre }}</p>
+      {% endfor %}
     </div>
-    <div class="menu-column">
-      <h2>Faire collectif, se mobiliser</h2>
-      <p>titre de Article</p>
-      <p>titre de Article</p>
-      <p>titre de Article</p>
-      <p>titre de Article</p>
-    </div>
-    <div class="menu-column">
-      <h2>Faire collectif, se mobiliser</h2>
-      <p>titre de Article</p>
-      <p>titre de Article</p>
-      <p>titre de Article</p>
-      <p>titre de Article</p>
-    </div>
+    {% endfor %}
   </div>
   <div class="menu-buttons">
     <button class="btn">Accueil</button>

@@ -54,9 +54,7 @@ new MediaElementPlayer(document.querySelector("audio"), options);
     elementTop.append(elem);
   });
 
-    controlsChildren.slice(3, controlsChildren.length).forEach(elem => {
-        elementBottom.append(elem)
-    })
-})()
-
-
+  controlsChildren.slice(3, controlsChildren.length).forEach((elem) => {
+    elementBottom.append(elem);
+  });
+})();

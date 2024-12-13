@@ -60,6 +60,12 @@ class Article
         } else {
             $this->auteur = 'sans auteur';
         }
+
+        if (isset($_POST['id_chapitre'])) {
+            $this->id_chapitre = $_POST['id_chapitre'];
+        } else {
+            $this->id_chapitre = 0;
+        }
     }
 
     function affiche()

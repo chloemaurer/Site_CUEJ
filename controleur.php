@@ -86,7 +86,7 @@ switch ($page) {
                 ////////////////////////////////////
             case 'new':
                 $modele = 'newarticle.twig.html';
-                $data = [];
+                $data = ['listechapitre' => Chapitre::readAll()];
                 break;
 
             case 'create':

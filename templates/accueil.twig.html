@@ -17,7 +17,7 @@
     {% for chapitre in listechapitre %}
     <div class="menu-column">
       <h2>{{ chapitre.titre }}</h2>
-      {% for article in listearticle %}
+      {% for article in chapitre.articles %}
       <p>{{ article.titre }}</p>
       {% endfor %}
     </div>

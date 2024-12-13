@@ -12,6 +12,8 @@ class Bloc
     public $texte;
     public $style;
     public $image;
+    public $audio;
+    public $video;
     public $id_article;
 
     // Le constructeur corrige les données récupérées de la BDD
@@ -92,8 +94,8 @@ class Bloc
         $maximum = self::readOrderMax($this->id_article);
         $this->ordre = $maximum + 1;
 
-        $sql = "INSERT INTO bloc (ordre, type, texte, style, image, id_article)
-				VALUES (:ordre, :type, :texte, :style, :image, :id_article)";
+        $sql = "INSERT INTO bloc (ordre, type, texte, style, image, audio, video, id_article)
+				VALUES (:ordre, :type, :texte, :style, :image, :audio, :video, :id_article)";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
         $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
@@ -101,6 +103,8 @@ class Bloc
         $query->bindValue(':texte', $this->texte, PDO::PARAM_STR);
         $query->bindValue(':style', $this->style, PDO::PARAM_STR);
         $query->bindValue(':image', $this->image, PDO::PARAM_STR);
+        $query->bindValue(':audio', $this->audio, PDO::PARAM_STR);
+        $query->bindValue(':video', $this->video, PDO::PARAM_STR);
         $query->bindValue(':id_article', $this->id_article, PDO::PARAM_INT);
         $query->execute();
         $this->id = $pdo->lastInsertId();
@@ -109,7 +113,7 @@ class Bloc
     function update()
     {
         $sql = "UPDATE bloc
-				SET ordre=:ordre, type=:type, texte=:texte, style=:style, image=:image
+				SET ordre=:ordre, type=:type, texte=:texte, style=:style, image=:image, audio=:audio, video:video
 				WHERE id=:id";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
@@ -119,6 +123,8 @@ class Bloc
         $query->bindValue(':texte', $this->texte, PDO::PARAM_STR);
         $query->bindValue(':style', $this->style, PDO::PARAM_STR);
         $query->bindValue(':image', $this->image, PDO::PARAM_STR);
+        $query->bindValue(':audio', $this->audio, PDO::PARAM_STR);
+        $query->bindValue(':video', $this->video, PDO::PARAM_STR);
         $query->execute();
     }
 
@@ -142,14 +148,30 @@ class Bloc
         $this->texte = postString('texte');
         $this->texte = postString('style');
         $this->image = postString('old-image');
+        $this->audio = postString('old-audio');
+        $this->video = postString('old-video');
         $this->id_article = postInt('id_article');
 
         // Récupère les informations sur le fichier uploadés si il existe
-        $image = chargeFILE();
+        $image = chargeFILE('image');
         if (!empty($image)) {
             // Supprime l'ancienne image si update
             unlink('upload/' . $this->image);
             $this->image = $image;
+        }
+
+        $audio = chargeFILE('audio');
+        if (!empty($audio)) {
+            // Supprime l'ancienne image si update
+            unlink('upload/' . $this->audio);
+            $this->audio = $audio;
+        }
+
+        $video = chargeFILE('video');
+        if (!empty($video)) {
+            // Supprime l'ancienne image si update
+            unlink('upload/' . $this->video);
+            $this->video = $video;
         }
     }
 

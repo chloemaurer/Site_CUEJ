@@ -33,14 +33,14 @@ function filterText($text)
 	return $text;
 }
 
-function chargeFILE()
+function chargeFILE($type)
 {
-	if (isset($_FILES['image']) && !empty($_FILES['image']['name'])) {
-		$fileName = $_FILES['image']['name'];
-		$fileTmpName = $_FILES['image']['tmp_name'];
-		$fileSize = $_FILES['image']['size'];
-		$fileError = $_FILES['image']['error'];
-		$fileType = $_FILES['image']['type'];
+	if (isset($_FILES[$type]) && !empty($_FILES[$type]['name'])) {
+		$fileName = $_FILES[$type]['name'];
+		$fileTmpName = $_FILES[$type]['tmp_name'];
+		$fileSize = $_FILES[$type]['size'];
+		$fileError = $_FILES[$type]['error'];
+		$fileType = $_FILES[$type]['type'];
 
 		$fileExt = explode('.', $fileName);
 		$fileActualExt = strtolower(end($fileExt));

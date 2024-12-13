@@ -20,6 +20,15 @@ h1 {
   color: var(--light-beige);
 }
 
+h2 {
+  font-family: "Rag", sans-serif;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 1.038;
+  letter-spacing: 0.12em;
+  margin: 0;
+}
+
 .titre-chapitre-menu {
   font-family: "Montserrat", sans-serif; /* Police Montserrat */
   font-weight: bold; /* Style de police : Bold */
@@ -173,6 +182,64 @@ p {
   font-size: 2rem;
   cursor: pointer;
   color: white;
+}
+
+/*------------------------------- EDITO -----------------------------------------*/
+
+.edito-section {
+  background-color: #ece6db; /* Beige clair */
+  padding: 50px 0; /* Espacement vertical */
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  height: 100%;
+  position: relative;
+}
+
+.edito-text {
+  position: absolute;
+}
+.edito-text-container {
+  background-color: var(--yellow);
+  padding: 41px;
+  width: 60%;
+}
+
+.edito-image {
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 80%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.edito-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.edito-image .image-caption {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: #666; /* Gris */
+  text-align: center;
+}
+
+.scroll-down {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.scroll-down span {
+  font-size: 24px;
+  color: #000; /* Noir */
 }
 
 /*-------------------------------  -----------------------------------------*/

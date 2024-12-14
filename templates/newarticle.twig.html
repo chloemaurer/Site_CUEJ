@@ -1,28 +1,63 @@
 {% extends "base-admin.twig.html" %} {% block content %}
 
-<form action="controleur.php?page=article&action=create" method="post" class="row g-4 needs-validation" novalidate>
+<form
+  action="controleur.php?page=article&action=create"
+  method="post"
+  class="row g-4 needs-validation"
+  novalidate
+>
   <div class="col-md-4">
     <label for="titre" class="form-label mt-4">Titre :</label>
-    <input type="text" name="titre" placeholder="Titre" class="form-control w-75 ms-5 border-black" />
+    <input
+      type="text"
+      name="titre"
+      placeholder="Titre"
+      class="form-control w-75 ms-5 border-black"
+    />
   </div>
 
   <div class="col-md-4">
     <label for="chapo" class="form-label mt-4">Chapô : </label>
-    <input type="text" name="chapo" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
+    <input
+      type="text"
+      name="chapo"
+      placeholder="Saisir le texte"
+      class="form-control w-75 ms-5 border-black"
+    />
   </div>
 
   <div class="col-md-4">
     <label for="auteur" class="form-label mt-4">Auteur : </label>
-    <input type="text" name="auteur" placeholder="Qui est l'auteur ?" class="form-control w-75 ms-5 border-black" />
+    <input
+      type="text"
+      name="auteur"
+      placeholder="Qui est l'auteur ?"
+      class="form-control w-75 ms-5 border-black"
+    />
   </div>
 
   <div class="col-md-4">
     <label for="id_chapitre" class="form-label mt-4">chapitre : </label>
-    <input type="text" name="id_chapitre" placeholder="dans quel chapitre" class="form-control w-75 ms-5 border-black" />
+    <select name="id_chapitre" id="id_chapitre">
+      {% for chapitre in listechapitre %}
+      <option value="{{chapitre.id_chapitre}}">{{chapitre.titre}}</option>
+      {% endfor %}
+    </select>
+    {#
+    <input
+      type="text"
+      name="id_chapitre"
+      placeholder="dans quel chapitre"
+      class="form-control w-75 ms-5 border-black"
+    />
+    #}
   </div>
 
   <div class="d-flex justify-content-center">
-    <button type="submit" class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2">
+    <button
+      type="submit"
+      class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2"
+    >
       Créer
     </button>
   </div>

@@ -86,7 +86,7 @@ switch ($page) {
                 ////////////////////////////////////
             case 'new':
                 $modele = 'newarticle.twig.html';
-                $data = [];
+                $data = ['listechapitre' => Chapitre::readAll()];
                 break;
 
             case 'create':
@@ -184,6 +184,7 @@ switch ($page) {
     default:
         // Récupérer tous les chapitres
         $listechapitre = Chapitre::readAll();
+        $listearticle = Article::readAll();
 
         // Ajouter les articles associés à chaque chapitre
         foreach ($listechapitre as $chapitre) {

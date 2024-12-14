@@ -16,9 +16,9 @@
   <div class="menu-columns">
     {% for chapitre in listechapitre %}
     <div class="menu-column">
-      <h2>{{ chapitre.titre }}</h2>
+      <h2 class="titre-chapitre-menu">{{ chapitre.titre }}</h2>
       {% for article in chapitre.articles %}
-      <p>{{ article.titre }}</p>
+      <h4>{{ article.titre }}</h4>
       {% endfor %}
     </div>
     {% endfor %}
@@ -28,5 +28,147 @@
     <button class="btn">Crédits</button>
   </div>
 </div>
+
+<!-- Edito -->
+<section class="edito-section">
+  <div class="container">
+    <!-- Image -->
+    <div class="edito-image">
+      <img src="images/paysage.png" alt="Paysage rural" class="img-fluid" />
+      <p class="image-caption">Légende de l'image - non personne</p>
+    </div>
+
+    <!-- Texte Édito -->
+    <div class="edito-text">
+      <h2>ÉDITO</h2>
+      <div class="edito-text-container">
+        <p>
+          La France, quoi d’autre ? En 2023, alors que l’on célèbre les vastes
+          régions rurales, il est évident que leur avenir et leurs enjeux
+          méritent notre attention.
+        </p>
+        <p>
+          Des citoyens portent leur message et créent des initiatives sur le
+          terrain. Ce site a pour but de mettre en lumière ces dynamiques
+          humaines, locales et culturelles.
+        </p>
+
+        <p>Bienvenue dans le monde des humains !</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Découvrir -->
+
+<section class="decouvrir d-flex align-items-center justify-content-start">
+  <div
+    class="container-chapitres d-flex flex-column justify-content-center align-items-center"
+  >
+    <img
+      class="chapitre-image"
+      id="chapitre1-image"
+      src="{{ listechapitre.0.src }}"
+      alt="{{ listechapitre.0.alt }}"
+    />
+    <img
+      class="chapitre-image"
+      id="chapitre2-image"
+      src="{{ listechapitre.1.src }}"
+      alt="{{ listechapitre.1.alt }}"
+    />
+    <img
+      class="chapitre-image"
+      id="chapitre3-image"
+      src="{{ listechapitre.2.src }}"
+      alt="{{ listechapitre.2.alt }}"
+    />
+  </div>
+
+  {# chapitre 1 #}
+  <div class="chapitre-details d-none" id="chapitre1">
+    <div
+      class="description-chapitre p-4 d-flex flex-column justify-content-center"
+    >
+      <i class="x-icon fa-solid fa-x fs-1" id="x-icon1"></i>
+      <div class="description-chapitre-contenu">
+        <div class="titre-chapitre">
+          <h3>{{ listechapitre.0.titre }}</h3>
+          <div class="ligne-titre"></div>
+        </div>
+        <p>{{ listechapitre.0.chapo }}</p>
+      </div>
+    </div>
+
+    <div class="liste-articles d-grid">
+      {% for article in listechapitre.0.articles %}
+      <!-- Première carte -->
+      <div class="article-card">
+        <img
+          src="https://i.pinimg.com/736x/6c/fd/ca/6cfdca97b9a33400dd53fb691937be90.jpg"
+          alt="maison"
+        />
+        <h4 class="card-title">{{ article.titre }}</h4>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {# chapitre 2 #}
+  <div class="chapitre-details d-none" id="chapitre2">
+    <div
+      class="description-chapitre p-4 d-flex flex-column justify-content-center"
+    >
+      <i class="x-icon fa-solid fa-x fs-1" id="x-icon2"></i>
+      <div class="description-chapitre-contenu">
+        <div class="titre-chapitre">
+          <h3>{{ listechapitre.1.titre }}</h3>
+          <div class="ligne-titre"></div>
+        </div>
+        <p>{{ listechapitre.1.chapo }}</p>
+      </div>
+    </div>
+
+    <div class="liste-articles d-grid">
+      {% for article in listechapitre.1.articles %}
+      <div class="article-card">
+        <img
+          src="https://i.pinimg.com/736x/6c/fd/ca/6cfdca97b9a33400dd53fb691937be90.jpg"
+          alt="maison"
+        />
+        <h4 class="card-title">{{ article.titre }}</h4>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {# chapitre 3 #}
+  <div class="chapitre-details d-none" id="chapitre3">
+    <div
+      class="description-chapitre p-4 d-flex flex-column justify-content-center"
+    >
+      <i class="x-icon fa-solid fa-x fs-1" id="x-icon3"></i>
+      <div class="description-chapitre-contenu">
+        <div class="titre-chapitre">
+          <h3>{{ listechapitre.2.titre }}</h3>
+          <div class="ligne-titre"></div>
+        </div>
+        <p>{{ listechapitre.2.chapo }}</p>
+      </div>
+    </div>
+
+    <div class="liste-articles d-grid">
+      {% for article in listechapitre.2.articles %}
+      <div class="article-card">
+        <img
+          src="https://i.pinimg.com/736x/6c/fd/ca/6cfdca97b9a33400dd53fb691937be90.jpg"
+          alt="maison"
+        />
+        <h4 class="card-title">{{ article.titre }}</h4>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
 {% endblock %}

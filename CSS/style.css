@@ -295,12 +295,16 @@ p {
   cursor: pointer;
 }
 
+.chapitre-image.active {
+  border: 3px solid white; /* Bordure blanche */
+}
+
 .chapitre-details {
   height: 100%;
   width: 90%;
 }
 
-.description-chapitre {
+#chapitre1 .description-chapitre {
   background-color: var(--red);
   height: 100%;
   width: 35%;
@@ -320,7 +324,7 @@ p {
   padding-top: 50px;
 }
 
-.liste-articles {
+#chapitre1 .liste-articles {
   background-color: rgba(138, 21, 27, 0.8);
   width: 65%;
   height: 100%;
@@ -357,6 +361,50 @@ p {
   color: #333; /* Texte noir */
   background-color: #fff; /* Fond blanc pour le texte */
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#chapitre2 .description-chapitre {
+  background-color: var(--green);
+  height: 100%;
+  width: 35%;
+  color: white;
+  position: relative;
+}
+
+#chapitre2 .liste-articles {
+  background-color: rgb(106, 121, 32, 0.8);
+  width: 65%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
+  padding: 2rem;
+  gap: 20px; /* Espacement entre les cartes */
+  margin: 0 auto; /* Centrage horizontal */
+
+  justify-content: center; /* Centre les colonnes horizontalement */
+  align-content: center; /* Centre les lignes verticalement */
+}
+
+#chapitre3 .description-chapitre {
+  background-color: var(--blue);
+  height: 100%;
+  width: 35%;
+  color: white;
+  position: relative;
+}
+
+#chapitre3 .liste-articles {
+  background-color: rgb(68, 98, 120, 0.8);
+  width: 65%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
+  padding: 2rem;
+  gap: 20px; /* Espacement entre les cartes */
+  margin: 0 auto; /* Centrage horizontal */
+
+  justify-content: center; /* Centre les colonnes horizontalement */
+  align-content: center; /* Centre les lignes verticalement */
 }
 /*-------------------------------  -----------------------------------------*/
 

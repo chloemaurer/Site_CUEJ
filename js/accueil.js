@@ -12,19 +12,84 @@ closeMenu.addEventListener("click", () => {
 
 // ------------------------------SECTION DECOUVRIR----------------------------//
 
-const chapitreImages = document.querySelectorAll(".chapitre-image"); // Bulles d'images
-const chapitreDetails = document.querySelector(".chapitre-details"); // Section détails
-const xIcon = document.getElementById("x-icon");
+// const chapitre1Image = document.getElementById("chapitre1-image");
+// const chapitre2Image = document.getElementById("chapitre2-image");
+// const chapitre3Image = document.getElementById("chapitre3-image");
 
-chapitreImages.forEach((image) => {
-  image.addEventListener("click", () => {
-    // Afficher la section détails
-    chapitreDetails.classList.remove("d-none");
-    chapitreDetails.classList.add("d-flex");
+// const chapitre1 = document.getElementById("chapitre1");
+// const chapitre2 = document.getElementById("chapitre2");
+// const chapitre3 = document.getElementById("chapitre3");
+
+// const xIcon1 = document.getElementById("x-icon1");
+// const xIcon2 = document.getElementById("x-icon2");
+// const xIcon3 = document.getElementById("x-icon3");
+
+// chapitre1Image.addEventListener("click", () => {
+//   // Afficher la section détails
+//   chapitre1.classList.remove("d-none");
+//   chapitre1.classList.add("d-flex");
+// });
+
+// chapitre2Image.addEventListener("click", () => {
+//   // Afficher la section détails
+//   chapitre2.classList.remove("d-none");
+//   chapitre2.classList.add("d-flex");
+// });
+
+// chapitre3Image.addEventListener("click", () => {
+//   // Afficher la section détails
+//   chapitre3.classList.remove("d-none");
+//   chapitre3.classList.add("d-flex");
+// });
+
+// xIcon1.addEventListener("click", () => {
+//   chapitre1.classList.remove("d-flex");
+//   chapitre1.classList.add("d-none");
+// });
+
+// xIcon2.addEventListener("click", () => {
+//   chapitre2.classList.remove("d-flex");
+//   chapitre2.classList.add("d-none");
+// });
+
+// xIcon3.addEventListener("click", () => {
+//   chapitre3.classList.remove("d-flex");
+//   chapitre3.classList.add("d-none");
+// });
+
+const chapitres = [
+  { image: "chapitre1-image", section: "chapitre1", xIcon: "x-icon1" },
+  { image: "chapitre2-image", section: "chapitre2", xIcon: "x-icon2" },
+  { image: "chapitre3-image", section: "chapitre3", xIcon: "x-icon3" },
+];
+
+// Fonction pour masquer tous les chapitres
+function hideAllChapitres() {
+  chapitres.forEach(({ section, image }) => {
+    const chapitre = document.getElementById(section);
+    const chapitreImage = document.getElementById(image);
+    chapitre.classList.remove("d-flex");
+    chapitre.classList.add("d-none");
+    chapitreImage.classList.remove("active"); // Supprime la bordure blanche
   });
-});
+}
 
-xIcon.addEventListener("click", () => {
-  menu.classList.remove("d-flex");
-  chapitreDetails.classList.add("d-none");
+// Ajouter les écouteurs dynamiquement
+chapitres.forEach(({ image, section, xIcon }) => {
+  const chapitreImage = document.getElementById(image);
+  const chapitreSection = document.getElementById(section);
+  const chapitreXIcon = document.getElementById(xIcon);
+
+  chapitreImage.addEventListener("click", () => {
+    hideAllChapitres(); // Masquer tous les chapitres
+    chapitreSection.classList.remove("d-none");
+    chapitreSection.classList.add("d-flex");
+    chapitreImage.classList.add("active"); // Ajoute la bordure blanche à l'image cliquée
+  });
+
+  chapitreXIcon.addEventListener("click", () => {
+    chapitreSection.classList.remove("d-flex");
+    chapitreSection.classList.add("d-none");
+    chapitreImage.classList.remove("active"); // Supprime la bordure blanche lorsque le chapitre est fermé
+  });
 });

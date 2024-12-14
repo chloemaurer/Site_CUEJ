@@ -193,7 +193,7 @@ switch ($page) {
 
         // Passer les données au template
         $modele = 'accueil.twig.html';
-        $data = ['listechapitre' => $listechapitre, 'listearticle' => $listearticle];
+        $data = ['listechapitre' => $listechapitre];
         break;
 }
 

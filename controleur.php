@@ -184,6 +184,7 @@ switch ($page) {
     default:
         // Récupérer tous les chapitres
         $listechapitre = Chapitre::readAll();
+        $listearticle = Article::readAll();
 
         // Ajouter les articles associés à chaque chapitre
         foreach ($listechapitre as $chapitre) {
@@ -192,7 +193,7 @@ switch ($page) {
 
         // Passer les données au template
         $modele = 'accueil.twig.html';
-        $data = ['listechapitre' => $listechapitre];
+        $data = ['listechapitre' => $listechapitre, 'listearticle' => $listearticle];
         break;
 }
 

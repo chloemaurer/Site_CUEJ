@@ -1,15 +1,19 @@
 :root {
-  --blue: #446278; /* Bleu */
-  --light-beige: #ece6db; /* Beige clair */
-  --yellow: #efc030; /* Jaune */
-  --red: #8a151b; /* Rouge */
-  --green: #6a7920; /* Vert */
+  --blue: rgb(68, 98, 120); /* Bleu */
+  --light-beige: rgb(236, 230, 219); /* Beige clair */
+  --yellow: rgb(239, 192, 48); /* Jaune */
+  --red: rgb(138, 21, 27); /* Rouge */
+  --green: rgb(106, 121, 32); /* Vert */
 }
 
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+}
+
+i {
+  cursor: pointer;
 }
 
 /*------------------------------- POLICES -----------------------------------------*/
@@ -277,7 +281,7 @@ p {
 
   gap: 3rem;
   height: 100%;
-  width: 40%;
+  width: 10%;
 }
 
 .chapitre-image {
@@ -293,6 +297,7 @@ p {
 
 .chapitre-details {
   height: 100%;
+  width: 90%;
 }
 
 .description-chapitre {
@@ -313,6 +318,45 @@ p {
   flex-direction: column;
   gap: 2rem;
   padding-top: 50px;
+}
+
+.liste-articles {
+  background-color: rgba(138, 21, 27, 0.8);
+  width: 65%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
+  padding: 2rem;
+  gap: 20px; /* Espacement entre les cartes */
+  margin: 0 auto; /* Centrage horizontal */
+
+  justify-content: center; /* Centre les colonnes horizontalement */
+  align-content: center; /* Centre les lignes verticalement */
+}
+
+.article-card {
+  background-color: #ece6db; /* Beige clair */
+  border-radius: 10px;
+  overflow: hidden;
+  height: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.article-card img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover; /* Garde les proportions */
+}
+
+.card-title {
+  height: 20%;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #333; /* Texte noir */
+  background-color: #fff; /* Fond blanc pour le texte */
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 /*-------------------------------  -----------------------------------------*/
 

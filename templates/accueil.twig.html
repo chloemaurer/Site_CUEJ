@@ -71,19 +71,32 @@
     />
     {% endfor %}
   </div>
-  <div class="chapitre-details d-flex">
+
+  <div class="chapitre-details d-none" id="chapitre1">
     <div
       class="description-chapitre p-4 d-flex flex-column justify-content-center"
     >
-      <i class="x-icon fa-solid fa-x fs-1"></i>
+      <i class="x-icon fa-solid fa-x fs-1" id="x-icon"></i>
       <div class="description-chapitre-contenu">
         <div class="titre-chapitre">
           <h3>{{ listechapitre.0.titre }}</h3>
           <div class="ligne-titre"></div>
         </div>
-
         <p>{{ listechapitre.0.chapo }}</p>
       </div>
+    </div>
+
+    <div class="liste-articles d-grid">
+      {% for article in listearticle %}
+      <!-- Première carte -->
+      <div class="article-card">
+        <img
+          src="https://i.pinimg.com/736x/6c/fd/ca/6cfdca97b9a33400dd53fb691937be90.jpg"
+          alt="maison"
+        />
+        <h4 class="card-title">{{ article.titre }}</h4>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </section>

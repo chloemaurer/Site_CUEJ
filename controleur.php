@@ -34,7 +34,7 @@ switch ($page) {
                 break;
 
             case 'new':
-                $modele = 'newbloc.twig.html';
+                $modele = 'form/'.$id.'twig.html';
                 $data = [];
                 break;
 

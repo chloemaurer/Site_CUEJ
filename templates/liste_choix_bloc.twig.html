@@ -1,11 +1,10 @@
 {% extends "base-admin.twig.html" %}
 {% block content %}
 
-
-{% for choix in listechoix %}
-
-{% if choix.type == "h1" %}
+<a href="controleur.php?page=bloc&action=new&id=h1">
 <h1 class="  mb-5 border border-solid m-3 border-dark p-2">Webdoc</h1>
+</a>
+
 
 {% elseif choix.type == "h2" %}
 <h2 class="  mb-5 border border-solid m-3 border-dark p-2">Titre chapitre</h2>
@@ -256,7 +255,5 @@
 <p>Type de choix inconnu : {{ choix.type }}</p>
 
 {% endif %}
-
-{% endfor %}
 
 {% endblock %}

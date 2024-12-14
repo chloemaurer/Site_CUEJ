@@ -13,7 +13,10 @@
 >
 <a href="controleur.php?page=article&action=read">Retour à la liste</a>
 
-{% for bloc in listebloc %} {% if bloc.type == "h1" %}
+{% for bloc in listebloc %} 
+{% include ('bloc/'~bloc.type~'.twig.html') %}
+
+{% if bloc.type == "h1" %}
 <h1>{{ bloc.texte }}</h1>
 {% elseif bloc.type == "h2" %}
 <h2>{{ bloc.texte }}</h2>

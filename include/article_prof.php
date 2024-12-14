@@ -155,7 +155,7 @@ class Article
         $this->id_chapitre = postInt('id_chapitre');
 
         // Récupère les informations sur le fichier uploadés si il existe
-        $image = chargeFILE();
+        $image = chargeFILE('image');
         if (!empty($image)) {
             // Supprime l'ancienne image si update
             unlink('upload/' . $this->image);

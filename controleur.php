@@ -122,8 +122,43 @@ switch ($page) {
         }
         break;
 
-    case 'chapitre':
-        Chapitre::controleur($action, $id, $view, $data);
+    case 'chapitre': {
+            switch ($action) {
+                case 'read':
+                    if ($id > 0) {
+                        $modele = 'chapitre.twig.html';
+                        $data = [
+                            'chapitre' => Chapitre::readOne($id),
+                            'listebloc' => Bloc::readByArticle($id),
+                        ];
+                    } else {
+                        $modele = 'liste_chapitres.twig.html';
+                        $data = ['listechapitre' => Chapitre::readAll()];
+                    }
+                    break;
+
+                    ////////////////////////////////////
+                case 'delete':
+                    Chapitre::delete($id);
+                    header('Location: controleur.php?page=chapitre&action=read');
+                    break;
+                    ////////////////////////////////////
+                case 'modifier':
+                    $chapitre = Chapitre::readOne($id);
+                    $modele = 'updatechapitre.twig.html';
+                    $data = ['chapitre' => $chapitre];
+                    break;
+
+                case 'update':
+                    $chapitre = new Chapitre();
+                    $chapitre->chargePOST();
+                    $chapitre->update();
+                    header('Location: controleur.php?page=chapitre&action=read');
+                    break;
+                default:
+                    echo 'Action non reconnue';
+            }
+        }
         break;
 
     case 'choix':

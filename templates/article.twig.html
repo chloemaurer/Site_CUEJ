@@ -4,19 +4,16 @@
 <p>Chapo : {{ article.chapo }}</p>
 <p>style : {{ article.auteur }}</p>
 
-<a
-  href="controleur.php?page=article&action=modifier&id={{ article.id_article }}"
+<a href="admin.php?page=article&action=modifier&id={{ article.id_article }}"
   >Modifier</a
 >
-<a href="controleur.php?page=article&action=delete&id={{ article.id_article }}"
+<a href="admin.php?page=article&action=delete&id={{ article.id_article }}"
   >Supprimer</a
 >
-<a href="controleur.php?page=article&action=read">Retour à la liste</a>
+<a href="admin.php?page=article&action=read">Retour à la liste</a>
 
-{% for bloc in listebloc %} 
-{% include ('bloc/'~bloc.type~'.twig.html') %}
-
-{% if bloc.type == "h1" %}
+{% for bloc in listebloc %} {% include ('bloc/'~bloc.type~'.twig.html') %} {% if
+bloc.type == "h1" %}
 <h1>{{ bloc.texte }}</h1>
 {% elseif bloc.type == "h2" %}
 <h2>{{ bloc.texte }}</h2>

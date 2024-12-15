@@ -8,6 +8,7 @@ class Article
     public $chapo;
     public $auteur;
     public $id_chapitre;
+    public $image;
     public $attribut_complementaire;
 
     // exemple de constructeur qui corrige et complète des valeurs
@@ -206,5 +207,73 @@ class Article
         $query->bindValue(':id_chapitre', $id_chapitre, PDO::PARAM_INT);
         $query->execute();
         return $query->fetchAll(PDO::FETCH_CLASS, 'Article');
+    }
+
+    static function controleur($action, $id, &$view, &$data)
+    {
+        switch ($action) {
+            default:
+                $view = 'visit_article.twig.html';
+                $data = [
+                    'article' => Article::readOne($id)
+                ];
+                break;
+        }
+    }
+
+
+
+    static function controleurAdmin($action, $id, &$view, &$data)
+    {
+        switch ($action) {
+            case 'read':
+                if ($id > 0) {
+                    $view = 'article.twig.html';
+                    $data = [
+                        'article' => Article::readOne($id),
+                        'listebloc' => Bloc::readByArticle($id)
+                    ];
+                } else {
+                    $view = 'liste_articles.twig.html';
+                    $data = ['listearticle' => Article::readAll()];
+                }
+                break;
+                ////////////////////////////////////
+            case 'new':
+                $view = 'newarticle.twig.html';
+                $data = ['listechapitre' => Chapitre::readAll()];
+                break;
+
+            case 'create':
+                $article = new Article();
+                var_dump($_POST);
+                $article->chargePOST();
+                var_dump($_POST);
+                $article->create();
+                header('Location: controleur.php?page=article&action=read');
+                break;
+                ////////////////////////////////////
+            case 'delete':
+                Article::delete($id);
+                header('Location: controleur.php?page=article&action=read');
+                break;
+                ////////////////////////////////////
+            case 'modifier':
+                $article = Article::readOne($id);
+                $view = 'updatearticle.twig.html';
+                $data = ['article' => $article, 'listechapitre' => Chapitre::readAll()];
+                break;
+
+            case 'update':
+                $article = new Article();
+                $article->chargePOST();
+                var_dump($article);
+                $article->update();
+                header('Location: controleur.php?page=article&action=read');
+                break;
+
+            default:
+                echo 'Action non reconnue';
+        }
     }
 }

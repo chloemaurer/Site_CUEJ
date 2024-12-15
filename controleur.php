@@ -70,56 +70,58 @@ switch ($page) {
         break;
 
     case 'article':
-        switch ($action) {
-            case 'read':
-                if ($id > 0) {
-                    $modele = 'article.twig.html';
-                    $data = [
-                        'article' => Article::readOne($id),
-                        'listebloc' => Bloc::readByArticle($id)
-                    ];
-                } else {
-                    $modele = 'liste_articles.twig.html';
-                    $data = ['listearticle' => Article::readAll()];
-                }
-                break;
-                ////////////////////////////////////
-            case 'new':
-                $modele = 'newarticle.twig.html';
-                $data = ['listechapitre' => Chapitre::readAll()];
-                break;
+        Article::controleur($action, $id, $view, $data);
 
-            case 'create':
-                $article = new Article();
-                var_dump($_POST);
-                $article->chargePOST();
-                var_dump($_POST);
-                $article->create();
-                header('Location: controleur.php?page=article&action=read');
-                break;
-                ////////////////////////////////////
-            case 'delete':
-                Article::delete($id);
-                header('Location: controleur.php?page=article&action=read');
-                break;
-                ////////////////////////////////////
-            case 'modifier':
-                $article = Article::readOne($id);
-                $modele = 'updatearticle.twig.html';
-                $data = ['article' => $article, 'listechapitre' => Chapitre::readAll()];
-                break;
+        // switch ($action) {
+        //     case 'read':
+        //         if ($id > 0) {
+        //             $modele = 'article.twig.html';
+        //             $data = [
+        //                 'article' => Article::readOne($id),
+        //                 'listebloc' => Bloc::readByArticle($id)
+        //             ];
+        //         } else {
+        //             $modele = 'liste_articles.twig.html';
+        //             $data = ['listearticle' => Article::readAll()];
+        //         }
+        //         break;
+        //         ////////////////////////////////////
+        //     case 'new':
+        //         $modele = 'newarticle.twig.html';
+        //         $data = ['listechapitre' => Chapitre::readAll()];
+        //         break;
 
-            case 'update':
-                $article = new Article();
-                $article->chargePOST();
-                var_dump($article);
-                $article->update();
-                header('Location: controleur.php?page=article&action=read');
-                break;
+        //     case 'create':
+        //         $article = new Article();
+        //         var_dump($_POST);
+        //         $article->chargePOST();
+        //         var_dump($_POST);
+        //         $article->create();
+        //         header('Location: controleur.php?page=article&action=read');
+        //         break;
+        //         ////////////////////////////////////
+        //     case 'delete':
+        //         Article::delete($id);
+        //         header('Location: controleur.php?page=article&action=read');
+        //         break;
+        //         ////////////////////////////////////
+        //     case 'modifier':
+        //         $article = Article::readOne($id);
+        //         $modele = 'updatearticle.twig.html';
+        //         $data = ['article' => $article, 'listechapitre' => Chapitre::readAll()];
+        //         break;
 
-            default:
-                echo 'Action non reconnue';
-        }
+        //     case 'update':
+        //         $article = new Article();
+        //         $article->chargePOST();
+        //         var_dump($article);
+        //         $article->update();
+        //         header('Location: controleur.php?page=article&action=read');
+        //         break;
+
+        //     default:
+        //         echo 'Action non reconnue';
+        // }
         break;
 
     case 'chapitre':

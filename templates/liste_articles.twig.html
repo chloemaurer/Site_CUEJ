@@ -3,18 +3,18 @@
 {% for article in listearticle %}
 <h2>{{article.titre}}</h2>
 <p>
-  <a href="controleur.php?page=article&action=read&id={{ article.id_article }}"
+  <a href="admin.php?page=article&action=read&id={{ article.id_article }}"
     >Voir</a
   >
   <a
-    href="controleur.php?page=article&action=modifier&id={{ article.id_article }}"
+    href="admin.php?page=article&action=modifier&id={{ article.id_article }}"
     >Modifier</a
   >
   <a
-    href="controleur.php?page=article&action=delete&id={{ article.id_article }}"
+    href="admin.php?page=article&action=delete&id={{ article.id_article }}"
     >Supprimer</a
   >
 </p>
 {% endfor %}
-<a href="controleur.php?page=article&action=new">Ajouter un article</a>
+<a href="admin.php?page=article&action=new">Ajouter un article</a>
 {% endblock %}

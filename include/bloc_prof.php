@@ -211,7 +211,8 @@ class Bloc
                 break;
 
             case 'new':
-                $modele = 'form/' . $id . 'twig.html';
+                $id = isset($_GET['id']) ? $_GET['id'] : null;
+                $modele = 'form/' . $id . '.twig.html';
                 $data = [];
                 break;
 

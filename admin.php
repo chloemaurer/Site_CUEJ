@@ -48,7 +48,7 @@ switch ($page) {
         header('Location: index.php');
         break;
     default:
-        $view = 'admin.twig';
+        $view = 'admin.twig.html';
         $data = [];
 }
 

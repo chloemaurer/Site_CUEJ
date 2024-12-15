@@ -16,17 +16,17 @@
 {% endif %}
 
 <p>
-  <a href="controleur.php?page=bloc&action=read&id={{ bloc.id }}">Voir</a>
-  <a href="controleur.php?page=bloc&action=modifier&id={{ bloc.id }}"
+  <a href="admin.php?page=bloc&action=read&id={{ bloc.id }}">Voir</a>
+  <a href="admin.php?page=bloc&action=modifier&id={{ bloc.id }}"
     >Modifier</a
   >
-  <a href="controleur.php?page=bloc&action=delete&id={{ bloc.id }}"
+  <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
     >Supprimer</a
   >
 </p>
 
 {% endfor %}
 
-<a href="controleur.php?page=bloc&action=new">Ajouter un bloc</a>
+<a href="admin.php?page=bloc&action=new">Ajouter un bloc</a>
 
 {% endblock %}

@@ -159,24 +159,6 @@ switch ($page) {
         }
         break;
 
-    case 'choix':
-        switch ($action) {
-            case 'read':
-                if ($id > 0) {
-                    $modele = 'choix.twig.html';
-                    $data = [
-                        'choix' => Choix::readOne($id),
-                    ];
-                } else {
-                    $modele = 'liste_choix_bloc.twig.html';
-                    $data = ['listechoix' => Choix::readAll()];
-                }
-                break;
-
-            default:
-                echo 'Action non reconnue';
-        }
-        break;
     case 'admin':
         $modele = 'admin.twig.html';
         $data = [];

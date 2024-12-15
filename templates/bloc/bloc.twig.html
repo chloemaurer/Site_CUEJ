@@ -6,9 +6,9 @@
   src : {{ bloc.src }} / alt : {{ bloc.alt }}
 </p>
 
-<a href="controleur.php?page=bloc&action=modifier&id={{ bloc.id }}">Modifier</a>
-<a href="controleur.php?page=bloc&action=delete&id={{ bloc.id }}">Supprimer</a>
-<a href="controleur.php?page=bloc&action=read">Retour à la liste</a>
+<a href="admin.php?page=bloc&action=modifier&id={{ bloc.id }}">Modifier</a>
+<a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}">Supprimer</a>
+<a href="admin.php?page=bloc&action=read">Retour à la liste</a>
 
 {% if bloc.type == "h1" %}
 <h1 class="{{bloc.style}}">{{ bloc.texte }}</h1>

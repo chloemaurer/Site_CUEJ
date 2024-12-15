@@ -1,6 +1,6 @@
 {% extends "base-admin.twig.html" %} {% block content %}
 
-<form action="controleur.php?page=chapitre&action=update" method="post" class="row g-4 needs-validation" novalidate>
+<form action="admin.php?page=chapitre&action=update" method="post" class="row g-4 needs-validation" novalidate>
             <div class="col-md-4">
                 <label for="id_chapitre" class="form-label mt-4">id :</label>
                 <input type="text" name="id_chapitre" placeholder="Id" value= "{{chapitre.id_chapitre}}"

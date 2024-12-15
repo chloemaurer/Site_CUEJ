@@ -4,9 +4,9 @@ session_start();
 require_once('include/twig.php');
 require_once('include/fonctions.php');
 require_once('include/connexion.php');
-require_once('include/chapitre_prof.php');
-require_once('include/article_prof.php');
-require_once('include/bloc_prof.php');
+require_once('include/chapitre.php');
+require_once('include/article.php');
+require_once('include/bloc.php');
 
 // Initialisation de Twig
 $twig = init_twig();
@@ -21,13 +21,13 @@ else $id = 0;
 
 // Vérification des droits administrateur
 // Charge le login stocké dans la session
-$login = '';
-if (isset($_SESSION['login'])) $login = $_SESSION['login'];
+// $login = '';
+// if (isset($_SESSION['login'])) $login = $_SESSION['login'];
 
 // Si le login est incorrect : retour à la page d'accueil
-if ($login != 'mmi2024!') {
-    header('Location: index.php');
-}
+// if ($login != 'mmi2024!') {
+//     header('Location: index.php');
+// }
 
 // Le tableau de données par défaut
 $view = '';

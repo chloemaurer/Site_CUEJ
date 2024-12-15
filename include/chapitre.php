@@ -179,13 +179,13 @@ class Chapitre
         switch ($action) {
             case 'read':
                 if ($id > 0) {
-                    $modele = 'chapitre.twig.html';
+                    $view = 'chapitre.twig.html';
                     $data = [
                         'chapitre' => Chapitre::readOne($id),
                         'listebloc' => Bloc::readByArticle($id),
                     ];
                 } else {
-                    $modele = 'liste_chapitres.twig.html';
+                    $view = 'liste_chapitres.twig.html';
                     $data = ['listechapitre' => Chapitre::readAll()];
                 }
                 break;
@@ -198,7 +198,7 @@ class Chapitre
                 ////////////////////////////////////
             case 'modifier':
                 $chapitre = Chapitre::readOne($id);
-                $modele = 'updatechapitre.twig.html';
+                $view = 'updatechapitre.twig.html';
                 $data = ['chapitre' => $chapitre];
                 break;
 
@@ -206,7 +206,7 @@ class Chapitre
                 $chapitre = new Chapitre();
                 $chapitre->chargePOST();
                 $chapitre->update();
-                header('Location: controleur.php?page=chapitre&action=read');
+                header('Location: admin.php?page=chapitre&action=read');
                 break;
             default:
                 echo 'Action non reconnue';

@@ -193,12 +193,13 @@ class Article
                     ];
                 } else {
                     // Pas de thème sélectionné => retour à l'accueil
-                    header('Location: admin.php?page=chapitre');
+                    $view = 'article/liste_articles.twig.html';
+                    $data = ['listearticle' => Article::readAll()];
                 }
                 break;
             case 'new':
                 $view = "article/newarticle.twig.html";
-                $data = ['id_chapitre' => $id_article];
+                $data = ['id_article' => $id_article];
                 break;
             case 'create':
                 $article = new Article();

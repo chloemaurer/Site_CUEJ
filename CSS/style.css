@@ -342,7 +342,8 @@ p {
   background-color: #ece6db; /* Beige clair */
   border-radius: 10px;
   overflow: hidden;
-  height: 250px;
+  height: auto;
+  padding-bottom: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
@@ -354,8 +355,8 @@ p {
 }
 
 .card-title {
-  height: 20%;
-  padding: 10px;
+  height: 100%;
+  /* padding: 10px; */
   text-align: center;
   font-size: 14px;
   color: #333; /* Texte noir */

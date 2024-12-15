@@ -25,32 +25,36 @@ $login = '';
 if (isset($_SESSION['login'])) $login = $_SESSION['login'];
 
 // Si le login est incorrect : retour à la page d'accueil
-if ($login != 'mmi2024!') {
-    header('Location: index.php');
-}
+// if ($login != 'mmi2024!') {
+//     header('Location: index.php');
+// }
 
 // Le tableau de données par défaut
-$view = '';
+$modele = '';
 $data = [];
 
 switch ($page) {
     case 'chapitre':
-        Chapitre::controleurAdmin($action, $id, $view, $data);
+        Chapitre::controleurAdmin($action, $id, $modele, $data);
         break;
     case 'article':
-        Article::controleurAdmin($action, $id, $view, $data);
+        Article::controleurAdmin($action, $id, $modele, $data);
         break;
     case 'bloc':
-        Bloc::controleurAdmin($action, $id, $view, $data);
+        Bloc::controleurAdmin($action, $id, $modele, $data);
         break;
-    case 'logout':
-        unset($_SESSION['login']);
-        header('Location: index.php');
+// case 'logout':
+//     unset($_SESSION['login']);
+//     header('Location: index.php');
+//     break;
+    case 'choix':
+        $modele = 'liste_choix_bloc.twig.html';
+        $data = [];
         break;
     default:
-        $view = 'admin.twig.html';
+        $modele = 'admin.twig.html';
         $data = [];
 }
 
 // Ajoute les informations de login
-echo $twig->render($view, $data);
+echo $twig->render($modele, $data);

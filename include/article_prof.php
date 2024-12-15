@@ -168,11 +168,11 @@ class Article
     }
 
 
-    static function controleur($action, $id_article, &$view, &$data)
+    static function controleur($action, $id_article, &$modele, &$data)
     {
         switch ($action) {
             default:
-                $view = 'article.twig.html';
+                $modele = 'article.twig.html';
                 $data = [
                     'article' => Article::readOne($id_article)
                 ];
@@ -180,59 +180,56 @@ class Article
         }
     }
 
-    static function controleurAdmin($action, $id_article, &$view, &$data)
+    static function controleurAdmin($action, $id_article, &$modele, &$data)
     {
         switch ($action) {
             case 'read':
-                // Liste des articles d'un thème ($id_article)
                 if ($id_article > 0) {
-                    $view = 'article/article.twig.html';
+                    $modele = 'article/article.twig.html';
                     $data = [
                         'article' => Article::readOne($id_article),
                         'listebloc' => Bloc::readByArticle($id_article)
                     ];
                 } else {
-                    // Pas de thème sélectionné => retour à l'accueil
-                    header('Location: admin.php?page=chapitre');
+                    $modele = 'article/liste_articles.twig.html';
+                    $data = ['listearticle' => Article::readAll()];
                 }
                 break;
+                ////////////////////////////////////
             case 'new':
-                $view = "article/newarticle.twig.html";
-                $data = ['id_chapitre' => $id_article];
+                $modele = 'article/newarticle.twig.html';
+                $data = ['listechapitre' => Chapitre::readAll()];
                 break;
+
             case 'create':
-                $article = new Article();
+                $article = new Article(); 
                 $article->chargePOST();
                 $article->create();
-                header('Location: admin.php?page=chapitre&id_article=' . $article->id_chapitre);
+                header('Location: admin.php?page=article&action=read');
                 break;
-            case 'edit':
-                $view = "article/updatearticle.twig.html";
-                $data = ['article' => Article::readOne($id_article)];
+                ////////////////////////////////////
+            case 'delete':
+                Article::delete($id_article);
+                header('Location: admin.php?page=article&action=read');
                 break;
+                ////////////////////////////////////
+            case 'modifier':
+                $article = Article::readOne($id_article);
+                $modele = 'article/updatearticle.twig.html';
+                $data = ['article' => $article, 'listechapitre' => Chapitre::readAll()];
+                break;
+
             case 'update':
                 $article = new Article();
                 $article->chargePOST();
                 $article->update();
-                header('Location: admin.php?page=chapitre&id_article=' . $article->id_chapitre);
+                // header('Location: admin.php?page=article&action=read');
                 break;
-            case 'delete':
-                $article = Article::readOne($id_article);
-                $article->delete();
-                header('Location: admin.php?page=chapitre&id_article=' . $article->id_chapitre);
-                break;
-            case 'exchange':
-                $article = Article::readOne($id_article);
-                $article->exchangeOrder();
-                $view = 'chapitre/chapitre.twig.html';
-                header('Location: admin.php?page=chapitre&id_article=' . $article->id_chapitre);
-                break;
+
             default:
-                $view = 'chapitre/liste_chapitres.twig.html';
-                $data = [
-                    'liste_chapitres' => Article::readAll()
-                ];
-                break;
+                echo 'Action non reconnue';
+        
+            break;
         }
     }
 

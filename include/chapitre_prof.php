@@ -92,34 +92,34 @@ class Chapitre
         }
     }
 
-    static function controleur($action, $id_chapitre, &$view, &$data)
+    static function controleur($action, $id_chapitre, &$modele, &$data)
     {
         switch ($action) {
             default:
-                $view = 'chapitre/chapitre.twig';
+                $modele = 'chapitre/chapitre.twig';
                 $data = ['chapitre' => Chapitre::readAll()];
                 break;
         }
     }
 
-    static function controleurAdmin($action, $id_chapitre, &$view, &$data)
+    static function controleurAdmin($action, $id_chapitre, &$modele, &$data)
     {
         switch ($action) {
             case 'read':
                 if ($id_chapitre > 0) {
-                    $view = 'chapitre/chapitre.twig.html';
+                    $modele = 'chapitre/chapitre.twig.html';
                     $data = [
                         'chapitre' => Chapitre::readOne($id_chapitre),
                         'listearticle' => Article::readAllByChapitre($id_chapitre)
                     ];
                 } else {
-                    $view = 'chapitre/liste_chapitres.twig.html';
+                    $modele = 'chapitre/liste_chapitres.twig.html';
                     $data = ['listechapitre' => Chapitre::readAll()];
                 }
                 break;
             
             case 'modifier':
-                $view = "chapitre/updatechapitre.twig.html";
+                $modele = "chapitre/updatechapitre.twig.html";
                 $data = ['chapitre' => Chapitre::readOne($id_chapitre)];
                 break;
             case 'update':
@@ -134,7 +134,7 @@ class Chapitre
                 header('Location: admin.php?page=chapitre');
                 break;
             default:
-                $view = 'chapitre/liste_chapitres.twig.html';
+                $modele = 'chapitre/liste_chapitres.twig.html';
                 $data = ['listechapitre' => Chapitre::readAll()];
                 break;
         }

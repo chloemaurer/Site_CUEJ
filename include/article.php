@@ -186,7 +186,7 @@ class Article
         $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
         $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
         $query->bindValue(':auteur', $this->auteur, PDO::PARAM_STR);
-        $query->bindValue(':id_chapiter', $this->id_chapitre, PDO::PARAM_INT);
+        $query->bindValue(':id_chapitre', $this->id_chapitre, PDO::PARAM_INT);
 
         // exécution de la requête
         $query->execute();

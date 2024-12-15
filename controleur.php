@@ -34,7 +34,7 @@ switch ($page) {
                 break;
 
             case 'new':
-                $modele = 'form/'.$id.'twig.html';
+                $modele = 'form/' . $id . 'twig.html';
                 $data = [];
                 break;
 
@@ -106,14 +106,15 @@ switch ($page) {
             case 'modifier':
                 $article = Article::readOne($id);
                 $modele = 'updatearticle.twig.html';
-                $data = ['article' => $article];
+                $data = ['article' => $article, 'listechapitre' => Chapitre::readAll()];
                 break;
 
             case 'update':
                 $article = new Article();
                 $article->chargePOST();
+                var_dump($article);
                 $article->update();
-                header('Location: controleur.php?page=article&action=read');
+                // header('Location: controleur.php?page=article&action=read');
                 break;
 
             default:

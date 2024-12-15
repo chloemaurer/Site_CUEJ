@@ -5,13 +5,13 @@
 <p>style : {{ article.auteur }}</p>
 
 <a
-  href="controleur.php?page=article&action=modifier&id={{ article.id_article }}"
+  href="admin.php?page=article&action=modifier&id={{ article.id_article }}"
   >Modifier</a
 >
-<a href="controleur.php?page=article&action=delete&id={{ article.id_article }}"
+<a href="admin.php?page=article&action=delete&id={{ article.id_article }}"
   >Supprimer</a
 >
-<a href="controleur.php?page=article&action=read">Retour à la liste</a>
+<a href="admin.php?page=article&action=read">Retour à la liste</a>
 
 {% for bloc in listebloc %} 
 {% include ('bloc/'~bloc.type~'.twig.html') %}

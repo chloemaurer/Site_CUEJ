@@ -12,6 +12,7 @@ class Article
     public $auteur;
     public $chapo;
     public $image;
+    public $alt;
     public $id_chapitre;
 
     // Le constructeur corrige les données récupérées de la BDD
@@ -43,7 +44,7 @@ class Article
     }
 
     // Récupère les articles d'un thème
-    static function readAllByTheme($id_article)
+    static function readAllBychapitre($id_article)
     {
         $sql = 'SELECT * FROM article WHERE id_chapitre = :id_article ORDER BY ordre';
         $pdo = connexion();
@@ -101,8 +102,8 @@ class Article
         $maximum = self::readOrderMax($this->id_chapitre);
         $this->ordre = $maximum + 1;
 
-        $sql = "INSERT INTO article (ordre, titre, chapo, auteur, image, id_chapitre)
-				VALUES (:ordre, :titre, :chapo, :auteur, :image, :id_chapitre)";
+        $sql = "INSERT INTO article (ordre, titre, chapo, auteur, image, alt, id_chapitre)
+				VALUES (:ordre, :titre, :chapo, :auteur, :image, :alt, :id_chapitre)";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
         $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
@@ -110,6 +111,7 @@ class Article
         $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
         $query->bindValue(':auteur', $this->auteur, PDO::PARAM_STR);
         $query->bindValue(':image', $this->image, PDO::PARAM_STR);
+        $query->bindValue(':alt', $this->alt, PDO::PARAM_STR);
         $query->bindValue(':id_chapitre', $this->id_chapitre, PDO::PARAM_INT);
         $query->execute();
         $this->id_article = $pdo->lastInsertId();
@@ -118,7 +120,7 @@ class Article
     function update()
     {
         $sql = "UPDATE article
-				SET ordre=:ordre, titre=:titre, chapo=:chapo, auteur=:auteur, image=:image
+				SET ordre=:ordre, titre=:titre, chapo=:chapo, auteur=:auteur, image=:image, alt=:alt
 				WHERE id_article=:id_article";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
@@ -128,6 +130,7 @@ class Article
         $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
         $query->bindValue(':auteur', $this->auteur, PDO::PARAM_STR);
         $query->bindValue(':image', $this->image, PDO::PARAM_STR);
+        $query->bindValue(':alt', $this->alt, PDO::PARAM_STR);
         $query->execute();
     }
 
@@ -152,6 +155,7 @@ class Article
         $this->auteur = postString('auteur');
         $this->chapo = postString('chapo');
         $this->image = postString('old-image');
+        $this->image = postString('alt');
         $this->id_chapitre = postInt('id_chapitre');
 
         // Récupère les informations sur le fichier uploadés si il existe
@@ -168,7 +172,7 @@ class Article
     {
         switch ($action) {
             default:
-                $view = 'visit_article.twig';
+                $view = 'article.twig.html';
                 $data = [
                     'article' => Article::readOne($id_article)
                 ];
@@ -182,57 +186,57 @@ class Article
             case 'read':
                 // Liste des articles d'un thème ($id_article)
                 if ($id_article > 0) {
-                    $view = 'article/detail_article.twig';
+                    $view = 'article/article.twig.html';
                     $data = [
                         'article' => Article::readOne($id_article),
                         'listebloc' => Bloc::readByArticle($id_article)
                     ];
                 } else {
                     // Pas de thème sélectionné => retour à l'accueil
-                    header('Location: admin.php?page=theme');
+                    header('Location: admin.php?page=chapitre');
                 }
                 break;
             case 'new':
-                $view = "article/form_article.twig";
+                $view = "article/newarticle.twig.html";
                 $data = ['id_chapitre' => $id_article];
                 break;
             case 'create':
                 $article = new Article();
                 $article->chargePOST();
                 $article->create();
-                header('Location: admin.php?page=theme&id_article=' . $article->id_chapitre);
+                header('Location: admin.php?page=chapitre&id_article=' . $article->id_chapitre);
                 break;
             case 'edit':
-                $view = "article/edit_article.twig";
+                $view = "article/updatearticle.twig.html";
                 $data = ['article' => Article::readOne($id_article)];
                 break;
             case 'update':
                 $article = new Article();
                 $article->chargePOST();
                 $article->update();
-                header('Location: admin.php?page=theme&id_article=' . $article->id_chapitre);
+                header('Location: admin.php?page=chapitre&id_article=' . $article->id_chapitre);
                 break;
             case 'delete':
                 $article = Article::readOne($id_article);
                 $article->delete();
-                header('Location: admin.php?page=theme&id_article=' . $article->id_chapitre);
+                header('Location: admin.php?page=chapitre&id_article=' . $article->id_chapitre);
                 break;
             case 'exchange':
                 $article = Article::readOne($id_article);
                 $article->exchangeOrder();
-                $view = 'theme/detail_theme.twig';
-                header('Location: admin.php?page=theme&id_article=' . $article->id_chapitre);
+                $view = 'chapitre/chapitre.twig.html';
+                header('Location: admin.php?page=chapitre&id_article=' . $article->id_chapitre);
                 break;
             default:
-                $view = 'theme/liste_themes.twig';
+                $view = 'chapitre/liste_chapitres.twig.html';
                 $data = [
-                    'liste_themes' => Article::readAll()
+                    'liste_chapitres' => Article::readAll()
                 ];
                 break;
         }
     }
 
-    // Création de la table themes
+    // Création de la table chapitres
     static function init()
     {
         // connexion
@@ -243,7 +247,7 @@ class Article
         $query = $pdo->prepare($sql);
         $query->execute();
 
-        // création de la table 'theme'
+        // création de la table 'chapitre'
         $sql = 'create table article (
 				id_article serial primary key,
 				ordre int,
@@ -252,7 +256,7 @@ class Article
 				chapo text,
 				image varchar(512),
 				id_chapitre bigint unsigned,
-    			foreign key (id_chapitre) references theme(id_article))';
+    			foreign key (id_chapitre) references chapitre(id_article))';
         $query = $pdo->prepare($sql);
         $query->execute();
     }

@@ -180,7 +180,7 @@ class Bloc
     {
         switch ($action) {
             default:
-                $view = 'visit_element.twig';
+                $view = 'bloc/liste_blocs.twig.html';
                 $data = [
                     'bloc' => Bloc::readOne($id)
                 ];
@@ -196,17 +196,17 @@ class Bloc
                 header('Location: admin.php?page=article&id=' . $id);
                 break;
             case 'new':
-                $view = "bloc/form_element.twig";
-                $data = ['id_article' => $id];
+                $view = "form/'.$id.'twig.html";
+                $data = [];
                 break;
             case 'create':
                 $bloc = new Bloc();
                 $bloc->chargePOST();
-                $bloc->create();
+                $bloc->create(); 
                 header('Location: admin.php?page=article&id=' . $bloc->id_article);
                 break;
-            case 'edit':
-                $view = "bloc/edit_element.twig";
+            case 'modifier':
+                $view = "bloc/updatebloc.twig.html";
                 $data = ['bloc' => Bloc::readOne($id)];
                 break;
             case 'update':
@@ -231,27 +231,4 @@ class Bloc
         }
     }
 
-    // Création de la table themes
-    static function init()
-    {
-        // connexion
-        $pdo = connexion();
-
-        // suppression des données existantes le cas échéant
-        $sql = 'drop table if exists bloc';
-        $query = $pdo->prepare($sql);
-        $query->execute();
-
-        // création de la table 'theme'
-        $sql = 'create table bloc (
-				id serial primary key,
-				ordre int,
-				type varchar(128),
-				texte text,
-				image varchar(512),
-				id_article bigint unsigned,
-    			foreign key (id_article) references article(id))';
-        $query = $pdo->prepare($sql);
-        $query->execute();
-    }
 }

@@ -8,6 +8,7 @@ class Chapitre
     public $titre;
     public $chapo;
     public $image;
+    public $alt;
 
     // Le constructeur corrige les données récupérées de la BDD
     // Ici convertie l'identifiant en entier
@@ -37,25 +38,27 @@ class Chapitre
 
     function create()
     {
-        $sql = "INSERT INTO chapitre (titre,chapo,image) VALUES (:titre, :chapo, :image)";
+        $sql = "INSERT INTO chapitre (titre,chapo,image, alt) VALUES (:titre, :chapo, :image, :alt)";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
         $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
         $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
         $query->bindValue(':image', $this->image, PDO::PARAM_STR);
+        $query->bindValue(':alt', $this->alt, PDO::PARAM_STR);
         $query->execute();
         $this->id_chapitre = $pdo->lastInsertId();
     }
 
     function update()
     {
-        $sql = "UPDATE chapitre SET titre=:titre, chapo=:chapo, image=:image WHERE id_chapitre=:id_chapitre";
+        $sql = "UPDATE chapitre SET titre=:titre, chapo=:chapo, image=:image, alt=:alt WHERE id_chapitre=:id_chapitre";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
         $query->bindValue(':id_chapitre', $this->id_chapitre, PDO::PARAM_INT);
         $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
         $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
         $query->bindValue(':image', $this->image, PDO::PARAM_STR);
+        $query->bindValue(':alt', $this->alt, PDO::PARAM_STR);
         $query->execute();
     }
 
@@ -78,6 +81,7 @@ class Chapitre
         $this->titre = postString('titre');
         $this->chapo = postString('chapo');
         $this->image = postString('old-image');
+        $this->alt = postString('old-alt');
 
         // Récupère les informations sur le fichier uploadés si il existe
         $image = chargeFILE('image');
@@ -92,8 +96,8 @@ class Chapitre
     {
         switch ($action) {
             default:
-                $view = 'visit_themes.twig';
-                $data = ['liste_themes' => Chapitre::readAll()];
+                $view = 'chapitre/chapitre.twig';
+                $data = ['chapitre' => Chapitre::readAll()];
                 break;
         }
     }
@@ -103,27 +107,19 @@ class Chapitre
         switch ($action) {
             case 'read':
                 if ($id_chapitre > 0) {
-                    $view = 'chapitre/detail_theme.twig';
+                    $view = 'chapitre/chapitre.twig.html';
                     $data = [
                         'chapitre' => Chapitre::readOne($id_chapitre),
-                        'liste_articles' => Article::readAllByTheme($id_chapitre)
+                        'listearticle' => Article::readAllByChapitre($id_chapitre)
                     ];
                 } else {
-                    $view = 'chapitre/liste_themes.twig';
-                    $data = ['liste_themes' => Chapitre::readAll()];
+                    $view = 'chapitre/liste_chapitres.twig.html';
+                    $data = ['listechapitre' => Chapitre::readAll()];
                 }
                 break;
-            case 'new':
-                $view = "chapitre/form_theme.twig";
-                break;
-            case 'create':
-                $chapitre = new Chapitre();
-                $chapitre->chargePOST();
-                $chapitre->create();
-                header('Location: admin.php?page=chapitre');
-                break;
-            case 'edit':
-                $view = "chapitre/edit_theme.twig";
+            
+            case 'modifier':
+                $view = "chapitre/updatechapitre.twig.html";
                 $data = ['chapitre' => Chapitre::readOne($id_chapitre)];
                 break;
             case 'update':
@@ -138,8 +134,8 @@ class Chapitre
                 header('Location: admin.php?page=chapitre');
                 break;
             default:
-                $view = 'chapitre/liste_themes.twig';
-                $data = ['liste_themes' => Chapitre::readAll()];
+                $view = 'chapitre/liste_chapitres.twig.html';
+                $data = ['listechapitre' => Chapitre::readAll()];
                 break;
         }
     }

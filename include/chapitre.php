@@ -36,18 +36,7 @@ class Chapitre
         return $query->fetchObject('Chapitre');
     }
 
-    function create()
-    {
-        $sql = "INSERT INTO chapitre (titre,chapo,image, alt) VALUES (:titre, :chapo, :image, :alt)";
-        $pdo = connexion();
-        $query = $pdo->prepare($sql);
-        $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
-        $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
-        $query->bindValue(':image', $this->image, PDO::PARAM_STR);
-        $query->bindValue(':alt', $this->alt, PDO::PARAM_STR);
-        $query->execute();
-        $this->id_chapitre = $pdo->lastInsertId();
-    }
+
 
     function update()
     {
@@ -80,8 +69,8 @@ class Chapitre
         $this->id_chapitre = postInt('id_chapitre');
         $this->titre = postString('titre');
         $this->chapo = postString('chapo');
-        $this->image = postString('old-image');
-        $this->alt = postString('old-alt');
+        $this->image = postString('image');
+        $this->alt = postString('alt');
 
         // Récupère les informations sur le fichier uploadés si il existe
         $image = chargeFILE('image');
@@ -126,6 +115,8 @@ class Chapitre
                 $chapitre = new Chapitre();
                 $chapitre->chargePOST();
                 $chapitre->update();
+
+
                 header('Location: admin.php?page=chapitre');
                 break;
             case 'delete':

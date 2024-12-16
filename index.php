@@ -1,7 +1,9 @@
 <?php
-include('include/chapitre_prof.php');
-include('include/article_prof.php');
-include('include/bloc_prof.php');
+session_start();
+
+include('include/chapitre.php');
+include('include/article.php');
+include('include/bloc.php');
 include('include/connexion.php');
 include('include/twig.php');
 $twig = init_twig();
@@ -21,149 +23,20 @@ else $id = 0;
 // test des différents choix
 switch ($page) {
     case 'bloc':
-        switch ($action) {
-            case 'read':
-                if ($id > 0) {
-                    $modele = 'bloc.twig.html';
-                    $data = ['bloc' => Bloc::readOne($id)];
-                } else {
-                    $modele = 'liste_blocs.twig.html';
-                    $data = ['listebloc' => Bloc::readAll()];
-                }
-                break;
-
-            case 'new':
-                $modele = 'form/' . $id . 'twig.html';
-                $data = [];
-                break;
-
-            case 'create':
-                $bloc = new Bloc();
-                $bloc->chargePOST();
-                $bloc->create(); // utilise maintenant la vraie variable $_POST
-                header('Location: controleur.php?page=bloc&action=read');
-                break;
-
-            case 'delete':
-                echo 'Suppression du bloc';
-                Bloc::delete($id);
-                header('Location: controleur.php?page=bloc&action=read');
-                break;
-
-            case 'modifier':
-                $bloc = Bloc::readOne($id);
-                $modele = 'updatebloc.twig.html';
-                $data = [$bloc->afficheForm()];
-                break;
-
-            case 'update':
-                $bloc = new Bloc();
-                $bloc->chargePOST();    // utilise maintenant la vraie variable $_POST;
-                $bloc->update();
-                header('Location: controleur.php?page=bloc&action=read');
-                break;
-
-            default:
-                echo 'Action non reconnue';
-        }
+        Article::controleur($action, $id, $view, $data);
         break;
+
 
     case 'article':
-        switch ($action) {
-            case 'read':
-                if ($id > 0) {
-                    $modele = 'article.twig.html';
-                    $data = [
-                        'article' => Article::readOne($id),
-                        'listebloc' => Bloc::readByArticle($id)
-                    ];
-                } else {
-                    $modele = 'liste_articles.twig.html';
-                    $data = ['listearticle' => Article::readAll()];
-                }
-                break;
-                ////////////////////////////////////
-            case 'new':
-                $modele = 'newarticle.twig.html';
-                $data = ['listechapitre' => Chapitre::readAll()];
-                break;
-
-            case 'create':
-                $article = new Article();
-                var_dump($_POST);
-                $article->chargePOST();
-                var_dump($_POST);
-                $article->create();
-                header('Location: controleur.php?page=article&action=read');
-                break;
-                ////////////////////////////////////
-            case 'delete':
-                Article::delete($id);
-                header('Location: controleur.php?page=article&action=read');
-                break;
-                ////////////////////////////////////
-            case 'modifier':
-                $article = Article::readOne($id);
-                $modele = 'updatearticle.twig.html';
-                $data = ['article' => $article, 'listechapitre' => Chapitre::readAll()];
-                break;
-
-            case 'update':
-                $article = new Article();
-                $article->chargePOST();
-                var_dump($article);
-                $article->update();
-                header('Location: controleur.php?page=article&action=read');
-                break;
-
-            default:
-                echo 'Action non reconnue';
-        }
+        Article::controleur($action, $id, $view, $data);
         break;
 
-    case 'chapitre': {
-            switch ($action) {
-                case 'read':
-                    if ($id > 0) {
-                        $modele = 'chapitre.twig.html';
-                        $data = [
-                            'chapitre' => Chapitre::readOne($id),
-                            'listebloc' => Bloc::readByArticle($id),
-                        ];
-                    } else {
-                        $modele = 'liste_chapitres.twig.html';
-                        $data = ['listechapitre' => Chapitre::readAll()];
-                    }
-                    break;
 
-                    ////////////////////////////////////
-                case 'delete':
-                    Chapitre::delete($id);
-                    header('Location: controleur.php?page=chapitre&action=read');
-                    break;
-                    ////////////////////////////////////
-                case 'modifier':
-                    $chapitre = Chapitre::readOne($id);
-                    $modele = 'updatechapitre.twig.html';
-                    $data = ['chapitre' => $chapitre];
-                    break;
-
-                case 'update':
-                    $chapitre = new Chapitre();
-                    $chapitre->chargePOST();
-                    $chapitre->update();
-                    header('Location: controleur.php?page=chapitre&action=read');
-                    break;
-                default:
-                    echo 'Action non reconnue';
-            }
-        }
+    case 'chapitre':
+        Chapitre::controleur($action, $id, $view, $data);
         break;
 
-    case 'admin':
-        $modele = 'admin.twig.html';
-        $data = [];
-        break;
+
     default:
         // Récupérer tous les chapitres
         $listechapitre = Chapitre::readAll();

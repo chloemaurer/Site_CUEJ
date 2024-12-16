@@ -1,204 +1,260 @@
 <?php
 
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
+
+require_once('fonctions.php');
 
 class Article
 {
     public $id_article;
+    public $ordre;
     public $titre;
-    public $chapo;
     public $auteur;
+    public $chapo;
+    public $image;
+    public $alt;
     public $id_chapitre;
-    public $attribut_complementaire;
 
-    // exemple de constructeur qui corrige et complète des valeurs
-    // la variable $this contient les données initialisées par fetchObject()
+    // Le constructeur corrige les données récupérées de la BDD
+    // Ici convertie les clés et l'ordre (pour le tri) en entier
     function __construct()
     {
-        // conversion d'un attribut
         $this->id_article = intval($this->id_article);
-
-        // remplace une valeur vide par autre chose
-        if (empty($this->titre)) $this->titre = 'inconnu';
-
-        // définit un attribut complémentaire (hors base de données)
-        $this->attribut_complementaire = 'valeur hors base de données';
-    }
-
-    function affichechapo()
-    {
-        echo '<p>' . $this->chapo . '</p>';
-    }
-
-    function affichetitre()
-    {
-        echo '<p>' . $this->titre . '</p>';
-    }
-
-    function chargePOST()
-    {
-        // On teste si la case 'titre' existe, si oui on copie sa valeur, sinon on utilise une valeur par défaut
-        if (isset($_POST['id_article'])) {
-            $this->id_article = $_POST['id_article'];
-        } else {
-            $this->id_article = 0;
-        }
-        /**/
-        if (isset($_POST['titre'])) {
-            $this->titre = $_POST['titre'];
-        } else {
-            $this->titre = 'sans titre';
-        }
-        // Idem pour le prétitre
-        if (isset($_POST['chapo'])) {
-            $this->chapo = $_POST['chapo'];
-        } else {
-            $this->chapo = '';
-        }
-        /**/
-        if (isset($_POST['auteur'])) {
-            $this->auteur = $_POST['auteur'];
-        } else {
-            $this->auteur = 'sans auteur';
-        }
-    }
-
-    function affiche()
-    {
-        echo '<p>';
-        echo $this->chapo . ' ' . $this->titre;
-        // Lien pour voir le detail
-        echo '<a href="controleur.php?page=article&id_article=' . $this->id_article . '"> voir le détail /</a>';
-        // Lien pour supprimer
-        echo '<a href="controleur.php?page=article&action=delete&id_article=' . $this->id_article . '"> supprimer /</a>';
-        echo '<a href="controleur.php?page=article&action=modifier&id_article=' . $this->id_article . '"> modifier</a>';
-        echo '</p>';
+        $this->ordre = intval($this->ordre);
+        $this->id_chapitre = intval($this->id_chapitre);
     }
 
     static function readAll()
     {
-        // définition de la requête SQL
-        $sql = 'select * from article';
-
-        // connexion
+        $sql = 'SELECT * FROM article ORDER BY ordre';
         $pdo = connexion();
-
-        // préparation de la requête
         $query = $pdo->prepare($sql);
-
-        // exécution de la requête
         $query->execute();
-
-        // récupération de toutes les lignes sous forme d'objets
-        $tableau = $query->fetchAll(PDO::FETCH_CLASS, 'Article');
-
-        // retourne le tableau d'objets
-        return $tableau;
+        return $query->fetchAll(PDO::FETCH_CLASS, 'Article');
     }
 
     static function readOne($id_article)
     {
-        // définition de la requête SQL avec un paramètre :valeur
-        $sql = 'select * from article where id_article = :valeur';
-
-        // connexion à la base de données
+        $sql = 'SELECT * FROM article WHERE id_article = :id_article';
         $pdo = connexion();
-
-        // préparation de la requête
         $query = $pdo->prepare($sql);
-
-        // on lie le paramètre :valeur à la variable $id_article reçue
-        $query->bindValue(':valeur', $id_article, PDO::PARAM_INT);
-
-        // exécution de la requête
+        $query->bindValue(':id_article', $id_article, PDO::PARAM_INT);
         $query->execute();
-
-        // récupération de l'unique ligne
-        $objet = $query->fetchObject('Article');
-
-        // retourne l'objet contenant résultat
-        return $objet;
+        return $query->fetchObject('Article');
     }
 
-
-    function modifier($t, $te, $s, $c)
+    // Récupère les articles d'un thème
+    static function readAllBychapitre($id_article)
     {
-        $this->titre = $t;
-        $this->chapo = $te;
-        $this->auteur = $s;
-        $this->id_chapitre = $c;
+        $sql = 'SELECT * FROM article WHERE id_chapitre = :id_article ORDER BY ordre';
+        $pdo = connexion();
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':id_article', $id_article, PDO::PARAM_INT);
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_CLASS, 'Article');
+    }
+
+    // Récupère l'ordre maximal des articles d'un thème
+    static function readOrderMax($id_article)
+    {
+        $sql = 'SELECT max(ordre) AS maximum FROM article WHERE id_chapitre = :id_article';
+        $pdo = connexion();
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':id_article', $id_article, PDO::PARAM_INT);
+        $query->execute();
+        $objet = $query->fetchObject();
+        return intval($objet->maximum);
+    }
+
+    // Echange l'ordre de deux articles
+    function exchangeOrder()
+    {
+        // Recherche l'article précédent (dans le même thème)
+        // C'est l'article le plus grand, parmi les articles d'ordre inférieur
+
+        // étape 1 : cherche les articles du même thème ayant un ordre inférieur
+        $sql = 'SELECT * FROM article
+				WHERE id_chapitre = :id_chapitre AND ordre < :ordre ORDER BY ordre DESC';
+        $pdo = connexion();
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':id_chapitre', $this->id_chapitre, PDO::PARAM_INT);
+        $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
+        $query->execute();
+
+        // étape 2 : les articles sont triés par ordre décroissant
+        // donc le premier article est le plus grand des plus petits, donc le précédent
+        $before = $query->fetchObject('Article');
+
+        // Si le précédent existe (l'article courant n'est pas le premier)
+        if ($before) {
+            // Échange les valeurs d'ordre et enregistre dans la BDD
+            $tmp = $this->ordre;
+            $this->ordre = $before->ordre;
+            $this->update();
+            $before->ordre = $tmp;
+            $before->update();
+        }
     }
 
     function create()
     {
-        // construction de la requête :titre, :chapo sont les valeurs à insérées
-        $sql = 'INSERT INTO article (titre, chapo, auteur, id_chapitre) VALUES (:titre, :chapo, :auteur, :id_chapitre);';
+        // Récupère l'ordre maximum pour créer l'article en dernière position
+        $maximum = self::readOrderMax($this->id_chapitre);
+        $this->ordre = $maximum + 1;
 
-        // connexion à la base de données
+        $sql = "INSERT INTO article (ordre, titre, chapo, auteur, image, alt, id_chapitre)
+				VALUES (:ordre, :titre, :chapo, :auteur, :image, :alt, :id_chapitre)";
         $pdo = connexion();
-
-        // préparation de la requête
         $query = $pdo->prepare($sql);
-
-        // on donne une valeur aux paramètres à partir des attributs de l'objet courant
+        $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
         $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
         $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
         $query->bindValue(':auteur', $this->auteur, PDO::PARAM_STR);
+        $query->bindValue(':image', $this->image, PDO::PARAM_STR);
+        $query->bindValue(':alt', $this->alt, PDO::PARAM_STR);
         $query->bindValue(':id_chapitre', $this->id_chapitre, PDO::PARAM_INT);
-
-        // exécution de la requête
         $query->execute();
-
-        // on récupère la clé de l'article inséré
         $this->id_article = $pdo->lastInsertId();
-    }
-
-    static function delete($id_article)
-    {
-        // construction de la requête :titre, :chapo sont les valeurs à insérées
-        $sql = 'DELETE FROM article WHERE id_article = :id_article';
-
-        // connexion à la base de données
-        $pdo = connexion();
-
-        // préparation de la requête
-        $query = $pdo->prepare($sql);
-
-        // on lie le paramètre :id_article à la variable $id_article reçue
-        $query->bindValue(':id_article', $id_article, PDO::PARAM_INT);
-
-        // exécution de la requête
-        $query->execute();
     }
 
     function update()
     {
-        // construction de la requête :titre, :chapo sont les valeurs à insérées
-        $sql = 'UPDATE article SET titre = :titre , chapo = :chapo, auteur = :auteur, id_chapitre = :id_chapitre WHERE id_article = :id_article;';
-
-        // connexion à la base de données
+        $sql = "UPDATE article
+				SET ordre=:ordre, titre=:titre, chapo=:chapo, auteur=:auteur, image=:image, alt=:alt
+				WHERE id_article=:id_article";
         $pdo = connexion();
-
-        // préparation de la requête
         $query = $pdo->prepare($sql);
-
-        // on donne une valeur aux paramètres à partir des attributs de l'objet courant
         $query->bindValue(':id_article', $this->id_article, PDO::PARAM_INT);
+        $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
         $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
         $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
         $query->bindValue(':auteur', $this->auteur, PDO::PARAM_STR);
-        $query->bindValue(':id_chapitre', $this->id_chapitre, PDO::PARAM_INT);
-
-        // exécution de la requête
+        $query->bindValue(':image', $this->image, PDO::PARAM_STR);
+        $query->bindValue(':alt', $this->alt, PDO::PARAM_STR);
         $query->execute();
     }
 
-    static function readAllByChapitre($id_chapitre)
+    function delete()
     {
-        $sql = 'SELECT * FROM article WHERE id_chapitre = :id_chapitre';
+        // Suppression du fichier lié
+        if (!empty($this->image)) unlink('upload/' . $this->image);
+
+        // Suppression de l'article
+        $sql = "DELETE FROM article WHERE id_article=:id_article";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
-        $query->bindValue(':id_chapitre', $id_chapitre, PDO::PARAM_INT);
+        $query->bindValue(':id_article', $this->id_article, PDO::PARAM_INT);
         $query->execute();
-        return $query->fetchAll(PDO::FETCH_CLASS, 'Article');
+    }
+
+    function chargePOST()
+    {
+        $this->id_article = postInt('id_article');
+        $this->ordre = postInt('ordre');
+        $this->titre = postString('titre');
+        $this->auteur = postString('auteur');
+        $this->chapo = postString('chapo');
+        $this->image = postString('old-image');
+        $this->image = postString('alt');
+        $this->id_chapitre = postInt('id_chapitre');
+
+        // Récupère les informations sur le fichier uploadés si il existe
+        $image = chargeFILE('image');
+        if (!empty($image)) {
+            // Supprime l'ancienne image si update
+            unlink('upload/' . $this->image);
+            $this->image = $image;
+        }
+    }
+
+
+    static function controleur($action, $id_article, &$modele, &$data)
+    {
+        switch ($action) {
+            default:
+                $modele = 'article.twig.html';
+                $data = [
+                    'article' => Article::readOne($id_article)
+                ];
+                break;
+        }
+    }
+
+    static function controleurAdmin($action, $id_article, &$modele, &$data)
+    {
+        switch ($action) {
+            case 'read':
+                if ($id_article > 0) {
+                    $modele = 'article/article.twig.html';
+                    $data = [
+                        'article' => Article::readOne($id_article),
+                        'listebloc' => Bloc::readByArticle($id_article)
+                    ];
+                } else {
+                    $modele = 'article/liste_articles.twig.html';
+                    $data = ['listearticle' => Article::readAll()];
+                }
+                break;
+                ////////////////////////////////////
+            case 'new':
+                $view = "article/newarticle.twig.html";
+                $data = ['id_chapitre' => $id_article];
+                break;
+
+            case 'create':
+                $article = new Article();
+                $article->chargePOST();
+                $article->create();
+                header('Location: admin.php?page=article&action=read');
+                break;
+                ////////////////////////////////////
+            case 'delete':
+                Article::delete($id_article);
+                header('Location: admin.php?page=article&action=read');
+                break;
+                ////////////////////////////////////
+            case 'modifier':
+                $article = Article::readOne($id_article);
+                $modele = 'article/updatearticle.twig.html';
+                $data = ['article' => $article, 'listechapitre' => Chapitre::readAll()];
+                break;
+
+            case 'update':
+                $article = new Article();
+                $article->chargePOST();
+                $article->update();
+                // header('Location: admin.php?page=article&action=read');
+                break;
+
+            default:
+                echo 'Action non reconnue';
+
+                break;
+        }
+    }
+
+    // Création de la table chapitres
+    static function init()
+    {
+        // connexion
+        $pdo = connexion();
+
+        // suppression des données existantes le cas échéant
+        $sql = 'drop table if exists article';
+        $query = $pdo->prepare($sql);
+        $query->execute();
+
+        // création de la table 'chapitre'
+        $sql = 'create table article (
+				id_article serial primary key,
+				ordre int,
+				titre varchar(128),
+				auteur varchar(512),
+				chapo text,
+				image varchar(512),
+				id_chapitre bigint unsigned,
+    			foreign key (id_chapitre) references chapitre(id_article))';
+        $query = $pdo->prepare($sql);
+        $query->execute();
     }
 }

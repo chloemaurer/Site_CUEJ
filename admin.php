@@ -4,9 +4,9 @@ session_start();
 require_once('include/twig.php');
 require_once('include/fonctions.php');
 require_once('include/connexion.php');
-require_once('include/chapitre_prof.php');
-require_once('include/article_prof.php');
-require_once('include/bloc_prof.php');
+require_once('include/chapitre.php');
+require_once('include/article.php');
+require_once('include/bloc.php');
 
 // Initialisation de Twig
 $twig = init_twig();
@@ -43,10 +43,10 @@ switch ($page) {
     case 'bloc':
         Bloc::controleurAdmin($action, $id, $modele, $data);
         break;
-// case 'logout':
-//     unset($_SESSION['login']);
-//     header('Location: index.php');
-//     break;
+        // case 'logout':
+        //     unset($_SESSION['login']);
+        //     header('Location: index.php');
+        //     break;
     case 'choix':
         $modele = 'liste_choix_bloc.twig.html';
         $data = [];

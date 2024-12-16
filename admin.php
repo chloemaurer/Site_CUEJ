@@ -21,8 +21,8 @@ else $id = 0;
 
 // Vérification des droits administrateur
 // Charge le login stocké dans la session
-$login = '';
-if (isset($_SESSION['login'])) $login = $_SESSION['login'];
+// $login = '';
+// if (isset($_SESSION['login'])) $login = $_SESSION['login'];
 
 // Si le login est incorrect : retour à la page d'accueil
 // if ($login != 'mmi2024!') {

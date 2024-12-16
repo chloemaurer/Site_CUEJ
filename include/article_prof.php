@@ -197,8 +197,8 @@ class Article
                 break;
                 ////////////////////////////////////
             case 'new':
-                $modele = 'article/newarticle.twig.html';
-                $data = ['listechapitre' => Chapitre::readAll()];
+                $view = "article/newarticle.twig.html";
+                $data = ['id_chapitre' => $id_article];
                 break;
 
             case 'create':

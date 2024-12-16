@@ -1,6 +1,7 @@
-{% extends "base.twig.html" %} {% block content %}
+{% extends "base-admin.twig.html" %} {% block content %}
+
 <h1>Les Chapitres</h1>
-<img src="{{chapitre.image}}" alt="{{chapitre.alt}}" />
+<img src="upload/{{chapitre.image}}" alt="{{chapitre.alt}}" />
 <p>Type : {{ chapitre.titre }}</p>
 <p>Chapo : {{ chapitre.chapo }}</p>
 <p>style : {{ chapitre.auteur }}</p>

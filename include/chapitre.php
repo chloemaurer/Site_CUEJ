@@ -69,8 +69,8 @@ class Chapitre
         $this->id_chapitre = postInt('id_chapitre');
         $this->titre = postString('titre');
         $this->chapo = postString('chapo');
-        $this->image = postString('old-image');
-        $this->alt = postString('old-alt');
+        $this->image = postString('image');
+        $this->alt = postString('alt');
 
         // Récupère les informations sur le fichier uploadés si il existe
         $image = chargeFILE('image');
@@ -115,6 +115,8 @@ class Chapitre
                 $chapitre = new Chapitre();
                 $chapitre->chargePOST();
                 $chapitre->update();
+
+
                 header('Location: admin.php?page=chapitre');
                 break;
             case 'delete':

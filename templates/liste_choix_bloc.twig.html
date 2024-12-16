@@ -1,24 +1,28 @@
 {% extends "base-admin.twig.html" %}
 {% block content %}
 
-<a href="controleur.php?page=bloc&action=new&id=h1">
-<h1 class="  mb-5 border border-solid m-3 border-dark p-2">Webdoc</h1>
+<a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=h1">
+<h1 class=" text-dark mb-5 border border-solid m-3 border-dark p-2">Webdoc</h1>
 </a>
 
 
-{% elseif choix.type == "h2" %}
+<a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=h2" >
 <h2 class="  mb-5 border border-solid m-3 border-dark p-2">Titre chapitre</h2>
+</a>
 
-{% elseif choix.type == "h3" %}
+<a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=h3" >
 <h3 class="  mb-5 border border-solid m-3 border-dark p-2">Titre Article</h3>
+</a>
 
-{% elseif choix.type == "h4" %}
+<a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=h4" >
 <h4 class="  mb-5 border border-solid m-3 border-dark p-2">Sous-partie</h4>
+</a>
 
-{% elseif choix.type == "h5" %}
+<a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=h5" >
 <h5 class="  mb-5 border border-solid m-3 border-dark p-2">Inter-partie</h5>
+</a>
 
-{% elseif choix.type == "paragraphe" %}
+<a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=paragraphe" >
 <p class="  mb-5 border border-solid m-3 border-dark p-2">
   But I must explain to you how all this mistaken idea of denouncing pleasure
   and praising pain was born and I will give you a complete account of the
@@ -34,15 +38,17 @@
   with a man who chooses to enjoy a pleasure that has no annoying consequences,
   or one who avoids a pain that produces no resultant pleasure?
 </p>
+</a>
 
-{% elseif choix.type == "image" %}
+<a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=image" >
 <figure class="figure w-50  mb-5 border border-solid m-3 border-dark p-2">
   <img src="https://www.rhone.mfr.fr/media/FD%20MFR%20RHONE/Metiers/agriculture.jpg"
     class="figure-img img-fluid rounded" alt="...">
   <figcaption class="figure-caption text-end">A caption for the above image.</figcaption>
 </figure>
+</a>
 
-{% elseif choix.type == "citation" %}
+<a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=citation" >
 <figure class="text-end  mb-5 border border-solid m-3 border-dark p-2">
   <blockquote class="blockquote">
     <p>A well-known quote, contained in a choixkquote element.</p>
@@ -51,16 +57,18 @@
     Someone famous in <cite title="Source Title">Source Title</cite>
   </figcaption>
 </figure>
+</a>
 
-{% elseif choix.type == "video" %}
+<a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=video" >
 <video controls width="640" class=" mb-5 border border-solid m-3 border-dark p-2">
   <source src="video/grTP01_maurerchloe_TP01.mp4" type="video/mp4">
   Votre navigateur ne supporte pas la vidéo.
 </video>
+</a>
 
 
 
-{% elseif choix.type == "audio" %}
+<a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=audio" >
 <div class="container  mb-5 border border-solid m-3 border-dark p-2">
   <div class="podcast">
     <h3 class="podcast__episode_title">La Campagne </h3>
@@ -75,17 +83,18 @@
         Your browser does not support the audio tag.
       </audio>
 
-      <a href="#" class="artwork">
+      <div class="artwork">
         <img
           src="https://img.freepik.com/photos-gratuite/arbres-colline_1160-645.jpg?t=st=1734010858~exp=1734014458~hmac=3df6e8d588cae10e149c58b2e8f1d64bff1fa99677ccda16289ca1704d5a7edc&w=826"
           alt="">
-      </a>
+      </div>
 
     </div>
   </div>
 </div>
+</a>
 
-{% elseif choix.type == "carousel" %}
+<a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=carousel" >
 <div class="  mb-5 border border-solid m-3 border-dark p-2">
   <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -166,8 +175,9 @@
     </button>
   </div>
 </div>
+</a>
 
-{% elseif choix.type == "texte_image" %}
+<a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=texte_image" >
 <div class=" d-flex  mb-5 border border-solid m-3 border-dark p-2">
   <p class="m-4">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born
     and I will
@@ -183,8 +193,9 @@
     src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
     alt="">
 </div>
+</a>
 
-{% elseif choix.type == "image_texte" %}
+<a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=image_texte" >
 <div class=" d-flex  mb-5 border border-solid m-3 border-dark p-2">
   <img class="w-50"
     src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
@@ -200,8 +211,9 @@
     has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who
     avoids a pain that produces no resultant pleasure?</p>
 </div>
+</a>
 
-{% elseif choix.type == "titre_texte_image" %}
+<a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=titre_texte_image" >
 <div class=" d-flex  mb-5 border border-solid m-3 border-dark p-2">
   <div class="m-4">
     <h4>Titre</h4>
@@ -224,8 +236,9 @@
     src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
     alt="">
 </div>
+</a>
 
-{% elseif choix.type == "image_titre_texte" %}
+<a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=image_titre_texte" >
 <div class=" d-flex  mb-5 border border-solid m-3 border-dark p-2">
   <img class="w-50"
     src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
@@ -249,11 +262,7 @@
       avoids a pain that produces no resultant pleasure?</p>
   </div>
 </div>
+</a>
 
-
-{% else %}
-<p>Type de choix inconnu : {{ choix.type }}</p>
-
-{% endif %}
 
 {% endblock %}

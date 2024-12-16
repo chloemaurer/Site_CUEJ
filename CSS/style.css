@@ -1,109 +1,5 @@
-:root {
-  --blue: rgb(68, 98, 120); /* Bleu */
-  --light-beige: rgb(236, 230, 219); /* Beige clair */
-  --yellow: rgb(239, 192, 48); /* Jaune */
-  --red: rgb(138, 21, 27); /* Rouge */
-  --green: rgb(106, 121, 32); /* Vert */
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-i {
-  cursor: pointer;
-}
-
-/*------------------------------- POLICES -----------------------------------------*/
-h1 {
-  font-family: "Anybody", sans-serif;
-  font-size: 48px;
-  font-weight: 900;
-  color: var(--light-beige);
-}
-
-h2 {
-  font-family: "Rag", sans-serif;
-  font-weight: 900;
-  font-size: 40px;
-  line-height: 1.038;
-  letter-spacing: 0.12em;
-  margin: 0;
-}
-
-.titre-chapitre-menu {
-  font-family: "Montserrat", sans-serif; /* Police Montserrat */
-  font-weight: bold; /* Style de police : Bold */
-  font-size: 24px; /* Taille de police : 24px */
-  line-height: 1.2; /* Hauteur de ligne à 120% */
-  letter-spacing: 0; /* Espacement des lettres : 0 */
-  margin: 0; /* Aucune marge par défaut */
-}
-
-.titre-chapitre {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-h3 {
-  font-family: "Anybody", sans-serif; /* Police Anybody */
-  font-weight: 800; /* ExtraBold */
-  font-size: 36px; /* Taille de police */
-  line-height: 1.2; /* Hauteur de ligne à 120% */
-  letter-spacing: 0; /* Aucun espacement entre les lettres */
-  margin: 0; /* Supprime les marges par défaut */
-}
-
-.ligne-titre {
-  border: 3px solid var(--light-beige);
-}
-
-h4 {
-  font-family: "Montserrat", sans-serif; /* Police Montserrat */
-  font-weight: 600; /* SemiBold */
-  font-size: 18px; /* Taille de police : 18px */
-  line-height: 24px; /* Hauteur de ligne : 24px */
-  letter-spacing: 0; /* Espacement des lettres : 0 */
-  margin: 0; /* Supprime les marges par défaut */
-}
-
-p {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 27px;
-  letter-spacing: 0;
-  margin: 0;
-}
-
-/*------------------------------- Boutons -----------------------------------------*/
-.menu-buttons {
-  margin-top: 2rem;
-  display: flex;
-  gap: 2rem;
-}
-
-.btn {
-  background-color: var(--yellow);
-  color: white;
-  border: none;
-  font-family: "Montserrat", sans-serif;
-  font-size: 20px;
-  border-radius: 25px;
-  padding: 10px 20px;
-  transition: transform 0.2s ease-in-out;
-}
-
-.menu-overlay .btn:hover {
-  transform: scale(1.1);
-}
-
-/*------------------------------- COULEUR - ADMIN -----------------------------------------*/
 .bleu {
-  color: #446278;
+  color: rgb(67, 124, 216);
 }
 
 .rouge {
@@ -342,8 +238,7 @@ p {
   background-color: #ece6db; /* Beige clair */
   border-radius: 10px;
   overflow: hidden;
-  height: auto;
-  padding-bottom: 1rem;
+  height: 250px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
@@ -355,8 +250,8 @@ p {
 }
 
 .card-title {
-  height: 100%;
-  /* padding: 10px; */
+  height: 20%;
+  padding: 10px;
   text-align: center;
   font-size: 14px;
   color: #333; /* Texte noir */
@@ -420,8 +315,7 @@ p {
 .mejs__controls {
   display: block;
 }
-.mejs__controls,
-.mejs__container {
+.mejs__controls, .mejs__container {
   background: none !important;
 }
 .mejs__time {
@@ -508,4 +402,4 @@ p {
 
 .mejs__controls {
   width: 110%;
-} /*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

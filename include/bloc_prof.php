@@ -35,6 +35,15 @@ class Bloc
         return $query->fetchObject('Bloc');
     }
 
+    static function readAll()
+    {
+        $sql = 'SELECT * FROM bloc ORDER BY ordre';
+        $pdo = connexion();
+        $query = $pdo->prepare($sql);
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_CLASS, 'Bloc');
+    }
+
     // Récupère les elements d'un thème
     static function readAllByArticle($id)
     {
@@ -176,11 +185,11 @@ class Bloc
     }
 
 
-    static function controleur($action, $id, &$view, &$data)
+    static function controleur($action, $id, &$modele, &$data)
     {
         switch ($action) {
             default:
-                $view = 'bloc/liste_blocs.twig.html';
+                $modele = 'bloc/liste_blocs.twig.html';
                 $data = [
                     'bloc' => Bloc::readOne($id)
                 ];
@@ -188,47 +197,55 @@ class Bloc
         }
     }
 
-    static function controleurAdmin($action, $id, &$view, &$data)
+    static function controleurAdmin($action, $id, &$modele, &$data)
     {
         switch ($action) {
             case 'read':
-                // Pas d'affichage d'un élément seul => retour à l'article
-                header('Location: admin.php?page=article&id=' . $id);
+                if ($id > 0) {
+                    $modele = 'bloc/bloc.twig.html';
+                    $data = ['bloc' => Bloc::readOne($id)];
+                } else {
+                    $modele = 'bloc/liste_blocs.twig.html';
+                    $data = ['listebloc' => Bloc::readAll()];
+                }
                 break;
+
             case 'new':
-                $view = "form/'.$id.'twig.html";
+                $id = isset($_GET['id']) ? $_GET['id'] : null;
+                $modele = 'form/' . $id . '.twig.html';
                 $data = [];
                 break;
+
             case 'create':
                 $bloc = new Bloc();
                 $bloc->chargePOST();
-                $bloc->create(); 
-                header('Location: admin.php?page=article&id=' . $bloc->id_article);
+                $bloc->create(); // utilise maintenant la vraie variable $_POST
+                header('Location: controleur.php?page=bloc&action=read');
                 break;
+
+            case 'delete':
+                echo 'Suppression du bloc';
+                Bloc::delete($id);
+                header('Location: controleur.php?page=bloc&action=read');
+                break;
+
             case 'modifier':
-                $view = "bloc/updatebloc.twig.html";
-                $data = ['bloc' => Bloc::readOne($id)];
+                $bloc = Bloc::readOne($id);
+                $modele = 'bloc/updatebloc.twig.html';
+                $data = [$bloc->afficheForm()];
                 break;
+
             case 'update':
                 $bloc = new Bloc();
-                $bloc->chargePOST();
+                $bloc->chargePOST();    // utilise maintenant la vraie variable $_POST;
                 $bloc->update();
-                header('Location: admin.php?page=article&id=' . $bloc->id_article);
+                header('Location: controleur.php?page=bloc&action=read');
                 break;
-            case 'delete':
-                $bloc = Bloc::readOne($id);
-                $bloc->delete();
-                header('Location: admin.php?page=article&id=' . $bloc->id_article);
-                break;
-            case 'exchange':
-                $bloc = Bloc::readOne($id);
-                $bloc->exchangeOrder();
-                header('Location: admin.php?page=article&id=' . $bloc->id_article);
-                break;
+
             default:
-                // Pas d'action connue => retour à la page article
-                header('Location: admin.php?page=article&id=' . $id);
+                echo 'Action non reconnue';
+
+                break;
         }
     }
-
 }

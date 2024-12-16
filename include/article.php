@@ -14,6 +14,7 @@ class Article
     public $image;
     public $alt;
     public $id_chapitre;
+    public $bloc = [];
 
     // Le constructeur corrige les données récupérées de la BDD
     // Ici convertie les clés et l'ordre (pour le tri) en entier

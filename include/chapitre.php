@@ -9,6 +9,7 @@ class Chapitre
     public $chapo;
     public $image;
     public $alt;
+    public $articles = [];
 
     // Le constructeur corrige les données récupérées de la BDD
     // Ici convertie l'identifiant en entier
@@ -85,8 +86,18 @@ class Chapitre
     {
         switch ($action) {
             default:
-                $modele = 'chapitre/chapitre.twig.html';
-                $data = ['chapitre' => Chapitre::readAll()];
+                $modele = 'accueil.twig.html';
+
+                // Récupérer tous les chapitres
+                $listechapitre = Chapitre::readAll();
+
+                // Ajouter les articles associés à chaque chapitre
+                foreach ($listechapitre as $chapitre) {
+                    $chapitre->articles = Article::readAllBychapitre($chapitre->id_chapitre);
+                }
+
+                // Passer les données au template
+                $data = ['listechapitre' => $listechapitre];
                 break;
         }
     }

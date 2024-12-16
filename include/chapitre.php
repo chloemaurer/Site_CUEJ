@@ -1,215 +1,165 @@
 <?php
 
+require_once('fonctions.php');
+
 class Chapitre
 {
     public $id_chapitre;
     public $titre;
     public $chapo;
-    public $src;
+    public $image;
     public $alt;
     public $articles = [];
 
-
-    function chargePOST()
+    // Le constructeur corrige les données récupérées de la BDD
+    // Ici convertie l'identifiant en entier
+    function __construct()
     {
-        if (isset($_POST['id_chapitre'])) {
-            $this->id_chapitre = $_POST['id_chapitre'];
-        } else {
-            $this->id_chapitre = 0;
-        }
-        if (isset($_POST['titre'])) {
-            $this->titre = $_POST['titre'];
-        } else {
-            $this->titre = '';
-        }
-        /**/
-        if (isset($_POST['chapo'])) {
-            $this->chapo = $_POST['chapo'];
-        } else {
-            $this->chapo = 'pas de chapo';
-        }
-        if (isset($_POST['src'])) {
-            $this->src = $_POST['src'];
-        } else {
-            $this->src = 'image sans lien';
-        }
-        if (isset($_POST['alt'])) {
-            $this->alt = $_POST['alt'];
-        } else {
-            $this->alt = 'image sans description';
-        }
+        $this->id_chapitre = intval($this->id_chapitre);
     }
-
 
     static function readAll()
     {
-        // définition de la requête SQL
-        $sql = 'select * from chapitre';
-
-        // connexion
+        $sql = 'SELECT * FROM chapitre';
         $pdo = connexion();
-
-        // préparation de la requête
         $query = $pdo->prepare($sql);
-
-        // exécution de la requête
         $query->execute();
-
-        // récupération de toutes les lignes sous forme d'objets
-        $tableau = $query->fetchAll(PDO::FETCH_CLASS, 'Chapitre');
-
-        // retourne le tableau d'objets
-        return $tableau;
+        return $query->fetchAll(PDO::FETCH_CLASS, 'Chapitre');
     }
-
-
-
 
     static function readOne($id_chapitre)
     {
-        $sql = 'select * from chapitre where id_chapitre = :valeur';
-
-        // connexion à la base de données
+        $sql = 'SELECT * FROM chapitre WHERE id_chapitre = :id_chapitre';
         $pdo = connexion();
-
-        // préparation de la requête
         $query = $pdo->prepare($sql);
-
-        // on lie le paramètre :valeur à la variable $id reçue
-        $query->bindValue(':valeur', $id_chapitre, PDO::PARAM_INT);
-
-
-
-        // exécution de la requête
+        $query->bindValue(':id_chapitre', $id_chapitre, PDO::PARAM_INT);
         $query->execute();
-
-        // récupération de l'unique ligne
-        $objet = $query->fetchObject('Chapitre');
-
-        // retourne l'objet contenant résultat
-        return $objet;
-    }
-
-
-    function create()
-    {
-        // construction de la requête :type, :texte sont les valeurs à insérées
-        $sql = 'INSERT INTO chapitre (titre, chapo, src, alt, id_chapitre) VALUES (:titre, :chapo, :src, :alt, id_chapitre);';
-
-        // connexion à la base de données
-        $pdo = connexion();
-
-        // préparation de la requête
-        $query = $pdo->prepare($sql);
-
-        // on donne une valeur aux paramètres à partir des attributs de l'objet courant
-        $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
-        $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
-        $query->bindValue(':src', $this->src, PDO::PARAM_STR);
-        $query->bindValue(':alt', $this->alt, PDO::PARAM_STR);
-        $query->bindValue(':id_chapitre', $this->id_chapitre, PDO::PARAM_STR);
-
-        // exécution de la requête
-        $query->execute();
-
-        // on récupère la clé de l'bloc inséré
-        $this->id_chapitre = $pdo->lastInsertId();
-    }
-
-
-
-    static function delete($id)
-    {
-        // construction de la requête :type, :texte sont les valeurs à insérées
-        $sql = 'DELETE FROM chapitre WHERE id_chapitre = :id;';
-
-        // connexion à la base de données
-        $pdo = connexion();
-
-        // préparation de la requête
-        $query = $pdo->prepare($sql);
-
-        // on lie le paramètre :id à la variable $id reçue
-        $query->bindValue(':id', $id, PDO::PARAM_INT);
-
-        // exécution de la requête
-        $query->execute();
+        return $query->fetchObject('Chapitre');
     }
 
 
 
     function update()
     {
-        // construction de la requête :titre, :chapo sont les valeurs à insérées
-        $sql = 'UPDATE chapitre SET titre = :titre , chapo = :chapo, src = :src, alt = :alt WHERE id_chapitre = :id_chapitre;';
-
-        // connexion à la base de données
+        $sql = "UPDATE chapitre SET titre=:titre, chapo=:chapo, image=:image, alt=:alt WHERE id_chapitre=:id_chapitre";
         $pdo = connexion();
-
-        // préparation de la requête
         $query = $pdo->prepare($sql);
-
-        // on donne une valeur aux paramètres à partir des attributs de l'objet courant
         $query->bindValue(':id_chapitre', $this->id_chapitre, PDO::PARAM_INT);
         $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
         $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
-        $query->bindValue(':src', $this->src, PDO::PARAM_STR);
+        $query->bindValue(':image', $this->image, PDO::PARAM_STR);
         $query->bindValue(':alt', $this->alt, PDO::PARAM_STR);
-
-
-        // exécution de la requête
         $query->execute();
     }
 
+    function delete()
+    {
+        // Suppression du fichier lié
+        if (!empty($this->image)) unlink('upload/' . $this->image);
 
+        // Suppression du thème
+        $sql = "DELETE FROM chapitre WHERE id_chapitre=:id_chapitre";
+        $pdo = connexion();
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':id_chapitre', $this->id_chapitre, PDO::PARAM_INT);
+        $query->execute();
+    }
 
-    static function controleur($action, $id, &$view, &$data)
+    function chargePOST()
+    {
+        $this->id_chapitre = postInt('id_chapitre');
+        $this->titre = postString('titre');
+        $this->chapo = postString('chapo');
+        $this->image = postString('image');
+        $this->alt = postString('alt');
+
+        // Récupère les informations sur le fichier uploadés si il existe
+        $image = chargeFILE('image');
+        if (!empty($image)) {
+            // Supprime l'ancienne image si update
+            unlink('upload/' . $this->image);
+            $this->image = $image;
+        }
+    }
+
+    static function controleur($action, $id_chapitre, &$modele, &$data)
     {
         switch ($action) {
             default:
-                $view = 'admin.twig.html';
+                $modele = 'accueil.twig.html';
+
+                // Récupérer tous les chapitres
+                $listechapitre = Chapitre::readAll();
+
+                // Ajouter les articles associés à chaque chapitre
+                foreach ($listechapitre as $chapitre) {
+                    $chapitre->articles = Article::readAllBychapitre($chapitre->id_chapitre);
+                }
+
+                // Passer les données au template
+                $data = ['listechapitre' => $listechapitre];
+                break;
+        }
+    }
+
+    static function controleurAdmin($action, $id_chapitre, &$modele, &$data)
+    {
+        switch ($action) {
+            case 'read':
+                if ($id_chapitre > 0) {
+                    $modele = 'chapitre/chapitre.twig.html';
+                    $data = [
+                        'chapitre' => Chapitre::readOne($id_chapitre),
+                        'listearticle' => Article::readAllByChapitre($id_chapitre)
+                    ];
+                } else {
+                    $modele = 'chapitre/liste_chapitres.twig.html';
+                    $data = ['listechapitre' => Chapitre::readAll()];
+                }
+                break;
+
+            case 'modifier':
+                $modele = "chapitre/updatechapitre.twig.html";
+                $data = ['chapitre' => Chapitre::readOne($id_chapitre)];
+                break;
+            case 'update':
+                $chapitre = new Chapitre();
+                $chapitre->chargePOST();
+                $chapitre->update();
+
+
+                header('Location: admin.php?page=chapitre');
+                break;
+            case 'delete':
+                $chapitre = Chapitre::readOne($id_chapitre);
+                $chapitre->delete();
+                header('Location: admin.php?page=chapitre');
+                break;
+            default:
+                $modele = 'chapitre/liste_chapitres.twig.html';
                 $data = ['listechapitre' => Chapitre::readAll()];
                 break;
         }
     }
 
-
-    static function controleurAdmin($action, $id, &$view, &$data)
+    // Création de la table themes
+    static function init()
     {
-        switch ($action) {
-            case 'read':
-                if ($id > 0) {
-                    $view = 'chapitre.twig.html';
-                    $data = [
-                        'chapitre' => Chapitre::readOne($id),
-                        'listebloc' => Bloc::readByArticle($id),
-                    ];
-                } else {
-                    $view = 'liste_chapitres.twig.html';
-                    $data = ['listechapitre' => Chapitre::readAll()];
-                }
-                break;
+        // connexion
+        $pdo = connexion();
 
-                ////////////////////////////////////
-            case 'delete':
-                Chapitre::delete($id);
-                header('Location: controleur.php?page=chapitre&action=read');
-                break;
-                ////////////////////////////////////
-            case 'modifier':
-                $chapitre = Chapitre::readOne($id);
-                $view = 'updatechapitre.twig.html';
-                $data = ['chapitre' => $chapitre];
-                break;
+        // suppression des données existantes le cas échéant
+        $sql = 'drop table if exists chapitre';
+        $query = $pdo->prepare($sql);
+        $query->execute();
 
-            case 'update':
-                $chapitre = new Chapitre();
-                $chapitre->chargePOST();
-                $chapitre->update();
-                header('Location: admin.php?page=chapitre&action=read');
-                break;
-            default:
-                echo 'Action non reconnue';
-        }
+        // création de la table 'chapitre'
+        $sql = 'create table chapitre (
+				id_chapitre serial primary key,
+				titre varchar(128),
+				chapo varchar(512),
+				image varchar(512))';
+        $query = $pdo->prepare($sql);
+        $query->execute();
     }
 }

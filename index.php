@@ -40,11 +40,10 @@ switch ($page) {
     default:
         // Récupérer tous les chapitres
         $listechapitre = Chapitre::readAll();
-        $listearticle = Article::readAll();
 
         // Ajouter les articles associés à chaque chapitre
         foreach ($listechapitre as $chapitre) {
-            Article::readAllByChapitre($chapitre->id_chapitre);
+            $chapitre->articles = Article::readAllBychapitre($chapitre->id_chapitre);
         }
 
         // Passer les données au template

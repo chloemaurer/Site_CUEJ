@@ -22,10 +22,7 @@
       <!-- Liste des articles associés -->
       <ul class="articles-liste">
         {% for article in chapitre.articles %}
-        <li class="article-item">
-          <h3 class="titre-article">{{ article.titre }}</h3>
-          <p class="chapo-article">{{ article.chapo }}</p>
-        </li>
+        <h4 class="titre-article">{{ article.titre }}</h4>
         {% endfor %}
       </ul>
     </div>

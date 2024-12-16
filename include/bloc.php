@@ -255,7 +255,7 @@ class Bloc
             case 'new':
                 $id = isset($_GET['id']) ? $_GET['id'] : null;
                 $modele = 'form/' . $id . '.twig.html';
-                $data = [];
+                $data = ['bloc' => Bloc::readOne($id)];
                 break;
 
             case 'create':

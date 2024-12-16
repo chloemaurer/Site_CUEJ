@@ -189,7 +189,7 @@ class Article
                     $modele = 'article/article.twig.html';
                     $data = [
                         'article' => Article::readOne($id_article),
-                        'listebloc' => Bloc::readByArticle($id_article)
+                        'listebloc' => Bloc::readAllByArticle($id_article)
                     ];
                 } else {
                     $modele = 'article/liste_articles.twig.html';

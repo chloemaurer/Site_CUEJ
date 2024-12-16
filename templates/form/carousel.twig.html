@@ -9,25 +9,29 @@
             class="form-control w-75 ms-5 border-black" />
     </div>
 
-    {# texte #}
+    {# texte 1#}
     <div class="col-md-4">
         <label for="texte" class="form-label mt-4">Contenu :</label>
         <input type="text" name="texte" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
     </div>
-
-    {# style #}
+    {# image #}
     <div class="col-md-4">
-        <label for="style" class="form-label mt-4">Style :</label>
-        <select id="style" name="style" class="form-select w-75 ms-5 border-black" aria-label="Default select example">
-            <option value="corp_de_texte" selected>Corps de texte</option>
-            <option value="chapo">Chapô</option>
-            <option value="encadre">Encadré</option>
-            <option value="exergue_l">Exergue long</option>
-            <option value="exergue_c">Exergue court</option>
-            <option value="legende">Légende</option>
-            <option value="credit_p">credit photo</option>
-            <option value="credir_a">credit article</option>
-        </select>
+        <label for="image">image :<span>(max 200 Ko)</span></label>
+        <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
+        <input type="file" id="image" name="image" class="image" title="votre image" autocomplete="off" />
+    </div>
+
+    {# alt #}
+    <div class="col-md-4">
+        <label for="alt" class="form-label mt-4">Description de l'image : </label>
+        <input type="text" name="alt" placeholder="description de l'image (si type = image)"
+            class="form-control w-75 ms-5 border-black" />
+    </div>
+
+    {# texte 2#}
+    <div class="col-md-4">
+        <label for="texte_titre" class="form-label mt-4">Contenu :</label>
+        <input type="text" name="texte" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
     </div>
 
     {# image #}
@@ -37,29 +41,65 @@
         <input type="file" id="image" name="image" class="image" title="votre image" autocomplete="off" />
     </div>
 
-    {# audio #}
+    {# alt #}
     <div class="col-md-4">
-        <label for="audio">audio :<span>(max 5 Mo)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="5000000" title="la taille max du fichier" autocomplete="off" />
-        <input type="file" id="audio" name="audio" class="audio" title="votre audio" autocomplete="off" />
+        <label for="alt" class="form-label mt-4">Description de l'image : </label>
+        <input type="text" name="alt" placeholder="description de l'image (si type = image)"
+            class="form-control w-75 ms-5 border-black" />
     </div>
 
-    {# video #}
+    {# texte 3#}
     <div class="col-md-4">
-        <label for="video">video :<span>(max 200 Mo)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="200000000" title="la taille max du fichier"
-            autocomplete="off" />
-        <input type="file" id="video" name="audio" class="video" title="votre video" autocomplete="off" />
+        <label for="texte" class="form-label mt-4">Contenu :</label>
+        <input type="text" name="texte" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
     </div>
 
-    {# infographie #}
+    {# image #}
     <div class="col-md-4">
-        <label for="video">video :<span>(max 5 Mo)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="5000000" title="la taille max du fichier"
-            autocomplete="off" />
-        <input type="file" id="video" name="audio" class="video" title="votre video" autocomplete="off" />
+        <label for="image">image :<span>(max 200 Ko)</span></label>
+        <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
+        <input type="file" id="image" name="image" class="image" title="votre image" autocomplete="off" />
     </div>
 
+    {# alt #}
+    <div class="col-md-4">
+        <label for="alt" class="form-label mt-4">Description de l'image : </label>
+        <input type="text" name="alt" placeholder="description de l'image (si type = image)"
+            class="form-control w-75 ms-5 border-black" />
+    </div>
+
+    {# texte 4#}
+    <div class="col-md-4">
+        <label for="texte" class="form-label mt-4">Contenu :</label>
+        <input type="text" name="texte" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
+    </div>
+
+    {# image #}
+    <div class="col-md-4">
+        <label for="image">image :<span>(max 200 Ko)</span></label>
+        <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
+        <input type="file" id="image" name="image" class="image" title="votre image" autocomplete="off" />
+    </div>
+
+    {# alt #}
+    <div class="col-md-4">
+        <label for="alt" class="form-label mt-4">Description de l'image : </label>
+        <input type="text" name="alt" placeholder="description de l'image (si type = image)"
+            class="form-control w-75 ms-5 border-black" />
+    </div>
+
+    {# texte 5#}
+    <div class="col-md-4">
+        <label for="texte" class="form-label mt-4">Contenu :</label>
+        <input type="text" name="texte" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
+    </div>
+
+    {# image #}
+    <div class="col-md-4">
+        <label for="image">image :<span>(max 200 Ko)</span></label>
+        <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
+        <input type="file" id="image" name="image" class="image" title="votre image" autocomplete="off" />
+    </div>
 
     {# alt #}
     <div class="col-md-4">

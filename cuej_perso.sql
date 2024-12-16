@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 09 déc. 2024 à 16:16
+-- Généré le : lun. 16 déc. 2024 à 08:03
 -- Version du serveur : 9.1.0
 -- Version de PHP : 8.3.14
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `cuej`
+-- Base de données : `cuej_perso`
 --
 
 -- --------------------------------------------------------
@@ -33,10 +33,20 @@ CREATE TABLE IF NOT EXISTS `article` (
   `titre` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
   `chapo` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
   `auteur` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `image` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `alt` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `ordre` int NOT NULL,
   `id_chapitre` int NOT NULL,
   PRIMARY KEY (`id_article`),
   KEY `id_chapitre` (`id_chapitre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `article`
+--
+
+INSERT INTO `article` (`id_article`, `titre`, `chapo`, `auteur`, `image`, `alt`, `ordre`, `id_chapitre`) VALUES
+(1, 'Article 1', 'swdfxghjoklm', 'fguhj', '', '', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -50,13 +60,15 @@ CREATE TABLE IF NOT EXISTS `bloc` (
   `type` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
   `texte` text COLLATE utf8mb4_general_ci NOT NULL,
   `style` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
-  `src` text COLLATE utf8mb4_general_ci NOT NULL,
+  `image` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `audio` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
+  `video` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
   `alt` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
-  `files` text COLLATE utf8mb4_general_ci NOT NULL,
+  `ordre` int NOT NULL,
   `id_article` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_article` (`id_article`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -69,17 +81,17 @@ CREATE TABLE IF NOT EXISTS `chapitre` (
   `id_chapitre` int NOT NULL AUTO_INCREMENT,
   `titre` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
   `chapo` text COLLATE utf8mb4_general_ci NOT NULL,
-  `src` text COLLATE utf8mb4_general_ci NOT NULL,
+  `image` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `alt` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_chapitre`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `chapitre`
 --
 
-INSERT INTO `chapitre` (`id_chapitre`, `titre`, `chapo`, `src`, `alt`) VALUES
-(1, 'Faire collectif, se mobiliser', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'https://www.rhone.mfr.fr/media/FD%20MFR%20RHONE/Metiers/agriculture.jpg', 'tracteur vroum vroum');
+INSERT INTO `chapitre` (`id_chapitre`, `titre`, `chapo`, `image`, `alt`) VALUES
+(2, 'Faire collectif, se mobiliser', 'coucou', '', '');
 
 --
 -- Contraintes pour les tables déchargées

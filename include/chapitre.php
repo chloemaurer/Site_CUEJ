@@ -36,18 +36,7 @@ class Chapitre
         return $query->fetchObject('Chapitre');
     }
 
-    function create()
-    {
-        $sql = "INSERT INTO chapitre (titre,chapo,image, alt) VALUES (:titre, :chapo, :image, :alt)";
-        $pdo = connexion();
-        $query = $pdo->prepare($sql);
-        $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
-        $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
-        $query->bindValue(':image', $this->image, PDO::PARAM_STR);
-        $query->bindValue(':alt', $this->alt, PDO::PARAM_STR);
-        $query->execute();
-        $this->id_chapitre = $pdo->lastInsertId();
-    }
+
 
     function update()
     {

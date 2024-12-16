@@ -1,20 +1,40 @@
 {% extends "base-admin.twig.html" %} {% block content %}
 
-<h1 class="text-center p-5">Liste des Chapitres</h1>
-{% for chapitre in listechapitre %}
-<h2>{{chapitre.titre}}</h2>
-<p>
-  <a
-    href="admin.php?page=chapitre&action=read&id={{ chapitre.id_chapitre }}"
-    >Voir</a
-  >
-  <a
-    href="admin.php?page=chapitre&action=modifier&id={{ chapitre.id_chapitre }}"
-    >Modifier</a
-  >
-  <a
-    href="admin.php?page=chapitre&action=delete&id={{ chapitre.id_chapitre }}"
-    >Supprimer</a
-  >
-</p>
-{% endfor %} {% endblock %}
+<h1 class="text-center p-5">Admin</h1>
+<h2>Admin du futur site du CUEJ</h2>
+
+<h3>LES CHAPITRES</h3>
+
+<div class="d-flex">
+  {% for chapitre in listechapitre %}
+  <div class="card" style="width: 18rem">
+    <img
+      src="upload/{{chapitre.image }}"
+      class="card-img-top"
+      alt="{{chapitre.alt}}"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ chapitre.titre }}</h5>
+      <p class="card-text">{{chapitre.chapo}}</p>
+      <div class="d-flex gap-2">
+        <a
+          href="admin.php?page=chapitre&action=read&id={{ chapitre.id_chapitre }}"
+          class="btn btn-primary"
+          ><i class="fa-solid fa-eye"></i
+        ></a>
+        <a
+          href="admin.php?page=chapitre&action=modifier&id={{ chapitre.id_chapitre }}"
+          class="btn btn-primary"
+          ><i class="fa-solid fa-pencil"></i
+        ></a>
+        <a
+          href="admin.php?page=chapitre&action=delete&id={{ chapitre.id_chapitre }}"
+          class="btn btn-primary"
+          ><i class="fa-solid fa-trash"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

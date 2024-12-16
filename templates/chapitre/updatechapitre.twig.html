@@ -3,6 +3,7 @@
 <form
   action="admin.php?page=chapitre&action=update"
   method="post"
+  enctype="multipart/form-data"
   class="row g-4 needs-validation"
   novalidate
 >
@@ -28,24 +29,42 @@
   </div>
   <div class="col-md-4">
     <label for="chapo" class="form-label mt-4">Chapô : </label>
-    <input
-      type="text"
+    <textarea
       name="chapo"
       placeholder="Saisir le texte"
-      value="{{chapitre.chapo}}"
       class="form-control w-75 ms-5 border-black"
-    />
+      rows="4"
+    >
+{{ chapitre.chapo }}</textarea
+    >
   </div>
+
   <div class="col-md-4">
-    <label for="image" class="form-label mt-4">Source de l'image : </label>
+    <label for="image" class="form-label mt-4">Télécharger une image :</label>
+    <!-- Aperçu de l'image actuelle -->
+    {% if chapitre.image %}
+    <div class="mb-3">
+      <img
+        src="upload/{{ chapitre.image }}"
+        alt="Image actuelle"
+        class="img-thumbnail"
+        style="max-width: 150px; height: auto"
+      />
+    </div>
+    {% endif %}
+
+    <!-- Champ pour uploader une nouvelle image -->
     <input
-      type="text"
+      type="file"
       name="image"
-      placeholder="Source de l'image"
+      accept="images/*"
       class="form-control w-75 ms-5 border-black"
-      value="{{chapitre.image}}"
     />
+
+    <!-- Champ caché pour conserver l'image existante -->
+    <input type="hidden" name="old-image" value="{{ chapitre.image }}" />
   </div>
+
   <div class="col-md-4">
     <label for="alt" class="form-label mt-4">Description de l'image : </label>
     <input

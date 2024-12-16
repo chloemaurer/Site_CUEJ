@@ -70,11 +70,12 @@ class Chapitre
         $this->id_chapitre = postInt('id_chapitre');
         $this->titre = postString('titre');
         $this->chapo = postString('chapo');
-        $this->image = postString('image');
+        $this->image = postString('old-image');
         $this->alt = postString('alt');
 
         // Récupère les informations sur le fichier uploadés si il existe
         $image = chargeFILE('image');
+
         if (!empty($image)) {
             // Supprime l'ancienne image si update
             unlink('upload/' . $this->image);

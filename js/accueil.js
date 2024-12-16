@@ -82,9 +82,9 @@ chapitres.forEach(({ image, section, xIcon }) => {
 
   chapitreImage.addEventListener("click", () => {
     hideAllChapitres(); // Masquer tous les chapitres
-    chapitreSection.classList.remove("d-none");
-    chapitreSection.classList.add("d-flex");
-    chapitreImage.classList.add("active"); // Ajoute la bordure blanche à l'image cliquée
+    chapitreSection.classList.toggle("d-none");
+    chapitreSection.classList.toggle("d-flex");
+    chapitreImage.classList.toggle("active"); // Ajoute la bordure blanche à l'image cliquée
   });
 
   chapitreXIcon.addEventListener("click", () => {

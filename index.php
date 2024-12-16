@@ -171,7 +171,7 @@ switch ($page) {
 
         // Ajouter les articles associés à chaque chapitre
         foreach ($listechapitre as $chapitre) {
-            $chapitre->articles = Article::readAllByChapitre($chapitre->id_chapitre);
+            Article::readAllByChapitre($chapitre->id_chapitre);
         }
 
         // Passer les données au template

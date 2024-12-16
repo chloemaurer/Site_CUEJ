@@ -4,15 +4,22 @@
 <form action="controleur.php?page=bloc&action=create" method="post" class="row g-4 needs-validation" novalidate>
     {# type #}
     <div class="col-md-4">
-        <label for="type" class="form-label mt-4">Type de bloc :</label>
-        <input type="text" name="type" placeholder="Quel type ?" value="{{id}}"
+        <input type="hidden" name="type" placeholder="Quel type ?" value="{{id}}"
             class="form-control w-75 ms-5 border-black" />
     </div>
+
 
     {# texte #}
     <div class="col-md-4">
         <label for="texte" class="form-label mt-4">Contenu :</label>
         <input type="text" name="texte" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
+    </div>
+
+
+    {# texte #}
+    <div class="col-md-4">
+        <label for="texte_legende" class="form-label mt-4">Légende :</label>
+        <input type="text" name="texte_legende" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
     </div>
 
     {# style #}
@@ -37,34 +44,20 @@
         <input type="file" id="image" name="image" class="image" title="votre image" autocomplete="off" />
     </div>
 
-    {# audio #}
-    <div class="col-md-4">
-        <label for="audio">audio :<span>(max 5 Mo)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="5000000" title="la taille max du fichier" autocomplete="off" />
-        <input type="file" id="audio" name="audio" class="audio" title="votre audio" autocomplete="off" />
-    </div>
-
-    {# video #}
-    <div class="col-md-4">
-        <label for="video">video :<span>(max 200 Mo)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="200000000" title="la taille max du fichier"
-            autocomplete="off" />
-        <input type="file" id="video" name="audio" class="video" title="votre video" autocomplete="off" />
-    </div>
-
+   
     {# infographie #}
     <div class="col-md-4">
-        <label for="video">video :<span>(max 5 Mo)</span></label>
+        <label for="video">Infographie :<span>(max 5 Mo)</span></label>
         <input type="hidden" name="MAX_FILE_SIZE" value="5000000" title="la taille max du fichier"
             autocomplete="off" />
-        <input type="file" id="video" name="audio" class="video" title="votre video" autocomplete="off" />
+        <input type="file" id="infographie" name="audio" class="infographie" title="votre infographie" autocomplete="off" />
     </div>
 
 
     {# alt #}
     <div class="col-md-4">
         <label for="alt" class="form-label mt-4">Description de l'image : </label>
-        <input type="text" name="alt" placeholder="description de l'image (si type = image)"
+        <input type="text" name="alt" placeholder="description de l'image (si type = image) ou de l'infographie"
             class="form-control w-75 ms-5 border-black" />
     </div>
 

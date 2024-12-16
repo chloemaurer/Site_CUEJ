@@ -10,6 +10,9 @@ class Bloc
     public $ordre;
     public $type;
     public $texte;
+    public $texte_titre;
+    public $texte_citation;
+    public $texte_legende;
     public $style;
     public $image;
     public $audio;
@@ -111,6 +114,9 @@ class Bloc
         $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
         $query->bindValue(':type', $this->type, PDO::PARAM_STR);
         $query->bindValue(':texte', $this->texte, PDO::PARAM_STR);
+        $query->bindValue(':texte_titre', $this->texte_titre, PDO::PARAM_STR);
+        $query->bindValue(':texte_citation', $this->texte_citation, PDO::PARAM_STR);
+        $query->bindValue(':texte_legende', $this->texte_legende, PDO::PARAM_STR);
         $query->bindValue(':style', $this->style, PDO::PARAM_STR);
         $query->bindValue(':image', $this->image, PDO::PARAM_STR);
         $query->bindValue(':audio', $this->audio, PDO::PARAM_STR);
@@ -131,6 +137,9 @@ class Bloc
         $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
         $query->bindValue(':type', $this->type, PDO::PARAM_STR);
         $query->bindValue(':texte', $this->texte, PDO::PARAM_STR);
+        $query->bindValue(':texte_titre', $this->texte_titre, PDO::PARAM_STR);
+        $query->bindValue(':texte_citation', $this->texte_citation, PDO::PARAM_STR);
+        $query->bindValue(':texte_legende', $this->texte_legende, PDO::PARAM_STR);
         $query->bindValue(':style', $this->style, PDO::PARAM_STR);
         $query->bindValue(':image', $this->image, PDO::PARAM_STR);
         $query->bindValue(':audio', $this->audio, PDO::PARAM_STR);
@@ -156,6 +165,9 @@ class Bloc
         $this->ordre = postInt('ordre');
         $this->type = postString('type');
         $this->texte = postString('texte');
+        $this->texte = postString('texte_titre');
+        $this->texte = postString('texte_citation');
+        $this->texte = postString('texte_legende');
         $this->texte = postString('style');
         $this->image = postString('old-image');
         $this->audio = postString('old-audio');
@@ -182,6 +194,13 @@ class Bloc
             // Supprime l'ancienne image si update
             unlink('upload/' . $this->video);
             $this->video = $video;
+        }
+
+        $infographie = chargeFILE('infographie');
+        if (!empty($infographie)) {
+            // Supprime l'ancienne image si update
+            unlink('upload/' . $this->infographie);
+            $this->infographie = $infographie;
         }
     }
 

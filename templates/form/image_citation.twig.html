@@ -4,31 +4,10 @@
 <form action="controleur.php?page=bloc&action=create" method="post" class="row g-4 needs-validation" novalidate>
     {# type #}
     <div class="col-md-4">
-        <label for="type" class="form-label mt-4">Type de bloc :</label>
-        <input type="text" name="type" placeholder="Quel type ?" value="{{id}}"
+        <input type="hidden" name="type" placeholder="Quel type ?" value="{{id}}"
             class="form-control w-75 ms-5 border-black" />
     </div>
 
-    {# texte #}
-    <div class="col-md-4">
-        <label for="texte" class="form-label mt-4">Contenu :</label>
-        <input type="text" name="texte" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
-    </div>
-
-    {# style #}
-    <div class="col-md-4">
-        <label for="style" class="form-label mt-4">Style :</label>
-        <select id="style" name="style" class="form-select w-75 ms-5 border-black" aria-label="Default select example">
-            <option value="corp_de_texte" selected>Corps de texte</option>
-            <option value="chapo">Chapô</option>
-            <option value="encadre">Encadré</option>
-            <option value="exergue_l">Exergue long</option>
-            <option value="exergue_c">Exergue court</option>
-            <option value="legende">Légende</option>
-            <option value="credit_p">credit photo</option>
-            <option value="credir_a">credit article</option>
-        </select>
-    </div>
 
     {# image #}
     <div class="col-md-4">
@@ -37,20 +16,19 @@
         <input type="file" id="image" name="image" class="image" title="votre image" autocomplete="off" />
     </div>
 
-    {# audio #}
+
+    {# texte #}
     <div class="col-md-4">
-        <label for="audio">audio :<span>(max 5 Mo)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="5000000" title="la taille max du fichier" autocomplete="off" />
-        <input type="file" id="audio" name="audio" class="audio" title="votre audio" autocomplete="off" />
+        <label for="texte_legende" class="form-label mt-4">Légende de l'image :</label>
+        <input type="text" name="texte_legende" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
     </div>
 
-    {# video #}
+    {# texte #}
     <div class="col-md-4">
-        <label for="video">video :<span>(max 200 Mo)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="200000000" title="la taille max du fichier"
-            autocomplete="off" />
-        <input type="file" id="video" name="audio" class="video" title="votre video" autocomplete="off" />
+        <label for="texte_citation" class="form-label mt-4">Citation:</label>
+        <input type="text" name="texte_citation" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
     </div>
+
 
     {# infographie #}
     <div class="col-md-4">

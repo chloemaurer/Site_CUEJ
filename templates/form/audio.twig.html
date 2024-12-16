@@ -44,22 +44,18 @@
         <input type="file" id="audio" name="audio" class="audio" title="votre audio" autocomplete="off" />
     </div>
 
-    {# video #}
+    {# texte titre #}
     <div class="col-md-4">
-        <label for="video">video :<span>(max 200 Mo)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="200000000" title="la taille max du fichier"
-            autocomplete="off" />
-        <input type="file" id="video" name="audio" class="video" title="votre video" autocomplete="off" />
+        <label for="texte_titre" class="form-label mt-4">Titre audio :</label>
+        <input type="text" name="texte_titre" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
     </div>
 
-    {# infographie #}
+    {# texte legende #}
     <div class="col-md-4">
-        <label for="video">video :<span>(max 5 Mo)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="5000000" title="la taille max du fichier"
-            autocomplete="off" />
-        <input type="file" id="video" name="audio" class="video" title="votre video" autocomplete="off" />
+        <label for="texte_legende" class="form-label mt-4">Légende audio :</label>
+        <input type="text" name="texte_legende" placeholder="Saisir le texte"
+            class="form-control w-75 ms-5 border-black" />
     </div>
-
 
     {# alt #}
     <div class="col-md-4">

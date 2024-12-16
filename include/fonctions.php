@@ -45,7 +45,7 @@ function chargeFILE($type)
 		$fileExt = explode('.', $fileName);
 		$fileActualExt = strtolower(end($fileExt));
 
-		$allowed = ['jpg', 'jpeg', 'jfif', 'png', 'mp3', 'wav', 'flac'];
+		$allowed = ['jpg', 'jpeg', 'png', 'mp3', 'mp4', 'svg'];
 
 		if (in_array($fileActualExt, $allowed)) {
 			if ($fileError === 0) {

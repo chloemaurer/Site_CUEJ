@@ -13,8 +13,13 @@ class Bloc
     public $texte_titre;
     public $texte_citation;
     public $texte_legende;
+    public $texte_credit;
     public $style;
     public $image;
+    public $image_1;
+    public $image_2;
+    public $image_3;
+    public $image_4;
     public $audio;
     public $video;
     public $infographie;
@@ -107,8 +112,8 @@ class Bloc
         $maximum = self::readOrderMax($this->id_article);
         $this->ordre = $maximum + 1;
 
-        $sql = "INSERT INTO bloc (ordre, type, texte, style, image, audio, video, id_article)
-				VALUES (:ordre, :type, :texte, :style, :image, :audio, :video, :id_article)";
+        $sql = "INSERT INTO bloc (ordre, type, texte, texte_titre, texte_citation, texte_legende, texte_credit, style, image, image_1, image_2, image_3, image_4 audio, video, id_article)
+				VALUES (:ordre, :type, :texte, :texte_titre, :texte_citation, :texte_legende, :texte_credit :style, :image, :image_1, :image_2, :image_3, :image_4, :audio, :video, :id_article)";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
         $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
@@ -117,8 +122,13 @@ class Bloc
         $query->bindValue(':texte_titre', $this->texte_titre, PDO::PARAM_STR);
         $query->bindValue(':texte_citation', $this->texte_citation, PDO::PARAM_STR);
         $query->bindValue(':texte_legende', $this->texte_legende, PDO::PARAM_STR);
+        $query->bindValue(':texte_credit', $this->texte_credit, PDO::PARAM_STR);
         $query->bindValue(':style', $this->style, PDO::PARAM_STR);
         $query->bindValue(':image', $this->image, PDO::PARAM_STR);
+        $query->bindValue(':image_1', $this->image_1, PDO::PARAM_STR);
+        $query->bindValue(':image_2', $this->image_2, PDO::PARAM_STR);
+        $query->bindValue(':image_3', $this->image_3, PDO::PARAM_STR);
+        $query->bindValue(':image_4', $this->image_4, PDO::PARAM_STR);
         $query->bindValue(':audio', $this->audio, PDO::PARAM_STR);
         $query->bindValue(':video', $this->video, PDO::PARAM_STR);
         $query->bindValue(':id_article', $this->id_article, PDO::PARAM_INT);
@@ -129,7 +139,9 @@ class Bloc
     function update()
     {
         $sql = "UPDATE bloc
-				SET ordre=:ordre, type=:type, texte=:texte, style=:style, image=:image, audio=:audio, video:video
+				SET ordre=:ordre, type=:type, texte=:texte, texte_titre=:texte_titre, texte_citation=:texte_citation, 
+                texte_legende=:texte_legende, texte_credit=:texte_credit, style=:style, image=:image, image_1=:image_1, 
+                image_2=:image_2, image_3=:image_3, image_4=:image_4, audio=:audio, video:video
 				WHERE id=:id";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
@@ -140,8 +152,13 @@ class Bloc
         $query->bindValue(':texte_titre', $this->texte_titre, PDO::PARAM_STR);
         $query->bindValue(':texte_citation', $this->texte_citation, PDO::PARAM_STR);
         $query->bindValue(':texte_legende', $this->texte_legende, PDO::PARAM_STR);
+        $query->bindValue(':texte_credit', $this->texte_credit, PDO::PARAM_STR);
         $query->bindValue(':style', $this->style, PDO::PARAM_STR);
         $query->bindValue(':image', $this->image, PDO::PARAM_STR);
+        $query->bindValue(':image_1', $this->image_1, PDO::PARAM_STR);
+        $query->bindValue(':image_2', $this->image_2, PDO::PARAM_STR);
+        $query->bindValue(':image_3', $this->image_3, PDO::PARAM_STR);
+        $query->bindValue(':image_4', $this->image_4, PDO::PARAM_STR);
         $query->bindValue(':audio', $this->audio, PDO::PARAM_STR);
         $query->bindValue(':video', $this->video, PDO::PARAM_STR);
         $query->execute();
@@ -168,8 +185,13 @@ class Bloc
         $this->texte = postString('texte_titre');
         $this->texte = postString('texte_citation');
         $this->texte = postString('texte_legende');
+        $this->texte = postString('texte_credit');
         $this->texte = postString('style');
         $this->image = postString('old-image');
+        $this->image = postString('old-image_1');
+        $this->image = postString('old-image_2');
+        $this->image = postString('old-image_3');
+        $this->image = postString('old-image_4');
         $this->audio = postString('old-audio');
         $this->video = postString('old-video');
         $this->id_article = postInt('id_article');

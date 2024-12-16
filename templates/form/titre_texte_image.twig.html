@@ -10,22 +10,16 @@
 
     {# texte #}
     <div class="col-md-4">
-        <label for="texte_titre" class="form-label mt-4">Titre :</label>
+        <label for="texte_titre" class="form-label mt-4">Titre du bloc:</label>
         <input type="text" name="texte_titre" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
     </div>
 
     {# texte #}
     <div class="col-md-4">
-        <label for="texte" class="form-label mt-4">Contenu :</label>
-        <input type="text" name="texte" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
+        <label for="texte" class="form-label mt-4">Texte :</label>
+        <textarea type="texte" name="texte" id="" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black"></textarea>
     </div>
 
-
-    {# texte #}
-    <div class="col-md-4">
-        <label for="texte_legende" class="form-label mt-4">Légende :</label>
-        <input type="text" name="texte_legende" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
-    </div>
 
     {# style #}
     <div class="col-md-4">
@@ -47,6 +41,20 @@
         <label for="image">image :<span>(max 200 Ko)</span></label>
         <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
         <input type="file" id="image" name="image" class="image" title="votre image" autocomplete="off" />
+    </div>
+
+
+    {# texte #}
+    <div class="col-md-4">
+        <label for="texte_legende" class="form-label mt-4">Légende :</label>
+        <input type="text" name="texte_legende" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
+    </div>
+
+
+    {# texte #}
+    <div class="col-md-4">
+        <label for="texte_credit" class="form-label mt-4">Crédit :</label>
+        <input type="text" name="texte_credit" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
     </div>
 
 

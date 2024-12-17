@@ -73,13 +73,13 @@
   <div class="mt-5">
     <h3 class="text-primary mb-3">Contenu associé</h3>
     {% for bloc in listebloc %} {% if bloc.type == "h1" %}
-    <h1>{{ bloc.texte }}</h1>
+    <h1>{{ bloc.texte | raw}}</h1>
     {% elseif bloc.type == "h2" %}
-    <h2>{{ bloc.texte }}</h2>
+    <h2>{{ bloc.texte | raw}}</h2>
     {% elseif bloc.type == "h3" %}
-    <h3>{{ bloc.texte }}</h3>
+    <h3>{{ bloc.texte | raw}}</h3>
     {% elseif bloc.type == "paragraphe" %}
-    <p class="{{ bloc.css }}">{{ bloc.texte }}</p>
+    <p class="{{ bloc.css }}">{{ bloc.texte | raw}}</p>
     {% elseif bloc.type == "image" %}
     <img src="{{ bloc.src }}" alt="{{ bloc.alt }}" class="img-fluid mb-3" />
     {% else %}

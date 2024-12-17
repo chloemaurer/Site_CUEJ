@@ -142,8 +142,6 @@ class Bloc
 
     function update()
     {
-        var_dump($this->id);
-        exit;
         $sql = "UPDATE bloc 
             SET ordre=:ordre, 
                 type=:type, 
@@ -335,6 +333,7 @@ class Bloc
                 $data = [
                     'bloc' => $bloc, // Si vous avez des données associées à $id
                     'id' => $id,                  // Passez l'id à Twig
+                    'id_bloc' => $id_bloc,
                     'listearticle' => Article::readAll()
                 ];
                 break;

@@ -113,6 +113,7 @@ class Article
         // Gestion des erreurs SQL
         try {
             $query->execute();
+            $this->id_article = $pdo->lastInsertId();
         } catch (PDOException $e) {
             echo "Erreur SQL : " . $e->getMessage();
             exit;
@@ -139,8 +140,10 @@ class Article
 
     public static function delete($id_article)
     {
-        $sql = "DELETE FROM article WHERE id_article = :id_article";
         $pdo = connexion();
+        Bloc::deleteByArticle($id_article);
+        $sql = "DELETE FROM article WHERE id_article = :id_article";
+
         $query = $pdo->prepare($sql);
         $query->bindValue(':id_article', $id_article, PDO::PARAM_INT);
 
@@ -203,10 +206,8 @@ class Article
                 break;
                 ////////////////////////////////////
             case 'new':
-                $id_chapitre_selectionne = isset($_GET['id_chapitre']) ? intval($_GET['id_chapitre']) : 0;
                 $modele = "article/newarticle.twig.html";
                 $data = [
-                    'id_chapitre_selectionne' => $id_chapitre_selectionne,
                     'listechapitre' => Chapitre::readAll()
                 ];
                 break;
@@ -218,17 +219,29 @@ class Article
                 $article = new Article();
                 $article->chargePOST();
 
-                $article->create();
+                $article->create(); // Récupère l'ID de l'article créé
 
-                // Étape 3 : Rediriger vers la page des articles
-                header('Location: admin.php?page=article&action=read');
+                // Étape 2 : Rediriger vers la page de l'article créé
+                header('Location: admin.php?page=article&action=read&id=' . $article->id_article);
+                exit; // Toujours ajouter exit après un header
                 break;
 
                 ////////////////////////////////////
             case 'delete':
+
+
+                // Récupère l'ID du chapitre avant de supprimer l'article
+                $article = Article::readOne($id_article);
+                $id_chapitre = $article->id_chapitre;
+
+                // Supprime l'article
                 Article::delete($id_article);
-                header('Location: admin.php?page=article&action=read');
+
+                // Redirige vers le chapitre correspondant
+                header('Location: admin.php?page=chapitre&action=read&id=' . $id_chapitre);
+                exit;
                 break;
+
                 ////////////////////////////////////
             case 'modifier':
                 // Récupère l'ID de l'article depuis l'URL

@@ -181,6 +181,18 @@ class Bloc
         $query->execute();
     }
 
+
+
+    static function deleteByArticle($id_article)
+    {
+        $sql = 'DELETE FROM bloc WHERE id_article = :id_article';
+        $pdo = connexion();
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':id_article', $id_article, PDO::PARAM_INT);
+        $query->execute();
+    }
+
+
     function chargePOST()
     {
         $this->id = postInt('id');
@@ -274,9 +286,10 @@ class Bloc
                 $bloc = new Bloc();
                 var_dump($_POST);
                 $bloc->chargePOST();
-                var_dump($_POST);
+
                 $bloc->create();
-                var_dump($bloc);
+
+                header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
                 break;
 
             case 'delete':

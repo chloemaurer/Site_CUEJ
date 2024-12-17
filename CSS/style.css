@@ -1,36 +1,30 @@
-.corp_de_texte {
-
+.bleu {
+  color: rgb(67, 124, 216);
 }
 
-.chapo {
-
+.rouge {
+  color: red;
 }
 
-.encadre{
-
-} 
-
-.exergue_l {
-
+.vert {
+  color: rgb(86, 182, 86);
 }
 
-.exergue_c {
-
+.violet {
+  color: rgb(128, 26, 201);
 }
 
-.legende {
-
+.rose {
+  color: rgb(255, 113, 215);
 }
 
-.credit_p {
-
+.jaune {
+  color: rgb(231, 225, 56);
 }
 
-.credir_a {
-  
+.aucun {
+  color: black;
 }
-
-
 
 .container {
   width: 800px;

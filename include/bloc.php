@@ -20,6 +20,7 @@ class Bloc
     public $image_2;
     public $image_3;
     public $image_4;
+    public $alt;
     public $audio;
     public $video;
     public $infographie;
@@ -112,10 +113,14 @@ class Bloc
         $maximum = self::readOrderMax($this->id_article);
         $this->ordre = $maximum + 1;
 
-        $sql = "INSERT INTO bloc (ordre, type, texte, texte_titre, texte_citation, texte_legende, texte_credit, style, image, 
-        image_1, image_2, image_3, image_4, audio, video, id_article)
-				VALUES (:ordre, :type, :texte, :texte_titre, :texte_citation, :texte_legende, :texte_credit, :style, :image, 
-        :image_1, :image_2, :image_3, :image_4, :audio, :video, :id_article)";
+        $sql = "INSERT INTO bloc (ordre, type, texte, 
+        -- texte_titre, texte_citation, texte_legende, texte_credit, 
+        style, image, 
+        image_1, image_2, image_3, image_4, alt, audio, video, infographie, id_article)
+				VALUES (:ordre, :type, :texte, 
+                -- :texte_titre, :texte_citation, :texte_legende, :texte_credit, 
+                :style, :image, 
+        :image_1, :image_2, :image_3, :image_4, :alt, :audio, :video, :infographie, :id_article)";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
         $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
@@ -131,8 +136,10 @@ class Bloc
         $query->bindValue(':image_2', $this->image_2, PDO::PARAM_STR);
         $query->bindValue(':image_3', $this->image_3, PDO::PARAM_STR);
         $query->bindValue(':image_4', $this->image_4, PDO::PARAM_STR);
+        $query->bindValue(':alt', $this->alt, PDO::PARAM_STR);
         $query->bindValue(':audio', $this->audio, PDO::PARAM_STR);
         $query->bindValue(':video', $this->video, PDO::PARAM_STR);
+        $query->bindValue(':infographie', $this->infographie, PDO::PARAM_STR);
         $query->bindValue(':id_article', $this->id_article, PDO::PARAM_INT);
         $query->execute();
         $this->id = $pdo->lastInsertId();
@@ -161,6 +168,7 @@ class Bloc
         $query->bindValue(':image_2', $this->image_2, PDO::PARAM_STR);
         $query->bindValue(':image_3', $this->image_3, PDO::PARAM_STR);
         $query->bindValue(':image_4', $this->image_4, PDO::PARAM_STR);
+        $query->bindValue('alt', $this->alt, PDO::PARAM_STR);
         $query->bindValue(':audio', $this->audio, PDO::PARAM_STR);
         $query->bindValue(':video', $this->video, PDO::PARAM_STR);
         $query->execute();
@@ -183,18 +191,18 @@ class Bloc
         $this->id = postInt('id');
         $this->ordre = postInt('ordre');
         $this->type = postString('type');
-        $this->texte = postString('texte');
         $this->texte = insecables(postString('texte'));
         $this->texte_titre = insecables(postString('texte_titre'));
         $this->texte_citation = insecables(postString('texte_citation'));
         $this->texte_legende = insecables(postString('texte_legende'));
         $this->texte_credit = insecables(postString('texte_credit'));
-        $this->texte = postString('style');
+        $this->style = postString('style');
         $this->image = postString('old-image');
-        $this->image = postString('old-image_1');
-        $this->image = postString('old-image_2');
-        $this->image = postString('old-image_3');
-        $this->image = postString('old-image_4');
+        $this->image_1 = postString('old-image_1');
+        $this->image_2 = postString('old-image_2');
+        $this->image_3 = postString('old-image_3');
+        $this->image_4 = postString('old-image_4');
+        $this->alt = postString('alt');
         $this->audio = postString('old-audio');
         $this->video = postString('old-video');
         $this->id_article = postInt('id_article');
@@ -269,10 +277,11 @@ class Bloc
 
             case 'create':
                 $bloc = new Bloc();
+                var_dump($_POST);
                 $bloc->chargePOST();
+                var_dump($_POST);
                 $bloc->create();
-                header('Location: admin.php?page=bloc&action=read');
-
+                var_dump($bloc);
                 break;
 
             case 'delete':
@@ -284,7 +293,7 @@ class Bloc
             case 'modifier':
                 $bloc = Bloc::readOne($id);
                 $modele = 'bloc/updatebloc.twig.html';
-                $data = [$bloc->afficheForm()];
+                $data = [];
                 break;
 
             case 'update':

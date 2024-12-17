@@ -1,16 +1,22 @@
 {% extends "base-admin.twig.html" %} {% block content %}
 
 <h1 class="text-center p-5">Liste des blocs</h1>
-{% for bloc in listebloc %} {% if bloc.type == "h1" %}
+{% for bloc in listebloc %} 
+{% if bloc.type == "h1" %}
 <h1 class="{{bloc.style}}">{{ bloc.texte }}</h1>
+
 {% elseif bloc.type == "h2" %}
 <h2 class="{{bloc.style}}">{{ bloc.texte }}</h2>
+
 {% elseif bloc.type == "h3" %}
 <h3 class="{{bloc.style}}">{{ bloc.texte }}</h3>
+
 {% elseif bloc.type == "paragraphe" %}
 <p class="{{bloc.style}}">{{ bloc.texte }}</p>
+
 {% elseif bloc.type == "image" %}
 <img src="{{ bloc.src }}" alt="{{ bloc.alt }}" />
+
 {% else %}
 <p>Type de bloc inconnu : {{ bloc.type }}</p>
 {% endif %}

@@ -41,25 +41,42 @@
 </a>
 
 <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=image">
-  <figure class="figure w-50  mb-5 border border-solid m-3 border-dark p-2">
-    <img src="https://www.rhone.mfr.fr/media/FD%20MFR%20RHONE/Metiers/agriculture.jpg"
-      class="figure-img img-fluid rounded" alt="...">
-    <figcaption class="figure-caption text-end">A caption for the above image.</figcaption>
-  </figure>
+  <div class="container">
+    <div class="mx-auto" style="max-width: 960px;">
+      <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=image">
+        <figure class="figure mb-5 border border-solid border-dark p-2">
+          <img src="https://www.rhone.mfr.fr/media/FD%20MFR%20RHONE/Metiers/agriculture.jpg"
+            class="figure-img img-fluid rounded" alt="...">
+          <figcaption class="figure-caption mt-2">A caption for the above image.</figcaption>
+        </figure>
+      </a>
+    </div>
+  </div>
 </a>
 
 <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=citation">
-  <figure class="text-end  mb-5 border border-solid m-3 border-dark p-2">
-    <blockquote class="blockquote">
-      <p>A well-known quote, contained in a choixkquote element.</p>
-    </blockquote>
-    <figcaption class="blockquote-footer">
-      Someone famous in <cite title="Source Title">Source Title</cite>
-    </figcaption>
-  </figure>
+  <div class="container">
+    <div class="mx-auto" style="max-width: 960px;">
+      <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=citation">
+        <figure class="text-center mb-5 border border-solid border-dark p-3">
+          <div class="d-flex justify-content-center mb-3">
+            <img src="https://via.placeholder.com/80" class="rounded-circle mx-2" alt="...">
+            <blockquote class="blockquote mb-0">
+              <p class="lead">A well-known quote, contained in a blockquote element. This is a longer excerpt to give context to the quote and provide a bit more information.</p>
+            </blockquote>
+            <img src="https://via.placeholder.com/80" class="rounded-circle mx-2" alt="...">
+          </div>
+          <figcaption class="blockquote-footer">
+            Someone famous in <cite title="Source Title">Source Title</cite>
+          </figcaption>
+        </figure>
+      </a>
+    </div>
+  </div>
 </a>
 
 <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=video">
+  <div class="mx-auto" style="max-width: 960px;"></div>
   <video controls width="640" class=" mb-5 border border-solid m-3 border-dark p-2">
     <source src="video/grTP01_maurerchloe_TP01.mp4" type="video/mp4">
     Votre navigateur ne supporte pas la vidéo.
@@ -181,26 +198,27 @@
   </div>
 </a>
 
-<a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=texte_image">
-  <div class=" d-flex  mb-5 border border-solid m-3 border-dark p-2">
-    <p class="m-4">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
-      born
-      and I will
-      give you a complete account of the system, and expound the actual teachings of the great explorer of the truth,
-      the
-      master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure,
-      but
-      because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
-      Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but
-      because
-      occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial
-      example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who
-      has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one
-      who
-      avoids a pain that produces no resultant pleasure?</p>
-    <img class="w-50"
-      src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
-      alt="">
+  <div class="container-fluid" style="padding-left: 144px; ">
+    <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=texte_image">
+      <div class="container-fluid px-5"> <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
+        <div class="row align-items-center mb-5">
+          <!-- Texte à gauche (col-8 pour le texte) -->
+          <div class="col-8">
+            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.</p>
+          </div>
+          <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
+          <div class="col-4 d-flex justify-content-center p-0">
+            <div class="bg-danger p-3 w-100">
+              <img 
+                src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826" 
+                class="img-fluid" 
+                alt="Image">
+              <p class="text-white text-center mt-2 mb-0">Crédit photo : Freepik</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>  
   </div>
 </a>
 
@@ -255,12 +273,22 @@
 </a>
 
 <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=image_titre_texte">
-  <div class=" d-flex  mb-5 border border-solid m-3 border-dark p-2">
-    <img class="w-50"
-      src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
-      alt="">
-    <div class="m-4">
-      <h4>Titre</h4>
+  <!-- Bloc avec texte à gauche -->
+<div class="container-fluid">
+  <div class="row align-items-center mb-5">
+    <!-- Encadré rouge avec padding et image -->
+    <div class="col-6 d-flex justify-content-center p-0">
+      <div class="bg-danger p-3 w-100">
+        <img 
+          src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826" 
+          class="img-fluid" 
+          alt="Image">
+        <p class="text-white text-center mt-2 mb-0">Crédit photo : Freepik</p>
+      </div>
+    </div>
+    <!-- Texte -->
+    <div class="col-4 ms-5">
+
       <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
         born
         and I will
@@ -268,43 +296,43 @@
         the
         master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure,
         but
-        because those who do not know how to pursue pleasure rationally encounter consequences that are extremely
-        painful.
+        because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
         Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but
-        because
-        occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial
-        example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But
-        who
-        has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one
-        who
-        avoids a pain that produces no resultant pleasure?</p>
+        because</p>
     </div>
   </div>
+</div>
 </a>
 
 <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=citation_texte">
-  <div class="container  mb-5 border border-solid m-3 border-dark p-2">
-    <figure class="text-end  mb-5 border border-solid m-3 border-dark p-2">
-      <blockquote class="blockquote">
-        <p>A well-known quote, contained in a choixkquote element.</p>
-      </blockquote>
-      <figcaption class="blockquote-footer">
-        Someone famous in <cite title="Source Title">Source Title</cite>
-      </figcaption>
-    </figure>
-
-    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
-      born
-      and I will
-      give you a complete account of the system, and expound the actual teachings of the great explorer of the truth,
-      the
-      master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure,
-      but
-      because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
-      Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but
-      because
-    </p>
+  <!-- Bloc avec texte à droite -->
+<div class="container-fluid">
+  <div class="row align-items-center flex-row-reverse mb-5">
+    <!-- Encadré rouge avec padding et image -->
+    <div class="col-6 d-flex justify-content-center p-0">
+      <div class="bg-danger p-3 w-100">
+        <img 
+          src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826" 
+          class="img-fluid" 
+          alt="Image">
+        <p class="text-white text-center mt-2 mb-0">Crédit photo : Freepik</p>
+      </div>
+    </div>
+    <!-- Texte -->
+    <div class="col-4 ms-5">
+      <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
+        born
+        and I will
+        give you a complete account of the system, and expound the actual teachings of the great explorer of the truth,
+        the
+        master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure,
+        but
+        because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
+        Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but
+        because</p>
+    </div>
   </div>
+</div>
 </a>
 
 <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=texte_citation">

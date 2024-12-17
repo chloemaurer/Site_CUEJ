@@ -34,9 +34,15 @@ class Chapitre
         $query = $pdo->prepare($sql);
         $query->bindValue(':id_chapitre', $id_chapitre, PDO::PARAM_INT);
         $query->execute();
-        return $query->fetchObject('Chapitre');
-    }
+        $chapitre = $query->fetchObject('Chapitre');
 
+        // Appliquer html_entity_decode() pour éviter l'affichage des entités HTML comme &nbsp;
+        if ($chapitre) {
+            $chapitre->chapo = html_entity_decode($chapitre->chapo, ENT_QUOTES, 'UTF-8');
+        }
+
+        return $chapitre;
+    }
 
 
     function update()
@@ -68,8 +74,8 @@ class Chapitre
     function chargePOST()
     {
         $this->id_chapitre = postInt('id_chapitre');
-        $this->titre = html_entity_decode(postString('titre'));
-        $this->chapo = html_entity_decode(postString('chapo'));
+        $this->titre = postString('titre');
+        $this->chapo = insecables(postString('chapo'));
         $this->image = postString('old-image');
         $this->alt = postString('alt');
 

@@ -66,3 +66,23 @@ function chargeFILE($type)
 		return '';
 	}
 }
+
+function insecables($texte)
+{
+	// Espaces insécables fines (&#8239;) avant les signes de ponctuation doubles
+	$texte = preg_replace('/\s([;:?!%])/u', '&nbsp;$1', $texte); // ; : ? ! %
+
+	// Espaces insécables (&#160; ou &nbsp;) après les chiffres pour unités et nombres
+	$texte = preg_replace('/(\d)\s+(h|ans|fois|€|%)/u', '$1&nbsp;$2', $texte); // 2 h 30 → 2&nbsp;h&nbsp;30
+	$texte = preg_replace('/(\d)\s+(ans|fois)/u', '$1&nbsp;$2', $texte); // 17 ans → 17&nbsp;ans
+	$texte = preg_replace('/(\d)\s+(€|%)/u', '$1&nbsp;$2', $texte); // 100 € → 100&nbsp;€
+
+	// Espaces insécables pour les grands nombres (ex. 200 000 → 200&nbsp;000)
+	$texte = preg_replace('/(\d)(?=(\d{3})+(?!\d))/u', '$1&nbsp;', $texte);
+
+	// Espaces insécables entre guillemets français « ... » et les mots
+	$texte = preg_replace('/«\s/u', '«&nbsp;', $texte);
+	$texte = preg_replace('/\s»/u', '&nbsp;»', $texte);
+
+	return $texte;
+}

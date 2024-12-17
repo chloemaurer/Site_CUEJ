@@ -68,8 +68,8 @@ class Chapitre
     function chargePOST()
     {
         $this->id_chapitre = postInt('id_chapitre');
-        $this->titre = postString('titre');
-        $this->chapo = postString('chapo');
+        $this->titre = html_entity_decode(postString('titre'));
+        $this->chapo = html_entity_decode(postString('chapo'));
         $this->image = postString('old-image');
         $this->alt = postString('alt');
 

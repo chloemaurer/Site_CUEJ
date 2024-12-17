@@ -21,9 +21,11 @@
       <div class="col-md-8">
         <div class="card-body">
           <h2 class="card-title">{{ article.titre }}</h2>
-          <p class="card-text"><strong>Chapô :</strong> {{ article.chapo }}</p>
           <p class="card-text">
-            <strong>Auteur :</strong> {{ article.auteur }}
+            <strong>Chapô :</strong> {{ article.chapo|raw }}
+          </p>
+          <p class="card-text">
+            <strong>Auteur :</strong> {{ article.auteur|raw }}
           </p>
         </div>
         <div class="card-footer d-flex justify-content-between">

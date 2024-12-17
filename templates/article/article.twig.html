@@ -1,28 +1,71 @@
 {% extends "base-admin.twig.html" %} {% block content %}
-<h1>Les Articles</h1>
-<p>Type : {{ article.titre }}</p>
-<p>Chapo : {{ article.chapo }}</p>
-<p>style : {{ article.auteur }}</p>
+<div class="container py-5">
+  <!-- Titre de la section -->
+  <h1 class="mb-4 text-center text-primary">Détails de l'article</h1>
 
-<a href="admin.php?page=article&action=modifier&id={{ article.id_article }}"
-  >Modifier</a
->
-<a href="admin.php?page=article&action=delete&id={{ article.id_article }}"
-  >Supprimer</a
->
-<a href="admin.php?page=article&action=read">Retour à la liste</a>
+  <!-- Carte contenant l'article -->
+  <div class="card shadow-sm">
+    <div class="row g-0">
+      <!-- Affichage de l'image de l'article -->
+      {% if article.image %}
+      <div class="col-md-4">
+        <img
+          src="upload/{{ article.image }}"
+          alt="Image de l'article"
+          class="img-fluid rounded-start"
+        />
+      </div>
+      {% endif %}
 
-{% for bloc in listebloc %} {% include ('bloc/'~bloc.type~'.twig.html') %} {% if
-bloc.type == "h1" %}
-<h1>{{ bloc.texte }}</h1>
-{% elseif bloc.type == "h2" %}
-<h2>{{ bloc.texte }}</h2>
-{% elseif bloc.type == "h3" %}
-<h3>{{ bloc.texte }}</h3>
-{% elseif bloc.type == "paragraphe" %}
-<p class="{{ bloc.css }}">{{ bloc.texte }}</p>
-{% elseif bloc.type == "image" %}
-<img src="{{ bloc.src }}" alt="{{ bloc.alt }}" />
-{% else %}
-<p>Type de bloc inconnu : {{ bloc.type }}</p>
-{% endif %} {% endfor %} {% endblock %}
+      <!-- Contenu de l'article -->
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2 class="card-title">{{ article.titre }}</h2>
+          <p class="card-text"><strong>Chapô :</strong> {{ article.chapo }}</p>
+          <p class="card-text">
+            <strong>Auteur :</strong> {{ article.auteur }}
+          </p>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <a
+            href="admin.php?page=article&action=modifier&id={{ article.id_article }}"
+            class="btn btn-warning"
+          >
+            <i class="fa-solid fa-pencil"></i> Modifier
+          </a>
+          <a
+            href="admin.php?page=article&action=delete&id={{ article.id_article }}"
+            class="btn btn-danger"
+          >
+            <i class="fa-solid fa-trash"></i> Supprimer
+          </a>
+          <a
+            href="admin.php?page=article&action=read"
+            class="btn btn-secondary"
+          >
+            <i class="fa-solid fa-arrow-left"></i> Retour à la liste
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blocs associés -->
+  <div class="mt-5">
+    <h3 class="text-primary mb-3">Contenu associé</h3>
+    {% for bloc in listebloc %} {% if bloc.type == "h1" %}
+    <h1>{{ bloc.texte }}</h1>
+    {% elseif bloc.type == "h2" %}
+    <h2>{{ bloc.texte }}</h2>
+    {% elseif bloc.type == "h3" %}
+    <h3>{{ bloc.texte }}</h3>
+    {% elseif bloc.type == "paragraphe" %}
+    <p class="{{ bloc.css }}">{{ bloc.texte }}</p>
+    {% elseif bloc.type == "image" %}
+    <img src="{{ bloc.src }}" alt="{{ bloc.alt }}" class="img-fluid mb-3" />
+    {% else %}
+    <p>Type de bloc inconnu : {{ bloc.type }}</p>
+    {% endif %} {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -4,6 +4,7 @@
   action="admin.php?page=article&action=create"
   method="post"
   class="row g-4 needs-validation"
+  enctype="multipart/form-data"
   novalidate
 >
   <div class="col-md-4">
@@ -46,12 +47,10 @@
   </div>
 
   <!-- Champ pour uploader une nouvelle image -->
-  <input
-    type="file"
-    name="image"
-    accept="images/*"
-    class="form-control w-75 ms-5 border-black"
-  />
+  <div class="col-md-6">
+    <label for="image" class="form-label">Image :</label>
+    <input type="file" name="image" accept="images/*" class="form-control" />
+  </div>
 
   <div class="d-flex justify-content-center">
     <button

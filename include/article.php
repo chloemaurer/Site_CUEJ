@@ -205,15 +205,14 @@ class Article
                 break;
 
             case 'create':
-
                 // Étape 2 : Créer un nouvel article
                 $article = new Article();
                 $article->chargePOST();
+
                 $article->create();
 
                 // Étape 3 : Rediriger vers la page des articles
                 header('Location: admin.php?page=article&action=read');
-                exit;
                 break;
 
                 ////////////////////////////////////
@@ -223,17 +222,32 @@ class Article
                 break;
                 ////////////////////////////////////
             case 'modifier':
-                $article = Article::readOne($id_article);
-                $modele = 'article/updatearticle.twig.html';
-                $data = ['article' => $article, 'listechapitre' => Chapitre::readAll()];
+                // Récupère l'ID de l'article depuis l'URL
+                if ($id_article > 0) {
+                    $article = Article::readOne($id_article);
+                    $listechapitre = Chapitre::readAll(); // Pour le menu déroulant des chapitres
+
+                    $modele = 'article/updatearticle.twig.html'; // Fichier du formulaire
+                    $data = [
+                        'article' => $article,
+                        'listechapitre' => $listechapitre
+                    ];
+                } else {
+                    header('Location: admin.php?page=article&action=read'); // Redirection si ID incorrect
+                    exit;
+                }
                 break;
 
             case 'update':
+                // Récupère les données du formulaire pour mettre à jour l'article
                 $article = new Article();
-                $article->chargePOST();
-                $article->update();
-                header('Location: admin.php?page=article&action=read');
+                $article->chargePOST(); // Charge les nouvelles données
+                $article->update();     // Met à jour dans la BDD
+
+                header('Location: admin.php?page=article&action=read'); // Redirection vers la liste
+                exit;
                 break;
+
 
             default:
                 echo 'Action non reconnue';

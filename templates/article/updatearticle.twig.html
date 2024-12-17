@@ -1,68 +1,93 @@
-{% extends "base-admin.twig.html" %} {% block content %}
+{% extends "base-admin.twig.html" %}
 
-<form
-  action="admin.php?page=article&action=create"
-  method="post"
-  enctype="multipart/form-data"
-  class="row g-4 needs-validation"
-  novalidate
->
-  <!-- Titre -->
-  <div class="col-md-6">
-    <label for="titre" class="form-label">Titre :</label>
-    <input
-      type="text"
-      name="titre"
-      placeholder="Titre de l'article"
-      class="form-control"
-      required
-    />
-  </div>
+{% block content %}
+<div class="container py-5">
+  <h1 class="text-center text-primary">Modifier l'article</h1>
 
-  <!-- Chapô -->
-  <div class="col-md-6">
-    <label for="chapo" class="form-label">Chapô :</label>
-    <textarea
-      name="chapo"
-      placeholder="Saisir le texte d'introduction"
-      class="form-control"
-      rows="4"
-      required
-    ></textarea>
-  </div>
+  <!-- Formulaire -->
+  <form
+    action="admin.php?page=article&action=update"
+    method="post"
+    enctype="multipart/form-data"
+    class="row g-4"
+  >
+    <!-- ID de l'article (caché) -->
+    <input type="hidden" name="id_article" value="{{ article.id_article }}" />
 
-  <!-- Auteur -->
-  <div class="col-md-6">
-    <label for="auteur" class="form-label">Auteur :</label>
-    <input
-      type="text"
-      name="auteur"
-      placeholder="Nom de l'auteur"
-      class="form-control"
-      required
-    />
-  </div>
+    <!-- Titre -->
+    <div class="col-md-6">
+      <label for="titre" class="form-label">Titre :</label>
+      <input
+        type="text"
+        name="titre"
+        value="{{ article.titre }}"
+        class="form-control"
+        required
+      />
+    </div>
 
-  <!-- Sélection du chapitre -->
-  <div class="col-md-6">
-    <label for="id_chapitre" class="form-label">Chapitre :</label>
-    <select name="id_chapitre" class="form-select" required>
-      {% for chapitre in listechapitre %}
-      <option value="{{ chapitre.id_chapitre }}">{{ chapitre.titre }}</option>
-      {% endfor %}
-    </select>
-  </div>
+    <!-- Chapô -->
+    <div class="col-md-6">
+      <label for="chapo" class="form-label">Chapô :</label>
+      <textarea
+        name="chapo"
+        rows="4"
+        class="form-control"
+        required
+      >{{ article.chapo }}</textarea>
+    </div>
 
-  <!-- Image -->
-  <div class="col-md-6">
-    <label for="image" class="form-label">Image :</label>
-    <input type="file" name="image" accept="image/*" class="form-control" />
-  </div>
+    <!-- Auteur -->
+    <div class="col-md-6">
+      <label for="auteur" class="form-label">Auteur :</label>
+      <input
+        type="text"
+        name="auteur"
+        value="{{ article.auteur }}"
+        class="form-control"
+        required
+      />
+    </div>
 
-  <!-- Bouton de soumission -->
-  <div class="col-12 d-flex justify-content-center">
-    <button type="submit" class="btn btn-success">Créer l'article</button>
-  </div>
-</form>
+    <!-- Chapitre -->
+    <div class="col-md-6">
+      <label for="id_chapitre" class="form-label">Chapitre :</label>
+      <select name="id_chapitre" class="form-select">
+        {% for chapitre in listechapitre %}
+        <option
+          value="{{ chapitre.id_chapitre }}"
+          {% if chapitre.id_chapitre == article.id_chapitre %}selected{% endif %}
+        >
+          {{ chapitre.titre }}
+        </option>
+        {% endfor %}
+      </select>
+    </div>
 
+    <!-- Image -->
+    <div class="col-md-6">
+      <label for="image" class="form-label">Image :</label>
+      <!-- Aperçu de l'image actuelle -->
+      {% if article.image %}
+      <div class="mb-2">
+        <img
+          src="upload/{{ article.image }}"
+          alt="Image actuelle"
+          class="img-thumbnail"
+          style="max-width: 150px;"
+        />
+      </div>
+      {% endif %}
+      <input type="file" name="image" class="form-control" />
+
+      <!-- Champ caché pour conserver l'image existante -->
+      <input type="hidden" name="old-image" value="{{ article.image }}" />
+    </div>
+
+    <!-- Bouton -->
+    <div class="col-12 d-flex justify-content-center">
+      <button type="submit" class="btn btn-success">Mettre à jour</button>
+    </div>
+  </form>
+</div>
 {% endblock %}

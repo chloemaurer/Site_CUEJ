@@ -269,16 +269,16 @@ class Bloc
 
             case 'create':
                 $bloc = new Bloc();
-                var_dump($_POST);
                 $bloc->chargePOST();
-                var_dump($_POST);
-                $bloc->create(); // utilise maintenant la vraie variable $_POST
+                $bloc->create();
+                header('Location: admin.php?page=bloc&action=read');
+
                 break;
 
             case 'delete':
                 echo 'Suppression du bloc';
                 Bloc::delete($id);
-                header('Location: controleur.php?page=bloc&action=read');
+                header('Location: admin.php?page=bloc&action=delete');
                 break;
 
             case 'modifier':
@@ -291,7 +291,7 @@ class Bloc
                 $bloc = new Bloc();
                 $bloc->chargePOST();    // utilise maintenant la vraie variable $_POST;
                 $bloc->update();
-                header('Location: controleur.php?page=bloc&action=read');
+                header('Location: admin.php?page=bloc&action=read');
                 break;
 
             default:

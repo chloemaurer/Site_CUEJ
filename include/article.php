@@ -113,6 +113,7 @@ class Article
         // Gestion des erreurs SQL
         try {
             $query->execute();
+            $this->id_article = $pdo->lastInsertId();
         } catch (PDOException $e) {
             echo "Erreur SQL : " . $e->getMessage();
             exit;
@@ -218,10 +219,11 @@ class Article
                 $article = new Article();
                 $article->chargePOST();
 
-                $article->create();
+                $article->create(); // Récupère l'ID de l'article créé
 
-                // Étape 3 : Rediriger vers la page des articles
-                header('Location: admin.php?page=article&action=read');
+                // Étape 2 : Rediriger vers la page de l'article créé
+                header('Location: admin.php?page=article&action=read&id=' . $article->id_article);
+                exit; // Toujours ajouter exit après un header
                 break;
 
                 ////////////////////////////////////

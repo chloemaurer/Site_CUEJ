@@ -114,13 +114,8 @@ class Bloc
         $this->ordre = $maximum + 1;
 
         $sql = "INSERT INTO bloc (ordre, type, texte, 
-        -- texte_titre, texte_citation, texte_legende, texte_credit, 
-        style, image, 
-        image_1, image_2, image_3, image_4, alt, audio, video, infographie, id_article)
-				VALUES (:ordre, :type, :texte, 
-                -- :texte_titre, :texte_citation, :texte_legende, :texte_credit, 
-                :style, :image, 
-        :image_1, :image_2, :image_3, :image_4, :alt, :audio, :video, :infographie, :id_article)";
+        texte_titre, texte_citation, texte_legende, texte_credit, style, image, image_1, image_2, image_3, image_4, alt, audio, video, infographie, id_article)
+				VALUES (:ordre, :type, :texte, :texte_titre, :texte_citation, :texte_legende, :texte_credit, :style, :image, :image_1, :image_2, :image_3, :image_4, :alt, :audio, :video, :infographie, :id_article)";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
         $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);

@@ -14,8 +14,8 @@
       alt="{{chapitre.alt}}"
     />
     <div class="card-body">
-      <h5 class="card-title">{{ chapitre.titre }}</h5>
-      <p class="card-text">{{chapitre.chapo}}</p>
+      <h5 class="card-title">{{ chapitre.titre | raw}}</h5>
+      <p class="card-text">{{chapitre.chapo | raw}}</p>
       <div class="d-flex gap-2">
         <a
           href="admin.php?page=chapitre&action=read&id={{ chapitre.id_chapitre }}"

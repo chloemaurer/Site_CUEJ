@@ -137,28 +137,31 @@ class Article
         $query->execute();
     }
 
-    function delete()
+    public static function delete($id_article)
     {
-        // Suppression du fichier lié
-        if (!empty($this->image)) unlink('upload/' . $this->image);
-
-        // Suppression de l'article
-        $sql = "DELETE FROM article WHERE id_article=:id_article";
+        $sql = "DELETE FROM article WHERE id_article = :id_article";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
-        $query->bindValue(':id_article', $this->id_article, PDO::PARAM_INT);
-        $query->execute();
+        $query->bindValue(':id_article', $id_article, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+        } catch (PDOException $e) {
+            echo "Erreur lors de la suppression : " . $e->getMessage();
+            exit;
+        }
     }
+
 
     function chargePOST()
     {
         $this->id_article = postInt('id_article');
         $this->ordre = postInt('ordre');
-        $this->titre = postString('titre');
-        $this->auteur = postString('auteur');
-        $this->chapo = postString('chapo');
+        $this->titre = html_entity_decode(postString('titre'));
+        $this->auteur = html_entity_decode(postString('auteur'));
+        $this->chapo = html_entity_decode(postString('chapo'));
         $this->image = postString('old-image');
-        $this->image = postString('alt');
+        $this->alt = postString('alt');
         $this->id_chapitre = postInt('id_chapitre');
 
         // Récupère les informations sur le fichier uploadés si il existe
@@ -205,10 +208,10 @@ class Article
                 break;
 
             case 'create':
-
                 // Étape 2 : Créer un nouvel article
                 $article = new Article();
                 $article->chargePOST();
+
                 $article->create();
 
                 // Étape 3 : Rediriger vers la page des articles
@@ -222,17 +225,37 @@ class Article
                 break;
                 ////////////////////////////////////
             case 'modifier':
-                $article = Article::readOne($id_article);
-                $modele = 'article/updatearticle.twig.html';
-                $data = ['article' => $article, 'listechapitre' => Chapitre::readAll()];
+                // Récupère l'ID de l'article depuis l'URL
+                if ($id_article > 0) {
+                    $article = Article::readOne($id_article);
+                    $listechapitre = Chapitre::readAll(); // Pour le menu déroulant des chapitres
+
+
+                    $article->titre = html_entity_decode($article->titre);
+                    $article->chapo = html_entity_decode($article->chapo);
+                    $article->auteur = html_entity_decode($article->auteur);
+
+                    $modele = 'article/updatearticle.twig.html'; // Fichier du formulaire
+                    $data = [
+                        'article' => $article,
+                        'listechapitre' => $listechapitre
+                    ];
+                } else {
+                    header('Location: admin.php?page=article&action=read'); // Redirection si ID incorrect
+                    exit;
+                }
                 break;
 
             case 'update':
+                // Récupère les données du formulaire pour mettre à jour l'article
                 $article = new Article();
-                $article->chargePOST();
-                $article->update();
-                header('Location: admin.php?page=article&action=read');
+                $article->chargePOST(); // Charge les nouvelles données
+                $article->update();     // Met à jour dans la BDD
+
+                header('Location: admin.php?page=article&action=read'); // Redirection vers la liste
+                exit;
                 break;
+
 
             default:
                 echo 'Action non reconnue';

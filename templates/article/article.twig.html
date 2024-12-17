@@ -72,19 +72,60 @@
   </div>
   <div class="mt-5">
     <h3 class="text-primary mb-3">Contenu associé</h3>
-    {% for bloc in listebloc %} {% if bloc.type == "h1" %}
-    <h1>{{ bloc.texte | raw}}</h1>
-    {% elseif bloc.type == "h2" %}
-    <h2>{{ bloc.texte | raw}}</h2>
-    {% elseif bloc.type == "h3" %}
-    <h3>{{ bloc.texte | raw}}</h3>
-    {% elseif bloc.type == "paragraphe" %}
-    <p class="{{ bloc.css }}">{{ bloc.texte | raw}}</p>
-    {% elseif bloc.type == "image" %}
-    <img src="{{ bloc.src }}" alt="{{ bloc.alt }}" class="img-fluid mb-3" />
-    {% else %}
-    <p>Type de bloc inconnu : {{ bloc.type }}</p>
-    {% endif %} {% endfor %}
+    {% for bloc in listebloc %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <!-- Affichage des blocs selon le type -->
+      <div>
+        {% if bloc.type == "h1" %}
+        <h1>{{ bloc.texte | raw }}</h1>
+        <div class="btn-group">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=h1&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
+            <i class="fa-solid fa-pencil"></i>
+          </a>
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
+            <i class="fa-solid fa-trash"></i>
+          </a>
+        </div>
+        {% elseif bloc.type == "h2" %}
+        <h2>{{ bloc.texte | raw }}</h2>
+        <div class="btn-group">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=h2"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
+            <i class="fa-solid fa-pencil"></i>
+          </a>
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
+            <i class="fa-solid fa-trash"></i>
+          </a>
+        </div>
+        {% elseif bloc.type == "h3" %}
+        <h3>{{ bloc.texte | raw }}</h3>
+        {% elseif bloc.type == "paragraphe" %}
+        <p class="{{ bloc.css }}">{{ bloc.texte | raw }}</p>
+        {% elseif bloc.type == "image" %}
+        <img src="{{ bloc.src }}" alt="{{ bloc.alt }}" class="img-fluid mb-3" />
+        {% else %}
+        <p>Type de bloc inconnu : {{ bloc.type }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Boutons Modifier et Supprimer -->
+    </div>
+    {% endfor %}
   </div>
 </div>
 {% endblock %}

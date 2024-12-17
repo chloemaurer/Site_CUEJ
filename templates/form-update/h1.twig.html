@@ -1,0 +1,69 @@
+{% extends "base-admin.twig.html" %} {% block content %}
+<div class="container py-5">
+  <!-- Titre du formulaire -->
+  <h1 class="text-center mb-4 text-primary">Modification du titre</h1>
+
+  <!-- Card pour le formulaire -->
+  <div class="card shadow-sm">
+    <div class="card-body p-4">
+      <form
+        action="admin.php?page=bloc&action=update&id={{bloc.id}}"
+        method="post"
+        class="row g-4 needs-validation"
+        novalidate
+      >
+        <!-- Type de bloc (champ caché) -->
+        <input type="hidden" name="type" value="{{ id }}" />
+
+        <!-- Texte -->
+        <div class="col-md-12">
+          <div class="mb-3">
+            <label for="texte" class="form-label fw-bold text-secondary"
+              >Titre :</label
+            >
+            <textarea
+              name="texte"
+              id="texte"
+              rows="4"
+              placeholder="Saisir le texte ici"
+              class="form-control border-secondary"
+            >
+{{ bloc.texte }}</textarea
+            >
+          </div>
+        </div>
+
+        <!-- Article -->
+        <div class="col-md-12">
+          <div class="mb-3">
+            <label for="id_article" class="form-label fw-bold text-secondary"
+              >Article :</label
+            >
+            <select
+              name="id_article"
+              id="id_article"
+              class="form-select border-secondary"
+              required
+            >
+              <option value="" disabled selected>Choisir un article</option>
+              {% for article in listearticle %}
+              <option value="{{ article.id_article }}" {% if article.id_article ==
+              bloc.id_article %}selected{% endif %}>
+                {{ article.titre }}
+              </option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <!-- Bouton de soumission -->
+        <div class="col-12 d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary btn-lg px-4">
+            <i class="fa-solid fa-check"></i> Modifier
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

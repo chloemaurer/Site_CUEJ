@@ -17,13 +17,13 @@
   </div>
 
   <div class="col-md-4">
-    <label for="chapo" class="form-label mt-4">Chapô : </label>
-    <input
-      type="text"
+    <label for="chapo" class="form-label mt-4">Chapô :</label>
+    <textarea
       name="chapo"
       placeholder="Saisir le texte"
       class="form-control w-75 ms-5 border-black"
-    />
+      rows="6"
+    ></textarea>
   </div>
 
   <div class="col-md-4">
@@ -37,21 +37,21 @@
   </div>
 
   <div class="col-md-4">
-    <label for="id_chapitre" class="form-label mt-4">chapitre : </label>
+    <label for="id_chapitre" class="form-label mt-4">Chapitre : </label>
     <select name="id_chapitre" id="id_chapitre">
       {% for chapitre in listechapitre %}
       <option value="{{chapitre.id_chapitre}}">{{chapitre.titre}}</option>
       {% endfor %}
     </select>
-    {#
-    <input
-      type="text"
-      name="id_chapitre"
-      placeholder="dans quel chapitre"
-      class="form-control w-75 ms-5 border-black"
-    />
-    #}
   </div>
+
+  <!-- Champ pour uploader une nouvelle image -->
+  <input
+    type="file"
+    name="image"
+    accept="images/*"
+    class="form-control w-75 ms-5 border-black"
+  />
 
   <div class="d-flex justify-content-center">
     <button

@@ -16,7 +16,6 @@
     <div class="col-md-6">
       <h2 class="text-secondary">{{ chapitre.titre }}</h2>
       <p class="lead">{{ chapitre.chapo }}</p>
-      <p><strong>Auteur :</strong> {{ chapitre.auteur }}</p>
 
       <!-- Boutons d'action -->
       <div class="mt-4 d-flex">
@@ -37,6 +36,26 @@
   <!-- Articles associés -->
   <div class="mt-5">
     <h2 class="mb-4 text-primary">Articles associés</h2>
+
+    <!-- Carte pour ajouter un nouvel article -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="card bg-light h-100">
+          <div class="card-body text-center">
+            <h3 class="card-title">Ajouter un article</h3>
+            <p class="card-text">
+              Cliquez sur le bouton ci-dessous pour créer un nouvel article dans
+              ce chapitre.
+            </p>
+            <a href="admin.php?page=article&action=new" class="btn btn-success">
+              <i class="fa-solid fa-plus"></i> Ajouter un article
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Liste des articles -->
     {% if listearticle|length > 0 %}
     <div class="row row-cols-1 row-cols-md-2 g-4">
       {% for article in listearticle %}

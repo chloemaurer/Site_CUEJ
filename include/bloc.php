@@ -114,8 +114,8 @@ class Bloc
         $this->ordre = $maximum + 1;
 
         $sql = "INSERT INTO bloc (ordre, type, texte, 
-        texte_titre, texte_citation, texte_legende, texte_credit,style, image, image_1, image_2, image_3, image_4, alt, audio, video, infographie, id_article)
-				VALUES (:ordre, :type, :texte, :texte_titre, :texte_citation, :texte_legende, :texte_credit,  :style, :image, :image_1, :image_2, :image_3, :image_4, :alt, :audio, :video, :infographie, :id_article)";
+        texte_titre, texte_citation, texte_legende, texte_credit, style, image, image_1, image_2, image_3, image_4, alt, audio, video, infographie, id_article)
+				VALUES (:ordre, :type, :texte, :texte_titre, :texte_citation, :texte_legende, :texte_credit, :style, :image, :image_1, :image_2, :image_3, :image_4, :alt, :audio, :video, :infographie, :id_article)";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
         $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
@@ -272,13 +272,11 @@ class Bloc
 
             case 'create':
                 $bloc = new Bloc();
-                // var_dump($_POST);
+                var_dump($_POST);
                 $bloc->chargePOST();
-                // var_dump($_POST);
+                var_dump($_POST);
                 $bloc->create();
-                // var_dump($bloc);
-                header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
-
+                var_dump($bloc);
                 break;
 
             case 'delete':

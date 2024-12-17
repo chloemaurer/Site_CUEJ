@@ -99,36 +99,26 @@ class Article
 
     function create()
     {
-        // Récupère l'ordre maximum pour créer l'article en dernière position
-        $maximum = self::readOrderMax($this->id_chapitre);
-        $this->ordre = $maximum + 1;
-
-
-        // var_dump([
-        //     'ordre' => $this->ordre,
-        //     'titre' => $this->titre,
-        //     'chapo' => $this->chapo,
-        //     'auteur' => $this->auteur,
-        //     'image' => $this->image,
-        //     'alt' => $this->alt,
-        //     'id_chapitre' => $this->id_chapitre,
-        // ]);
-        // exit;
-
-        $sql = "INSERT INTO article (ordre, titre, chapo, auteur, image, alt, id_chapitre)
-				VALUES (:ordre, :titre, :chapo, :auteur, :image, :alt, :id_chapitre)";
+        $sql = "INSERT INTO article (titre, chapo, auteur, image, id_chapitre)
+            VALUES (:titre, :chapo, :auteur, :image, :id_chapitre)";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
-        $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
+
         $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
         $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
         $query->bindValue(':auteur', $this->auteur, PDO::PARAM_STR);
         $query->bindValue(':image', $this->image, PDO::PARAM_STR);
-        $query->bindValue(':alt', $this->alt, PDO::PARAM_STR);
         $query->bindValue(':id_chapitre', $this->id_chapitre, PDO::PARAM_INT);
-        $query->execute();
-        $this->id_article = $pdo->lastInsertId();
+
+        // Gestion des erreurs SQL
+        try {
+            $query->execute();
+        } catch (PDOException $e) {
+            echo "Erreur SQL : " . $e->getMessage();
+            exit;
+        }
     }
+
 
     function update()
     {
@@ -215,11 +205,17 @@ class Article
                 break;
 
             case 'create':
+
+                // Étape 2 : Créer un nouvel article
                 $article = new Article();
                 $article->chargePOST();
                 $article->create();
+
+                // Étape 3 : Rediriger vers la page des articles
                 header('Location: admin.php?page=article&action=read');
+                exit;
                 break;
+
                 ////////////////////////////////////
             case 'delete':
                 Article::delete($id_article);

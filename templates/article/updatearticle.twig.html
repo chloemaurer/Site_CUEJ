@@ -1,67 +1,67 @@
-{% extends "base-admin.twig.html" %} 
-{% block content %}
+{% extends "base-admin.twig.html" %} {% block content %}
 
 <form
-  action="admin.php?page=article&action=update"
+  action="admin.php?page=article&action=create"
   method="post"
+  enctype="multipart/form-data"
   class="row g-4 needs-validation"
   novalidate
 >
-  <!-- Champ caché pour transmettre l'id_article -->
-  <input type="hidden" name="id_article" value="{{ article.id_article }}">
-
-  <div class="col-md-4">
-    <label for="titre" class="form-label mt-4">Titre :</label>
+  <!-- Titre -->
+  <div class="col-md-6">
+    <label for="titre" class="form-label">Titre :</label>
     <input
       type="text"
       name="titre"
-      placeholder="Titre"
-      class="form-control w-75 ms-5 border-black"
-      value="{{ article.titre }}"
+      placeholder="Titre de l'article"
+      class="form-control"
+      required
     />
   </div>
 
-  <div class="col-md-4">
-    <label for="chapo" class="form-label mt-4">Chapô : </label>
-    <input
-      type="text"
+  <!-- Chapô -->
+  <div class="col-md-6">
+    <label for="chapo" class="form-label">Chapô :</label>
+    <textarea
       name="chapo"
-      placeholder="Saisir le texte"
-      class="form-control w-75 ms-5 border-black"
-      value="{{ article.chapo }}"
-    />
+      placeholder="Saisir le texte d'introduction"
+      class="form-control"
+      rows="4"
+      required
+    ></textarea>
   </div>
 
-  <div class="col-md-4">
-    <label for="auteur" class="form-label mt-4">Auteur : </label>
+  <!-- Auteur -->
+  <div class="col-md-6">
+    <label for="auteur" class="form-label">Auteur :</label>
     <input
       type="text"
       name="auteur"
-      placeholder="Qui est l'auteur ?"
-      class="form-control w-75 ms-5 border-black"
-      value="{{ article.auteur }}"
+      placeholder="Nom de l'auteur"
+      class="form-control"
+      required
     />
   </div>
 
-  <div class="col-md-4">
-    <label for="id_chapitre" class="form-label mt-4">Chapitre : </label>
-    <select name="id_chapitre" id="id_chapitre" class="form-control w-75 ms-5 border-black">
+  <!-- Sélection du chapitre -->
+  <div class="col-md-6">
+    <label for="id_chapitre" class="form-label">Chapitre :</label>
+    <select name="id_chapitre" class="form-select" required>
       {% for chapitre in listechapitre %}
-      <option value="{{ chapitre.id_chapitre }}" 
-        {% if chapitre.id_chapitre == article.id_chapitre %}selected{% endif %}>
-        {{ chapitre.titre }}
-      </option>
+      <option value="{{ chapitre.id_chapitre }}">{{ chapitre.titre }}</option>
       {% endfor %}
     </select>
   </div>
 
-  <div class="d-flex justify-content-center">
-    <button
-      type="submit"
-      class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2"
-    >
-      Modifier
-    </button>
+  <!-- Image -->
+  <div class="col-md-6">
+    <label for="image" class="form-label">Image :</label>
+    <input type="file" name="image" accept="image/*" class="form-control" />
+  </div>
+
+  <!-- Bouton de soumission -->
+  <div class="col-12 d-flex justify-content-center">
+    <button type="submit" class="btn btn-success">Créer l'article</button>
   </div>
 </form>
 

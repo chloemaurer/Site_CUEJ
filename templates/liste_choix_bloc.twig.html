@@ -1,76 +1,118 @@
-{% extends "base-admin.twig.html" %}
-{% block content %}
+{% extends "base-admin.twig.html" %} {% block content %}
 
 <div class="align-middle">
   {# h1 #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=h1">
-    <h1 class=" text-dark mb-5 border border-solid m-3 border-dark p-2">Webdoc</h1>
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=h1&id_article={{ id_article }}"
+  >
+    <h1 class="text-dark mb-5 border border-solid m-3 border-dark p-2">
+      Webdoc
+    </h1>
   </a>
 
   {# h2 #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=h2">
-    <h2 class="  mb-5 border border-solid m-3 border-dark p-2">Titre chapitre</h2>
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=h2"
+  >
+    <h2 class="mb-5 border border-solid m-3 border-dark p-2">Titre chapitre</h2>
   </a>
   {# h3 #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=h3">
-    <h3 class="  mb-5 border border-solid m-3 border-dark p-2">Titre Article</h3>
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=h3"
+  >
+    <h3 class="mb-5 border border-solid m-3 border-dark p-2">Titre Article</h3>
   </a>
   {# h4 #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=h4">
-    <h4 class="  mb-5 border border-solid m-3 border-dark p-2">Titre article secondaire</h4>
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=h4"
+  >
+    <h4 class="mb-5 border border-solid m-3 border-dark p-2">
+      Titre article secondaire
+    </h4>
   </a>
   {# h5 #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=h5">
-    <h5 class="  mb-5 border border-solid m-3 border-dark p-2">Inter-titre</h5>
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=h5"
+  >
+    <h5 class="mb-5 border border-solid m-3 border-dark p-2">Inter-titre</h5>
   </a>
   {# p #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=p">
-    <p class="  mb-5 border border-solid m-3 border-dark p-2">
-      But I must explain to you how all this mistaken idea of denouncing pleasure
-      and praising pain was born and I will give you a complete account of the
-      system, and expound the actual teachings of the great explorer of the truth,
-      the master-builder of human happiness. No one rejects, dislikes, or avoids
-      pleasure itself, because it is pleasure, but because those who do not know how
-      to pursue pleasure rationally encounter consequences that are extremely
-      painful. Nor again is there anyone who loves or pursues or desires to obtain
-      pain of itself, because it is pain, but because occasionally circumstances
-      occur in which toil and pain can procure him some great pleasure. To take a
-      trivial example, which of us ever undertakes laborious physical exercise,
-      except to obtain some advantage from it? But who has any right to find fault
-      with a man who chooses to enjoy a pleasure that has no annoying consequences,
-      or one who avoids a pain that produces no resultant pleasure?
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=p"
+  >
+    <p class="mb-5 border border-solid m-3 border-dark p-2">
+      But I must explain to you how all this mistaken idea of denouncing
+      pleasure and praising pain was born and I will give you a complete account
+      of the system, and expound the actual teachings of the great explorer of
+      the truth, the master-builder of human happiness. No one rejects,
+      dislikes, or avoids pleasure itself, because it is pleasure, but because
+      those who do not know how to pursue pleasure rationally encounter
+      consequences that are extremely painful. Nor again is there anyone who
+      loves or pursues or desires to obtain pain of itself, because it is pain,
+      but because occasionally circumstances occur in which toil and pain can
+      procure him some great pleasure. To take a trivial example, which of us
+      ever undertakes laborious physical exercise, except to obtain some
+      advantage from it? But who has any right to find fault with a man who
+      chooses to enjoy a pleasure that has no annoying consequences, or one who
+      avoids a pain that produces no resultant pleasure?
     </p>
   </a>
   {# image #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=image">
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=image"
+  >
     <div class="container">
-      <div class="mx-auto" style="max-width: 960px;">
-        <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=image">
+      <div class="mx-auto" style="max-width: 960px">
+        <a
+          class="text-decoration-none text-dark"
+          href="admin.php?page=bloc&action=new&id=image"
+        >
           <figure class="figure mb-5 border border-solid border-dark p-2">
-            <img src="https://www.rhone.mfr.fr/media/FD%20MFR%20RHONE/Metiers/agriculture.jpg"
-              class="figure-img img-fluid rounded" alt="...">
-            <figcaption class="figure-caption mt-2">A caption for the above image.</figcaption>
+            <img
+              src="https://www.rhone.mfr.fr/media/FD%20MFR%20RHONE/Metiers/agriculture.jpg"
+              class="figure-img img-fluid rounded"
+              alt="..."
+            />
+            <figcaption class="figure-caption mt-2">
+              A caption for the above image.
+            </figcaption>
           </figure>
         </a>
       </div>
     </div>
   </a>
   {# citation #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=citation">
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=citation"
+  >
     <div class="container">
-      <div class="mx-auto" style="max-width: 960px;">
-        <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=citation">
+      <div class="mx-auto" style="max-width: 960px">
+        <a
+          class="text-decoration-none text-dark"
+          href="admin.php?page=bloc&action=new&id=citation"
+        >
           <figure class="text-center mb-5 border border-solid border-dark p-3">
-            <div class="d-flex justify-content-center ">
+            <div class="d-flex justify-content-center">
               <div class="align-baseline">
-                <img src="images/Exergue.svg" alt="..." style="width: 40px;">
+                <img src="images/Exergue.svg" alt="..." style="width: 40px" />
               </div>
               <blockquote class="blockquote my-3">
-                <p class="lead">A well-known quote, contained in a blockquote element. This is a longer excerpt to give
-                  context to the quote and provide a bit more information.</p>
+                <p class="lead">
+                  A well-known quote, contained in a blockquote element. This is
+                  a longer excerpt to give context to the quote and provide a
+                  bit more information.
+                </p>
               </blockquote>
               <div class="align_baseline">
-                <img src="images/Exergue.svg" alt="..." style="width: 40px;">
+                <img src="images/Exergue.svg" alt="..." style="width: 40px" />
               </div>
             </div>
             <figcaption class="blockquote-footer">
@@ -82,19 +124,29 @@
     </div>
   </a>
   {# video #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=video">
-    <div class="mx-auto" style="max-width: 960px;"></div>
-    <video controls width="640" class=" mb-5 border border-solid m-3 border-dark p-2">
-      <source src="video/grTP01_maurerchloe_TP01.mp4" type="video/mp4">
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=video"
+  >
+    <div class="mx-auto" style="max-width: 960px"></div>
+    <video
+      controls
+      width="640"
+      class="mb-5 border border-solid m-3 border-dark p-2"
+    >
+      <source src="video/grTP01_maurerchloe_TP01.mp4" type="video/mp4" />
       Votre navigateur ne supporte pas la vidéo.
     </video>
   </a>
 
   {# audio #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=audio">
-    <div class="container  mb-5 border border-solid m-3 border-dark p-2">
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=audio"
+  >
+    <div class="container mb-5 border border-solid m-3 border-dark p-2">
       <div class="podcast">
-        <h3 class="podcast__episode_title">La Campagne </h3>
+        <h3 class="podcast__episode_title">La Campagne</h3>
         <h5 class="podcast__title">
           Syntax.fm
           <i>Episode 152</i>
@@ -102,53 +154,64 @@
 
         <div class="podcast__meta">
           <audio controls width="100px">
-            <source src="video/Vaiana, la légende du bout du monde - Notre Terre I Disney.mp3">
+            <source
+              src="video/Vaiana, la légende du bout du monde - Notre Terre I Disney.mp3"
+            />
             Your browser does not support the audio tag.
           </audio>
 
           <div class="artwork mb-2">
             <img
               src="https://img.freepik.com/photos-gratuite/arbres-colline_1160-645.jpg?t=st=1734010858~exp=1734014458~hmac=3df6e8d588cae10e149c58b2e8f1d64bff1fa99677ccda16289ca1704d5a7edc&w=826"
-              alt="" style="width: 200px; height: 200px;">
+              alt=""
+              style="width: 200px; height: 200px"
+            />
           </div>
-
         </div>
       </div>
     </div>
   </a>
   {# carousel #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=carousel">
-    <div class="  mb-5 border border-solid m-3 border-dark p-2">
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=carousel"
+  >
+    <div class="mb-5 border border-solid m-3 border-dark p-2">
       <h3>Titre du carousel</h3>
-      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+      <div
+        id="carouselExampleInterval"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="10000">
             <div class="d-flex row">
               <div class="col p-3">
                 <p>crédit : Maurer Chloé</p>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                  totam
-                  rem
-                  aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                  explicabo.
-                  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-                  magni
-                  dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est qui dolorem ipsum quia
-                  dolor
-                  sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
-                  dolore
-                  magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam
-                  corporis
-                  suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit
-                  qui
-                  in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo
-                  voluptas
-                  nulla pariatur?"</p>
+                <p>
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam, eaque
+                  ipsa quae ab illo inventore veritatis et quasi architecto
+                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
+                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                  consequuntur magni dolores eos qui ratione voluptatem sequi
+                  nesciunt. Neque porro quisquam est qui dolorem ipsum quia
+                  dolor sit amet, consectetur, adipisci velit, sed quia non
+                  numquam eius modi tempora incidunt ut labore et dolore magnam
+                  aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+                  nostrum exercitationem ullam corporis suscipit laboriosam,
+                  nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum
+                  iure reprehenderit qui in ea voluptate velit esse quam nihil
+                  molestiae consequatur, vel illum qui dolorem eum fugiat quo
+                  voluptas nulla pariatur?"
+                </p>
               </div>
-              <div class=" col d-flex align-items-center">
+              <div class="col d-flex align-items-center">
                 <img
                   src="https://img.freepik.com/photos-gratuite/bois-givres-foret_23-2147741988.jpg?ga=GA1.1.272524588.1727105271&semt=ais_hybrid"
-                  class="d-block w-100" alt="...">
+                  class="d-block w-100"
+                  alt="..."
+                />
               </div>
             </div>
           </div>
@@ -157,19 +220,22 @@
             <div class="d-flex row">
               <div class="col">
                 <p>crédit : Maurer Chloé</p>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                  totam
-                  rem
-                  aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                  explicabo.
-                  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-                  magni
-                  dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est</p>
+                <p>
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam, eaque
+                  ipsa quae ab illo inventore veritatis et quasi architecto
+                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
+                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                  consequuntur magni dolores eos qui ratione voluptatem sequi
+                  nesciunt. Neque porro quisquam est
+                </p>
               </div>
               <div class="col d-flex align-items-center">
                 <img
                   src="https://img.freepik.com/photos-gratuite/troupeau-betail-paissant-dans-champs-verts_181624-29943.jpg?t=st=1733923127~exp=1733926727~hmac=8613f94177d682ed0df698b52b2e7f9cf63d342ac7ccef51a7f471fba310340c&w=826"
-                  class="d-block w-100" alt="...">
+                  class="d-block w-100"
+                  alt="..."
+                />
               </div>
             </div>
           </div>
@@ -178,31 +244,41 @@
             <div class="d-flex row">
               <div class="col">
                 <p>crédit : Maurer Chloé</p>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                  totam
-                  rem
-                  aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                  explicabo.
-                  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-                  magni
-                  dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est</p>
+                <p>
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam, eaque
+                  ipsa quae ab illo inventore veritatis et quasi architecto
+                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
+                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                  consequuntur magni dolores eos qui ratione voluptatem sequi
+                  nesciunt. Neque porro quisquam est
+                </p>
               </div>
               <div class="col d-flex align-items-center">
                 <img
                   src="https://img.freepik.com/photos-gratuite/toile-fond-produits-naturels-ferme-lumiere-du-soleil_53876-143219.jpg?t=st=1733924297~exp=1733927897~hmac=f1d5a65e361d88b54186ee51312a0b3b07095d4d494013b6ac5e4690842a6798&w=826"
-                  class="d-block w-100" alt="...">
+                  class="d-block w-100"
+                  alt="..."
+                />
               </div>
             </div>
           </div>
-
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-          data-bs-slide="prev">
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleInterval"
+          data-bs-slide="prev"
+        >
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-          data-bs-slide="next">
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleInterval"
+          data-bs-slide="next"
+        >
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
@@ -211,24 +287,33 @@
   </a>
 
   {# texte_image #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=texte_image">
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=texte_image"
+  >
     <div class="container-fluid px-5">
       <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
       <div class="row align-items-center mb-5">
         <!-- Texte à gauche (col-8 pour le texte) -->
         <div class="col-8">
-          <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and
-            I will give you a complete account of the system, and expound the actual teachings of the great explorer of
-            the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself,
-            because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter
-            consequences that are extremely painful.</p>
+          <p>
+            But I must explain to you how all this mistaken idea of denouncing
+            pleasure and praising pain was born and I will give you a complete
+            account of the system, and expound the actual teachings of the great
+            explorer of the truth, the master-builder of human happiness. No one
+            rejects, dislikes, or avoids pleasure itself, because it is
+            pleasure, but because those who do not know how to pursue pleasure
+            rationally encounter consequences that are extremely painful.
+          </p>
         </div>
         <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
-        <div class="col-4 d-flex justify-content-center pe-5 ">
-          <div class="bg-danger p-3 ">
+        <div class="col-4 d-flex justify-content-center pe-5">
+          <div class="bg-danger p-3">
             <img
               src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
-              class="img-fluid" alt="Image">
+              class="img-fluid"
+              alt="Image"
+            />
             <p class="text-white mt-2 mb-0">Crédit photo : Freepik</p>
           </div>
         </div>
@@ -237,100 +322,115 @@
   </a>
 
   {# image_texte #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=image_texte">
-    <div class=" d-flex  mb-5 border border-solid m-3 border-dark p-2">
-      <img class="w-50"
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=image_texte"
+  >
+    <div class="d-flex mb-5 border border-solid m-3 border-dark p-2">
+      <img
+        class="w-50"
         src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
-        alt="">
-      <p class="m-4">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
-        born
-        and I will
-        give you a complete account of the system, and expound the actual teachings of the great explorer of the truth,
-        the
-        master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure,
-        but
-        because those who do not know how to pursue pleasure rationally encounter consequences that are extremely
-        painful.
-        Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but
-        because
-        occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial
-        example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But
-        who
-        has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one
-        who
-        avoids a pain that produces no resultant pleasure?</p>
+        alt=""
+      />
+      <p class="m-4">
+        But I must explain to you how all this mistaken idea of denouncing
+        pleasure and praising pain was born and I will give you a complete
+        account of the system, and expound the actual teachings of the great
+        explorer of the truth, the master-builder of human happiness. No one
+        rejects, dislikes, or avoids pleasure itself, because it is pleasure,
+        but because those who do not know how to pursue pleasure rationally
+        encounter consequences that are extremely painful. Nor again is there
+        anyone who loves or pursues or desires to obtain pain of itself, because
+        it is pain, but because occasionally circumstances occur in which toil
+        and pain can procure him some great pleasure. To take a trivial example,
+        which of us ever undertakes laborious physical exercise, except to
+        obtain some advantage from it? But who has any right to find fault with
+        a man who chooses to enjoy a pleasure that has no annoying consequences,
+        or one who avoids a pain that produces no resultant pleasure?
+      </p>
     </div>
   </a>
   {# titre_texte_image #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=titre_texte_image">
-    <div class=" d-flex  mb-5 border border-solid m-3 border-dark p-2">
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=titre_texte_image"
+  >
+    <div class="d-flex mb-5 border border-solid m-3 border-dark p-2">
       <div class="m-4">
         <h4>Titre</h4>
-        <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born
-          and I will
-          give you a complete account of the system, and expound the actual teachings of the great explorer of the
-          truth,
-          the
-          master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is
-          pleasure,
-          but
-          because those who do not know how to pursue pleasure rationally encounter consequences that are extremely
-          painful.
-          Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but
-          because
-          occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial
-          example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But
-          who
-          has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or
-          one
-          who
-          avoids a pain that produces no resultant pleasure?</p>
+        <p>
+          But I must explain to you how all this mistaken idea of denouncing
+          pleasure and praising pain was born and I will give you a complete
+          account of the system, and expound the actual teachings of the great
+          explorer of the truth, the master-builder of human happiness. No one
+          rejects, dislikes, or avoids pleasure itself, because it is pleasure,
+          but because those who do not know how to pursue pleasure rationally
+          encounter consequences that are extremely painful. Nor again is there
+          anyone who loves or pursues or desires to obtain pain of itself,
+          because it is pain, but because occasionally circumstances occur in
+          which toil and pain can procure him some great pleasure. To take a
+          trivial example, which of us ever undertakes laborious physical
+          exercise, except to obtain some advantage from it? But who has any
+          right to find fault with a man who chooses to enjoy a pleasure that
+          has no annoying consequences, or one who avoids a pain that produces
+          no resultant pleasure?
+        </p>
       </div>
-      <img class="w-50"
+      <img
+        class="w-50"
         src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
-        alt="">
+        alt=""
+      />
     </div>
   </a>
   {# image_titre_texte #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=image_titre_texte">
-    <div class=" d-flex  mb-5 border border-solid m-3 border-dark p-2">
-      <img class="w-50"
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=image_titre_texte"
+  >
+    <div class="d-flex mb-5 border border-solid m-3 border-dark p-2">
+      <img
+        class="w-50"
         src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
-        alt="">
+        alt=""
+      />
       <div class="m-4">
         <h4>Titre</h4>
-        <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born
-          and I will
-          give you a complete account of the system, and expound the actual teachings of the great explorer of the
-          truth,
-          the
-          master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is
-          pleasure,
-          but
-          because those who do not know how to pursue pleasure rationally encounter consequences that are extremely
-          painful.
-          Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but
-          because
-          occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial
-          example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But
-          who
-          has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or
-          one
-          who
-          avoids a pain that produces no resultant pleasure?</p>
+        <p>
+          But I must explain to you how all this mistaken idea of denouncing
+          pleasure and praising pain was born and I will give you a complete
+          account of the system, and expound the actual teachings of the great
+          explorer of the truth, the master-builder of human happiness. No one
+          rejects, dislikes, or avoids pleasure itself, because it is pleasure,
+          but because those who do not know how to pursue pleasure rationally
+          encounter consequences that are extremely painful. Nor again is there
+          anyone who loves or pursues or desires to obtain pain of itself,
+          because it is pain, but because occasionally circumstances occur in
+          which toil and pain can procure him some great pleasure. To take a
+          trivial example, which of us ever undertakes laborious physical
+          exercise, except to obtain some advantage from it? But who has any
+          right to find fault with a man who chooses to enjoy a pleasure that
+          has no annoying consequences, or one who avoids a pain that produces
+          no resultant pleasure?
+        </p>
       </div>
     </div>
   </a>
 
   {# citation_texte #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=citation_texte">
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=citation_texte"
+  >
     <div class="container my-5">
       <div class="row">
         <!-- Bloc de Citation à gauche -->
         <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
           <figure class="m-0">
             <blockquote class="blockquote text-center">
-              <p class="fw-bold fs-3 text-danger mb-0">"Aliquam odio sem, venenatis at dolo r eu, mollis blandit."</p>
+              <p class="fw-bold fs-3 text-danger mb-0">
+                "Aliquam odio sem, venenatis at dolo r eu, mollis blandit."
+              </p>
             </blockquote>
           </figure>
         </div>
@@ -338,22 +438,18 @@
         <!-- Bloc de Texte à droite -->
         <div class="col-md-7 p-4 bg-light">
           <p>
-            Nam blandit feugiat lacus ac consequat. Morbi semper ultricies diam, ut efficitur elit semper sed. Aliquam
-            odio
-            sem, venenatis at dolor eu, mollis blandit arcu.
-            Nam blandit feugiat lacus ac consequat. Morbi semper ultricies diam, ut efficitur elit semper sed. Aliquam
-            odio
-            sem, venenatis at dolor eu, mollis blandit arcu.
-
+            Nam blandit feugiat lacus ac consequat. Morbi semper ultricies diam,
+            ut efficitur elit semper sed. Aliquam odio sem, venenatis at dolor
+            eu, mollis blandit arcu. Nam blandit feugiat lacus ac consequat.
+            Morbi semper ultricies diam, ut efficitur elit semper sed. Aliquam
+            odio sem, venenatis at dolor eu, mollis blandit arcu.
           </p>
           <p>
-            Nam blandit feugiat lacus ac consequat. Morbi semper ultricies diam, ut efficitur elit semper sed. Aliquam
-            odio
-            sem, venenatis at dolor eu, mollis blandit arcu.
-            Nam blandit feugiat lacus ac consequat. Morbi semper ultricies diam, ut efficitur elit semper sed. Aliquam
-            odio
-            sem, venenatis at dolor eu, mollis blandit arcu.
-
+            Nam blandit feugiat lacus ac consequat. Morbi semper ultricies diam,
+            ut efficitur elit semper sed. Aliquam odio sem, venenatis at dolor
+            eu, mollis blandit arcu. Nam blandit feugiat lacus ac consequat.
+            Morbi semper ultricies diam, ut efficitur elit semper sed. Aliquam
+            odio sem, venenatis at dolor eu, mollis blandit arcu.
           </p>
         </div>
       </div>
@@ -361,32 +457,34 @@
   </a>
 
   {# texte_citation #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=texte_citation">
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=texte_citation"
+  >
     <div class="container my-5">
       <div class="row">
         <!-- Bloc de Texte à droite -->
         <div class="col-md-7 p-4 bg-light">
           <p>
-            Nam blandit feugiat lacus ac consequat. Morbi semper ultricies diam, ut efficitur elit semper sed. Aliquam
-            odio
+            Nam blandit feugiat lacus ac consequat. Morbi semper ultricies diam,
+            ut efficitur elit semper sed. Aliquam odio sem, venenatis at dolor
+            eu, mollis blandit arcu. Nam blandit feugiat lacus ac consequat.
+            Morbi semper ultricies diam, ut efficitur elit semper sed. Aliquam
+            odio sem, venenatis at dolor eu, mollis blandit arcu. Nam blandit
+            feugiat lacus ac consequat. Morbi semper ultricies diam, ut
+            efficitur elit semper sed. Aliquam odio sem, venenatis at dolor eu,
+            mollis blandit arcu. Nam blandit feugiat lacus ac consequat. Morbi
+            semper ultricies diam, ut efficitur elit semper sed. Aliquam odio
             sem, venenatis at dolor eu, mollis blandit arcu.
-            Nam blandit feugiat lacus ac consequat. Morbi semper ultricies diam, ut efficitur elit semper sed. Aliquam
-            odio
-            sem, venenatis at dolor eu, mollis blandit arcu.
-            Nam blandit feugiat lacus ac consequat. Morbi semper ultricies diam, ut efficitur elit semper sed. Aliquam
-            odio
-            sem, venenatis at dolor eu, mollis blandit arcu.
-            Nam blandit feugiat lacus ac consequat. Morbi semper ultricies diam, ut efficitur elit semper sed. Aliquam
-            odio
-            sem, venenatis at dolor eu, mollis blandit arcu.
-
           </p>
         </div>
         <!-- Bloc de Citation à gauche -->
         <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
           <figure class="m-0">
             <blockquote class="blockquote text-center">
-              <p class="fw-bold fs-3 text-danger mb-0">"Aliquam odio sem, venenatis at dolo r eu, mollis blandit."</p>
+              <p class="fw-bold fs-3 text-danger mb-0">
+                "Aliquam odio sem, venenatis at dolo r eu, mollis blandit."
+              </p>
             </blockquote>
           </figure>
         </div>
@@ -394,69 +492,92 @@
     </div>
   </a>
   {# image_citation #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=image_citation">
-
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=image_citation"
+  >
     <div class="container my-5">
       <div class="row g-4">
         <!-- Ajout de l'espacement entre les blocs -->
 
         <!-- Bloc de l'image et de la légende à gauche -->
         <div class="col-md-7 p-4 bg-danger">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-BPreHbnC0RA63Cn2St51Q-4llVJnd1x7sw&s" alt=""
-            class="img-fluid mb-3">
-          <p class="text-white text-start">Légende de l'image alignée à gauche</p>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-BPreHbnC0RA63Cn2St51Q-4llVJnd1x7sw&s"
+            alt=""
+            class="img-fluid mb-3"
+          />
+          <p class="text-white text-start">
+            Légende de l'image alignée à gauche
+          </p>
         </div>
 
         <!-- Bloc de Citation à droite -->
         <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
           <figure class="m-0">
             <blockquote class="blockquote text-center">
-              <p class="fw-bold fs-3 text-danger mb-0">"Aliquam odio sem, venenatis at dolo r eu, mollis blandit."</p>
+              <p class="fw-bold fs-3 text-danger mb-0">
+                "Aliquam odio sem, venenatis at dolo r eu, mollis blandit."
+              </p>
             </blockquote>
           </figure>
         </div>
-
       </div>
     </div>
   </a>
 
   {# citation_image #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=citation_image">
-
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=citation_image"
+  >
     <div class="container my-5">
       <div class="row g-4">
-
         <!-- Bloc de Citation à droite -->
         <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
           <figure class="m-0">
             <blockquote class="blockquote text-center">
-              <p class="fw-bold fs-3 text-danger mb-0">"Aliquam odio sem, venenatis at dolo r eu, mollis blandit."</p>
+              <p class="fw-bold fs-3 text-danger mb-0">
+                "Aliquam odio sem, venenatis at dolo r eu, mollis blandit."
+              </p>
             </blockquote>
           </figure>
         </div>
         <div class="col-md-7 p-4 bg-danger">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-BPreHbnC0RA63Cn2St51Q-4llVJnd1x7sw&s" alt=""
-            class="img-fluid mb-3">
-          <p class="text-white text-start">Légende de l'image alignée à gauche</p>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-BPreHbnC0RA63Cn2St51Q-4llVJnd1x7sw&s"
+            alt=""
+            class="img-fluid mb-3"
+          />
+          <p class="text-white text-start">
+            Légende de l'image alignée à gauche
+          </p>
         </div>
-
       </div>
     </div>
   </a>
 
   {# audio_texte #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=audio_texte">
-    <div class="container  mb-5 border border-solid m-3 border-dark p-2 d-flex">
-      <div class="podcast d-flex flex-column align-items-center rounded-3" style="width: 410px; height: 475px;">
-        <div class="audio-image mb-2 p-3 ">
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=audio_texte"
+  >
+    <div class="container mb-5 border border-solid m-3 border-dark p-2 d-flex">
+      <div
+        class="podcast d-flex flex-column align-items-center rounded-3"
+        style="width: 410px; height: 475px"
+      >
+        <div class="audio-image mb-2 p-3">
           <img
             src="https://img.freepik.com/photos-gratuite/arbres-colline_1160-645.jpg?t=st=1734010858~exp=1734014458~hmac=3df6e8d588cae10e149c58b2e8f1d64bff1fa99677ccda16289ca1704d5a7edc&w=826"
-            alt="" style="width: 200px; height: 200px;">
+            alt=""
+            style="width: 200px; height: 200px"
+          />
         </div>
 
         <div class="podcast_meta">
           <div class="ps-5">
-            <h3 class="podcast__episode_title">La Campagne </h3>
+            <h3 class="podcast__episode_title">La Campagne</h3>
             <h5 class="podcast__title text-light">
               Syntax.fm
               <i>Episode 152</i>
@@ -464,47 +585,61 @@
           </div>
           <div class="podcast_meta">
             <audio controls width="100px">
-              <source src="video/Vaiana, la légende du bout du monde - Notre Terre I Disney.mp3">
+              <source
+                src="video/Vaiana, la légende du bout du monde - Notre Terre I Disney.mp3"
+              />
               Your browser does not support the audio tag.
             </audio>
           </div>
         </div>
       </div>
-      <p class="p-3">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
-        born and I will give you a complete account of the system, and expound the actual teachings of the great
-        explorer
-        of the
-        truth,the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is
-        pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are
-        extremely
-        painful.Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain,
-        but
-        because</p>
+      <p class="p-3">
+        But I must explain to you how all this mistaken idea of denouncing
+        pleasure and praising pain was born and I will give you a complete
+        account of the system, and expound the actual teachings of the great
+        explorer of the truth,the master-builder of human happiness. No one
+        rejects, dislikes, or avoids pleasure itself, because it is pleasure,
+        but because those who do not know how to pursue pleasure rationally
+        encounter consequences that are extremely painful.Nor again is there
+        anyone who loves or pursues or desires to obtain pain of itself, because
+        it is pain, but because
+      </p>
     </div>
   </a>
   {# texte_audio #}
-  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=texte_audio">
-    <div class="container  mb-5 border border-solid m-3 border-dark p-2 d-flex justify-content-center">
-      <p class="p-3">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
-        born and I will give you a complete account of the system, and expound the actual teachings of the great
-        explorer
-        of the
-        truth,the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is
-        pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are
-        extremely
-        painful.Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain,
-        but
-        because</p>
-      <div class="podcast d-flex flex-column align-items-center rounded-3" style="width: 410px; height: 475px;">
-        <div class="audio-image mb-2 p-3 ">
+  <a
+    class="text-decoration-none text-dark"
+    href="admin.php?page=bloc&action=new&id=texte_audio"
+  >
+    <div
+      class="container mb-5 border border-solid m-3 border-dark p-2 d-flex justify-content-center"
+    >
+      <p class="p-3">
+        But I must explain to you how all this mistaken idea of denouncing
+        pleasure and praising pain was born and I will give you a complete
+        account of the system, and expound the actual teachings of the great
+        explorer of the truth,the master-builder of human happiness. No one
+        rejects, dislikes, or avoids pleasure itself, because it is pleasure,
+        but because those who do not know how to pursue pleasure rationally
+        encounter consequences that are extremely painful.Nor again is there
+        anyone who loves or pursues or desires to obtain pain of itself, because
+        it is pain, but because
+      </p>
+      <div
+        class="podcast d-flex flex-column align-items-center rounded-3"
+        style="width: 410px; height: 475px"
+      >
+        <div class="audio-image mb-2 p-3">
           <img
             src="https://img.freepik.com/photos-gratuite/arbres-colline_1160-645.jpg?t=st=1734010858~exp=1734014458~hmac=3df6e8d588cae10e149c58b2e8f1d64bff1fa99677ccda16289ca1704d5a7edc&w=826"
-            alt="" style="width: 200px; height: 200px;">
+            alt=""
+            style="width: 200px; height: 200px"
+          />
         </div>
 
         <div class="podcast_meta">
           <div class="ps-5">
-            <h3 class="podcast__episode_title">La Campagne </h3>
+            <h3 class="podcast__episode_title">La Campagne</h3>
             <h5 class="podcast__title text-light">
               Syntax.fm
               <i>Episode 152</i>
@@ -512,7 +647,9 @@
           </div>
           <div class="podcast_meta">
             <audio controls width="100px">
-              <source src="video/Vaiana, la légende du bout du monde - Notre Terre I Disney.mp3">
+              <source
+                src="video/Vaiana, la légende du bout du monde - Notre Terre I Disney.mp3"
+              />
               Your browser does not support the audio tag.
             </audio>
           </div>
@@ -520,8 +657,6 @@
       </div>
     </div>
   </a>
-
 </div>
-
 
 {% endblock %}

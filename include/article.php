@@ -206,8 +206,10 @@ class Article
                 break;
                 ////////////////////////////////////
             case 'new':
+                $id_article = isset($_GET['id_article']) ? intval($_GET['id_article']) : 0;
                 $modele = "article/newarticle.twig.html";
                 $data = [
+                    'id_article_selectionne' => $id_article,
                     'listechapitre' => Chapitre::readAll()
                 ];
                 break;

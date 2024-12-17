@@ -1,34 +1,59 @@
 {% extends "base-admin.twig.html" %} {% block content %}
 
 <h1 class="text-center p-5">Créaton d'un bloc</h1>
-<form action="admin.php?page=bloc&action=create" method="post" class="row g-4 needs-validation" novalidate>
+<form
+  action="admin.php?page=bloc&action=create"
+  method="post"
+  class="row g-4 needs-validation"
+  novalidate
+>
+  {# type #}
+  <div class="col-md-4">
+    <input
+      type="hidden"
+      name="type"
+      placeholder="Quel type ?"
+      value="{{ id }}"
+      class="form-control w-75 ms-5 border-black"
+    />
+  </div>
 
-    {# type #}
-    <div class="col-md-4">
+  {# texte #}
+  <div class="col-md-4">
+    <label for="texte" class="form-label mt-4">Titre :</label>
+    <input
+      type="text"
+      name="texte"
+      placeholder="Saisir le texte"
+      class="form-control w-75 ms-5 border-black"
+    />
+  </div>
 
-        <input type="hidden" name="type" placeholder="Quel type ?" value="{{ id }}"
-            class="form-control w-75 ms-5 border-black" />
-    </div>
+  {# article #}
+  <div class="col-md-4">
+    <label for="id_article" class="form-label mt-4">Article :</label>
+    <select
+      name="id_article"
+      id="id_article"
+      class="form-select w-75 ms-5 border-black"
+      required
+    >
+      <option value="" disabled selected>Choisir un article</option>
+      {% for article in listearticle %}
+      <option value="{{ article.id_article }}">{{ article.titre }}</option>
+      {% endfor %}
+    </select>
+  </div>
 
-    {# texte #}
-    <div class="col-md-4">
-        <label for="texte" class="form-label mt-4">Titre :</label>
-        <input type="text" name="texte" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
-    </div>
-
-    {# article #}
-    <div class="col-md-4">
-        <label for="id_article" class="form-label mt-4">Article :</label>
-        <input type="text" name="id_article" required="required" placeholder="Dans quel article apparait-il ?"
-            class="form-control w-75 ms-5 border-black" />
-    </div>
-
-    {# bouton #}
-    <div class="d-flex justify-content-center">
-        <button type="submit" class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2">
-            Créer
-        </button>
-    </div>
+  {# bouton #}
+  <div class="d-flex justify-content-center">
+    <button
+      type="submit"
+      class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2"
+    >
+      Créer
+    </button>
+  </div>
 </form>
 
 {% endblock %}

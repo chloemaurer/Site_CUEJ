@@ -260,10 +260,11 @@ class Bloc
                 $modele = 'form/' . $id . '.twig.html';
                 $data = [
                     'bloc' => Bloc::readOne($id), // Si vous avez des données associées à $id
-                    'id' => $id                  // Passez l'id à Twig
+                    'id' => $id,                  // Passez l'id à Twig
+                    'listearticle' => Article::readAll()
                 ];
 
-                var_dump($id); // Pour debug
+
                 break;
 
             case 'create':

@@ -53,6 +53,23 @@
   </div>
 
   <!-- Blocs associés -->
+  <!-- Carte pour ajouter un nouvel article -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="card bg-light h-100">
+        <div class="card-body text-center">
+          <h3 class="card-title">Ajouter un bloc</h3>
+          <p class="card-text">
+            Cliquez sur le bouton ci-dessous pour choisir un type de bloc dans
+            ce chapitre
+          </p>
+          <a href="admin.php?page=choix" class="btn btn-success">
+            <i class="fa-solid fa-plus"></i> Choisir un bloc
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="mt-5">
     <h3 class="text-primary mb-3">Contenu associé</h3>
     {% for bloc in listebloc %} {% if bloc.type == "h1" %}

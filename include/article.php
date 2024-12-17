@@ -103,6 +103,18 @@ class Article
         $maximum = self::readOrderMax($this->id_chapitre);
         $this->ordre = $maximum + 1;
 
+
+        // var_dump([
+        //     'ordre' => $this->ordre,
+        //     'titre' => $this->titre,
+        //     'chapo' => $this->chapo,
+        //     'auteur' => $this->auteur,
+        //     'image' => $this->image,
+        //     'alt' => $this->alt,
+        //     'id_chapitre' => $this->id_chapitre,
+        // ]);
+        // exit;
+
         $sql = "INSERT INTO article (ordre, titre, chapo, auteur, image, alt, id_chapitre)
 				VALUES (:ordre, :titre, :chapo, :auteur, :image, :alt, :id_chapitre)";
         $pdo = connexion();
@@ -198,8 +210,8 @@ class Article
                 break;
                 ////////////////////////////////////
             case 'new':
-                $view = "article/newarticle.twig.html";
-                $data = ['id_chapitre' => $id_article];
+                $modele = "article/newarticle.twig.html";
+                $data = ['listechapitre' => Chapitre::readAll()];
                 break;
 
             case 'create':
@@ -224,7 +236,7 @@ class Article
                 $article = new Article();
                 $article->chargePOST();
                 $article->update();
-                // header('Location: admin.php?page=article&action=read');
+                header('Location: admin.php?page=article&action=read');
                 break;
 
             default:

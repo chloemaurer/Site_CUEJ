@@ -63,14 +63,17 @@
             Cliquez sur le bouton ci-dessous pour choisir un type de bloc dans
             ce chapitre
           </p>
-          <a href="admin.php?page=choix" class="btn btn-success">
+          <a
+            href="admin.php?page=choix&id_article={{ article.id_article }}"
+            class="btn btn-success"
+          >
             <i class="fa-solid fa-plus"></i> Choisir un bloc
           </a>
         </div>
       </div>
     </div>
   </div>
-  
+
   <div class="mt-5">
     <h3 class="text-primary mb-3">Contenu associé</h3>
     {% for bloc in listebloc %}

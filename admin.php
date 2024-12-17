@@ -48,8 +48,9 @@ switch ($page) {
         //     header('Location: index.php');
         //     break;
     case 'choix':
+        $id_article = isset($_GET['id_article']) ? intval($_GET['id_article']) : 0;
         $modele = 'liste_choix_bloc.twig.html';
-        $data = [];
+        $data = ['id_article' => $id_article];
         break;
     default:
         $modele = 'admin.twig.html';

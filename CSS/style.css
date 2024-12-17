@@ -26,6 +26,12 @@
   color: black;
 }
 
+.bg-chapitre {
+  background-color: #7e4602;
+}
+
+
+
 .container {
   width: 800px;
   margin: 30px auto;

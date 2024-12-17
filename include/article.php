@@ -140,8 +140,10 @@ class Article
 
     public static function delete($id_article)
     {
-        $sql = "DELETE FROM article WHERE id_article = :id_article";
         $pdo = connexion();
+        Bloc::deleteByArticle($id_article);
+        $sql = "DELETE FROM article WHERE id_article = :id_article";
+
         $query = $pdo->prepare($sql);
         $query->bindValue(':id_article', $id_article, PDO::PARAM_INT);
 
@@ -226,9 +228,20 @@ class Article
 
                 ////////////////////////////////////
             case 'delete':
+
+
+                // Récupère l'ID du chapitre avant de supprimer l'article
+                $article = Article::readOne($id_article);
+                $id_chapitre = $article->id_chapitre;
+
+                // Supprime l'article
                 Article::delete($id_article);
-                header('Location: admin.php?page=article&action=read');
+
+                // Redirige vers le chapitre correspondant
+                header('Location: admin.php?page=chapitre&action=read&id=' . $id_chapitre);
+                exit;
                 break;
+
                 ////////////////////////////////////
             case 'modifier':
                 // Récupère l'ID de l'article depuis l'URL

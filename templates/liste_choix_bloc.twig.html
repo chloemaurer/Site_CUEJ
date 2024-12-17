@@ -84,7 +84,6 @@
               A caption for the above image.
             </figcaption>
           </figure>
-        </a>
       </div>
     </div>
   </a>
@@ -138,7 +137,6 @@
       Votre navigateur ne supporte pas la vidéo.
     </video>
   </a>
-
   {# audio #}
   <a
     class="text-decoration-none text-dark"
@@ -255,6 +253,7 @@
                 </p>
               </div>
               <div class="col d-flex align-items-center">
+                
                 <img
                   src="https://img.freepik.com/photos-gratuite/toile-fond-produits-naturels-ferme-lumiere-du-soleil_53876-143219.jpg?t=st=1733924297~exp=1733927897~hmac=f1d5a65e361d88b54186ee51312a0b3b07095d4d494013b6ac5e4690842a6798&w=826"
                   class="d-block w-100"
@@ -285,17 +284,13 @@
       </div>
     </div>
   </a>
-
   {# texte_image #}
-  <a
-    class="text-decoration-none text-dark"
-    href="admin.php?page=bloc&action=new&id=texte_image"
-  >
-    <div class="container-fluid px-5">
+  <a class="text-decoration-none text-dark" href="admin.php?page=bloc&action=new&id=texte_image">
+    <div class="container-fluid pt-2 border border-solid border-dark">
       <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
-      <div class="row align-items-center mb-5">
+      <div class="row mb-5">
         <!-- Texte à gauche (col-8 pour le texte) -->
-        <div class="col-8">
+        <div class="col-6 align-baseline">
           <p>
             But I must explain to you how all this mistaken idea of denouncing
             pleasure and praising pain was born and I will give you a complete
@@ -307,31 +302,39 @@
           </p>
         </div>
         <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
-        <div class="col-4 d-flex justify-content-center pe-5">
+        <div class="col-6 d-flex justify-content-center pe-2">
           <div class="bg-danger p-3">
-            <img
-              src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
-              class="img-fluid"
+            <figure class="figure mb-5">
+                <img
+                  src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
+                  class="img-fluid rounded w-75 "
               alt="Image"
             />
-            <p class="text-white mt-2 mb-0">Crédit photo : Freepik</p>
+              <figcaption class="figure-caption  mt-2 mb-0">A caption for the above image.</figcaption>
+            </figure>
           </div>
         </div>
       </div>
     </div>
   </a>
-
   {# image_texte #}
   <a
     class="text-decoration-none text-dark"
     href="admin.php?page=bloc&action=new&id=image_texte"
   >
     <div class="d-flex mb-5 border border-solid m-3 border-dark p-2">
-      <img
-        class="w-50"
-        src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
-        alt=""
+      <div class="col-6 d-flex justify-content-center pe-2 ">
+        <div class="bg-danger p-3 ">
+          <figure
+        class="figure mb-5">
+            <img
+              src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
+              class="img-fluid rounded w-75 " alt="Image"
       />
+            <figcaption class="figure-caption  mt-2 mb-0">A caption for the above image.</figcaption>
+          </figure>
+        </div>
+      </div>
       <p class="m-4">
         But I must explain to you how all this mistaken idea of denouncing
         pleasure and praising pain was born and I will give you a complete
@@ -376,11 +379,18 @@
           no resultant pleasure?
         </p>
       </div>
-      <img
-        class="w-50"
-        src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
-        alt=""
+      <div class="col-6 d-flex justify-content-center pe-2 ">
+        <div class="bg-danger p-3 ">
+          <figure
+        class="figure mb-5">
+            <img
+              src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
+              class="img-fluid rounded w-75" alt="Image"
       />
+            <figcaption class="figure-caption  mt-2 mb-0">A caption for the above image.</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
   </a>
   {# image_titre_texte #}
@@ -389,11 +399,18 @@
     href="admin.php?page=bloc&action=new&id=image_titre_texte"
   >
     <div class="d-flex mb-5 border border-solid m-3 border-dark p-2">
-      <img
-        class="w-50"
-        src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
-        alt=""
+      <div class="col-6 d-flex justify-content-center pe-2 ">
+        <div class="bg-danger p-3 ">
+          <figure
+        class="figure mb-5">
+            <img
+              src="https://img.freepik.com/photos-gratuite/lever-du-soleil-terres-agricoles_181624-15672.jpg?t=st=1733927833~exp=1733931433~hmac=92c66b17cabc5daeee7260160291bff519821471a005fd92cbeeaa3d6bb22fa0&w=826"
+              class="img-fluid rounded w-75 " alt="Image"
       />
+            <figcaption class="figure-caption  mt-2 mb-0">A caption for the above image.</figcaption>
+          </figure>
+        </div>
+      </div>
       <div class="m-4">
         <h4>Titre</h4>
         <p>
@@ -416,7 +433,6 @@
       </div>
     </div>
   </a>
-
   {# citation_texte #}
   <a
     class="text-decoration-none text-dark"
@@ -455,7 +471,6 @@
       </div>
     </div>
   </a>
-
   {# texte_citation #}
   <a
     class="text-decoration-none text-dark"
@@ -525,7 +540,6 @@
       </div>
     </div>
   </a>
-
   {# citation_image #}
   <a
     class="text-decoration-none text-dark"
@@ -556,7 +570,6 @@
       </div>
     </div>
   </a>
-
   {# audio_texte #}
   <a
     class="text-decoration-none text-dark"

@@ -142,13 +142,31 @@ class Bloc
 
     function update()
     {
-        $sql = "UPDATE bloc
-				SET ordre=:ordre, type=:type, texte=:texte, texte_titre=:texte_titre, texte_citation=:texte_citation, 
-                texte_legende=:texte_legende, texte_credit=:texte_credit, style=:style, image=:image, image_1=:image_1, 
-                image_2=:image_2, image_3=:image_3, image_4=:image_4, audio=:audio, video:video
-				WHERE id=:id";
+        $sql = "UPDATE bloc 
+            SET ordre=:ordre, 
+                type=:type, 
+                texte=:texte, 
+                texte_titre=:texte_titre, 
+                texte_citation=:texte_citation, 
+                texte_legende=:texte_legende, 
+                texte_credit=:texte_credit, 
+                style=:style, 
+                image=:image, 
+                image_1=:image_1, 
+                image_2=:image_2, 
+                image_3=:image_3, 
+                image_4=:image_4, 
+                alt=:alt, 
+                audio=:audio, 
+                video=:video, 
+                infographie=:infographie, 
+                id_article=:id_article
+            WHERE id=:id";
+
         $pdo = connexion();
         $query = $pdo->prepare($sql);
+
+        // Bind des valeurs
         $query->bindValue(':id', $this->id, PDO::PARAM_INT);
         $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
         $query->bindValue(':type', $this->type, PDO::PARAM_STR);
@@ -163,11 +181,16 @@ class Bloc
         $query->bindValue(':image_2', $this->image_2, PDO::PARAM_STR);
         $query->bindValue(':image_3', $this->image_3, PDO::PARAM_STR);
         $query->bindValue(':image_4', $this->image_4, PDO::PARAM_STR);
-        $query->bindValue('alt', $this->alt, PDO::PARAM_STR);
+        $query->bindValue(':alt', $this->alt, PDO::PARAM_STR);
         $query->bindValue(':audio', $this->audio, PDO::PARAM_STR);
         $query->bindValue(':video', $this->video, PDO::PARAM_STR);
+        $query->bindValue(':infographie', $this->infographie, PDO::PARAM_STR);
+        $query->bindValue(':id_article', $this->id_article, PDO::PARAM_INT);
+
+        // Exécution de la requête
         $query->execute();
     }
+
 
     function delete()
     {
@@ -284,7 +307,6 @@ class Bloc
 
             case 'create':
                 $bloc = new Bloc();
-                var_dump($_POST);
                 $bloc->chargePOST();
 
                 $bloc->create();
@@ -293,22 +315,35 @@ class Bloc
                 break;
 
             case 'delete':
-                echo 'Suppression du bloc';
-                Bloc::delete($id);
-                header('Location: admin.php?page=bloc&action=delete');
+                $bloc = Bloc::readOne($id); // Méthode pour récupérer le bloc
+                if ($bloc) {
+                    $bloc->delete();
+                }
+                header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
+                exit;
                 break;
 
+
             case 'modifier':
-                $bloc = Bloc::readOne($id);
-                $modele = 'bloc/updatebloc.twig.html';
-                $data = [];
+                $id = isset($_GET['id']) ? $_GET['id'] : null;
+                $id_bloc = isset($_GET['id_bloc']) ? $_GET['id_bloc'] : null;
+
+                $modele = 'form-update/' . $id . '.twig.html';
+                $bloc = Bloc::readOne($id_bloc);
+                $data = [
+                    'bloc' => $bloc, // Si vous avez des données associées à $id
+                    'id' => $id,                  // Passez l'id à Twig
+                    'id_bloc' => $id_bloc,
+                    'listearticle' => Article::readAll()
+                ];
                 break;
 
             case 'update':
                 $bloc = new Bloc();
                 $bloc->chargePOST();    // utilise maintenant la vraie variable $_POST;
                 $bloc->update();
-                header('Location: admin.php?page=bloc&action=read');
+                header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
+                exit();
                 break;
 
             default:

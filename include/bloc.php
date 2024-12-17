@@ -112,8 +112,10 @@ class Bloc
         $maximum = self::readOrderMax($this->id_article);
         $this->ordre = $maximum + 1;
 
-        $sql = "INSERT INTO bloc (ordre, type, texte, texte_titre, texte_citation, texte_legende, texte_credit, style, image, image_1, image_2, image_3, image_4 audio, video, id_article)
-				VALUES (:ordre, :type, :texte, :texte_titre, :texte_citation, :texte_legende, :texte_credit :style, :image, :image_1, :image_2, :image_3, :image_4, :audio, :video, :id_article)";
+        $sql = "INSERT INTO bloc (ordre, type, texte, texte_titre, texte_citation, texte_legende, texte_credit, style, image, 
+        image_1, image_2, image_3, image_4, audio, video, id_article)
+				VALUES (:ordre, :type, :texte, :texte_titre, :texte_citation, :texte_legende, :texte_credit, :style, :image, 
+        :image_1, :image_2, :image_3, :image_4, :audio, :video, :id_article)";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
         $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
@@ -182,10 +184,11 @@ class Bloc
         $this->ordre = postInt('ordre');
         $this->type = postString('type');
         $this->texte = postString('texte');
-        $this->texte = postString('texte_titre');
-        $this->texte = postString('texte_citation');
-        $this->texte = postString('texte_legende');
-        $this->texte = postString('texte_credit');
+        $this->texte = insecables(postString('texte'));
+        $this->texte_titre = insecables(postString('texte_titre'));
+        $this->texte_citation = insecables(postString('texte_citation'));
+        $this->texte_legende = insecables(postString('texte_legende'));
+        $this->texte_credit = insecables(postString('texte_credit'));
         $this->texte = postString('style');
         $this->image = postString('old-image');
         $this->image = postString('old-image_1');
@@ -255,14 +258,20 @@ class Bloc
             case 'new':
                 $id = isset($_GET['id']) ? $_GET['id'] : null;
                 $modele = 'form/' . $id . '.twig.html';
-                $data = ['bloc' => Bloc::readOne($id)];
+                $data = [
+                    'bloc' => Bloc::readOne($id), // Si vous avez des données associées à $id
+                    'id' => $id                  // Passez l'id à Twig
+                ];
+
+                var_dump($id); // Pour debug
                 break;
 
             case 'create':
                 $bloc = new Bloc();
+                var_dump($_POST);
                 $bloc->chargePOST();
+                var_dump($_POST);
                 $bloc->create(); // utilise maintenant la vraie variable $_POST
-                header('Location: controleur.php?page=bloc&action=read');
                 break;
 
             case 'delete':

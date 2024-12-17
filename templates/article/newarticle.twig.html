@@ -1,39 +1,20 @@
 {% extends "base-admin.twig.html" %} {% block content %}
 
-<form
-  action="admin.php?page=article&action=create"
-  method="post"
-  class="row g-4 needs-validation"
-  novalidate
->
+<form action="admin.php?page=article&action=create" method="post" class="row g-4 needs-validation" novalidate>
   <div class="col-md-4">
     <label for="titre" class="form-label mt-4">Titre :</label>
-    <input
-      type="text"
-      name="titre"
-      placeholder="Titre"
-      class="form-control w-75 ms-5 border-black"
-    />
+    <input type="text" name="titre" placeholder="Titre" class="form-control w-75 ms-5 border-black" />
   </div>
 
   <div class="col-md-4">
     <label for="chapo" class="form-label mt-4">Chapô :</label>
-    <textarea
-      name="chapo"
-      placeholder="Saisir le texte"
-      class="form-control w-75 ms-5 border-black"
-      rows="6"
-    ></textarea>
+    <textarea name="chapo" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black"
+      rows="6"></textarea>
   </div>
 
   <div class="col-md-4">
     <label for="auteur" class="form-label mt-4">Auteur : </label>
-    <input
-      type="text"
-      name="auteur"
-      placeholder="Qui est l'auteur ?"
-      class="form-control w-75 ms-5 border-black"
-    />
+    <input type="text" name="auteur" placeholder="Qui est l'auteur ?" class="form-control w-75 ms-5 border-black" />
   </div>
 
   <div class="col-md-4">
@@ -46,18 +27,10 @@
   </div>
 
   <!-- Champ pour uploader une nouvelle image -->
-  <input
-    type="file"
-    name="image"
-    accept="images/*"
-    class="form-control w-75 ms-5 border-black"
-  />
+  <input type="file" name="image" accept="images/*" class="form-control w-75 ms-5 border-black" />
 
   <div class="d-flex justify-content-center">
-    <button
-      type="submit"
-      class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2"
-    >
+    <button type="submit" class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2">
       Créer
     </button>
   </div>

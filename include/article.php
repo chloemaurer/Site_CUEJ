@@ -213,7 +213,6 @@ class Article
 
                 // Étape 3 : Rediriger vers la page des articles
                 header('Location: admin.php?page=article&action=read');
-                exit;
                 break;
 
                 ////////////////////////////////////

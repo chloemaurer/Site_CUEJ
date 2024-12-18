@@ -1,83 +1,71 @@
-{% extends "base-admin.twig.html" %} {% block content %}
+{% extends "base-admin.twig.html" %}
 
-<h1 class="text-center p-5">Créaton d'un bloc</h1>
-<form action="admin.php?page=bloc&action=create" method="post" enctype="multipart/form-data"
-    class="row g-4 needs-validation" novalidate>
-    {# type #}
-    <div class="col-md-4">
-        <input type="hidden" name="type" placeholder="Quel type ?" value="{{id}}"
-            class="form-control w-75 ms-5 border-black" />
-    </div>
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-5 text-primary fw-bold">Création d'un bloc</h1>
 
-    {# texte #}
-    <div class="col-md-4">
-        <label for="texte" class="form-label mt-4">Texte :</label>
-        <textarea type="texte" name="texte" id="" placeholder="Saisir le texte"
-            class="form-control w-75 ms-5 border-black"></textarea>
-    </div>
+    <form action="admin.php?page=bloc&action=create" method="post" enctype="multipart/form-data" class="row g-4 bg-white p-4 rounded shadow-lg needs-validation" novalidate>
+        {# Type de bloc (caché) #}
+        <input type="hidden" name="type" value="{{ id }}" />
 
-
-
-    {# style #}
-    <div class="col-md-4">
-        <label for="style" class="form-label mt-4">Style :</label>
-        <select id="style" name="style" class="form-select w-75 ms-5 border-black" aria-label="Default select example">
-            <option value="corp_de_texte" selected>Corps de texte</option>
-            <option value="chapo">Chapô</option>
-            <option value="encadre">Encadré</option>
-            <option value="exergue_l">Exergue long</option>
-            <option value="exergue_c">Exergue court</option>
-            <option value="legende">Légende</option>
-            <option value="credit_p">credit photo</option>
-            <option value="credir_a">credit article</option>
-        </select>
-    </div>
-
-    {# image #}
-    <div class="col-md-4">
-        <label for="image">Image :<span>(max 200 Ko)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
-        <input type="file" name="image" accept="images/*" class="form-control w-75 ms-5 border-black" />
-    </div>
-
-
-    {# légende #}
-    <div class="col-md-4">
-        <label for="texte_legende" class="form-label mt-4">Texte :</label>
-        <input type="text" name="texte_legende" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
-    </div>
-
-
-    {# crédit #}
-    <div class="col-md-4">
-        <label for="texte_credit" class="form-label mt-4">Crédit:</label>
-        <input type="text" name="texte_credit" placeholder="Saisir le texte"
-            class="form-control w-75 ms-5 border-black" />
-    </div>
-
-
-
-    {# infographie #}
-    <div class="col-md-4">
-        <label for="video">Infographie :<span>(max 5 Mo)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="5000000" title="la taille max du fichier" autocomplete="off" />
-        <input type="file" id="infographie" name="audio" class="infographie" title="votre infographie"
-            autocomplete="off" />
-    </div>
-
-
-    {# alt #}
-    <div class="col-md-4">
-        <label for="alt" class="form-label mt-4">Description de l'image : </label>
-        <input type="text" name="alt" placeholder="description de l'image (si type = image) ou de l'infographie"
-            class="form-control w-75 ms-5 border-black" />
-    </div>
-
-    {# Article : Pré-sélection automatique #}
+        {# Texte #}
         <div class="col-md-6">
+            <label for="texte" class="form-label fw-bold text-secondary">Texte :</label>
+            <textarea name="texte" id="texte" rows="3" placeholder="Saisir le texte" class="form-control border-secondary" required></textarea>
+        </div>
+
+        {# Style #}
+        <div class="col-md-6">
+            <label for="style" class="form-label fw-bold text-secondary">Style :</label>
+            <select name="style" id="style" class="form-select border-secondary">
+                <option value="corp_de_texte" selected>Corps de texte</option>
+                <option value="chapo">Chapô</option>
+                <option value="encadre">Encadré</option>
+                <option value="exergue_l">Exergue long</option>
+                <option value="exergue_c">Exergue court</option>
+                <option value="legende">Légende</option>
+                <option value="credit_p">Crédit photo</option>
+                <option value="credir_a">Crédit article</option>
+            </select>
+        </div>
+
+        {# Image #}
+        <div class="col-md-6">
+            <label for="image" class="form-label fw-bold text-secondary">Image :</label>
+            <input type="file" name="image" accept="image/*" class="form-control border-secondary" />
+            <small class="text-muted">Taille maximale : 200 Ko</small>
+        </div>
+
+        {# Légende de l'image #}
+        <div class="col-md-6">
+            <label for="texte_legende" class="form-label fw-bold text-secondary">Légende :</label>
+            <input type="text" name="texte_legende" placeholder="Saisir la légende" class="form-control border-secondary" />
+        </div>
+
+        {# Crédit de l'image #}
+        <div class="col-md-6">
+            <label for="texte_credit" class="form-label fw-bold text-secondary">Crédit :</label>
+            <input type="text" name="texte_credit" placeholder="Saisir le crédit" class="form-control border-secondary" />
+        </div>
+
+        {# Infographie #}
+        <div class="col-md-6">
+            <label for="video" class="form-label fw-bold text-secondary">Infographie :</label>
+            <input type="file" name="audio" accept="application/pdf" class="form-control border-secondary" />
+            <small class="text-muted">Taille maximale : 5 Mo</small>
+        </div>
+
+        {# Alt (Description) #}
+        <div class="col-md-6">
+            <label for="alt" class="form-label fw-bold text-secondary">Description (Image/Infographie) :</label>
+            <input type="text" name="alt" placeholder="Saisir la description" class="form-control border-secondary" />
+        </div>
+
+        {# Article associé #}
+        <div class="col-md-12">
             <label for="id_article" class="form-label fw-bold text-secondary">Article :</label>
             <select name="id_article" id="id_article" class="form-select border-secondary" required>
-                <option value="" disabled>Choisir un article</option>
+                <option value="" disabled selected>Choisir un article</option>
                 {% for article in listearticle %}
                     <option value="{{ article.id_article }}" 
                         {% if article.id_article == id_article_selectionne %}selected{% endif %}>
@@ -87,12 +75,12 @@
             </select>
         </div>
 
-    {# bouton #}
-    <div class="d-flex justify-content-center">
-        <button type="submit" class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2">
-            Créer
-        </button>
-    </div>
-</form>
-
+        {# Bouton de validation #}
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-success px-5 py-2 rounded-pill shadow">
+                <i class="fa-solid fa-check me-2"></i> Créer
+            </button>
+        </div>
+    </form>
+</div>
 {% endblock %}

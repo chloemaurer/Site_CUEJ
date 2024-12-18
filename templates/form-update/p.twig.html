@@ -1,0 +1,60 @@
+{% extends "base-admin.twig.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-5 text-primary">Modification d'un bloc</h1>
+
+    <form action="admin.php?page=bloc&action=update&id={{ bloc.id }}" method="post" class="row g-4 needs-validation" novalidate>
+        {# Type de bloc #}
+        <div class="col-md-12">
+            <input type="hidden" name="type" value="{{ bloc.type }}" />
+        </div>
+
+                {# ID DU BLOC #}
+        <input type="hidden" name="id" value="{{ id_bloc }}" />
+
+        {# Texte #}
+        <div class="col-md-6">
+            <label for="texte" class="form-label fw-bold text-secondary">Texte :</label>
+            <textarea name="texte" id="texte" rows="4" placeholder="Saisir le texte" 
+                      class="form-control border-secondary">{{ bloc.texte }}</textarea>
+        </div>
+
+        {# Style #}
+        <div class="col-md-6">
+            <label for="style" class="form-label fw-bold text-secondary">Style :</label>
+            <select name="style" id="style" class="form-select border-secondary">
+                <option value="corp_de_texte" {% if bloc.style == 'corp_de_texte' %}selected{% endif %}>Corps de texte</option>
+                <option value="chapo" {% if bloc.style == 'chapo' %}selected{% endif %}>Chapô</option>
+                <option value="encadre" {% if bloc.style == 'encadre' %}selected{% endif %}>Encadré</option>
+                <option value="exergue_l" {% if bloc.style == 'exergue_l' %}selected{% endif %}>Exergue long</option>
+                <option value="exergue_c" {% if bloc.style == 'exergue_c' %}selected{% endif %}>Exergue court</option>
+                <option value="legende" {% if bloc.style == 'legende' %}selected{% endif %}>Légende</option>
+                <option value="credit_p" {% if bloc.style == 'credit_p' %}selected{% endif %}>Crédit photo</option>
+                <option value="credit_a" {% if bloc.style == 'credit_a' %}selected{% endif %}>Crédit article</option>
+            </select>
+        </div>
+
+        {# Article associé #}
+        <div class="col-md-12">
+            <label for="id_article" class="form-label fw-bold text-secondary">Article associé :</label>
+            <select name="id_article" id="id_article" class="form-select border-secondary" required>
+                <option value="" disabled>Choisir un article</option>
+                {% for article in listearticle %}
+                <option value="{{ article.id_article }}" 
+                    {% if article.id_article == bloc.id_article %}selected{% endif %}>
+                    {{ article.titre | raw }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        {# Bouton de validation #}
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-primary px-5 py-2">
+                <i class="fa-solid fa-save"></i> Modifier
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

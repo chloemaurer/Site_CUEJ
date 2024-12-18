@@ -31,23 +31,24 @@
         </div>
 
         <!-- Sélection de l'article -->
-        <div class="col-md-12 mb-3">
-          <label for="id_article" class="form-label fw-bold text-secondary"
-            >Article :</label
-          >
-          <select
-            name="id_article"
-            id="id_article"
-            class="form-select border-secondary"
-            required
-          >
-            <option value="" disabled selected>Choisir un article</option>
-            {% for article in listearticle %}
-            <option value="{{ article.id_article }}">
-              {{ article.titre }}
-            </option>
-            {% endfor %}
-          </select>
+        <div class="col-md-12">
+          <div class="mb-3">
+            <label for="id_article" class="form-label fw-bold text-secondary">Article :</label>
+            <select
+              name="id_article"
+              id="id_article"
+              class="form-select border-secondary"
+              required
+            >
+              <option value="" disabled>Choisir un article</option>
+              {% for article in listearticle %}
+                <option value="{{ article.id_article }}"
+                  {% if article.id_article == id_article_selectionne %}selected{% endif %}>
+                  {{ article.titre }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
         </div>
 
         <!-- Bouton de soumission -->

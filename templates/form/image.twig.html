@@ -1,13 +1,12 @@
-{% extends "base-admin.twig.html" %} {% block content %}
+{% extends "base-admin.twig.html" %}
 
-<h1 class="text-center p-5">Création d'un bloc</h1>
-<form action="admin.php?page=bloc&action=create" method="post" class="row g-4 needs-validation" novalidate>
-    {# type #}
-    <div class="col-md-4">
-        <input type="hidden" name="type" placeholder="Quel type ?" value="{{id}}"
-            class="form-control w-75 ms-5 border-black" />
-    </div>
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-5 text-primary">Création d'un bloc</h1>
 
+    <form action="admin.php?page=bloc&action=create" method="post" enctype="multipart/form-data" class="row g-4 needs-validation" novalidate>
+        {# Type de bloc #}
+        <input type="hidden" name="type" value="{{ id }}" />
 
     {# image #}
     <div class="col-md-4">
@@ -16,52 +15,56 @@
         <input type="file" name="image" accept="images/*" class="form-control w-75 ms-5 border-black" />
     </div>
 
+        {# Infographie #}
+        <div class="col-md-6">
+            <label for="infographie" class="form-label fw-bold text-secondary">
+                Infographie <span class="text-muted">(max 5 Mo)</span> :
+            </label>
+            <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
+            <input type="file" id="infographie" name="infographie" class="form-control" />
+        </div>
 
+        {# Légende #}
+        <div class="col-md-6">
+            <label for="texte_legende" class="form-label fw-bold text-secondary">Légende :</label>
+            <input type="text" name="texte_legende" placeholder="Saisir la légende" 
+                   class="form-control border-secondary" />
+        </div>
 
+        {# Crédit #}
+        <div class="col-md-6">
+            <label for="texte_credit" class="form-label fw-bold text-secondary">Crédit :</label>
+            <input type="text" name="texte_credit" placeholder="Saisir le crédit" 
+                   class="form-control border-secondary" />
+        </div>
 
-    {# infographie #}
-    <div class="col-md-4">
-        <label for="infographie">Infographie :<span>(max 5 Mo)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="5000000" title="la taille max du fichier"
-            autocomplete="off" />
-        <input type="file" id="infographie" name="audio" class="infographie" title="votre infographie" autocomplete="off" />
-    </div>
+        {# Description de l'image (alt) #}
+        <div class="col-md-6">
+            <label for="alt" class="form-label fw-bold text-secondary">Description de l'image :</label>
+            <input type="text" name="alt" placeholder="Description de l'image" 
+                   class="form-control border-secondary" />
+        </div>
 
+        {# Article : Pré-sélection automatique #}
+        <div class="col-md-6">
+            <label for="id_article" class="form-label fw-bold text-secondary">Article :</label>
+            <select name="id_article" id="id_article" class="form-select border-secondary" required>
+                <option value="" disabled>Choisir un article</option>
+                {% for article in listearticle %}
+                    <option value="{{ article.id_article }}" 
+                        {% if article.id_article == id_article_selectionne %}selected{% endif %}>
+                        {{ article.titre }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
 
-    {# légende #}
-    <div class="col-md-4">
-        <label for="texte_legende" class="form-label mt-4">Légende  :</label>
-        <input type="text" name="texte_legende" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
-    </div>
-
-
-    {# crédit #}
-    <div class="col-md-4">
-        <label for="texte_legende" class="form-label mt-4">Crédit  :</label>
-        <input type="text" name="texte_legende" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
-    </div>
-
-
-    {# alt #}
-    <div class="col-md-4">
-        <label for="alt" class="form-label mt-4">Description de l'image : </label>
-        <input type="text" name="alt" placeholder="description de l'image (si type = image)"
-            class="form-control w-75 ms-5 border-black" />
-    </div>
-
-    {# article #}
-    <div class="col-md-4">
-        <label for="id_article" class="form-label mt-4">Article :</label>
-        <input type="text" name="id_article" required="required" placeholder="Dans quel article apparait-il ?"
-            class="form-control w-75 ms-5 border-black" />
-    </div>
-
-    {# bouton #}
-    <div class="d-flex justify-content-center">
-        <button type="submit" class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2">
-            Créer
-        </button>
-    </div>
-</form>
-
+        {# Bouton de validation #}
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-success px-5 py-2">
+                <i class="fa-solid fa-check"></i> Créer
+            </button>
+        </div>
+    </form>
+</div>
 {% endblock %}

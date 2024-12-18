@@ -10,7 +10,7 @@
 
         {# Image actuelle et champ d'upload #}
         <div class="col-md-6">
-            <label for="image" class="form-label fw-bold text-secondary">Image :</label>
+            <label for="image" class="form-label fw-bold text-secondary">Image ou infographie:</label>
             {% if bloc.image %}
                 <div class="mb-3">
                     <img src="upload/{{ bloc.image }}" alt="Image actuelle" class="img-thumbnail" style="max-width: 150px;">
@@ -21,18 +21,6 @@
             <small class="text-muted">Taille maximale : 200 Ko</small>
         </div>
 
-        {# Infographie actuelle et upload #}
-        <div class="col-md-6">
-            <label for="infographie" class="form-label fw-bold text-secondary">Infographie :</label>
-            {% if bloc.infographie %}
-                <div class="mb-3">
-                    <a href="upload/{{ bloc.infographie }}" target="_blank" class="text-decoration-underline">Voir l'infographie actuelle</a>
-                </div>
-                <input type="hidden" name="old_infographie" value="{{ bloc.infographie }}" />
-            {% endif %}
-            <input type="file" name="infographie" id="infographie" accept="image/*" class="form-control" />
-            <small class="text-muted">Taille maximale : 5 Mo</small>
-        </div>
 
         {# Légende #}
         <div class="col-md-6">

@@ -415,7 +415,16 @@
           </div>
           <p>©{{ bloc.texte_credit }}</p>
         </div>
-
+        <div class="btn-group">
+          <a href="admin.php?page=bloc&action=modifier&id=carousel&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm" title="Modifier">
+            <i class="fa-solid fa-pencil"></i>
+          </a>
+          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Supprimer">
+            <i class="fa-solid fa-trash"></i>
+          </a>
+        </div>
 
         {% else %}
 

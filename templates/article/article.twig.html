@@ -385,6 +385,12 @@
           </div>
         </div>
 
+        {% elseif bloc.type == "video" %}
+        <div class="mx-auto" style="max-width: 960px;"></div>
+        <video controls width="640" class=" mb-5 {{ bloc.type }}">
+          <source src="upload/{{ bloc.video }}" type="video/mp4">
+          Votre navigateur ne supporte pas la vidéo.
+        </video>
 
         {% else %}
 

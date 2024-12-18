@@ -47,11 +47,9 @@ function chargeFILE($type)
 
 		$allowed = ['jpg', 'jpeg', 'png', 'mp3', 'mp4', 'svg'];
 
-		var_dump($_FILES);
-
 		// Vérification des erreurs de téléchargement
 		if ($fileError === 0) {
-			$allowed = ['jpg', 'jpeg', 'jfif', 'png', 'mp3', 'wav', 'flac'];
+			$allowed = ['jpg', 'jpeg', 'png', 'mp3', 'mp4', 'svg'];
 			if (in_array($fileActualExt, $allowed)) {
 				if ($fileSize < 80000000) {
 					$fileNameNew = uniqid('', true) . "." . $fileActualExt;

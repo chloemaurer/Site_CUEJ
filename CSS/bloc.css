@@ -1,0 +1,109 @@
+/*------------------------------- STYLE DES BLOCS -----------------------------------------*/
+.webdoc-h1 {
+  font-family: "Anybody", sans-serif; /* Police Anybody */
+  font-weight: 900; /* Black (équivalent à Bold extrême) */
+  font-size: 48px; /* Taille de police 48px */
+  line-height: 1.1; /* Hauteur de ligne ajustée pour les titres */
+  letter-spacing: 0; /* Aucun espacement entre les lettres */
+  color: #000000; /* Couleur noire pure */
+  text-transform: uppercase; /* Texte en majuscules pour un effet fort */
+  margin: 0; /* Supprime les marges par défaut */
+  text-align: left; /* Alignement à gauche */
+}
+
+.titre-article {
+  font-family: "Anybody", sans-serif; /* Police */
+  font-weight: 900; /* Black */
+  font-size: 36px; /* Taille de police */
+  color: #000000; /* Couleur du texte : blanc */
+  padding: 10px 20px; /* Espacement interne pour aérer */
+  text-align: center; /* Alignement centré */
+  text-transform: none; /* Pas de majuscules forcées */
+  line-height: 1.2; /* Hauteur de ligne */
+  margin: 0 auto; /* Centre l'élément */
+}
+
+.section-article {
+  font-family: "Anybody", sans-serif; /* Police */
+  font-weight: bold; /* Semi-bold (gras léger) */
+  font-size: 32px; /* Taille de la police */
+  color: #8a151b; /* Couleur du texte */
+  text-align: center; /* Alignement centré */
+  letter-spacing: 1px; /* Espacement entre les lettres */
+
+  /* Ajout des lignes horizontales */
+  border-top: 1px solid #8a151b; /* Ligne du haut */
+  border-bottom: 1px solid #8a151b; /* Ligne du bas */
+  line-height: 1.2; /* Hauteur de ligne */
+  margin: 20px 0; /* Espacement autour de l'élément */
+  padding: 10px 0; /* Espacement interne haut et bas */
+}
+
+.titre-caroussel {
+  font-family: "Anybody", sans-serif; /* Police */
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.intertitre {
+  font-family: "Montserrat", sans-serif; /* Police */
+  font-size: 20px;
+  font-weight: bold;
+  color: #8a151b;
+}
+
+.corp_de_texte {
+  font-family: "Montserrat", sans-serif; /* Police Montserrat */
+  font-weight: 400; /* Regular */
+  font-size: 20px; /* Taille de police 20px */
+  line-height: 1.7; /* Hauteur de ligne pour une bonne lisibilité */
+  letter-spacing: 0; /* Espacement entre les lettres */
+  color: #343434; /* Couleur noire légèrement adoucie */
+}
+
+.chapo {
+  font-family: "Montserrat", sans-serif; /* Police */
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.encadre {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  background-color: #8a151b;
+  padding: 2rem;
+}
+
+.exergue_l {
+  font-family: "Montserrat", sans-serif; /* Police Montserrat */
+  font-weight: 300; /* Poids léger */
+  font-style: italic; /* Italique */
+  font-size: 20px; /* Taille de la police */
+  line-height: 1.7; /* Hauteur de ligne */
+  letter-spacing: 0; /* Espacement entre les lettres */
+  color: #222; /* Couleur du texte, noir par défaut */
+  margin: 10px 0; /* Espacement autour du texte */
+}
+
+.exergue_c {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 48px;
+  color: #8a151b;
+}
+
+.legende {
+  font-family: "Montserrat", sans-serif;
+  font-style: italic;
+  font-size: 16px;
+}
+
+.credit_p {
+  font-family: "Montserrat", sans-serif;
+  font-style: italic;
+  font-size: 16px;
+}
+
+.credir_a {
+}

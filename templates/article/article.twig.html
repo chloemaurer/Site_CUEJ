@@ -81,7 +81,7 @@
       <!-- Affichage des blocs selon le type -->
       <div>
         {% if bloc.type == "h1" %}
-        <h1>{{ bloc.texte | raw }}</h1>
+        <h1 class="webdoc-h1">{{ bloc.texte | raw }}</h1>
         <div class="btn-group">
           <a
             href="admin.php?page=bloc&action=modifier&id=h1&id_bloc={{ bloc.id }}"
@@ -99,7 +99,7 @@
           </a>
         </div>
         {% elseif bloc.type == "h2" %}
-        <h2>{{ bloc.texte | raw }}</h2>
+        <h2 class="titre-article-chapitre">{{ bloc.texte | raw }}</h2>
         <div class="btn-group">
           <a
             href="admin.php?page=bloc&action=modifier&id=h2&id_bloc={{ bloc.id }}"
@@ -117,7 +117,7 @@
           </a>
         </div>
         {% elseif bloc.type == "h3" %}
-        <h3>{{ bloc.texte | raw }}</h3>
+        <h3 class="section-article">{{ bloc.texte | raw }}</h3>
         <div class="btn-group">
           <a
             href="admin.php?page=bloc&action=modifier&id=h3&id_bloc={{ bloc.id }}"
@@ -135,7 +135,7 @@
           </a>
         </div>
         {% elseif bloc.type == "h4" %}
-        <h4>{{ bloc.texte | raw }}</h4>
+        <h4 class="titre-caroussel">{{ bloc.texte | raw }}</h4>
         <div class="btn-group">
           <a
             href="admin.php?page=bloc&action=modifier&id=h4&id_bloc={{ bloc.id }}"
@@ -153,7 +153,7 @@
           </a>
         </div>
         {% elseif bloc.type == "h5" %}
-        <h5>{{ bloc.texte | raw }}</h5>
+        <h5 class="intertitre">{{ bloc.texte | raw }}</h5>
         <div class="btn-group">
           <a
             href="admin.php?page=bloc&action=modifier&id=h5&id_bloc={{ bloc.id }}"
@@ -210,10 +210,37 @@
             <i class="fa-solid fa-trash"></i>
           </a>
         </div>
-        {% elseif bloc.type == "citation" %}
-        <blockquote>{{ bloc.texte_citation | raw }}</blockquote>
-        <p>{{ bloc.texte_legende | raw }}</p>
 
+        {# CITATION #} {% elseif bloc.type == "citation" %}
+        <div class="container">
+          <div class="mx-auto" style="max-width: 960px">
+            <figure class="text-center">
+              <div class="d-flex justify-content-center">
+                <div class="align-baseline">
+                  <img
+                    src="images/Exergue.svg"
+                    alt="{{ bloc.alt }}"
+                    style="width: 40px"
+                  />
+                </div>
+                <blockquote class="blockquote my-3">
+                  <p class="exergue_l">{{ bloc.texte_citation | raw}}</p>
+                </blockquote>
+                <div class="align_baseline">
+                  <img
+                    src="images/Exergue.svg"
+                    alt="{{ bloc.alt }}"
+                    style="width: 40px"
+                  />
+                </div>
+              </div>
+              <figcaption class="blockquote-footer">
+                <p>{{ bloc.texte_legende | raw}}</p>
+                <cite title="Source Title">©{{ bloc.texte_credit| raw}}</cite>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
         <div class="btn-group">
           <a
             href="admin.php?page=bloc&action=modifier&id=citation&id_bloc={{ bloc.id }}"
@@ -230,12 +257,29 @@
             <i class="fa-solid fa-trash"></i>
           </a>
         </div>
-        {% elseif bloc.type == "citation_texte" %}
-        <blockquote>{{ bloc.texte_citation | raw }}</blockquote>
-        <p>{{ bloc.texte_legende | raw }}</p>
 
-        <p>{{bloc.texte | raw }}</p>
+        {# CITATION TEXTE #} {% elseif bloc.type == "citation_texte" %}
+        <div class="row">
+          <!-- Bloc de Citation à gauche -->
+          <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
+            <figure class="m-0">
+              <blockquote class="blockquote text-center">
+                <p class="fw-bold fs-3 text-danger mb-0">
+                  "{{ bloc.texte_citation | raw}}"
+                </p>
+                <figcaption class="blockquote-footer">
+                  <p>{{ bloc.texte_legende | raw}}</p>
+                  <cite title="Source Title">©{{ bloc.texte_credit }}</cite>
+                </figcaption>
+              </blockquote>
+            </figure>
+          </div>
 
+          <!-- Bloc de Texte à droite -->
+          <div class="col-md-7 p-4 bg-light">
+            <p class="{{ bloc.style }}">{{ bloc.texte }}</p>
+          </div>
+        </div>
         <div class="btn-group">
           <a
             href="admin.php?page=bloc&action=modifier&id=citation_texte&id_bloc={{ bloc.id }}"
@@ -252,36 +296,31 @@
             <i class="fa-solid fa-trash"></i>
           </a>
         </div>
-        {% elseif bloc.type == "texte_citation" %}
-        <p>{{bloc.texte | raw }}</p>
 
-        <blockquote>{{ bloc.texte_citation | raw }}</blockquote>
-        <p>{{ bloc.texte_legende | raw }}</p>
-
-        <div class="btn-group">
-          <a
-            href="admin.php?page=bloc&action=modifier&id=texte_citation&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm"
-            title="Modifier"
-          >
-            <i class="fa-solid fa-pencil"></i>
-          </a>
-          <a
-            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
-            class="btn btn-outline-danger btn-sm"
-            title="Supprimer"
-          >
-            <i class="fa-solid fa-trash"></i>
-          </a>
+        {# TEXTE CITATION #} {% elseif bloc.type == "texte_citation" %}
+        <div class="row">
+          <!-- Bloc de Texte à gauche -->
+          <div class="col-md-7 p-4 bg-light">
+            <p class="{{ bloc.style }}">{{ bloc.texte }}</p>
+          </div>
+          <!-- Bloc de Citation à droite -->
+          <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
+            <figure class="m-0">
+              <blockquote class="blockquote text-center">
+                <p class="fw-bold fs-3 text-danger mb-0">
+                  "{{ bloc.texte_citation | raw}}"
+                </p>
+                <figcaption class="blockquote-footer">
+                  <p>{{ bloc.texte_legende | raw}}</p>
+                  <cite title="Source Title">©{{ bloc.texte_credit }}</cite>
+                </figcaption>
+              </blockquote>
+            </figure>
+          </div>
         </div>
-        {% elseif bloc.type == "texte_citation" %}
-        <p>{{bloc.texte | raw }}</p>
-
-        <blockquote>{{ bloc.texte_citation | raw }}</blockquote>
-
         <div class="btn-group">
           <a
-            href="admin.php?page=bloc&action=modifier&id=h2"
+            href="admin.php?page=bloc&action=modifier&id=citation_texte&id_bloc={{ bloc.id }}"
             class="btn btn-outline-warning btn-sm"
             title="Modifier"
           >
@@ -307,19 +346,20 @@
 
             <div class="podcast__meta">
               <audio controls width="100px">
-                <source src="upload/{{ bloc.audio }}">
+                <source src="upload/{{ bloc.audio }}" />
                 Your browser does not support the audio tag.
               </audio>
 
               <div class="artwork mb-2">
-                <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" style="width: 200px; height: 200px;">
+                <img
+                  src="upload/{{ bloc.image }}"
+                  alt="{{ bloc.alt }}"
+                  style="width: 200px; height: 200px"
+                />
               </div>
-
             </div>
           </div>
         </div>
-
-
 
         {% else %}
 

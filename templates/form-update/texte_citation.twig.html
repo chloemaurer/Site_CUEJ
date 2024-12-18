@@ -1,10 +1,11 @@
-{% extends "base-admin.twig.html" %} {% block content %}
+{% extends "base-admin.twig.html" %} 
 
+{% block content %}
 <div class="container mt-5">
-  <h1 class="text-center text-primary mb-4">Création d'un bloc</h1>
-  
+  <h1 class="text-center text-primary mb-4">Modification d'un bloc</h1>
+
   <form 
-    action="admin.php?page=bloc&action=create" 
+    action="admin.php?page=bloc&action=update&id={{ bloc.id }}" 
     method="post" 
     enctype="multipart/form-data"
     class="row g-4 bg-light p-4 rounded shadow-sm needs-validation" 
@@ -16,16 +17,20 @@
       <input 
         type="hidden" 
         name="type" 
-        value="{{ id }}" 
+        value="{{ bloc.type }}" 
         class="form-control" 
       />
       <input 
         type="text" 
         class="form-control" 
-        placeholder="Bloc sélectionné : {{ id }}" 
+        placeholder="Bloc sélectionné : {{ bloc.type }}" 
         disabled 
       />
     </div>
+
+
+      <!-- ID du bloc -->
+    <input type="hidden" name="id" value="{{ bloc.id }}" />
 
     <!-- Citation -->
     <div class="col-md-6">
@@ -36,10 +41,11 @@
         placeholder="Saisir la citation"
         class="form-control border-secondary" 
         rows="3"
-      ></textarea>
+      >{{ bloc.texte_citation | raw}}</textarea>
     </div>
 
-          <!-- Légende -->
+
+        <!-- Légende -->
     <div class="col-md-6">
       <label for="texte_legende" class="form-label fw-bold">Auteur de la citation :</label>
       <textarea 
@@ -48,7 +54,7 @@
         placeholder="Saisir la légende" 
         class="form-control border-secondary" 
         rows="2"
-      ></textarea>
+      >{{bloc.texte_legende | raw}}</textarea>
     </div>
 
     <!-- Texte -->
@@ -60,7 +66,7 @@
         placeholder="Saisir le texte"
         class="form-control border-secondary" 
         rows="3"
-      ></textarea>
+      >{{ bloc.texte  | raw}}</textarea>
     </div>
 
     <!-- Style -->
@@ -72,14 +78,14 @@
         class="form-select border-secondary"
         required
       >
-        <option value="corp_de_texte" selected>Corps de texte</option>
-        <option value="chapo">Chapô</option>
-        <option value="encadre">Encadré</option>
-        <option value="exergue_l">Exergue long</option>
-        <option value="exergue_c">Exergue court</option>
-        <option value="legende">Légende</option>
-        <option value="credit_p">Crédit photo</option>
-        <option value="credit_a">Crédit article</option>
+        <option value="corp_de_texte" {% if bloc.style == 'corp_de_texte' %}selected{% endif %}>Corps de texte</option>
+        <option value="chapo" {% if bloc.style == 'chapo' %}selected{% endif %}>Chapô</option>
+        <option value="encadre" {% if bloc.style == 'encadre' %}selected{% endif %}>Encadré</option>
+        <option value="exergue_l" {% if bloc.style == 'exergue_l' %}selected{% endif %}>Exergue long</option>
+        <option value="exergue_c" {% if bloc.style == 'exergue_c' %}selected{% endif %}>Exergue court</option>
+        <option value="legende" {% if bloc.style == 'legende' %}selected{% endif %}>Légende</option>
+        <option value="credit_p" {% if bloc.style == 'credit_p' %}selected{% endif %}>Crédit photo</option>
+        <option value="credit_a" {% if bloc.style == 'credit_a' %}selected{% endif %}>Crédit article</option>
       </select>
     </div>
 
@@ -95,7 +101,7 @@
         <option value="" disabled>Choisir un article</option>
         {% for article in listearticle %}
           <option value="{{ article.id_article }}"
-            {% if article.id_article == id_article_selectionne %}selected{% endif %}
+            {% if article.id_article == bloc.id_article %}selected{% endif %}
           >
             {{ article.titre }}
           </option>
@@ -109,7 +115,7 @@
         type="submit" 
         class="btn btn-primary px-4 py-2 rounded-pill shadow-sm"
       >
-        <i class="fa-solid fa-save me-2"></i>Créer le bloc
+        <i class="fa-solid fa-save me-2"></i>Mettre à jour
       </button>
     </div>
   </form>

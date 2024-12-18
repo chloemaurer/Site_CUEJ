@@ -102,7 +102,7 @@
         <h2>{{ bloc.texte | raw }}</h2>
         <div class="btn-group">
           <a
-            href="admin.php?page=bloc&action=modifier&id=h2"
+            href="admin.php?page=bloc&action=modifier&id=h2&id_bloc={{ bloc.id }}"
             class="btn btn-outline-warning btn-sm"
             title="Modifier"
           >
@@ -120,7 +120,7 @@
         <h3>{{ bloc.texte | raw }}</h3>
         <div class="btn-group">
           <a
-            href="admin.php?page=bloc&action=modifier&id=h2"
+            href="admin.php?page=bloc&action=modifier&id=h3&id_bloc={{ bloc.id }}"
             class="btn btn-outline-warning btn-sm"
             title="Modifier"
           >
@@ -138,7 +138,7 @@
         <h4>{{ bloc.texte | raw }}</h4>
         <div class="btn-group">
           <a
-            href="admin.php?page=bloc&action=modifier&id=h2"
+            href="admin.php?page=bloc&action=modifier&id=h4&id_bloc={{ bloc.id }}"
             class="btn btn-outline-warning btn-sm"
             title="Modifier"
           >
@@ -156,7 +156,7 @@
         <h5>{{ bloc.texte | raw }}</h5>
         <div class="btn-group">
           <a
-            href="admin.php?page=bloc&action=modifier&id=h2"
+            href="admin.php?page=bloc&action=modifier&id=h5&id_bloc={{ bloc.id }}"
             class="btn btn-outline-warning btn-sm"
             title="Modifier"
           >
@@ -174,7 +174,7 @@
         <p class="{{ bloc.style }}">{{ bloc.texte | raw }}</p>
         <div class="btn-group">
           <a
-            href="admin.php?page=bloc&action=modifier&id=h2"
+            href="admin.php?page=bloc&action=modifier&id=p&id_bloc={{ bloc.id }}"
             class="btn btn-outline-warning btn-sm"
             title="Modifier"
           >
@@ -196,7 +196,7 @@
         />
         <div class="btn-group">
           <a
-            href="admin.php?page=bloc&action=modifier&id=h2"
+            href="admin.php?page=bloc&action=modifier&id=image&id_bloc={{ bloc.id }}"
             class="btn btn-outline-warning btn-sm"
             title="Modifier"
           >
@@ -212,9 +212,11 @@
         </div>
         {% elseif bloc.type == "citation" %}
         <blockquote>{{ bloc.texte_citation | raw }}</blockquote>
+        <p>{{ bloc.texte_legende | raw }}</p>
+
         <div class="btn-group">
           <a
-            href="admin.php?page=bloc&action=modifier&id=h2"
+            href="admin.php?page=bloc&action=modifier&id=citation&id_bloc={{ bloc.id }}"
             class="btn btn-outline-warning btn-sm"
             title="Modifier"
           >
@@ -230,11 +232,13 @@
         </div>
         {% elseif bloc.type == "citation_texte" %}
         <blockquote>{{ bloc.texte_citation | raw }}</blockquote>
+        <p>{{ bloc.texte_legende | raw }}</p>
+
         <p>{{bloc.texte | raw }}</p>
 
         <div class="btn-group">
           <a
-            href="admin.php?page=bloc&action=modifier&id=h2"
+            href="admin.php?page=bloc&action=modifier&id=citation_texte&id_bloc={{ bloc.id }}"
             class="btn btn-outline-warning btn-sm"
             title="Modifier"
           >
@@ -252,10 +256,11 @@
         <p>{{bloc.texte | raw }}</p>
 
         <blockquote>{{ bloc.texte_citation | raw }}</blockquote>
+        <p>{{ bloc.texte_legende | raw }}</p>
 
         <div class="btn-group">
           <a
-            href="admin.php?page=bloc&action=modifier&id=h2"
+            href="admin.php?page=bloc&action=modifier&id=texte_citation&id_bloc={{ bloc.id }}"
             class="btn btn-outline-warning btn-sm"
             title="Modifier"
           >

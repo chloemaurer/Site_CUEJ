@@ -370,12 +370,15 @@
               <p class="{{ bloc.style }}">{{ bloc.texte }}</p>
             </div>
             <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
-            <div class="col-6 d-flex justify-content-center pe-2 ">
-              <div class="bg-danger p-3 ">
+            <div class="col-6 d-flex justify-content-center pe-2">
+              <div class="bg-danger p-3">
                 <figure class="figure mb-5">
-                  <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75 "
-                    alt="{{ bloc.alt }}">
-                  <figcaption class="figure-caption  mt-2 mb-0 d-flex">
+                  <img
+                    src="upload/{{ bloc.image }}{{ bloc.infographie }}"
+                    class="img-fluid rounded w-75"
+                    alt="{{ bloc.alt }}"
+                  />
+                  <figcaption class="figure-caption mt-2 mb-0 d-flex">
                     <p>{{ bloc.texte_legende }}</p>
                     <p>©{{ bloc.texte_credit }}</p>
                   </figcaption>
@@ -385,12 +388,30 @@
           </div>
         </div>
 
-        {% elseif bloc.type == "video" %}
-        <div class="mx-auto" style="max-width: 960px;"></div>
-        <video controls width="640" class=" mb-5 {{ bloc.type }}">
-          <source src="upload/{{ bloc.video }}" type="video/mp4">
-          Votre navigateur ne supporte pas la vidéo.
-        </video>
+        {# VIDEO #} {% elseif bloc.type == "video" %}
+        <div class="mx-auto" style="max-width: 960px">
+          <video controls width="640" class=" mb-5 {{ bloc.type }}">
+            <source src="upload/{{ bloc.video }}" type="video/mp4" />
+            Votre navigateur ne supporte pas la vidéo.
+          </video>
+        </div>
+
+        <div class="btn-group">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=citation_texte&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
+            <i class="fa-solid fa-pencil"></i>
+          </a>
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
+            <i class="fa-solid fa-trash"></i>
+          </a>
+        </div>
 
         {% else %}
 

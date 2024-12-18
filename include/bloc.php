@@ -248,7 +248,7 @@ class Bloc
         $audio = chargeFILE('audio');
         if (!empty($audio)) {
             // Supprime l'ancienne image si update
-            unlink('upload/'. $this->audio);
+            unlink('upload/' . $this->audio);
             $this->audio = $audio;
         }
 
@@ -297,8 +297,8 @@ class Bloc
                 $id = isset($_GET['id']) ? $_GET['id'] : null;
                 $modele = 'form/' . $id . '.twig.html';
                 $id_article_selectionne =
-                isset($_GET['id_article']) ? intval($_GET['id_article']) : null;
-                
+                    isset($_GET['id_article']) ? intval($_GET['id_article']) : null;
+
                 $data = [
                     'bloc' => Bloc::readOne($id), // Si vous avez des données associées à $id
                     'id' => $id,                  // Passez l'id à Twig

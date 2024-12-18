@@ -1,0 +1,39 @@
+<form action="admin.php?page=bloc&action=update&id={{ bloc.id }}" method="post" enctype="multipart/form-data" class="row g-4 bg-light p-4 rounded shadow needs-validation" novalidate>
+    <!-- Type de bloc (caché) -->
+    <input type="hidden" name="type" value="{{ bloc.type }}" />
+
+    <!-- Titre -->
+    <div class="col-md-6">
+        <label for="texte_titre" class="form-label fw-bold text-secondary">Titre du bloc :</label>
+        <input type="text" name="texte_titre" value="{{ bloc.texte_titre }}" class="form-control border-secondary" />
+    </div>
+
+    <!-- Texte -->
+    <div class="col-md-6">
+        <label for="texte" class="form-label fw-bold text-secondary">Texte :</label>
+        <textarea name="texte" id="texte" rows="3" class="form-control border-secondary">{{ bloc.texte | raw }}</textarea>
+    </div>
+
+    <!-- Style -->
+    <div class="col-md-6">
+        <label for="style" class="form-label fw-bold text-secondary">Style :</label>
+        <select name="style" id="style" class="form-select border-secondary">
+            <option value="corp_de_texte" {% if bloc.style == 'corp_de_texte' %}selected{% endif %}>Corps de texte</option>
+            <option value="chapo" {% if bloc.style == 'chapo' %}selected{% endif %}>Chapô</option>
+            <option value="encadre" {% if bloc.style == 'encadre' %}selected{% endif %}>Encadré</option>
+            <option value="exergue_l" {% if bloc.style == 'exergue_l' %}selected{% endif %}>Exergue long</option>
+            <option value="exergue_c" {% if bloc.style == 'exergue_c' %}selected{% endif %}>Exergue court</option>
+            <option value="legende" {% if bloc.style == 'legende' %}selected{% endif %}>Légende</option>
+            <option value="credit_p" {% if bloc.style == 'credit_p' %}selected{% endif %}>Crédit photo</option>
+            <option value="credir_a" {% if bloc.style == 'credir_a' %}selected{% endif %}>Crédit article</option>
+        </select>
+    </div>
+
+    <!-- Préremplissage des autres champs avec les valeurs du bloc -->
+    <div class="col-md-6">
+        <label for="texte_legende" class="form-label fw-bold text-secondary">Légende :</label>
+        <input type="text" name="texte_legende" value="{{ bloc.texte_legende }}" class="form-control border-secondary" />
+    </div>
+
+    <!-- Reste des champs comme dans la création -->
+</form>

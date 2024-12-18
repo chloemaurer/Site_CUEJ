@@ -274,6 +274,53 @@
             <i class="fa-solid fa-trash"></i>
           </a>
         </div>
+        {% elseif bloc.type == "texte_citation" %}
+        <p>{{bloc.texte | raw }}</p>
+
+        <blockquote>{{ bloc.texte_citation | raw }}</blockquote>
+
+        <div class="btn-group">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=h2"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
+            <i class="fa-solid fa-pencil"></i>
+          </a>
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
+            <i class="fa-solid fa-trash"></i>
+          </a>
+        </div>
+
+        {% elseif bloc.type == "audio" %}
+        <div class="container  mb-5 {{ bloc.type }}">
+          <div class="podcast">
+            <h3 class="podcast__episode_title">{{ bloc.texte_titre }}</h3>
+            <h5 class="podcast__title">
+              {{ bloc.texte_legende }}
+              <i>Episode 152</i>
+            </h5>
+
+            <div class="podcast__meta">
+              <audio controls width="100px">
+                <source src="upload/{{ bloc.audio }}">
+                Your browser does not support the audio tag.
+              </audio>
+
+              <div class="artwork mb-2">
+                <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" style="width: 200px; height: 200px;">
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
         {% else %}
 
         <p>Type de bloc inconnu : {{ bloc.type }}</p>

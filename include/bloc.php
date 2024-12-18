@@ -10,6 +10,11 @@ class Bloc
     public $ordre;
     public $type;
     public $texte;
+    public $texte_1;
+    public $texte_2;
+    public $texte_3;
+    public $texte_4;
+    public $texte_5;
     public $texte_titre;
     public $texte_citation;
     public $texte_legende;
@@ -113,14 +118,19 @@ class Bloc
         $maximum = self::readOrderMax($this->id_article);
         $this->ordre = $maximum + 1;
 
-        $sql = "INSERT INTO bloc (ordre, type, texte, 
+        $sql = "INSERT INTO bloc (ordre, type, texte, texte_1, texte_2, texte_3, texte_4, texte_5,
         texte_titre, texte_citation, texte_legende, texte_credit, style, image, image_1, image_2, image_3, image_4, alt, audio, video, infographie, id_article)
-				VALUES (:ordre, :type, :texte, :texte_titre, :texte_citation, :texte_legende, :texte_credit, :style, :image, :image_1, :image_2, :image_3, :image_4, :alt, :audio, :video, :infographie, :id_article)";
+				VALUES (:ordre, :type, :texte, :texte_1, :texte_2, :texte_3, :texte_4, :texte_5, :texte_titre, :texte_citation, :texte_legende, :texte_credit, :style, :image, :image_1, :image_2, :image_3, :image_4, :alt, :audio, :video, :infographie, :id_article)";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
         $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
         $query->bindValue(':type', $this->type, PDO::PARAM_STR);
         $query->bindValue(':texte', $this->texte, PDO::PARAM_STR);
+        $query->bindValue(':texte_1', $this->texte_1, PDO::PARAM_STR);
+        $query->bindValue(':texte_2', $this->texte_2, PDO::PARAM_STR);
+        $query->bindValue(':texte_3', $this->texte_3, PDO::PARAM_STR);
+        $query->bindValue(':texte_4', $this->texte_4, PDO::PARAM_STR);
+        $query->bindValue(':texte_5', $this->texte_5, PDO::PARAM_STR);
         $query->bindValue(':texte_titre', $this->texte_titre, PDO::PARAM_STR);
         $query->bindValue(':texte_citation', $this->texte_citation, PDO::PARAM_STR);
         $query->bindValue(':texte_legende', $this->texte_legende, PDO::PARAM_STR);
@@ -145,7 +155,12 @@ class Bloc
         $sql = "UPDATE bloc 
             SET ordre=:ordre, 
                 type=:type, 
-                texte=:texte, 
+                texte=:texte,
+                texte_1=:texte_1,
+                texte_2=:texte_2,
+                texte_3=:texte_3,
+                texte_4=:texte_4,
+                texte_5=:texte_5, 
                 texte_titre=:texte_titre, 
                 texte_citation=:texte_citation, 
                 texte_legende=:texte_legende, 
@@ -171,6 +186,11 @@ class Bloc
         $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
         $query->bindValue(':type', $this->type, PDO::PARAM_STR);
         $query->bindValue(':texte', $this->texte, PDO::PARAM_STR);
+        $query->bindValue(':texte_1', $this->texte_1, PDO::PARAM_STR);
+        $query->bindValue(':texte_2', $this->texte_2, PDO::PARAM_STR);
+        $query->bindValue(':texte_3', $this->texte_3, PDO::PARAM_STR);
+        $query->bindValue(':texte_4', $this->texte_4, PDO::PARAM_STR);
+        $query->bindValue(':texte_5', $this->texte_5, PDO::PARAM_STR);
         $query->bindValue(':texte_titre', $this->texte_titre, PDO::PARAM_STR);
         $query->bindValue(':texte_citation', $this->texte_citation, PDO::PARAM_STR);
         $query->bindValue(':texte_legende', $this->texte_legende, PDO::PARAM_STR);
@@ -222,6 +242,11 @@ class Bloc
         $this->ordre = postInt('ordre');
         $this->type = postString('type');
         $this->texte = insecables(postString('texte'));
+        $this->texte_1 = insecables(postString('texte_1'));
+        $this->texte_2 = insecables(postString('texte_2'));
+        $this->texte_3 = insecables(postString('texte_3'));
+        $this->texte_4 = insecables(postString('texte_4'));
+        $this->texte_5 = insecables(postString('texte_5'));
         $this->texte_titre = insecables(postString('texte_titre'));
         $this->texte_citation = insecables(postString('texte_citation'));
         $this->texte_legende = insecables(postString('texte_legende'));
@@ -245,10 +270,35 @@ class Bloc
             $this->image = $image;
         }
 
+        $image_1 = chargeFILE('image_1');
+        if (!empty($image_1)) {
+            // Supprime l'ancienne image si update
+            unlink('upload/' . $this->image_1);
+            $this->image_1 = $image_1;
+        }
+        $image_2 = chargeFILE('image_2');
+        if (!empty($image_2)) {
+            // Supprime l'ancienne image si update
+            unlink('upload/' . $this->image_2);
+            $this->image_2 = $image_2;
+        }
+        $image_3 = chargeFILE('image_3');
+        if (!empty($image_3)) {
+            // Supprime l'ancienne image si update
+            unlink('upload/' . $this->image_3);
+            $this->image_3 = $image_3;
+        }
+        $image_4 = chargeFILE('image_4');
+        if (!empty($image_4)) {
+            // Supprime l'ancienne image si update
+            unlink('upload/' . $this->image_4);
+            $this->image_4 = $image_4;
+        }
+
         $audio = chargeFILE('audio');
         if (!empty($audio)) {
             // Supprime l'ancienne image si update
-            unlink('upload/'. $this->audio);
+            unlink('upload/' . $this->audio);
             $this->audio = $audio;
         }
 
@@ -297,8 +347,8 @@ class Bloc
                 $id = isset($_GET['id']) ? $_GET['id'] : null;
                 $modele = 'form/' . $id . '.twig.html';
                 $id_article_selectionne =
-                isset($_GET['id_article']) ? intval($_GET['id_article']) : null;
-                
+                    isset($_GET['id_article']) ? intval($_GET['id_article']) : null;
+
                 $data = [
                     'bloc' => Bloc::readOne($id), // Si vous avez des données associées à $id
                     'id' => $id,                  // Passez l'id à Twig

@@ -6,31 +6,41 @@ class="row g-4 needs-validation" novalidate>
     {# type #}
     <div class="col-md-4">
         <label for="type" class="form-label mt-4">Type de bloc :</label>
-        <input type="text" name="type" value="{{id}}"
+        <input type="hidden" name="type" value="{{id}}"
             class="form-control w-75 ms-5 border-black" />
     </div>
 
     {# texte 1#}
     <div class="col-md-4">
-        <label for="texte" class="form-label mt-4">Contenu :</label>
+        <label for="texte" class="form-label mt-4">Titre du carousel :</label>
         <input type="text" name="texte" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
     </div>
+
+    <label for="numSlides">Nombre de slides :</label>
+    <select id="numSlides" name="numSlides">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    
     {# image #}
     <div class="col-md-4">
-        <label for="image">image :<span>(max 200 Ko)</span></label>
+        <label for="image">image slide 1 :<span>(max 200 Ko)</span></label>
         <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
         <input type="file" id="image" name="image" class="image" title="votre image" autocomplete="off" />
     </div>
 
     {# texte 2#}
     <div class="col-md-4">
-        <label for="texte_titre" class="form-label mt-4">Contenu :</label>
+        <label for="texte_titre" class="form-label mt-4">Texte slide 1 :</label>
         <input type="text" name="texte_titre" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
     </div>
 
    {# image #}
     <div class="col-md-4">
-        <label for="image">Image :<span>(max 200 Ko)</span></label>
+        <label for="image">image slide 2 :<span>(max 200 Ko)</span></label>
         <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
         <input type="file" name="image" accept="images/*" class="form-control w-75 ms-5 border-black" />
     </div>
@@ -38,13 +48,13 @@ class="row g-4 needs-validation" novalidate>
 
     {# texte 3#}
     <div class="col-md-4">
-        <label for="texte_citation" class="form-label mt-4">Contenu :</label>
+        <label for="texte_citation" class="form-label mt-4">Texte slide 2 :</label>
         <input type="text" name="texte_citation" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
     </div>
 
     {# image #}
     <div class="col-md-4">
-        <label for="image">image :<span>(max 200 Ko)</span></label>
+        <label for="image">image slide 3 :<span>(max 200 Ko)</span></label>
         <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
         <input type="file" id="image" name="image" class="image" title="votre image" autocomplete="off" />
     </div>
@@ -52,13 +62,13 @@ class="row g-4 needs-validation" novalidate>
 
     {# texte 4#}
     <div class="col-md-4">
-        <label for="texte_legende" class="form-label mt-4">Contenu :</label>
+        <label for="texte_legende" class="form-label mt-4">Texte slide 3 :</label>
         <input type="text" name="texte_legende" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
     </div>
 
     {# image #}
     <div class="col-md-4">
-        <label for="image">image :<span>(max 200 Ko)</span></label>
+        <label for="image">image slide 4 :<span>(max 200 Ko)</span></label>
         <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
         <input type="file" id="image" name="image" class="image" title="votre image" autocomplete="off" />
     </div>
@@ -67,13 +77,13 @@ class="row g-4 needs-validation" novalidate>
 
     {# texte 5#}
     <div class="col-md-4">
-        <label for="texte_credit" class="form-label mt-4">Contenu :</label>
+        <label for="texte_credit" class="form-label mt-4">Texte side 4 :</label>
         <input type="text" name="texte_credit" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
     </div>
 
     {# image #}
     <div class="col-md-4">
-        <label for="image">image :<span>(max 200 Ko)</span></label>
+        <label for="image">image slide 5 :<span>(max 200 Ko)</span></label>
         <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
         <input type="file" id="image" name="image" class="image" title="votre image" autocomplete="off" />
     </div>

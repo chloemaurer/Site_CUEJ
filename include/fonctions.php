@@ -47,23 +47,35 @@ function chargeFILE($type)
 
 		$allowed = ['jpg', 'jpeg', 'png', 'mp3', 'mp4', 'svg'];
 
-		if (in_array($fileActualExt, $allowed)) {
-			if ($fileError === 0) {
-				if ($fileSize < 80000000) {
-					$fileNameNew = uniqid('', true) . "." . $fileActualExt;
-					$fileDestination = 'upload/' . $fileNameNew;
-					move_uploaded_file($fileTmpName, $fileDestination);
-					return $fileNameNew;
-				} else {
-					echo 'Votre fichier est trop volumineux';
-				}
-			} else {
-				echo 'Une erreur est survenue lors du téléchargement du fichier';
+		var_dump($_FILES[$type]);
+
+		// Vérification des erreurs de téléchargement
+		if ($fileError !== 0) {
+			switch ($fileError) {
+				case UPLOAD_ERR_INI_SIZE:
+				case UPLOAD_ERR_FORM_SIZE:
+					echo "Le fichier est trop volumineux (dépasse la taille autorisée).";
+					break;
+				case UPLOAD_ERR_PARTIAL:
+					echo "Le fichier n'a été que partiellement téléchargé.";
+					break;
+				case UPLOAD_ERR_NO_FILE:
+					echo "Aucun fichier n'a été téléchargé.";
+					break;
+				case UPLOAD_ERR_NO_TMP_DIR:
+					echo "Le dossier temporaire est manquant.";
+					break;
+				case UPLOAD_ERR_CANT_WRITE:
+					echo "Échec de l'écriture du fichier sur le disque.";
+					break;
+				case UPLOAD_ERR_EXTENSION:
+					echo "Une extension PHP a arrêté l'upload du fichier.";
+					break;
+				default:
+					echo "Une erreur inconnue est survenue lors du téléchargement.";
 			}
-		} else {
-			echo 'Ce type de fichier (' . $fileType . ') ou d\'extension (' . $fileActualExt . ') n\'est pas supporté';
+			return ''; // Si une erreur est survenue, on retourne une chaîne vide
 		}
-		return '';
 	}
 }
 

@@ -248,9 +248,12 @@ class Bloc
         $audio = chargeFILE('audio');
         if (!empty($audio)) {
             // Supprime l'ancienne image si update
-            unlink('upload/' . $this->audio);
+            unlink($this->audio);
             $this->audio = $audio;
         }
+
+        var_dump($this->image);
+        var_dump($this->audio);
 
         $video = chargeFILE('video');
         if (!empty($video)) {

@@ -39,9 +39,9 @@
 
     {# image #}
     <div class="col-md-4">
-        <label for="image">image :<span>(max 200 Ko)</span></label>
+        <label for="image">Image :<span>(max 200 Ko)</span></label>
         <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
-        <input type="file" id="image" name="image" class="image" title="votre image" autocomplete="off" />
+        <input type="file" name="image" accept="images/*" class="form-control w-75 ms-5 border-black" />
     </div>
     
     {# alt #}
@@ -58,6 +58,21 @@
         <input type="text" name="texte_titre" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
     </div>
 
+    
+    {# Article : Pré-sélection automatique #}
+        <div class="col-md-6">
+            <label for="id_article" class="form-label fw-bold text-secondary">Article :</label>
+            <select name="id_article" id="id_article" class="form-select border-secondary" required>
+                <option value="" disabled>Choisir un article</option>
+                {% for article in listearticle %}
+                    <option value="{{ article.id_article }}" 
+                        {% if article.id_article == id_article_selectionne %}selected{% endif %}>
+                        {{ article.titre }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        
     {# article #}
     <div class="col-md-4">
         <label for="id_article" class="form-label mt-4">Article :</label>

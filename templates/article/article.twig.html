@@ -314,6 +314,29 @@
           </div>
         </div>
 
+        {% elseif bloc.type == "texte_image" %}
+        <div class="container-fluid pt-2 border border-solid border-dark">
+          <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
+          <div class="row mb-5">
+            <!-- Texte à gauche (col-8 pour le texte) -->
+            <div class="col-6 align-baseline">
+              <p class="{{ bloc.style }}">{{ bloc.texte }}</p>
+            </div>
+            <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
+            <div class="col-6 d-flex justify-content-center pe-2 ">
+              <div class="bg-danger p-3 ">
+                <figure class="figure mb-5">
+                  <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75 "
+                    alt="{{ bloc.alt }}">
+                  <figcaption class="figure-caption  mt-2 mb-0 d-flex">
+                    <p>{{ bloc.texte_legende }}</p>
+                    <p>©{{ bloc.texte_credit }}</p>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
 
 
         {% else %}

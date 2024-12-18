@@ -1,7 +1,8 @@
 {% extends "base-admin.twig.html" %} {% block content %}
 
 <h1 class="text-center p-5">Créaton d'un bloc</h1>
-<form action="admin.php?page=bloc&action=create" method="post" class="row g-4 needs-validation" novalidate>
+<form action="admin.php?page=bloc&action=create" method="post" enctype="multipart/form-data"
+    class="row g-4 needs-validation" novalidate>
     {# type #}
     <div class="col-md-4">
         <input type="hidden" name="type" placeholder="Quel type ?" value="{{id}}"
@@ -15,7 +16,8 @@
         <label for="video">video :<span>(max 200 Mo)</span></label>
         <input type="hidden" name="MAX_FILE_SIZE" value="200000000" title="la taille max du fichier"
             autocomplete="off" />
-        <input type="file" id="video" name="audio" class="video" title="votre video" autocomplete="off" />
+        <input type="file" name="video" accept="video/mp4" class=" video" title="votre video"
+            autocomplete="off" />
     </div>
 
 

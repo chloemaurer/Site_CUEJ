@@ -31,7 +31,7 @@
           <a href="admin.php?page=article&action=delete&id={{ article.id_article }}" class="btn btn-danger">
             <i class="fa-solid fa-trash"></i> Supprimer
           </a>
-          <a href="admin.php?page=article&action=read" class="btn btn-secondary">
+          <a href="admin.php?page=chapitre&action=read&id={{article.id_chapitre}}" class="btn btn-secondary">
             <i class="fa-solid fa-arrow-left"></i> Retour à la liste
           </a>
         </div>
@@ -90,6 +90,10 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+          </a>          
         </div>
 
         {# H3 #}

@@ -403,6 +403,12 @@ class Bloc
                 exit();
                 break;
 
+            case 'exchange':
+                $bloc = Bloc::readOne($id);
+                $bloc->exchangeOrder();
+                header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
+                break;
+
             default:
                 echo 'Action non reconnue';
 

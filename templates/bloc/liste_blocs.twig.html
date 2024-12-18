@@ -4,38 +4,39 @@
 {% for bloc in listebloc %}
 
 {# h1 #}
-{% if bloc.type == h1 %}
+{% if bloc.type == "h1 "%}
 <h1 class=" text-dark mb-5 {{ bloc.type }} {{ bloc.style }}">{{ bloc.texte }}</h1>
 
 
 {# h2 #}
-{% elseif bloc.type == h2 %}
+{% elseif bloc.type == "h2 "%}
 <h2 class="  mb-5 {{ bloc.type }} {{ bloc.style }}">{{ bloc.texte }}</h2>
 
 {# h3 #}
-{% elseif bloc.type == h3 %}
+{% elseif bloc.type == "h3 "%}
 <h3 class="  mb-5 {{ bloc.type }} {{ bloc.style }}">{{ bloc.texte }}</h3>
 
 {# h4 #}
-{% elseif bloc.type == h4 %}
+{% elseif bloc.type == "h4 "%}
 <h4 class="  mb-5 {{ bloc.type }} {{ bloc.style }}">{{ bloc.texte }}</h4>
 
 {# h5 #}
-{% elseif bloc.type == h5 %}
+{% elseif bloc.type == "h5 "%}
 <h5 class="  mb-5 {{ bloc.type }} {{ bloc.style }}">{{ bloc.texte }}</h5>
 
 {# p #}
-{% elseif bloc.type == p %}
+{% elseif bloc.type == "p "%}
 <p class="  mb-5 {{ bloc.type }} {{ bloc.style }}">
   {{ bloc.texte }}
 </p>
 
 {# image #}
-{% elseif bloc.type == image %}
+{% elseif bloc.type == "image "%}
 <div class="container">
   <div class="mx-auto" style="max-width: 960px;">
     <figure class="figure mb-5 border border-solid border-dark p-2">
-      <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="figure-img img-fluid rounded" alt="{{ bloc.alt }}">
+      <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="figure-img img-fluid rounded"
+        alt="{{ bloc.alt }}">
       <figcaption class="figure-caption mt-2">
         <p>{{ bloc.texte_legende }}</p>
         <p>©{{ bloc.texte_credit }}</p>
@@ -45,7 +46,7 @@
 </div>
 
 {# citation #}
-{% elseif bloc.type == citation %}
+{% elseif bloc.type == "citation "%}
 <div class="container">
   <div class="mx-auto" style="max-width: 960px;">
     <figure class="text-center mb-5 border border-solid border-dark p-3">
@@ -68,7 +69,7 @@
 </div>
 
 {# video #}
-{% elseif bloc.type == video %}
+{% elseif bloc.type == "video "%}
 <div class="mx-auto" style="max-width: 960px;"></div>
 <video controls width="640" class=" mb-5 {{ bloc.type }}">
   <source src="{{ bloc.video }}" type="video/mp4">
@@ -76,7 +77,7 @@
 </video>
 
 {# audio #}
-{% elseif bloc.type == audio %}
+{% elseif bloc.type == "audio "%}
 <div class="container  mb-5 {{ bloc.type }}">
   <div class="podcast">
     <h3 class="podcast__episode_title">{{ bloc.texte_titre }}</h3>
@@ -100,7 +101,7 @@
 </div>
 
 {# carousel #}
-{% elseif bloc.type == carousel %}
+{% elseif bloc.type == "carousel "%}
 <div class="  mb-5 {{ bloc.type }}">
   <h3>{{ bloc.texte_titre }}</h3>
   <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
@@ -158,7 +159,7 @@
 </div>
 
 {# texte_image #}
-{% elseif bloc.type == texte_image %}
+{% elseif bloc.type == "texte_image "%}
 <div class="container-fluid pt-2 border border-solid border-dark">
   <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
   <div class="row mb-5">
@@ -182,7 +183,7 @@
 </div>
 
 {# image_texte #}
-{% elseif bloc.type == image_texte %}
+{% elseif bloc.type == "image_texte "%}
 <div class=" d-flex  mb-5 {{ bloc.type }}">
   <div class="col-6 d-flex justify-content-center pe-2 ">
     <div class="bg-danger p-3 ">
@@ -199,7 +200,7 @@
 </div>
 
 {# titre_texte_image #}
-{% elseif bloc.type == titre_texte_image %}
+{% elseif bloc.type == "titre_texte_image "%}
 <div class=" d-flex  mb-5 {{ bloc.type }}">
   <div class="m-4">
     <h4>Titre</h4>
@@ -219,7 +220,7 @@
 </div>
 
 {# image_titre_texte #}
-{% elseif bloc.type == image_titre_texte %}
+{% elseif bloc.type == "image_titre_texte "%}
 <div class=" d-flex  mb-5 {{ bloc.type }}">
   <div class="col-6 d-flex justify-content-center pe-2 ">
     <div class="bg-danger p-3 ">
@@ -239,7 +240,7 @@
 </div>
 
 {# citation_texte #}
-{% elseif bloc.type == citation_texte %}
+{% elseif bloc.type == "citation_texte "%}
 <div class="container my-5">
   <div class="row">
     <!-- Bloc de Citation à gauche -->
@@ -261,7 +262,7 @@
 </div>
 
 {# texte_citation #}
-{% elseif bloc.type == texte_citation %}
+{% elseif bloc.type == "texte_citation "%}
 <div class="container my-5">
   <div class="row">
     <!-- Bloc de Texte à droite -->
@@ -282,7 +283,7 @@
 </div>
 
 {# image_citation #}
-{% elseif bloc.type == image_citation %}
+{% elseif bloc.type == "image_citation "%}
 
 <div class="container my-5">
   <div class="row g-4">
@@ -306,7 +307,7 @@
   </div>
 </div>
 {# citation_image #}
-{% elseif bloc.type == citation_image %}
+{% elseif bloc.type == "citation_image "%}
 
 <div class="container my-5">
   <div class="row g-4">
@@ -328,7 +329,7 @@
 </div>
 
 {# audio_texte #}
-{% elseif bloc.type == audio_texte %}
+{% elseif bloc.type == "audio_texte "%}
 <div class="container  mb-5 {{ bloc.type }} d-flex">
   <div class="podcast d-flex flex-column align-items-center rounded-3" style="width: 410px; height: 475px;">
     <div class="audio-image mb-2 p-3 ">
@@ -355,7 +356,7 @@
 </div>
 
 {# texte_audio #}
-{% elseif bloc.type == texte_audio %}
+{% elseif bloc.type == "texte_audio "%}
 <div class="container  mb-5 {{ bloc.type }} d-flex justify-content-center">
   <p class="p-3 {{ bloc.style }}">{{ bloc.texte }}</p>
   <div class="podcast d-flex flex-column align-items-center rounded-3" style="width: 410px; height: 475px;">

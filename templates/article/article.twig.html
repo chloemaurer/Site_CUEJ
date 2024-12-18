@@ -392,6 +392,67 @@
           Votre navigateur ne supporte pas la vidéo.
         </video>
 
+        {# carousel #}
+        {% elseif bloc.type == "carousel" %}
+        <div class="  mb-5 {{ bloc.type }}">
+          <h3>{{ bloc.texte_titre }}</h3>
+          <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="10000">
+                <div class="d-flex row">
+                  <div class="col p-3">
+                    <p>{{ bloc.texte_legende }}</p>
+                    <p>©{{ bloc.texte_credit }}</p>
+                    <p>{{ bloc.texte }}</p>
+                  </div>
+                  <div class=" col d-flex align-items-center">
+                    <img src="upload/{{ bloc.image }}" class="d-block w-100" alt="{{ bloc.alt }}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="carousel-item" data-bs-interval="2000">
+                <div class="d-flex row">
+                  <div class="col">
+                    <p>{{ bloc.texte_legende }}</p>
+                    <p>©{{ bloc.texte_credit }}</p>
+                    <p>{{ bloc.texte }}</p>
+                  </div>
+                  <div class="col d-flex align-items-center">
+                    <img src="upload/{{ bloc.image }}" class="d-block w-100" alt="{{ bloc.alt }}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="d-flex row">
+                  <div class="col">
+                    <p>{{ bloc.texte_legende }}</p>
+                    <p>©{{ bloc.texte_credit }}</p>
+                    <p>{{ bloc.texte }}</p>
+                  </div>
+                  <div class="col d-flex align-items-center">
+
+                    <img src="upload/{{ bloc.image }}" class="d-block w-100" alt="{{ bloc.alt }}">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+
+
         {% else %}
 
         <p>Type de bloc inconnu : {{ bloc.type }}</p>

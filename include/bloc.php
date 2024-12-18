@@ -260,11 +260,28 @@ class Bloc
         // Récupère les informations sur le fichier uploadés si il existe
         $image = chargeFILE('image');
         if (!empty($image)) {
-            // Supprime l'ancienne image si update
-            unlink('upload/' . $this->image);
+            // Vérifie si l'ancien fichier existe et est un fichier
+            if (is_file('upload/' . $this->image)) {
+                unlink('upload/' . $this->image);
+            }
             $this->image = $image;
         }
 
+        // $audio = chargeFILE('audio');
+        // if (!empty($audio)) {
+        //     // Vérifie si l'ancien fichier existe et est un fichier
+        //     if (is_file('upload/' . $this->audio)) {
+        //         unlink('upload/' . $this->audio);
+        //     }
+        //     $this->audio = $audio;
+        // }
+
+        $audio = chargeFILE('audio');
+        if (!empty($audio)) {
+            // Supprime l'ancienne image si update
+            unlink('upload/' . $this->audio);
+            $this->audio = $audio;
+        }
         $image_1 = chargeFILE('image_1');
         if (!empty($image_1)) {
             // Supprime l'ancienne image si update
@@ -289,16 +306,6 @@ class Bloc
             unlink('upload/' . $this->image_4);
             $this->image_4 = $image_4;
         }
-
-        $audio = chargeFILE('audio');
-        if (!empty($audio)) {
-            // Supprime l'ancienne image si update
-            unlink('upload/' . $this->audio);
-            $this->audio = $audio;
-        }
-
-        // var_dump($this->image);
-        // var_dump($this->audio);
 
         $video = chargeFILE('video');
         if (!empty($video)) {
@@ -359,9 +366,7 @@ class Bloc
 
             case 'create':
                 $bloc = new Bloc();
-                // var_dump($_POST);
                 $bloc->chargePOST();
-                // var_dump($_POST);
                 $bloc->create();
                 header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
                 break;
@@ -393,8 +398,6 @@ class Bloc
             case 'update':
                 $bloc = new Bloc();
                 $bloc->chargePOST();    // utilise maintenant la vraie variable $_POST;
-                // var_dump($bloc);
-                // exit;
                 $bloc->update();
                 header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
                 exit();

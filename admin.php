@@ -53,9 +53,8 @@ switch ($page) {
         $data = ['id_article' => $id_article];
         break;
     default:
-        $modele = 'admin.twig.html';
+        $modele = 'base-admin.twig.html';
         $data = [];
 }
-
 // Ajoute les informations de login
 echo $twig->render($modele, $data);

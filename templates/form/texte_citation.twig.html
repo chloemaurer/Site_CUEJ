@@ -1,62 +1,116 @@
 {% extends "base-admin.twig.html" %} {% block content %}
 
-<h1 class="text-center p-5">Créaton d'un bloc</h1>
-<form action="admin.php?page=bloc&action=create" method="post" class="row g-4 needs-validation" novalidate>
-    {# type #}
-    <div class="col-md-4">
-        <input type="hidden" name="type" placeholder="Quel type ?" value="{{id}}"
-            class="form-control w-75 ms-5 border-black" />
+<div class="container mt-5">
+  <h1 class="text-center text-primary mb-4">Création d'un bloc</h1>
+
+  <form 
+    action="admin.php?page=bloc&action=create" 
+    method="post" 
+    class="row g-4 bg-light p-4 rounded shadow-sm needs-validation" 
+    novalidate
+  >
+    <!-- Type -->
+    <div class="col-md-6">
+      <label for="type" class="form-label fw-bold">Type de bloc :</label>
+      <input 
+        type="hidden" 
+        name="type" 
+        value="{{ id }}" 
+      />
+      <input 
+        type="text" 
+        class="form-control border-secondary" 
+        placeholder="Bloc sélectionné : {{ id }}" 
+        disabled 
+      />
     </div>
 
-
-    {# texte #}
-    <div class="col-md-4">
-        <label for="texte" class="form-label mt-4">Texte :</label>
-        <textarea type="texte" name="texte" id="" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black"></textarea>
+    <!-- Texte -->
+    <div class="col-md-6">
+      <label for="texte" class="form-label fw-bold">Texte :</label>
+      <textarea 
+        name="texte" 
+        id="texte" 
+        placeholder="Saisir le texte" 
+        class="form-control border-secondary" 
+        rows="3"
+      ></textarea>
     </div>
 
-
-    {# citation #}
-    <div class="col-md-4">
-        <label for="texte_citation" class="form-label mt-4">Citation :</label>
-        <input type="text" name="texte_citation" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
+    <!-- Citation -->
+    <div class="col-md-6">
+      <label for="texte_citation" class="form-label fw-bold">Citation :</label>
+      <textarea 
+        name="texte_citation" 
+        id="texte_citation" 
+        placeholder="Saisir la citation" 
+        class="form-control border-secondary" 
+        rows="2"
+      ></textarea>
     </div>
 
-    {# légende #}
-    <div class="col-md-4">
-        <label for="texte_legende" class="form-label mt-4">Légende citation :</label>
-        <input type="text" name="texte_legende" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
+    <!-- Légende -->
+    <div class="col-md-6">
+      <label for="texte_legende" class="form-label fw-bold">Légende citation :</label>
+      <textarea 
+        name="texte_legende" 
+        id="texte_legende" 
+        placeholder="Saisir la légende" 
+        class="form-control border-secondary" 
+        rows="2"
+      ></textarea>
     </div>
 
-    {# style #}
-    <div class="col-md-4">
-        <label for="style" class="form-label mt-4">Style :</label>
-        <select id="style" name="style" class="form-select w-75 ms-5 border-black" aria-label="Default select example">
-            <option value="corp_de_texte" selected>Corps de texte</option>
-            <option value="chapo">Chapô</option>
-            <option value="encadre">Encadré</option>
-            <option value="exergue_l">Exergue long</option>
-            <option value="exergue_c">Exergue court</option>
-            <option value="legende">Légende</option>
-            <option value="credit_p">credit photo</option>
-            <option value="credir_a">credit article</option>
-        </select>
+    <!-- Style -->
+    <div class="col-md-6">
+      <label for="style" class="form-label fw-bold">Style :</label>
+      <select 
+        id="style" 
+        name="style" 
+        class="form-select border-secondary" 
+        aria-label="Sélectionner un style"
+      >
+        <option value="corp_de_texte" selected>Corps de texte</option>
+        <option value="chapo">Chapô</option>
+        <option value="encadre">Encadré</option>
+        <option value="exergue_l">Exergue long</option>
+        <option value="exergue_c">Exergue court</option>
+        <option value="legende">Légende</option>
+        <option value="credit_p">Crédit photo</option>
+        <option value="credit_a">Crédit article</option>
+      </select>
     </div>
 
-
-    {# article #}
-    <div class="col-md-4">
-        <label for="id_article" class="form-label mt-4">Article :</label>
-        <input type="text" name="id_article" required="required" placeholder="Dans quel article apparait-il ?"
-            class="form-control w-75 ms-5 border-black" />
+    <!-- Article associé -->
+    <div class="col-md-6">
+      <label for="id_article" class="form-label fw-bold">Article :</label>
+      <select 
+        name="id_article" 
+        id="id_article" 
+        class="form-select border-secondary" 
+        required
+      >
+        <option value="" disabled>Choisir un article</option>
+        {% for article in listearticle %}
+          <option value="{{ article.id_article }}" 
+            {% if article.id_article == id_article_selectionne %}selected{% endif %}
+          >
+            {{ article.titre }}
+          </option>
+        {% endfor %}
+      </select>
     </div>
 
-    {# bouton #}
-    <div class="d-flex justify-content-center">
-        <button type="submit" class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2">
-            Créer
-        </button>
+    <!-- Bouton d'envoi -->
+    <div class="col-12 d-flex justify-content-center">
+      <button 
+        type="submit" 
+        class="btn btn-primary px-4 py-2 rounded-pill shadow-sm"
+      >
+        <i class="fa-solid fa-save me-2"></i>Créer le bloc
+      </button>
     </div>
-</form>
+  </form>
+</div>
 
 {% endblock %}

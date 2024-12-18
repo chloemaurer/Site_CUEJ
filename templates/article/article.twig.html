@@ -248,6 +248,48 @@
             <i class="fa-solid fa-trash"></i>
           </a>
         </div>
+        {% elseif bloc.type == "texte_citation" %}
+        <p>{{bloc.texte | raw }}</p>
+
+        <blockquote>{{ bloc.texte_citation | raw }}</blockquote>
+
+        <div class="btn-group">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=h2"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
+            <i class="fa-solid fa-pencil"></i>
+          </a>
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
+            <i class="fa-solid fa-trash"></i>
+          </a>
+        </div>
+        {% elseif bloc.type == "texte_citation" %}
+        <p>{{bloc.texte | raw }}</p>
+
+        <blockquote>{{ bloc.texte_citation | raw }}</blockquote>
+
+        <div class="btn-group">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=h2"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
+            <i class="fa-solid fa-pencil"></i>
+          </a>
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
+            <i class="fa-solid fa-trash"></i>
+          </a>
+        </div>
 
         {% elseif bloc.type == "audio" %}
         <div class="container  mb-5 {{ bloc.type }}">

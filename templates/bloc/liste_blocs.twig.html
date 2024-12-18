@@ -3,21 +3,6 @@
 <h1 class="text-center p-5">Liste des blocs</h1>
 {% for bloc in listebloc %}
 
-{{ bloc.texte }}
-{{ bloc.texte_titre }}
-{{ bloc.texte_citation }}
-{{ bloc.texte_legende }}
-©{{ bloc.texte_credit }}
-{{ bloc.image }}
-{{ bloc.infographie }}
-{{ bloc.alt }}
-{{ bloc.video }}
-{{ bloc.audio }}
-{{ bloc.style }}
-{{ bloc.type }}
- 
-
-
 {# h1 #}
 {% if bloc.type == h1 %}
 <h1 class=" text-dark mb-5 {{ bloc.type }} {{ bloc.style }}">{{ bloc.texte }}</h1>
@@ -50,8 +35,7 @@
 <div class="container">
   <div class="mx-auto" style="max-width: 960px;">
     <figure class="figure mb-5 border border-solid border-dark p-2">
-      <img src="{{ bloc.image }}{{ bloc.infographie }}"
-        class="figure-img img-fluid rounded" alt="{{ bloc.alt }}">
+      <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="figure-img img-fluid rounded" alt="{{ bloc.alt }}">
       <figcaption class="figure-caption mt-2">
         <p>{{ bloc.texte_legende }}</p>
         <p>©{{ bloc.texte_credit }}</p>
@@ -108,9 +92,7 @@
       </audio>
 
       <div class="artwork mb-2">
-        <img
-          src="{{ bloc.image }}"
-          alt="{{ bloc.alt }}" style="width: 200px; height: 200px;">
+        <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" style="width: 200px; height: 200px;">
       </div>
 
     </div>
@@ -131,8 +113,7 @@
             <p>{{ bloc.texte }}</p>
           </div>
           <div class=" col d-flex align-items-center">
-            <img
-              src="{{ bloc.image }}" class="d-block w-100" alt="{{ bloc.alt }}">
+            <img src="upload/{{ bloc.image }}" class="d-block w-100" alt="{{ bloc.alt }}">
           </div>
         </div>
       </div>
@@ -145,8 +126,7 @@
             <p>{{ bloc.texte }}</p>
           </div>
           <div class="col d-flex align-items-center">
-            <img
-              src="{{ bloc.image }}"  class="d-block w-100" alt="{{ bloc.alt }}">
+            <img src="upload/{{ bloc.image }}" class="d-block w-100" alt="{{ bloc.alt }}">
           </div>
         </div>
       </div>
@@ -160,8 +140,7 @@
           </div>
           <div class="col d-flex align-items-center">
 
-            <img
-              src="{{ bloc.image }}" class="d-block w-100" alt="{{ bloc.alt }}">
+            <img src="upload/{{ bloc.image }}" class="d-block w-100" alt="{{ bloc.alt }}">
           </div>
         </div>
       </div>
@@ -191,9 +170,11 @@
     <div class="col-6 d-flex justify-content-center pe-2 ">
       <div class="bg-danger p-3 ">
         <figure class="figure mb-5">
-          <img
-            src="{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75 " alt="{{ bloc.alt }}">
-          <figcaption class="figure-caption  mt-2 mb-0 d-flex"><p>{{ bloc.texte_legende }}</p><p>©{{ bloc.texte_credit }}</p></figcaption>
+          <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75 " alt="{{ bloc.alt }}">
+          <figcaption class="figure-caption  mt-2 mb-0 d-flex">
+            <p>{{ bloc.texte_legende }}</p>
+            <p>©{{ bloc.texte_credit }}</p>
+          </figcaption>
         </figure>
       </div>
     </div>
@@ -206,9 +187,11 @@
   <div class="col-6 d-flex justify-content-center pe-2 ">
     <div class="bg-danger p-3 ">
       <figure class="figure mb-5">
-        <img
-          src="{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75 " alt="{{ bloc.alt }}">
-        <figcaption class="figure-caption  mt-2 mb-0 d-flex"><p>{{ bloc.texte_legende }}</p><p>©{{ bloc.texte_credit }}</p></figcaption>
+        <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75 " alt="{{ bloc.alt }}">
+        <figcaption class="figure-caption  mt-2 mb-0 d-flex">
+          <p>{{ bloc.texte_legende }}</p>
+          <p>©{{ bloc.texte_credit }}</p>
+        </figcaption>
       </figure>
     </div>
   </div>
@@ -225,9 +208,11 @@
   <div class="col-6 d-flex justify-content-center pe-2 ">
     <div class="bg-danger p-3 ">
       <figure class="figure mb-5">
-        <img
-          src="{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75" alt="{{ bloc.alt }}">
-        <figcaption class="figure-caption  mt-2 mb-0 d-flex"><p>{{ bloc.texte_legende }}</p><p>©{{ bloc.texte_credit }}</p></figcaption>
+        <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75" alt="{{ bloc.alt }}">
+        <figcaption class="figure-caption  mt-2 mb-0 d-flex">
+          <p>{{ bloc.texte_legende }}</p>
+          <p>©{{ bloc.texte_credit }}</p>
+        </figcaption>
       </figure>
     </div>
   </div>
@@ -239,9 +224,11 @@
   <div class="col-6 d-flex justify-content-center pe-2 ">
     <div class="bg-danger p-3 ">
       <figure class="figure mb-5">
-        <img
-          src="{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75 " alt="{{ bloc.alt }}">
-        <figcaption class="figure-caption  mt-2 mb-0 d-flex"><p>{{ bloc.texte_legende }}</p><p>©{{ bloc.texte_credit }}</p></figcaption>
+        <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75 " alt="{{ bloc.alt }}">
+        <figcaption class="figure-caption  mt-2 mb-0 d-flex">
+          <p>{{ bloc.texte_legende }}</p>
+          <p>©{{ bloc.texte_credit }}</p>
+        </figcaption>
       </figure>
     </div>
   </div>
@@ -303,8 +290,7 @@
 
     <!-- Bloc de l'image et de la légende à gauche -->
     <div class="col-md-7 p-4 bg-danger">
-      <img src="{{ bloc.image }}{{ bloc.infographie }}" alt="{{ bloc.alt }}"
-        class="img-fluid mb-3">
+      <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" alt="{{ bloc.alt }}" class="img-fluid mb-3">
       <p class="text-white text-start">{{ bloc.texte_legende }}</p>
     </div>
 
@@ -334,8 +320,7 @@
       </figure>
     </div>
     <div class="col-md-7 p-4 bg-danger">
-      <img src="{{ bloc.image }}{{ bloc.infographie }}" alt="{{ bloc.alt }}"
-        class="img-fluid mb-3">
+      <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" alt="{{ bloc.alt }}" class="img-fluid mb-3">
       <p class="text-white text-start">{{ bloc.texte_legende }}</p>
     </div>
 
@@ -347,8 +332,7 @@
 <div class="container  mb-5 {{ bloc.type }} d-flex">
   <div class="podcast d-flex flex-column align-items-center rounded-3" style="width: 410px; height: 475px;">
     <div class="audio-image mb-2 p-3 ">
-      <img
-        src="{{ bloc.image }}" alt="{{ bloc.alt }}" style="width: 200px; height: 200px;">
+      <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" style="width: 200px; height: 200px;">
     </div>
 
     <div class="podcast_meta">
@@ -376,8 +360,7 @@
   <p class="p-3 {{ bloc.style }}">{{ bloc.texte }}</p>
   <div class="podcast d-flex flex-column align-items-center rounded-3" style="width: 410px; height: 475px;">
     <div class="audio-image mb-2 p-3 ">
-      <img
-        src="{{ bloc.image }}" alt="{{ bloc.alt }}" style="width: 200px; height: 200px;">
+      <img src="upload/upload/{{ bloc.image }}" alt="{{ bloc.alt }}" style="width: 200px; height: 200px;">
     </div>
 
     <div class="podcast_meta">
@@ -397,17 +380,19 @@
     </div>
   </div>
 </div>
-
+{% else %}
+<p>Le bloc ne s'affiche pas</p>
+{% endif %}
 
 
 <p>
   <a href="admin.php?page=bloc&action=read&id={{ bloc.id }}">Voir
-  <a href="admin.php?page=bloc&action=modifier&id={{ bloc.id }}">Modifier
-  <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}">Supprimer
+    <a href="admin.php?page=bloc&action=modifier&id={{ bloc.id }}">Modifier
+      <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}">Supprimer
 </p>
 
 {% endfor %}
 
 <a href="admin.php?page=bloc&action=new">Ajouter un bloc
 
-{% endblock %}
+  {% endblock %}

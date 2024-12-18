@@ -220,11 +220,11 @@ class Article
                 // Étape 2 : Créer un nouvel article
                 $article = new Article();
                 $article->chargePOST();
-
+                var_dump($_POST);
                 $article->create(); // Récupère l'ID de l'article créé
-
+                var_dump($_POST);
                 // Étape 2 : Rediriger vers la page de l'article créé
-                header('Location: admin.php?page=article&action=read&id=' . $article->id_article);
+                // header('Location: admin.php?page=article&action=read&id=' . $article->id_article);
                 exit; // Toujours ajouter exit après un header
                 break;
 

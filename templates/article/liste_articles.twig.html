@@ -36,7 +36,7 @@
         <div class="card-body">
           <h5 class="card-title text-primary">{{ article.titre | raw }}</h5>
           <p class="card-text">
-            {{ article.chapo|default('Aucun chapô disponible.') |raw}}
+            {{ article.chapo|default('Aucun chapô disponible.') | raw |nl2br }}
           </p>
         </div>
 

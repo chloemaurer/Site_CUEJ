@@ -162,7 +162,7 @@ class Article
         $this->ordre = postInt('ordre');
         $this->titre = html_entity_decode(postString('titre'));
         $this->auteur = html_entity_decode(postString('auteur'));
-        $this->chapo = html_entity_decode(postString('chapo'));
+        $this->chapo = insecables(postString('chapo'));
         $this->image = postString('old-image');
         $this->alt = postString('alt');
         $this->id_chapitre = postInt('id_chapitre');
@@ -220,18 +220,11 @@ class Article
                 // Étape 2 : Créer un nouvel article
                 $article = new Article();
                 $article->chargePOST();
-                var_dump($_POST);
                 $article->create(); // Récupère l'ID de l'article créé
-                var_dump($_POST);
-                // Étape 2 : Rediriger vers la page de l'article créé
-                // header('Location: admin.php?page=article&action=read&id=' . $article->id_article);
                 exit; // Toujours ajouter exit après un header
                 break;
-
                 ////////////////////////////////////
             case 'delete':
-
-
                 // Récupère l'ID du chapitre avant de supprimer l'article
                 $article = Article::readOne($id_article);
                 $id_chapitre = $article->id_chapitre;

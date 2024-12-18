@@ -14,7 +14,6 @@ class Bloc
     public $texte_2;
     public $texte_3;
     public $texte_4;
-    public $texte_5;
     public $texte_titre;
     public $texte_citation;
     public $texte_legende;
@@ -118,9 +117,9 @@ class Bloc
         $maximum = self::readOrderMax($this->id_article);
         $this->ordre = $maximum + 1;
 
-        $sql = "INSERT INTO bloc (ordre, type, texte, texte_1, texte_2, texte_3, texte_4, texte_5,
+        $sql = "INSERT INTO bloc (ordre, type, texte, texte_1, texte_2, texte_3, texte_4,
         texte_titre, texte_citation, texte_legende, texte_credit, style, image, image_1, image_2, image_3, image_4, alt, audio, video, infographie, id_article)
-				VALUES (:ordre, :type, :texte, :texte_1, :texte_2, :texte_3, :texte_4, :texte_5, :texte_titre, :texte_citation, :texte_legende, :texte_credit, :style, :image, :image_1, :image_2, :image_3, :image_4, :alt, :audio, :video, :infographie, :id_article)";
+				VALUES (:ordre, :type, :texte, :texte_1, :texte_2, :texte_3, :texte_4, :texte_titre, :texte_citation, :texte_legende, :texte_credit, :style, :image, :image_1, :image_2, :image_3, :image_4, :alt, :audio, :video, :infographie, :id_article)";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
         $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
@@ -130,7 +129,6 @@ class Bloc
         $query->bindValue(':texte_2', $this->texte_2, PDO::PARAM_STR);
         $query->bindValue(':texte_3', $this->texte_3, PDO::PARAM_STR);
         $query->bindValue(':texte_4', $this->texte_4, PDO::PARAM_STR);
-        $query->bindValue(':texte_5', $this->texte_5, PDO::PARAM_STR);
         $query->bindValue(':texte_titre', $this->texte_titre, PDO::PARAM_STR);
         $query->bindValue(':texte_citation', $this->texte_citation, PDO::PARAM_STR);
         $query->bindValue(':texte_legende', $this->texte_legende, PDO::PARAM_STR);
@@ -160,7 +158,6 @@ class Bloc
                 texte_2=:texte_2,
                 texte_3=:texte_3,
                 texte_4=:texte_4,
-                texte_5=:texte_5, 
                 texte_titre=:texte_titre, 
                 texte_citation=:texte_citation, 
                 texte_legende=:texte_legende, 
@@ -190,7 +187,6 @@ class Bloc
         $query->bindValue(':texte_2', $this->texte_2, PDO::PARAM_STR);
         $query->bindValue(':texte_3', $this->texte_3, PDO::PARAM_STR);
         $query->bindValue(':texte_4', $this->texte_4, PDO::PARAM_STR);
-        $query->bindValue(':texte_5', $this->texte_5, PDO::PARAM_STR);
         $query->bindValue(':texte_titre', $this->texte_titre, PDO::PARAM_STR);
         $query->bindValue(':texte_citation', $this->texte_citation, PDO::PARAM_STR);
         $query->bindValue(':texte_legende', $this->texte_legende, PDO::PARAM_STR);
@@ -246,7 +242,6 @@ class Bloc
         $this->texte_2 = insecables(postString('texte_2'));
         $this->texte_3 = insecables(postString('texte_3'));
         $this->texte_4 = insecables(postString('texte_4'));
-        $this->texte_5 = insecables(postString('texte_5'));
         $this->texte_titre = insecables(postString('texte_titre'));
         $this->texte_citation = insecables(postString('texte_citation'));
         $this->texte_legende = insecables(postString('texte_legende'));

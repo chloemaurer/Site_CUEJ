@@ -1,7 +1,8 @@
 {% extends "base-admin.twig.html" %} {% block content %}
 
 <h1 class="text-center p-5">Créaton d'un bloc</h1>
-<form action="admin.php?page=bloc&action=create" method="post" class="row g-4 needs-validation" novalidate>
+<form action="admin.php?page=bloc&action=create" method="post" class="row g-4 needs-validation"
+    enctype="multipart/form-data" novalidate>
     {# type #}
     <div class="col-md-4">
         <label for="type" class="form-label mt-4">Type de bloc :</label>
@@ -32,16 +33,16 @@
 
     {# image #}
     <div class="col-md-4">
-        <label for="image">image :<span>(max 200 Ko)</span></label>
+        <label for="image">Image :<span>(max 200 Ko)</span></label>
         <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
-        <input type="file" id="image" name="image" class="image" title="votre image" autocomplete="off" />
+        <input type="file" name="image" accept="images/*" class="form-control w-75 ms-5 border-black" />
     </div>
 
     {# audio #}
     <div class="col-md-4">
-        <label for="audio">audio :<span>(max 5 Mo)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="5000000" title="la taille max du fichier" autocomplete="off" />
-        <input type="file" id="audio" name="audio" class="audio" title="votre audio" autocomplete="off" />
+        <label for="audio">audio :<span>(max 8 Mo)</span></label>
+        <input type="hidden" name="MAX_FILE_SIZE" value="8000000" title="la taille max du fichier" autocomplete="off" />
+        <input type="file" name="audio" accept="audio/mpeg" class="form-control w-75 ms-5 border-black" />
     </div>
 
     {# texte titre #}

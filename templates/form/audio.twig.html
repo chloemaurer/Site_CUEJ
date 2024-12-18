@@ -1,70 +1,47 @@
-{% extends "base-admin.twig.html" %} {% block content %}
+{% extends "base-admin.twig.html" %}
 
-<h1 class="text-center p-5">Créaton d'un bloc</h1>
-<form action="admin.php?page=bloc&action=create" method="post" enctype="multipart/form-data"
-class="row g-4 needs-validation"
-    enctype="multipart/form-data" novalidate>
-    {# type #}
-    <div class="col-md-4">
-        <label for="type" class="form-label mt-4">Type de bloc :</label>
-        <input type="hidden" name="type" placeholder="Quel type ?" value="{{id}}"
-            class="form-control w-75 ms-5 border-black" />
-    </div>
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-5 text-primary fw-bold">Création d'un bloc</h1>
 
-    {# texte #}
-    <div class="col-md-4">
-        <label for="texte" class="form-label mt-4">Contenu :</label>
-        <input type="text" name="texte" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
-    </div>
+    <form action="admin.php?page=bloc&action=create" method="post" enctype="multipart/form-data" class="row g-4 bg-light p-4 rounded shadow needs-validation" novalidate>
+        {# Type de bloc (caché) #}
+        <input type="hidden" name="type" value="{{ id }}" />
 
-    {# style #}
-    <div class="col-md-4">
-        <label for="style" class="form-label mt-4">Style :</label>
-        <select id="style" name="style" class="form-select w-75 ms-5 border-black" aria-label="Default select example">
-            <option value="corp_de_texte" selected>Corps de texte</option>
-            <option value="chapo">Chapô</option>
-            <option value="encadre">Encadré</option>
-            <option value="exergue_l">Exergue long</option>
-            <option value="exergue_c">Exergue court</option>
-            <option value="legende">Légende</option>
-            <option value="credit_p">credit photo</option>
-            <option value="credir_a">credit article</option>
-        </select>
-    </div>
 
-    {# image #}
-    <div class="col-md-4">
-        <label for="image">Image :<span>(max 200 Ko)</span></label>
-        <input type="file" name="image" accept="images/*" class="form-control w-75 ms-5 border-black" />
-    </div>
+        {# Image #}
+        <div class="col-md-6">
+            <label for="image" class="form-label fw-bold text-secondary">Image :</label>
+            <input type="file" name="image" accept="image/*" class="form-control border-secondary" />
+            <small class="text-muted">Taille maximale : 200 Ko</small>
+        </div>
 
-    {# audio #}
-    <div class="col-md-4">
-        <label for="audio">Audio :<span>(max 200 Ko)</span></label>
-         <input type="file" name="audio" accept="audio/*" class="form-control w-75 ms-5 border-black" />
-    </div>
+        {# Audio #}
+        <div class="col-md-6">
+            <label for="audio" class="form-label fw-bold text-secondary">Audio :</label>
+            <input type="file" name="audio" accept="audio/*" class="form-control border-secondary" />
+            <small class="text-muted">Taille maximale : 200 Ko</small>
+        </div>
 
-    {# texte titre #}
-    <div class="col-md-4">
-        <label for="texte_titre" class="form-label mt-4">Titre audio :</label>
-        <input type="text" name="texte_titre" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
-    </div>
+        {# Titre audio #}
+        <div class="col-md-6">
+            <label for="texte_titre" class="form-label fw-bold text-secondary">Titre audio :</label>
+            <input type="text" name="texte_titre" placeholder="Saisir le titre" class="form-control border-secondary" />
+        </div>
 
-    {# texte legende #}
-    <div class="col-md-4">
-        <label for="texte_legende" class="form-label mt-4">Légende audio :</label>
-        <input type="text" name="texte_legende" placeholder="Saisir le texte"
-            class="form-control w-75 ms-5 border-black" />
-    </div>
+        {# Légende audio #}
+        <div class="col-md-6">
+            <label for="texte_legende" class="form-label fw-bold text-secondary">Légende audio :</label>
+            <input type="text" name="texte_legende" placeholder="Saisir la légende" class="form-control border-secondary" />
+        </div>
 
-    {# alt #}
-    <div class="col-md-4">
-        <label for="alt" class="form-label mt-4">Description de l'image : </label>
-        <input type="text" name="alt" placeholder="description de l'image (si type = image)"
-            class="form-control w-75 ms-5 border-black" />
-    </div>
+        {# Description de l'image (alt) #}
+        <div class="col-md-6">
+            <label for="alt" class="form-label fw-bold text-secondary">Description de l'image :</label>
+            <input type="text" name="alt" placeholder="Description de l'image" class="form-control border-secondary" />
+        </div>
 
-    {# Article : Pré-sélection automatique #}
+        {# Article associé #}
         <div class="col-md-6">
             <label for="id_article" class="form-label fw-bold text-secondary">Article :</label>
             <select name="id_article" id="id_article" class="form-select border-secondary" required>
@@ -78,12 +55,12 @@ class="row g-4 needs-validation"
             </select>
         </div>
 
-    {# bouton #}
-    <div class="d-flex justify-content-center">
-        <button type="submit" class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2">
-            Créer
-        </button>
-    </div>
-</form>
-
+        {# Bouton de soumission #}
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-success px-5 py-2 shadow rounded-pill">
+                <i class="fa-solid fa-check me-2"></i> Créer
+            </button>
+        </div>
+    </form>
+</div>
 {% endblock %}

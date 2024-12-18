@@ -20,18 +20,6 @@ function postInt($name)
 	return $int;
 }
 
-function filterText($text)
-{
-	// Remplace les ^ par des espaces insécables
-	$text = str_replace('^', '&nbsp;', $text);
-
-	// Remplace //texte// par <em>texte</em>
-	$text = preg_replace('/\/\/(.*)\/\//', '<em>\1</em>', $text);
-
-	// Remplace ((url|serveur.com)) par <a href="url">serveur.com</a>
-	$text = preg_replace('/\(\(([^\s\|]*)\|(.*)\)\)/', '<a href="\1">\2</a>', $text);
-	return $text;
-}
 
 function chargeFILE($type)
 {
@@ -44,8 +32,6 @@ function chargeFILE($type)
 
 		$fileExt = explode('.', $fileName);
 		$fileActualExt = strtolower(end($fileExt));
-
-		$allowed = ['jpg', 'jpeg', 'png', 'mp3', 'mp4', 'svg'];
 
 		// Vérification des erreurs de téléchargement
 		if ($fileError === 0) {

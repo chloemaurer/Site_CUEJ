@@ -6,6 +6,7 @@
   <form 
     action="admin.php?page=bloc&action=create" 
     method="post" 
+    enctype="multipart/form-data"
     class="row g-4 bg-light p-4 rounded shadow-sm needs-validation" 
     novalidate
   >
@@ -81,25 +82,19 @@
       </select>
     </div>
 
-    <!-- Article associé -->
-    <div class="col-md-6">
-      <label for="id_article" class="form-label fw-bold">Article :</label>
-      <select 
-        name="id_article" 
-        id="id_article" 
-        class="form-select border-secondary" 
-        required
-      >
-        <option value="" disabled>Choisir un article</option>
-        {% for article in listearticle %}
-          <option value="{{ article.id_article }}" 
-            {% if article.id_article == id_article_selectionne %}selected{% endif %}
-          >
-            {{ article.titre }}
-          </option>
-        {% endfor %}
-      </select>
-    </div>
+    {# Article : Pré-sélection automatique #}
+        <div class="col-md-6">
+            <label for="id_article" class="form-label fw-bold text-secondary">Article :</label>
+            <select name="id_article" id="id_article" class="form-select border-secondary" required>
+                <option value="" disabled>Choisir un article</option>
+                {% for article in listearticle %}
+                    <option value="{{ article.id_article }}" 
+                        {% if article.id_article == id_article_selectionne %}selected{% endif %}>
+                        {{ article.titre }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
 
     <!-- Bouton d'envoi -->
     <div class="col-12 d-flex justify-content-center">

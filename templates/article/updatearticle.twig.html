@@ -5,48 +5,26 @@
   <h1 class="text-center text-primary">Modifier l'article</h1>
 
   <!-- Formulaire -->
-  <form
-    action="admin.php?page=article&action=update"
-    method="post"
-    enctype="multipart/form-data"
-    class="row g-4"
-  >
+  <form action="admin.php?page=article&action=update" method="post" enctype="multipart/form-data" class="row g-4">
     <!-- ID de l'article (caché) -->
     <input type="hidden" name="id_article" value="{{ article.id_article }}" />
 
     <!-- Titre -->
     <div class="col-md-6">
       <label for="titre" class="form-label">Titre :</label>
-      <input
-        type="text"
-        name="titre"
-        value="{{ article.titre }}"
-        class="form-control"
-        required
-      />
+      <input type="text" name="titre" value="{{ article.titre }}" class="form-control" required />
     </div>
 
     <!-- Chapô -->
     <div class="col-md-6">
       <label for="chapo" class="form-label">Chapô :</label>
-      <textarea
-        name="chapo"
-        rows="4"
-        class="form-control"
-        required
-      >{{ article.chapo | raw}}</textarea>
+      <textarea name="chapo" rows="4" class="form-control" required>{{ article.chapo | raw}}</textarea>
     </div>
 
     <!-- Auteur -->
     <div class="col-md-6">
       <label for="auteur" class="form-label">Auteur :</label>
-      <input
-        type="text"
-        name="auteur"
-        value="{{ article.auteur }}"
-        class="form-control"
-        required
-      />
+      <input type="text" name="auteur" value="{{ article.auteur }}" class="form-control" required />
     </div>
 
     <!-- Chapitre -->
@@ -54,10 +32,8 @@
       <label for="id_chapitre" class="form-label">Chapitre :</label>
       <select name="id_chapitre" class="form-select">
         {% for chapitre in listechapitre %}
-        <option
-          value="{{ chapitre.id_chapitre }}"
-          {% if chapitre.id_chapitre == article.id_chapitre %}selected{% endif %}
-        >
+        <option value="{{ chapitre.id_chapitre }}"
+          {% if chapitre.id_chapitre == article.id_chapitre %}selected{% endif %}>
           {{ chapitre.titre }}
         </option>
         {% endfor %}
@@ -70,12 +46,8 @@
       <!-- Aperçu de l'image actuelle -->
       {% if article.image %}
       <div class="mb-2">
-        <img
-          src="upload/{{ article.image }}"
-          alt="Image actuelle"
-          class="img-thumbnail"
-          style="max-width: 150px;"
-        />
+        <img src="upload/{{ article.image }}" alt="Image actuelle" accept="images/*" class="img-thumbnail"
+          style="max-width: 150px;" />
       </div>
       {% endif %}
       <input type="file" name="image" class="form-control" />

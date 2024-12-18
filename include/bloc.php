@@ -248,7 +248,7 @@ class Bloc
         $audio = chargeFILE('audio');
         if (!empty($audio)) {
             // Supprime l'ancienne image si update
-            unlink($this->audio);
+            unlink('upload/'. $this->audio);
             $this->audio = $audio;
         }
 
@@ -314,7 +314,7 @@ class Bloc
                 $bloc->chargePOST();
                 var_dump($_POST);
                 $bloc->create();
-                header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
+                // header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
                 break;
 
             case 'delete':

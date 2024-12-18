@@ -47,10 +47,26 @@ function chargeFILE($type)
 
 		$allowed = ['jpg', 'jpeg', 'png', 'mp3', 'mp4', 'svg'];
 
-		var_dump($_FILES[$type]);
+		var_dump($_FILES);
 
 		// Vérification des erreurs de téléchargement
-		if ($fileError !== 0) {
+		if ($fileError === 0) {
+			$allowed = ['jpg', 'jpeg', 'jfif', 'png', 'mp3', 'wav', 'flac'];
+			if (in_array($fileActualExt, $allowed)) {
+				if ($fileSize < 80000000) {
+					$fileNameNew = uniqid('', true) . "." . $fileActualExt;
+					$fileDestination = 'upload/' . $fileNameNew;
+					move_uploaded_file($fileTmpName, $fileDestination);
+					return $fileNameNew;
+				} else {
+					echo 'Votre fichier est trop volumineux';
+				}
+			} else {
+				echo 'Ce type de fichier (' . $fileType . ') ou d\'extension (' . $fileActualExt . ') n\'est pas supporté';
+			}
+			return '';
+		}
+		else {
 			switch ($fileError) {
 				case UPLOAD_ERR_INI_SIZE:
 				case UPLOAD_ERR_FORM_SIZE:
@@ -74,10 +90,12 @@ function chargeFILE($type)
 				default:
 					echo "Une erreur inconnue est survenue lors du téléchargement.";
 			}
-			return ''; // Si une erreur est survenue, on retourne une chaîne vide
-		}
+			return ''; 
+		} 
 	}
 }
+
+
 
 function insecables($texte)
 {

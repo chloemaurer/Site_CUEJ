@@ -1,7 +1,8 @@
 {% extends "base-admin.twig.html" %} {% block content %}
 
 <h1 class="text-center p-5">Créaton d'un bloc</h1>
-<form action="admin.php?page=bloc&action=create" method="post" class="row g-4 needs-validation" novalidate>
+<form action="admin.php?page=bloc&action=create" method="post" enctype="multipart/form-data"
+class="row g-4 needs-validation" novalidate>
     {# type #}
     <div class="col-md-4">
         <label for="type" class="form-label mt-4">Type de bloc :</label>
@@ -84,12 +85,19 @@
             class="form-control w-75 ms-5 border-black" />
     </div>
 
-    {# article #}
-    <div class="col-md-4">
-        <label for="id_article" class="form-label mt-4">Article :</label>
-        <input type="text" name="id_article" required="required" placeholder="Dans quel article apparait-il ?"
-            class="form-control w-75 ms-5 border-black" />
-    </div>
+    {# Article : Pré-sélection automatique #}
+        <div class="col-md-6">
+            <label for="id_article" class="form-label fw-bold text-secondary">Article :</label>
+            <select name="id_article" id="id_article" class="form-select border-secondary" required>
+                <option value="" disabled>Choisir un article</option>
+                {% for article in listearticle %}
+                    <option value="{{ article.id_article }}" 
+                        {% if article.id_article == id_article_selectionne %}selected{% endif %}>
+                        {{ article.titre }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
 
     {# bouton #}
     <div class="d-flex justify-content-center">

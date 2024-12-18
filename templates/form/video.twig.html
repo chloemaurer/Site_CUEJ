@@ -22,11 +22,18 @@
 
 
 
-    {# article #}
-    <div class="col-md-4">
-        <label for="id_article" class="form-label mt-4">Article :</label>
-        <input type="text" name="id_article" required="required" placeholder="Dans quel article apparait-il ?"
-            class="form-control w-75 ms-5 border-black" />
+    {# Article : Pré-sélection automatique #}
+    <div class="col-md-6">
+        <label for="id_article" class="form-label fw-bold text-secondary">Article :</label>
+        <select name="id_article" id="id_article" class="form-select border-secondary" required>
+            <option value="" disabled>Choisir un article</option>
+            {% for article in listearticle %}
+                <option value="{{ article.id_article }}" 
+                    {% if article.id_article == id_article_selectionne %}selected{% endif %}>
+                    {{ article.titre }}
+                </option>
+            {% endfor %}
+        </select>
     </div>
 
     {# bouton #}

@@ -299,10 +299,14 @@ class Bloc
             case 'new':
                 $id = isset($_GET['id']) ? $_GET['id'] : null;
                 $modele = 'form/' . $id . '.twig.html';
+                $id_article_selectionne =
+                isset($_GET['id_article']) ? intval($_GET['id_article']) : null;
+                
                 $data = [
                     'bloc' => Bloc::readOne($id), // Si vous avez des données associées à $id
                     'id' => $id,                  // Passez l'id à Twig
-                    'listearticle' => Article::readAll()
+                    'listearticle' => Article::readAll(),
+                    'id_article_selectionne' => $id_article_selectionne
                 ];
 
 

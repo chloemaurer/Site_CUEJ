@@ -252,9 +252,6 @@ class Bloc
             $this->audio = $audio;
         }
 
-        var_dump($this->image);
-        var_dump($this->audio);
-
         $video = chargeFILE('video');
         if (!empty($video)) {
             // Supprime l'ancienne image si update
@@ -314,11 +311,9 @@ class Bloc
 
             case 'create':
                 $bloc = new Bloc();
-                var_dump($_POST);
                 $bloc->chargePOST();
-                var_dump($_POST);
                 $bloc->create();
-                // header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
+                header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
                 break;
 
             case 'delete':
@@ -348,8 +343,6 @@ class Bloc
             case 'update':
                 $bloc = new Bloc();
                 $bloc->chargePOST();    // utilise maintenant la vraie variable $_POST;
-                // var_dump($bloc);
-                // exit;
                 $bloc->update();
                 header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
                 exit();

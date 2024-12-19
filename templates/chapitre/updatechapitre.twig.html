@@ -1,50 +1,107 @@
 {% extends "base-admin.twig.html" %} {% block content %}
+<div class="container py-5">
+  <h1 class="text-center mb-4 text-primary fw-bold">Modifier un Chapitre</h1>
 
-<form action="admin.php?page=chapitre&action=update" method="post" enctype="multipart/form-data"
-  class="row g-4 needs-validation" novalidate>
-  <div class="col-md-4">
-    <label for="id_chapitre" class="form-label mt-4">id :</label>
-    <input type="text" name="id_chapitre" placeholder="Id" value="{{chapitre.id_chapitre}}"
-      class="form-control w-75 ms-5 border-black" />
-  </div>
-  <div class="col-md-4">
-    <label for="titre" class="form-label mt-4">Titre :</label>
-    <input type="text" name="titre" placeholder="Titre" value="{{chapitre.titre | raw}}"
-      class="form-control w-75 ms-5 border-black" />
-  </div>
-  <div class="col-md-4">
-    <label for="chapo" class="form-label mt-4">Chapô : </label>
-    <textarea name="chapo" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" rows="4">
-{{ chapitre.chapo | raw}}</textarea>
-  </div>
-
-  <div class="col-md-4">
-    <label for="image" class="form-label mt-4">Télécharger une image :</label>
-    <!-- Aperçu de l'image actuelle -->
-    {% if chapitre.image %}
-    <div class="mb-3">
-      <img src="upload/{{ chapitre.image }}" alt="Image actuelle" accept="images/*" class="img-thumbnail"
-        style="max-width: 150px; height: auto" />
+  <form
+    action="admin.php?page=chapitre&action=update"
+    method="post"
+    enctype="multipart/form-data"
+    class="row g-4 bg-light p-4 rounded shadow-lg needs-validation"
+    novalidate
+  >
+    <!-- ID du chapitre -->
+    <div class="col-md-6">
+      <label for="id_chapitre" class="form-label fw-bold text-secondary"
+        >ID :</label
+      >
+      <input
+        type="text"
+        name="id_chapitre"
+        placeholder="Id"
+        value="{{ chapitre.id_chapitre }}"
+        class="form-control border-secondary"
+        readonly
+      />
     </div>
-    {% endif %}
 
-    <!-- Champ pour uploader une nouvelle image -->
-    <input type="file" name="image" accept="images/*" class="form-control w-75 ms-5 border-black" />
+    <!-- Titre -->
+    <div class="col-md-6">
+      <label for="titre" class="form-label fw-bold text-secondary"
+        >Titre :</label
+      >
+      <input
+        type="text"
+        name="titre"
+        placeholder="Titre"
+        value="{{ chapitre.titre | raw }}"
+        class="form-control border-secondary"
+        required
+      />
+    </div>
 
-    <!-- Champ caché pour conserver l'image existante -->
-    <input type="hidden" name="old-image" value="{{ chapitre.image }}" />
-  </div>
+    <!-- Chapô -->
+    <div class="col-md-12">
+      <label for="chapo" class="form-label fw-bold text-secondary"
+        >Chapô :</label
+      >
+      <textarea
+        name="chapo"
+        placeholder="Saisir le texte"
+        class="form-control border-secondary"
+        rows="4"
+        required
+      >
+{{ chapitre.chapo | raw }}</textarea
+      >
+    </div>
 
-  <div class="col-md-4">
-    <label for="alt" class="form-label mt-4">Description de l'image : </label>
-    <input type="text" name="alt" placeholder="description de l'image (si type = image)"
-      class="form-control w-75 ms-5 border-black" value="{{chapitre.alt}}" />
-  </div>
-  <div class="d-flex justify-content-center">
-    <button type="submit" class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2">
-      Modifier
-    </button>
-  </div>
-</form>
+    <!-- Image -->
+    <div class="col-md-6">
+      <label for="image" class="form-label fw-bold text-secondary"
+        >Télécharger une image :</label
+      >
+      {% if chapitre.image %}
+      <div class="mb-3">
+        <img
+          src="upload/{{ chapitre.image }}"
+          alt="Image actuelle"
+          class="img-thumbnail shadow-sm"
+          style="max-width: 150px; height: auto"
+        />
+      </div>
+      {% endif %}
+      <input
+        type="file"
+        name="image"
+        accept="images/*"
+        class="form-control border-secondary"
+      />
+      <input type="hidden" name="old-image" value="{{ chapitre.image }}" />
+    </div>
 
+    <!-- Description de l'image (alt) -->
+    <div class="col-md-6">
+      <label for="alt" class="form-label fw-bold text-secondary"
+        >Description de l'image :</label
+      >
+      <input
+        type="text"
+        name="alt"
+        placeholder="Description de l'image"
+        value="{{ chapitre.alt }}"
+        class="form-control border-secondary"
+      />
+    </div>
+
+    <!-- Bouton de soumission -->
+    <div class="col-12 text-center mt-4">
+      <button
+        type="submit"
+        class="btn btn-primary px-5 py-2 rounded-pill shadow"
+      >
+        <i class="fa-solid fa-save me-2"></i> Enregistrer les modifications
+      </button>
+    </div>
+  </form>
+</div>
 {% endblock %}

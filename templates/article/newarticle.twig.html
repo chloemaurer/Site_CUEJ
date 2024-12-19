@@ -1,46 +1,54 @@
-{% extends "base-admin.twig.html" %} {% block content %}
+{% extends "base-admin.twig.html" %}
 
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-5 text-primary fw-bold">Créer un Article</h1>
 
+    <form action="admin.php?page=article&action=create" method="post" enctype="multipart/form-data" class="row g-4 bg-white p-4 rounded shadow needs-validation" novalidate>
+        <!-- Titre -->
+        <div class="col-md-6">
+            <label for="titre" class="form-label fw-bold text-secondary">Titre :</label>
+            <input type="text" name="titre" placeholder="Titre de l'article" class="form-control border-secondary" required />
+        </div>
 
-<form action="admin.php?page=article&action=create" method="post" class="row g-4 needs-validation" novalidate>
-  <div class="col-md-4">
-    <label for="titre" class="form-label mt-4">Titre :</label>
-    <input type="text" name="titre" placeholder="Titre" class="form-control w-75 ms-5 border-black" />
-  </div>
+        <!-- Chapô -->
+        <div class="col-md-12">
+            <label for="chapo" class="form-label fw-bold text-secondary">Chapô :</label>
+            <textarea name="chapo" placeholder="Saisir le texte du chapô" class="form-control border-secondary" rows="5" required></textarea>
+        </div>
 
-  <div class="col-md-4">
-    <label for="chapo" class="form-label mt-4">Chapô :</label>
-    <textarea name="chapo" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black"
-      rows="6"></textarea>
-  </div>
+        <!-- Auteur -->
+        <div class="col-md-6">
+            <label for="auteur" class="form-label fw-bold text-secondary">Auteur :</label>
+            <input type="text" name="auteur" placeholder="Nom de l'auteur" class="form-control border-secondary" required />
+        </div>
 
-  <div class="col-md-4">
-    <label for="auteur" class="form-label mt-4">Auteur : </label>
-    <input type="text" name="auteur" placeholder="Qui est l'auteur ?" class="form-control w-75 ms-5 border-black" />
-  </div>
+        <!-- Chapitre -->
+        <div class="col-md-6">
+            <label for="id_chapitre" class="form-label fw-bold text-secondary">Chapitre :</label>
+            <select name="id_chapitre" id="id_chapitre" class="form-select border-secondary" required>
+                <option value="" disabled selected>Choisir un chapitre</option>
+                {% for chapitre in listechapitre %}
+                <option value="{{ chapitre.id_chapitre }}" {% if chapitre.id_chapitre == id_chapitre_selectionne %}selected{% endif %}>
+                    {{ chapitre.titre }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
 
-  <div class="col-md-4">
-    <label for="id_chapitre" class="form-label mt-4">Chapitre : </label>
-    <select name="id_chapitre" id="id_chapitre" class="form-select w-75 ms-5 border-black">
-      {% for chapitre in listechapitre %}
-      <option value="{{ chapitre.id_chapitre }}"
-        {% if chapitre.id_chapitre == id_chapitre_selectionne %}selected{% endif %}>
-        {{ chapitre.titre }}
-      </option>
-      {% endfor %}
-    </select>
-  </div>
+        <!-- Image -->
+        <div class="col-md-6">
+            <label for="image" class="form-label fw-bold text-secondary">Image :</label>
+            <input type="file" name="image" accept="images/*" class="form-control border-secondary" />
+            <small class="text-muted">Formats acceptés : jpg, png, gif (max 2 Mo).</small>
+        </div>
 
-
-
-  <!-- Champ pour uploader une nouvelle image -->
-  <input type="file" name="image" accept="images/*" class="form-control w-75 ms-5 border-black" />
-
-  <div class="d-flex justify-content-center">
-    <button type="submit" class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2">
-      Créer
-    </button>
-  </div>
-</form>
-
+        <!-- Bouton de validation -->
+        <div class="col-12 d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-success px-5 py-2 rounded-pill shadow">
+                <i class="fa-solid fa-check me-2"></i> Créer l'article
+            </button>
+        </div>
+    </form>
+</div>
 {% endblock %}

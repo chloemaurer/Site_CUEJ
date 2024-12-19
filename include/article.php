@@ -221,6 +221,8 @@ class Article
                 $article = new Article();
                 $article->chargePOST();
                 $article->create(); // Récupère l'ID de l'article créé
+                header('Location: admin.php?page=chapitre&action=read&id=' . $article->id_chapitre);
+
                 exit; // Toujours ajouter exit après un header
                 break;
                 ////////////////////////////////////
@@ -266,7 +268,7 @@ class Article
                 $article->chargePOST(); // Charge les nouvelles données
                 $article->update();     // Met à jour dans la BDD
 
-                header('Location: admin.php?page=article&action=read'); // Redirection vers la liste
+                header('Location: admin.php?page=chapitre&action=read&id=' . $article->id_chapitre); // Redirection vers la liste
                 exit;
                 break;
 

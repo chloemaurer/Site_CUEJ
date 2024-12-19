@@ -8,10 +8,23 @@
         {# Type de bloc (caché) #}
         <input type="hidden" name="type" value="{{ bloc.type }}" />
 
-        {# Texte #}
+        <!-- Texte -->
         <div class="col-md-6">
-            <label for="texte" class="form-label fw-bold text-secondary">Contenu :</label>
-            <textarea name="texte" id="texte" rows="3" placeholder="Saisir le contenu" class="form-control border-secondary">{{ bloc.texte }}</textarea>
+            <label for="texte" class="form-label fw-bold">Texte :</label>
+            <textarea name="texte" id="texte" placeholder="Saisir le texte" class="form-control border-secondary"
+                rows="3">{{ bloc.texte  | raw}}</textarea>
+        </div>
+        <!-- Inter-titre -->
+        <div class="col-md-6">
+            <label for="texte_2" class="form-label fw-bold">Inter-titre :</label>
+            <textarea name="texte_2" id="texte" placeholder="Saisir le texte" class="form-control border-secondary"
+                rows="3">{{ bloc.texte_2  | raw}}</textarea>
+        </div>
+        <!-- Texte -->
+        <div class="col-md-6">
+            <label for="texte_1" class="form-label fw-bold">Texte après inter-titre :</label>
+            <textarea name="texte_1" id="texte" placeholder="Saisir le texte" class="form-control border-secondary"
+                rows="3">{{ bloc.texte_1  | raw}}</textarea>
         </div>
 
         {# Style #}

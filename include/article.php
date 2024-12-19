@@ -224,6 +224,7 @@ class Article
                 exit; // Toujours ajouter exit après un header
                 break;
                 ////////////////////////////////////
+                
             case 'delete':
                 // Récupère l'ID du chapitre avant de supprimer l'article
                 $article = Article::readOne($id_article);

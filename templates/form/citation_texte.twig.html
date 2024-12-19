@@ -2,76 +2,56 @@
 
 <div class="container mt-5">
   <h1 class="text-center text-primary mb-4">Création d'un bloc</h1>
-  
-  <form 
-    action="admin.php?page=bloc&action=create" 
-    method="post" 
-    enctype="multipart/form-data"
-    class="row g-4 bg-light p-4 rounded shadow-sm needs-validation" 
-    novalidate
-  >
+
+  <form action="admin.php?page=bloc&action=create" method="post" enctype="multipart/form-data"
+    class="row g-4 bg-light p-4 rounded shadow-sm needs-validation" novalidate>
     <!-- Type de bloc -->
     <div class="col-md-6">
       <label for="type" class="form-label fw-bold">Type de bloc :</label>
-      <input 
-        type="hidden" 
-        name="type" 
-        value="{{ id }}" 
-        class="form-control" 
-      />
-      <input 
-        type="text" 
-        class="form-control" 
-        placeholder="Bloc sélectionné : {{ id }}" 
-        disabled 
-      />
+      <input type="hidden" name="type" value="{{ id }}" class="form-control" />
+      <input type="text" class="form-control" placeholder="Bloc sélectionné : {{ id }}" disabled />
     </div>
 
     <!-- Citation -->
     <div class="col-md-6">
       <label for="texte_citation" class="form-label fw-bold">Citation :</label>
-      <textarea 
-        name="texte_citation" 
-        id="texte_citation" 
-        placeholder="Saisir la citation"
-        class="form-control border-secondary" 
-        rows="3"
-      ></textarea>
+      <textarea name="texte_citation" id="texte_citation" placeholder="Saisir la citation"
+        class="form-control border-secondary" rows="3"></textarea>
     </div>
 
-          <!-- Légende -->
+    <!-- Légende -->
     <div class="col-md-6">
       <label for="texte_legende" class="form-label fw-bold">Auteur de la citation :</label>
-      <textarea 
-        name="texte_legende" 
-        id="texte_legende" 
-        placeholder="Saisir la légende" 
-        class="form-control border-secondary" 
-        rows="2"
-      ></textarea>
+      <textarea name="texte_legende" id="texte_legende" placeholder="Saisir la légende"
+        class="form-control border-secondary" rows="2"></textarea>
     </div>
 
     <!-- Texte -->
     <div class="col-md-6">
       <label for="texte" class="form-label fw-bold">Texte :</label>
-      <textarea 
-        name="texte" 
-        id="texte"
-        placeholder="Saisir le texte"
-        class="form-control border-secondary" 
-        rows="3"
-      ></textarea>
+      <textarea name="texte" id="texte" placeholder="Saisir le texte" class="form-control border-secondary"
+        rows="3"></textarea>
     </div>
+
+    <!-- Inter titre -->
+    <div class="col-md-6">
+      <label for="texte_2" class="form-label fw-bold">Inter-Titre (facultatif) :</label>
+      <input type="text" name="texte_2" id="texte" placeholder="Saisir le texte"
+        class="form-control border-secondary" rows="3"></input>
+    </div>
+
+    <!-- Texte post inter_titre -->
+    <div class="col-md-6">
+      <label for="texte_1" class="form-label fw-bold">Texte après inter-titre :</label>
+      <textarea name="texte_1" id="texte" placeholder="Saisir le texte" class="form-control border-secondary"
+        rows="3"></textarea>
+    </div>
+
 
     <!-- Style -->
     <div class="col-md-6">
       <label for="style" class="form-label fw-bold">Style :</label>
-      <select 
-        name="style" 
-        id="style" 
-        class="form-select border-secondary"
-        required
-      >
+      <select name="style" id="style" class="form-select border-secondary" required>
         <option value="corp_de_texte" selected>Corps de texte</option>
         <option value="chapo">Chapô</option>
         <option value="encadre">Encadré</option>
@@ -84,25 +64,22 @@
     </div>
 
     {# Article : Pré-sélection automatique #}
-        <div class="col-md-6">
-            <label for="id_article" class="form-label fw-bold text-secondary">Article :</label>
-            <select name="id_article" id="id_article" class="form-select border-secondary" required>
-                <option value="" disabled>Choisir un article</option>
-                {% for article in listearticle %}
-                    <option value="{{ article.id_article }}" 
-                        {% if article.id_article == id_article_selectionne %}selected{% endif %}>
-                        {{ article.titre }}
-                    </option>
-                {% endfor %}
-            </select>
-        </div>
+    <div class="col-md-6">
+      <label for="id_article" class="form-label fw-bold text-secondary">Article :</label>
+      <select name="id_article" id="id_article" class="form-select border-secondary" required>
+        <option value="" disabled>Choisir un article</option>
+        {% for article in listearticle %}
+        <option value="{{ article.id_article }}"
+          {% if article.id_article == id_article_selectionne %}selected{% endif %}>
+          {{ article.titre }}
+        </option>
+        {% endfor %}
+      </select>
+    </div>
 
     <!-- Bouton d'envoi -->
     <div class="col-12 d-flex justify-content-center mt-4">
-      <button 
-        type="submit" 
-        class="btn btn-primary px-4 py-2 rounded-pill shadow-sm"
-      >
+      <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill shadow-sm">
         <i class="fa-solid fa-save me-2"></i>Créer le bloc
       </button>
     </div>

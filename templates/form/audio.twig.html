@@ -20,7 +20,9 @@
         <div class="col-md-6">
             <label for="audio" class="form-label fw-bold text-secondary">Audio :</label>
             <input type="file" name="audio" accept="audio/*" class="form-control border-secondary" />
-            <small class="text-muted">Taille maximale : 200 Ko</small>
+            <input type="hidden" name="MAX_FILE_SIZE" value="5000000" title="la taille max du fichier"
+                autocomplete="off" />
+            <small class="text-muted">Taille maximale : 13 Mo</small>
         </div>
 
         {# Titre audio #}

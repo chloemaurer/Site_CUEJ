@@ -195,7 +195,8 @@ class Article
                 $article = Article::readOne($id_article);
                 // $article->insecables();
                 $data = [
-                    'article' => $article
+                    'article' => $article,
+                    'listebloc' => Bloc::readAllByArticle($id_article),
                 ];
                 break;
         }

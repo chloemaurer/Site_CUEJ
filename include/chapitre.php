@@ -10,6 +10,7 @@ class Chapitre
     public $image;
     public $alt;
     public $articles = [];
+    public $ordre;
 
     // Le constructeur corrige les données récupérées de la BDD
     // Ici convertie l'identifiant en entier
@@ -93,46 +94,44 @@ class Chapitre
 
 
     // Récupère l'ordre maximal des articles d'un thème
-    static function readOrderMax($id_article)
+    static function readOrderMax($id_chapitre)
     {
-        $sql = 'SELECT max(ordre) AS maximum FROM article WHERE id_chapitre = :id_article';
+        $sql = 'SELECT max(ordre) AS maximum FROM chapitre WHERE id_chapitre = :id_chapitre';
         $pdo = connexion();
         $query = $pdo->prepare($sql);
-        $query->bindValue(':id_article', $id_article, PDO::PARAM_INT);
+        $query->bindValue(':id_article', $id_chapitre, PDO::PARAM_INT);
         $query->execute();
         $objet = $query->fetchObject();
         return intval($objet->maximum);
     }
 
-    // Echange l'ordre de deux articles
+
     function exchangeOrder()
     {
-        // Recherche l'article précédent (dans le même thème)
-        // C'est l'article le plus grand, parmi les articles d'ordre inférieur
-
-        // étape 1 : cherche les articles du même thème ayant un ordre inférieur
-        $sql = 'SELECT * FROM article
-				WHERE id_chapitre = :id_chapitre AND ordre < :ordre ORDER BY ordre DESC';
+        // Recherche le chapitre précédent (dans la même catégorie)
+        $sql = 'SELECT * FROM chapitre
+            WHERE id_categorie = :id_categorie AND ordre < :ordre ORDER BY ordre DESC';
         $pdo = connexion();
         $query = $pdo->prepare($sql);
-        $query->bindValue(':id_chapitre', $this->id_chapitre, PDO::PARAM_INT);
+        $query->bindValue(':id_categorie', $this->id_chapitre, PDO::PARAM_INT);
         $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
         $query->execute();
 
-        // étape 2 : les articles sont triés par ordre décroissant
-        // donc le premier article est le plus grand des plus petits, donc le précédent
-        $before = $query->fetchObject('Article');
+        // Le chapitre précédent est le plus grand des ordres inférieurs
+        $before = $query->fetchObject('Chapitre');
 
-        // Si le précédent existe (l'article courant n'est pas le premier)
+        // Échange des ordres si un chapitre précédent existe
         if ($before) {
-            // Échange les valeurs d'ordre et enregistre dans la BDD
             $tmp = $this->ordre;
             $this->ordre = $before->ordre;
-            $this->update();
+            $this->update(); // Met à jour le chapitre courant
             $before->ordre = $tmp;
-            $before->update();
+            $before->update(); // Met à jour le chapitre précédent
         }
     }
+
+
+
     static function controleur($action, $id_chapitre, &$modele, &$data)
     {
         switch ($action) {

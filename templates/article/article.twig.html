@@ -432,8 +432,14 @@
 
 
         {# VIDEO #} {% elseif bloc.type == "video" %}
-        <div class="mx-auto" style="max-width: 960px">
-          <video controls width="640" class=" mb-5 {{ bloc.type }}">
+        <div class="mx-auto" style="max-width: 960px; position: relative;">
+          <!-- L'image par-dessus la vidéo -->
+          <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" class="video-overlay"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; z-index: 10;"
+            onclick="showVideo(this)" />
+
+          <!-- La vidéo -->
+          <video controls width="640" class="mb-5 {{ bloc.type }}" >
             <source src="upload/{{ bloc.video }}" type="video/mp4" />
             Votre navigateur ne supporte pas la vidéo.
           </video>

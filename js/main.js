@@ -44,3 +44,12 @@ new MediaElementPlayer(
     elementBottom.append(elem);
   });
 })();
+
+function showVideo(imageElement) {
+    // Masquer l'image
+    imageElement.style.display = 'none';
+    // Afficher la vidéo
+    const video = imageElement.nextElementSibling;
+    video.style.display = 'block';
+    video.play(); // Lancer la vidéo automatiquement
+}

@@ -99,11 +99,15 @@ class Article
 
     function create()
     {
-        $sql = "INSERT INTO article (titre, chapo, auteur, image, id_chapitre)
-            VALUES (:titre, :chapo, :auteur, :image, :id_chapitre)";
+        $maximum = self::readOrderMax($this->id_chapitre);
+        $this->ordre = $maximum + 1;
+
+        $sql = "INSERT INTO article (ordre, titre, chapo, auteur, image, id_chapitre)
+            VALUES (:ordre, :titre, :chapo, :auteur, :image, :id_chapitre)";
         $pdo = connexion();
         $query = $pdo->prepare($sql);
 
+        $query->bindValue(':ordre', $this->ordre, PDO::PARAM_INT);
         $query->bindValue(':titre', $this->titre, PDO::PARAM_STR);
         $query->bindValue(':chapo', $this->chapo, PDO::PARAM_STR);
         $query->bindValue(':auteur', $this->auteur, PDO::PARAM_STR);
@@ -270,6 +274,13 @@ class Article
 
                 header('Location: admin.php?page=chapitre&action=read&id=' . $article->id_chapitre); // Redirection vers la liste
                 exit;
+                break;
+
+
+            case 'exchange':
+                $article = Article::readOne($id_article);
+                $article->exchangeOrder();
+                header('Location: admin.php?page=chapitre&action=read&id=' . $article->id_chapitre);
                 break;
 
 

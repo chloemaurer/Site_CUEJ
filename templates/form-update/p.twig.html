@@ -1,18 +1,6 @@
-{% extends "base-admin.twig.html" %}
+{% extends "form-update/base_form.twig.html" %}
 
-{% block content %}
-<div class="container py-5">
-    <h1 class="text-center mb-5 text-primary">Modification d'un bloc</h1>
-
-    <form action="admin.php?page=bloc&action=update&id={{ bloc.id }}" method="post" class="row g-4 needs-validation" novalidate>
-        {# Type de bloc #}
-        <div class="col-md-12">
-            <input type="hidden" name="type" value="{{ bloc.type }}" />
-        </div>
-
-                {# ID DU BLOC #}
-        <input type="hidden" name="id" value="{{ id_bloc }}" />
-
+{% block form_update %}
         {# Texte #}
         <div class="col-md-6">
             <label for="texte" class="form-label fw-bold text-secondary">Texte :</label>
@@ -35,26 +23,4 @@
             </select>
         </div>
 
-        {# Article associé #}
-        <div class="col-md-12">
-            <label for="id_article" class="form-label fw-bold text-secondary">Article associé :</label>
-            <select name="id_article" id="id_article" class="form-select border-secondary" required>
-                <option value="" disabled>Choisir un article</option>
-                {% for article in listearticle %}
-                <option value="{{ article.id_article }}" 
-                    {% if article.id_article == bloc.id_article %}selected{% endif %}>
-                    {{ article.titre | raw }}
-                </option>
-                {% endfor %}
-            </select>
-        </div>
-
-        {# Bouton de validation #}
-        <div class="d-flex justify-content-center mt-4">
-            <button type="submit" class="btn btn-primary px-5 py-2">
-                <i class="fa-solid fa-save"></i> Modifier
-            </button>
-        </div>
-    </form>
-</div>
 {% endblock %}

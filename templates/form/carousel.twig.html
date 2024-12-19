@@ -14,14 +14,23 @@
       <input type="text" name="texte_titre" placeholder="Saisir le texte" class="form-control border-secondary" />
     </div>
 
-    <!-- Boucle pour générer les slides -->
-    {% for i in 1..5 %}
     <div class="col-md-6">
-      <label for="texte_{{ i }}" class="form-label fw-bold text-secondary">Texte slide {{ i }} :</label>
+        <label for="texte" class="form-label fw-bold text-secondary">Texte slide 1 :</label>
+        <input type="text" name="texte" placeholder="Saisir le texte" class="form-control border-secondary" />
+    </div>
+    <div class="col-md-6">
+        <label for="image" class="form-label fw-bold text-secondary">Image slide 1 :</label>
+        <input type="file" name="image" accept="image/*" class="form-control border-secondary" />
+    </div>
+
+    <!-- Boucle pour générer les slides -->
+    {% for i in 1..4 %}
+    <div class="col-md-6">
+      <label for="texte_{{ i }}" class="form-label fw-bold text-secondary">Texte slide {{ i + 1 }} :</label>
       <input type="text" name="texte_{{ i }}" placeholder="Saisir le texte" class="form-control border-secondary" />
     </div>
     <div class="col-md-6">
-      <label for="image_{{ i }}" class="form-label fw-bold text-secondary">Image slide {{ i }} :</label>
+      <label for="image_{{ i }}" class="form-label fw-bold text-secondary">Image slide {{ i + 1 }} :</label>
       <input type="file" name="image_{{ i }}" accept="image/*" class="form-control border-secondary" />
     </div>
     {% endfor %}

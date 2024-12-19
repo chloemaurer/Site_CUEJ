@@ -19,6 +19,12 @@ class Chapitre
         $this->id_chapitre = intval($this->id_chapitre);
     }
 
+    function insecables()
+    {
+        if ($this->titre) $this->titre = insecables($this->titre);
+        if ($this->chapo) $this->chapo = insecables($this->chapo);
+    }
+
     static function readAll()
     {
         $sql = 'SELECT * FROM chapitre';
@@ -76,7 +82,7 @@ class Chapitre
     {
         $this->id_chapitre = postInt('id_chapitre');
         $this->titre = postString('titre');
-        $this->chapo = insecables(postString('chapo'));
+        $this->chapo = postString('chapo');
         $this->image = postString('old-image');
         $this->alt = postString('alt');
 
@@ -143,6 +149,7 @@ class Chapitre
 
                 // Ajouter les articles associés à chaque chapitre
                 foreach ($listechapitre as $chapitre) {
+                    $chapitre->insecables();
                     $chapitre->articles = Article::readAllBychapitre($chapitre->id_chapitre);
                 }
 

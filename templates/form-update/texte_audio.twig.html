@@ -1,19 +1,7 @@
-{% extends "base-admin.twig.html" %}
+{% extends "form-update/base_form.twig.html" %}
 
-{% block content %}
-<div class="container py-5">
-    <h1 class="text-center mb-5 text-primary fw-bold">Création d'un bloc</h1>
+{% block form_update %}
 
-    <form action="admin.php?page=bloc&action=create&id={{ bloc.id }}" method="post" enctype="multipart/form-data"
-        class="row g-4 bg-light p-4 rounded shadow-sm needs-validation" novalidate>
-        <!-- Type de bloc (caché) -->
-        <div class="col-md-6">
-            <label for="type" class="form-label fw-bold">Type de bloc :</label>
-            <input type="hidden" name="type" value="{{ bloc.type }}" class="form-control" />
-            <input type="text" class="form-control" placeholder="Bloc sélectionné : {{ bloc.type }}" disabled />
-        </div>
-        <!-- ID du bloc -->
-        <input type="hidden" name="id" value="{{ bloc.id }}" />
         <!-- Texte -->
         <div class="col-md-6">
             <label for="texte" class="form-label fw-bold">Texte :</label>
@@ -51,8 +39,14 @@
 
         <!-- Image -->
         <div class="col-md-6">
-            <label for="image" class="form-label fw-bold text-secondary">Image :</label>
-            <input type="file" name="image" accept="image/*" class="form-control border-secondary" />
+            <label for="image" class="form-label fw-bold text-secondary">Image ou infographie:</label>
+            {% if bloc.image %}
+            <div class="mb-3">
+                <img src="upload/{{ bloc.image }}" alt="Image actuelle" class="img-thumbnail" style="max-width: 150px;">
+            </div>
+            <input type="hidden" name="old-image" value="{{ bloc.image }}" />
+            {% endif %}
+            <input type="file" name="image" id="image" accept="image/*" class="form-control" />
             <small class="text-muted">Taille maximale : 200 Ko</small>
         </div>
 
@@ -79,9 +73,16 @@
 
         <!-- Audio -->
         <div class="col-md-6">
-            <label for="audio" class="form-label fw-bold text-secondary">Audio :</label>
-            <input type="file" id="audio" name="audio" accept="audio/*" class="form-control border-secondary" />
-            <small class="text-muted">Taille maximale : 5 Mo</small>
+            <label for="audio" class="form-label fw-bold text-secondary">audio:</label>
+            {% if bloc.audio %}
+            <div class="mb-3">
+                <audio>
+                    <source src="upload/{{ bloc.audio }}" class="img-thumbnail" style="max-width: 150px;"> </audio>
+            </div>
+            <input type="hidden" name="old-audio" value="{{ bloc.audio }}" />
+            {% endif %}
+            <input type="file" name="audio" id="audio" accept="audio/*" class="form-control" />
+            <small class="text-muted">Taille maximale : 200 Ko</small>
         </div>
 
 
@@ -92,27 +93,5 @@
                 class="form-control border-secondary" />
         </div>
 
-        <!-- Sélection de l'article -->
-        <div class="col-md-6">
-            <label for="id_article" class="form-label fw-bold">Article associé :</label>
-            <select name="id_article" id="id_article" class="form-select border-secondary" required>
-                <option value="" disabled>Choisir un article</option>
-                {% for article in listearticle %}
-                <option value="{{ article.id_article }}"
-                    {% if article.id_article == bloc.id_article %}selected{% endif %}>
-                    {{ article.titre }}
-                </option>
-                {% endfor %}
-            </select>
-        </div>
 
-        <!-- Bouton de validation -->
-        <!-- Bouton d'envoi -->
-        <div class="col-12 d-flex justify-content-center mt-4">
-            <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill shadow-sm">
-                <i class="fa-solid fa-save me-2"></i>Mettre à jour
-            </button>
-        </div>
-    </form>
-</div>
 {% endblock %}

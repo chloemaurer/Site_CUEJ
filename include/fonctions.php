@@ -105,3 +105,4 @@ function insecables($texte)
 	$texte = preg_replace('/\(\(([^\s\|]*)\|(.*)\)\)/', '<a href="\1">\2</a>', $texte);
 	return $texte;
 }
+

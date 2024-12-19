@@ -190,17 +190,8 @@ class Article
     {
         switch ($action) {
 
-            case 'read':
-                if ($id_article > 0) {
-                    $modele = "article/article_view.twig.html";
-                    $data = [];
-                } else {
-                    $modele = 'article/liste_articles_view.twig.html';
-                    $data = ['listearticle' => Article::readAll()];
-                }
-
             default:
-                $modele = 'accueil.twig.html';
+                $modele = 'article/article_view.twig.html';
                 $article = Article::readOne($id_article);
                 // $article->insecables();
                 $data = [

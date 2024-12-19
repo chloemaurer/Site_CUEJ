@@ -5,14 +5,26 @@
   <div class="sidebar">
     <div class="round-btn" id="edito-btn">Édito</div>
 
+    {% set chapter_classes = ['chapter1-container', 'chapter2-container',
+    'chapter3-container'] %} {% for chapitre in listechapitre %}
+    <div class="chapter-container {{ chapter_classes[loop.index0] }}">
+      <div class="rect-bg"></div>
+      <img
+        src="upload/{{ chapitre.image }}"
+        alt="{{ chapitre.alt }}"
+        class="circle-img"
+      />
+      <div class="chapter-title">{{ chapitre.titre }}</div>
+    </div>
+    {% endfor %}
 
-    
     <!-- Chapitre 1 -->
+    {#
     <div class="chapter-container chapter1-container">
       <div class="rect-bg"></div>
       <img
         src="upload/{{ chapitre.image }}"
-        alt="Chapitre 1"
+        alt="{{ chapitre.alt }}"
         class="circle-img"
       />
       <div class="chapter-title">Défendre la rura</div>
@@ -22,11 +34,11 @@
     <div class="chapter-container chapter2-container">
       <div class="rect-bg"></div>
       <img
-        src="./images/sebastian-unrau-sp-p7uuT0tw-unsplash.jpg"
-        alt="Chapitre 2"
+        src="upload/{{ chapitre.image }}"
+        alt="{{ chapitre.alt }}"
         class="circle-img"
       />
-      <div class="chapter-title">Créer du lien</div>
+      <div class="chapter-title">Défendre la rura</div>
     </div>
 
     <!-- Chapitre 3 -->
@@ -39,6 +51,7 @@
       />
       <div class="chapter-title">Lutter au/pour le W</div>
     </div>
+    #}
 
     <div class="round-btn">Crédits</div>
   </div>
@@ -47,7 +60,9 @@
   <div class="title">
     Titre du <br />webdocumentaire
 
-    <a href="admin.php?page=chapitre"><i class="fa-solid fa-user"></i></a>
+    <a href="admin.php?page=chapitre"
+      ><i class="fa-solid fa-user" style="color: white"></i
+    ></a>
   </div>
 
   <!-- Section pour Chapitre 1 -->

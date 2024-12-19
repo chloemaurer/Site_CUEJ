@@ -40,7 +40,7 @@
 
     <div class="chapter-cards">
       {% for article in listechapitre.0.articles %}
-      <a href="#">
+      <a href="index.php?page=article&action=read&id={{ article.id_article }}">
         <div class="card">
           <img src="upload/{{ article.image }}" alt="Article 1" />
           <p>{{ article.titre }}</p>
@@ -61,7 +61,7 @@
 
     <div class="chapter-cards">
       {% for article in listechapitre.1.articles %}
-      <a href="#">
+      <a href="index.php?page=article&action=read&id={{ article.id_article }}">
         <div class="card">
           <img src="upload/{{ article.image }}" alt="{{ article.alt }}" />
           <p>{{ article.titre }}</p>

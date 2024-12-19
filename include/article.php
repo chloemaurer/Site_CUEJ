@@ -50,12 +50,12 @@ class Article
     }
 
     // Récupère les articles d'un thème
-    static function readAllBychapitre($id_article)
+    static function readAllBychapitre($id_chapitre)
     {
-        $sql = 'SELECT * FROM article WHERE id_chapitre = :id_article ORDER BY ordre';
+        $sql = 'SELECT * FROM article WHERE id_chapitre = :id_chapitre ORDER BY ordre';
         $pdo = connexion();
         $query = $pdo->prepare($sql);
-        $query->bindValue(':id_article', $id_article, PDO::PARAM_INT);
+        $query->bindValue(':id_chapitre', $id_chapitre, PDO::PARAM_INT);
         $query->execute();
         return $query->fetchAll(PDO::FETCH_CLASS, 'Article');
     }
@@ -189,10 +189,20 @@ class Article
     static function controleur($action, $id_article, &$modele, &$data)
     {
         switch ($action) {
+
+            case 'read':
+                if ($id_article > 0) {
+                    $modele = "article/article_view.twig.html";
+                    $data = [];
+                } else {
+                    $modele = 'article/liste_articles_view.twig.html';
+                    $data = ['listearticle' => Article::readAll()];
+                }
+
             default:
-                $modele = 'article.twig.html';
+                $modele = 'accueil.twig.html';
                 $article = Article::readOne($id_article);
-                $article->insecables();
+                // $article->insecables();
                 $data = [
                     'article' => $article
                 ];

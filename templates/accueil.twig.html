@@ -18,41 +18,6 @@
     </div>
     {% endfor %}
 
-    <!-- Chapitre 1 -->
-    {#
-    <div class="chapter-container chapter1-container">
-      <div class="rect-bg"></div>
-      <img
-        src="upload/{{ chapitre.image }}"
-        alt="{{ chapitre.alt }}"
-        class="circle-img"
-      />
-      <div class="chapter-title">Défendre la rura</div>
-    </div>
-
-    <!-- Chapitre 2 -->
-    <div class="chapter-container chapter2-container">
-      <div class="rect-bg"></div>
-      <img
-        src="upload/{{ chapitre.image }}"
-        alt="{{ chapitre.alt }}"
-        class="circle-img"
-      />
-      <div class="chapter-title">Défendre la rura</div>
-    </div>
-
-    <!-- Chapitre 3 -->
-    <div class="chapter-container chapter3-container">
-      <div class="rect-bg"></div>
-      <img
-        src="./images/marita-kavelashvili-ugnrXk1129g-unsplash.jpg"
-        alt="Chapitre 3"
-        class="circle-img"
-      />
-      <div class="chapter-title">Lutter au/pour le W</div>
-    </div>
-    #}
-
     <div class="round-btn">Crédits</div>
   </div>
 
@@ -69,41 +34,17 @@
   <div id="chapter1" class="chapter-section">
     <button class="close-chapter">&times;</button>
     <div class="chapter-text">
-      <h2>Défendre la rura</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
+      <h2>{{listechapitre.0.titre}}</h2>
+      <p>{{listechapitre.0.chapo}}</p>
     </div>
+
     <div class="chapter-cards">
+      {% for article in listechapitre.0.articles %}
       <div class="card">
-        <img
-          src="./images/luca-bravo-ESkw2ayO2As-unsplash.jpg"
-          alt="Article 1"
-        />
-        <p>Nom de l’article plus court</p>
+        <img src="upload/{{ article.image }}" alt="Article 1" />
+        <p>{{ article.titre }}</p>
       </div>
-      <div class="card">
-        <img
-          src="./images/lukasz-szmigiel-2ShvY8Lf6l0-unsplash.jpg"
-          alt="Article 2"
-        />
-        <p>Lorem ipsum dolor sit amet</p>
-      </div>
-      <div class="card">
-        <img
-          src="./images/sebastian-unrau-sp-p7uuT0tw-unsplash.jpg"
-          alt="Article 3"
-        />
-        <p>Lorem ipsum dolor sit amet</p>
-      </div>
-      <div class="card">
-        <img
-          src="./images/steven-kamenar-MMJx78V7xS8-unsplash.jpg"
-          alt="Article 4"
-        />
-        <p>Nom de l’article plus court</p>
-      </div>
+      {% endfor %}
     </div>
   </div>
 
@@ -115,41 +56,16 @@
   >
     <button class="close-chapter">&times;</button>
     <div class="chapter-text">
-      <h2>Créer du lien</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
+      <h2>{{listechapitre.1.titre}}</h2>
+      <p>{{listechapitre.1.chapo}}</p>
     </div>
     <div class="chapter-cards">
+      {% for article in listechapitre.1.articles %}
       <div class="card">
-        <img
-          src="./images/lukasz-szmigiel-2ShvY8Lf6l0-unsplash.jpg"
-          alt="Article 1"
-        />
-        <p>Nom de l’article plus court</p>
+        <img src="upload/{{ article.image }}" alt="Article 1" />
+        <p>{{ article.titre }}</p>
       </div>
-      <div class="card">
-        <img
-          src="./images/lukasz-szmigiel-2ShvY8Lf6l0-unsplash.jpg"
-          alt="Article 2"
-        />
-        <p>Lorem ipsum dolor sit amet</p>
-      </div>
-      <div class="card">
-        <img
-          src="./images/lukasz-szmigiel-2ShvY8Lf6l0-unsplash.jpg"
-          alt="Article 3"
-        />
-        <p>Lorem ipsum dolor sit amet</p>
-      </div>
-      <div class="card">
-        <img
-          src="./images/lukasz-szmigiel-2ShvY8Lf6l0-unsplash.jpg"
-          alt="Article 4"
-        />
-        <p>Nom de l’article plus court</p>
-      </div>
+      {% endfor %}
     </div>
   </div>
 
@@ -157,38 +73,20 @@
   <div
     id="chapter3"
     class="chapter-section"
-    style="background-color: #b3342dc7"
+    style="background-color: #6e849ebf"
   >
     <button class="close-chapter">&times;</button>
     <div class="chapter-text">
-      <h2>Lutter au/pour le W</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
+      <h2>{{listechapitre.2.titre}}</h2>
+      <p>{{listechapitre.2.chapo}}</p>
     </div>
     <div class="chapter-cards">
+      {% for article in listechapitre.2.articles %}
       <div class="card">
-        <img
-          src="./images/lukasz-szmigiel-2ShvY8Lf6l0-unsplash.jpg"
-          alt="Article 1"
-        />
-        <p>Nom de l’article plus court</p>
+        <img src="upload/{{ article.image }}" alt="Article 1" />
+        <p>{{ article.titre }}</p>
       </div>
-      <div class="card">
-        <img
-          src="./images/lukasz-szmigiel-2ShvY8Lf6l0-unsplash.jpg"
-          alt="Article 2"
-        />
-        <p>Lorem ipsum dolor sit amet</p>
-      </div>
-      <div class="card">
-        <img
-          src="./images/lukasz-szmigiel-2ShvY8Lf6l0-unsplash.jpg"
-          alt="Article 3"
-        />
-        <p>Nom de l’article plus court</p>
-      </div>
+      {% endfor %}
     </div>
   </div>
 

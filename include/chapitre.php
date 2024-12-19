@@ -142,6 +142,7 @@ class Chapitre
     {
         switch ($action) {
             default:
+
                 $modele = 'accueil.twig.html';
 
                 // Récupérer tous les chapitres
@@ -153,11 +154,13 @@ class Chapitre
                     $chapitre->articles = Article::readAllBychapitre($chapitre->id_chapitre);
                 }
 
+
                 // Passer les données au template
                 $data = ['listechapitre' => $listechapitre];
                 break;
         }
     }
+
 
     static function controleurAdmin($action, $id_chapitre, &$modele, &$data)
     {

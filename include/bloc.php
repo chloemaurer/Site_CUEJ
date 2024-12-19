@@ -39,15 +39,14 @@ class Bloc
         $this->id_article = intval($this->id_article);
 
         if ($this->texte) $this->texte = insecables($this->texte);
-        if ($this->texte_1) $this->texte_1 =insecables($this->texte_1);
-        if ($this->texte_2) $this->texte_2 =insecables($this->texte_2);
-        if ($this->texte_3) $this->texte_3 =insecables($this->texte_3);
-        if ($this->texte_4) $this->texte_4 =insecables($this->texte_4);
-        if ($this->texte_titre) $this->texte_titre =insecables($this->texte_titre);
-        if ($this->texte_citation) $this->texte_citation =insecables($this->texte_citation);
-        if ($this->texte_legende) $this->texte_legende =insecables($this->texte_legende);
-        if ($this->texte_credit) $this->texte_credit =insecables($this->texte_credit);
-        
+        if ($this->texte_1) $this->texte_1 = insecables($this->texte_1);
+        if ($this->texte_2) $this->texte_2 = insecables($this->texte_2);
+        if ($this->texte_3) $this->texte_3 = insecables($this->texte_3);
+        if ($this->texte_4) $this->texte_4 = insecables($this->texte_4);
+        if ($this->texte_titre) $this->texte_titre = insecables($this->texte_titre);
+        if ($this->texte_citation) $this->texte_citation = insecables($this->texte_citation);
+        if ($this->texte_legende) $this->texte_legende = insecables($this->texte_legende);
+        if ($this->texte_credit) $this->texte_credit = insecables($this->texte_credit);
     }
 
     static function readOne($id)
@@ -329,7 +328,6 @@ class Bloc
             }
             $this->infographie = $infographie;
         }
-
     }
 
 
@@ -373,7 +371,11 @@ class Bloc
 
             case 'create':
                 $bloc = new Bloc();
+                var_dump($_POST);
+
                 $bloc->chargePOST();
+                var_dump($bloc);
+
                 $bloc->create();
                 header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
                 exit;
@@ -406,7 +408,9 @@ class Bloc
             case 'update':
                 $bloc = new Bloc();
                 $bloc->chargePOST();
+                var_dump($_POST);
                 $bloc->update();
+                var_dump($bloc);
                 header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
                 exit();
                 break;

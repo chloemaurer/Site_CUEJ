@@ -1,65 +1,40 @@
-{% extends "base-admin.twig.html" %}
+{% extends "form-update/base_form.twig.html" %}
 
-{% block content %}
-<div class="container py-5">
-    <h1 class="text-center mb-5 text-warning">Modification d'un bloc</h1>
-
-    <form action="admin.php?page=bloc&action=update&id={{ bloc.id }}" method="post" enctype="multipart/form-data" class="row g-4 needs-validation" novalidate>
-        {# Type de bloc (champ caché) #}
-        <input type="hidden" name="type" value="{{ bloc.type }}" />
-
-        {# Image actuelle et champ d'upload #}
-        <div class="col-md-6">
-            <label for="image" class="form-label fw-bold text-secondary">Image ou infographie:</label>
-            {% if bloc.image %}
-                <div class="mb-3">
-                    <img src="upload/{{ bloc.image }}" alt="Image actuelle" class="img-thumbnail" style="max-width: 150px;">
-                </div>
-                <input type="hidden" name="old_image" value="{{ bloc.image }}" />
-            {% endif %}
-            <input type="file" name="image" id="image" accept="image/*" class="form-control" />
-            <small class="text-muted">Taille maximale : 200 Ko</small>
-        </div>
+{% block form_update %}
 
 
-        {# Légende #}
-        <div class="col-md-6">
-            <label for="texte_legende" class="form-label fw-bold text-secondary">Légende :</label>
-            <input type="text" name="texte_legende" id="texte_legende" value="{{ bloc.texte_legende }}" placeholder="Saisir la légende" class="form-control border-secondary" />
-        </div>
+{# Image actuelle et champ d'upload #}
+<div class="col-md-6">
+    <label for="image" class="form-label fw-bold text-secondary">Image ou infographie:</label>
+    {% if bloc.image %}
+    <div class="mb-3">
+        <img src="upload/{{ bloc.image }}" alt="Image actuelle" class="img-thumbnail" style="max-width: 150px;">
+    </div>
+    <input type="hidden" name="old-image" value="{{ bloc.image }}" />
+    {% endif %}
+    <input type="file" name="image" id="image" accept="image/*" class="form-control" />
+    <small class="text-muted">Taille maximale : 200 Ko</small>
+</div>
 
-        {# Crédit #}
-        <div class="col-md-6">
-            <label for="texte_credit" class="form-label fw-bold text-secondary">Crédit :</label>
-            <input type="text" name="texte_credit" id="texte_credit" value="{{ bloc.texte_credit }}" placeholder="Saisir le crédit" class="form-control border-secondary" />
-        </div>
 
-        {# Description de l'image (alt) #}
-        <div class="col-md-6">
-            <label for="alt" class="form-label fw-bold text-secondary">Description de l'image :</label>
-            <input type="text" name="alt" id="alt" value="{{ bloc.alt }}" placeholder="Description de l'image" class="form-control border-secondary" />
-        </div>
+{# Légende #}
+<div class="col-md-6">
+    <label for="texte_legende" class="form-label fw-bold text-secondary">Légende :</label>
+    <input type="text" name="texte_legende" id="texte_legende" value="{{ bloc.texte_legende }}"
+        placeholder="Saisir la légende" class="form-control border-secondary" />
+</div>
 
-        {# Sélection de l'article avec pré-sélection #}
-        <div class="col-md-6">
-            <label for="id_article" class="form-label fw-bold text-secondary">Article :</label>
-            <select name="id_article" id="id_article" class="form-select border-secondary" required>
-                <option value="" disabled>Choisir un article</option>
-                {% for article in listearticle %}
-                    <option value="{{ article.id_article }}"
-                        {% if article.id_article == bloc.id_article %}selected{% endif %}>
-                        {{ article.titre | raw }}
-                    </option>
-                {% endfor %}
-            </select>
-        </div>
+{# Crédit #}
+<div class="col-md-6">
+    <label for="texte_credit" class="form-label fw-bold text-secondary">Crédit :</label>
+    <input type="text" name="texte_credit" id="texte_credit" value="{{ bloc.texte_credit }}"
+        placeholder="Saisir le crédit" class="form-control border-secondary" />
+</div>
 
-        {# Bouton de soumission #}
-        <div class="d-flex justify-content-center mt-4">
-            <button type="submit" class="btn btn-warning px-5 py-2">
-                <i class="fa-solid fa-save"></i> Modifier
-            </button>
-        </div>
-    </form>
+{# Description de l'image (alt) #}
+<div class="col-md-6">
+    <label for="alt" class="form-label fw-bold text-secondary">Description de l'image :</label>
+    <input type="text" name="alt" id="alt" value="{{ bloc.alt }}" placeholder="Description de l'image"
+        class="form-control border-secondary" />
 </div>
 {% endblock %}

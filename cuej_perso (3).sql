@@ -12,10 +12,6 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de données : `cuej_perso`
@@ -30,16 +26,16 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `article`;
 CREATE TABLE IF NOT EXISTS `article` (
   `id_article` int NOT NULL AUTO_INCREMENT,
-  `titre` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
-  `chapo` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `auteur` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `image` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `alt` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `titre` varchar(60)  NOT NULL,
+  `chapo` text  NOT NULL,
+  `auteur` varchar(20)  NOT NULL,
+  `image` varchar(60)  NOT NULL,
+  `alt` varchar(60)  NOT NULL,
   `ordre` int NOT NULL,
   `id_chapitre` int NOT NULL,
   PRIMARY KEY (`id_article`),
   KEY `id_chapitre` (`id_chapitre`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB;
 
 -- --------------------------------------------------------
 
@@ -50,31 +46,31 @@ CREATE TABLE IF NOT EXISTS `article` (
 DROP TABLE IF EXISTS `bloc`;
 CREATE TABLE IF NOT EXISTS `bloc` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `type` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `texte` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `texte_1` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `texte_2` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `texte_3` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `texte_4` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `texte_titre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `texte_citation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `texte_legende` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `texte_credit` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `style` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `image` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `image_1` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `image_2` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `image_3` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `image_4` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `audio` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `video` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `infographie` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `alt` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `type` varchar(60)  NOT NULL,
+  `texte` text ,
+  `texte_1` varchar(255)  DEFAULT NULL,
+  `texte_2` varchar(255)  DEFAULT NULL,
+  `texte_3` varchar(255)  DEFAULT NULL,
+  `texte_4` varchar(255)  DEFAULT NULL,
+  `texte_titre` varchar(255)  DEFAULT NULL,
+  `texte_citation` varchar(255)  DEFAULT NULL,
+  `texte_legende` varchar(255)  DEFAULT NULL,
+  `texte_credit` varchar(255)  DEFAULT NULL,
+  `style` varchar(60)  DEFAULT NULL,
+  `image` varchar(60)  DEFAULT NULL,
+  `image_1` varchar(60)  DEFAULT NULL,
+  `image_2` varchar(60)  DEFAULT NULL,
+  `image_3` varchar(60)  DEFAULT NULL,
+  `image_4` varchar(60)  DEFAULT NULL,
+  `audio` varchar(255)  DEFAULT NULL,
+  `video` varchar(60)  DEFAULT NULL,
+  `infographie` varchar(60)  DEFAULT NULL,
+  `alt` varchar(60)  DEFAULT NULL,
   `ordre` int DEFAULT NULL,
   `id_article` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_article` (`id_article`)
-) ENGINE=InnoDB AUTO_INCREMENT=178 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB;
 
 -- --------------------------------------------------------
 
@@ -85,12 +81,12 @@ CREATE TABLE IF NOT EXISTS `bloc` (
 DROP TABLE IF EXISTS `chapitre`;
 CREATE TABLE IF NOT EXISTS `chapitre` (
   `id_chapitre` int NOT NULL AUTO_INCREMENT,
-  `titre` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
-  `chapo` text COLLATE utf8mb4_general_ci NOT NULL,
-  `image` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `alt` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
+  `titre` varchar(60)  NOT NULL,
+  `chapo` text  NOT NULL,
+  `image` text  NOT NULL,
+  `alt` varchar(60)  NOT NULL,
   PRIMARY KEY (`id_chapitre`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4;
 
 --
 -- Déchargement des données de la table `chapitre`
@@ -118,6 +114,4 @@ ALTER TABLE `bloc`
   ADD CONSTRAINT `bloc_ibfk_1` FOREIGN KEY (`id_article`) REFERENCES `article` (`id_article`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

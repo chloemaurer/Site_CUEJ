@@ -37,6 +37,17 @@ class Bloc
         $this->id = intval($this->id);
         $this->ordre = intval($this->ordre);
         $this->id_article = intval($this->id_article);
+
+        if ($this->texte) $this->texte = insecables($this->texte);
+        if ($this->texte_1) $this->texte_1 =insecables($this->texte_1);
+        if ($this->texte_2) $this->texte_2 =insecables($this->texte_2);
+        if ($this->texte_3) $this->texte_3 =insecables($this->texte_3);
+        if ($this->texte_4) $this->texte_4 =insecables($this->texte_4);
+        if ($this->texte_titre) $this->texte_titre =insecables($this->texte_titre);
+        if ($this->texte_citation) $this->texte_citation =insecables($this->texte_citation);
+        if ($this->texte_legende) $this->texte_legende =insecables($this->texte_legende);
+        if ($this->texte_credit) $this->texte_credit =insecables($this->texte_credit);
+        
     }
 
     static function readOne($id)
@@ -150,28 +161,28 @@ class Bloc
 
     function update()
     {
-        $sql = "UPDATE bloc 
-            SET ordre=:ordre, 
-                type=:type, 
+        $sql = "UPDATE bloc
+            SET ordre=:ordre,
+                type=:type,
                 texte=:texte,
                 texte_1=:texte_1,
                 texte_2=:texte_2,
                 texte_3=:texte_3,
                 texte_4=:texte_4,
-                texte_titre=:texte_titre, 
-                texte_citation=:texte_citation, 
-                texte_legende=:texte_legende, 
-                texte_credit=:texte_credit, 
-                style=:style, 
-                image=:image, 
-                image_1=:image_1, 
-                image_2=:image_2, 
-                image_3=:image_3, 
-                image_4=:image_4, 
-                alt=:alt, 
-                audio=:audio, 
-                video=:video, 
-                infographie=:infographie, 
+                texte_titre=:texte_titre,
+                texte_citation=:texte_citation,
+                texte_legende=:texte_legende,
+                texte_credit=:texte_credit,
+                style=:style,
+                image=:image,
+                image_1=:image_1,
+                image_2=:image_2,
+                image_3=:image_3,
+                image_4=:image_4,
+                alt=:alt,
+                audio=:audio,
+                video=:video,
+                infographie=:infographie,
                 id_article=:id_article
             WHERE id=:id";
 
@@ -212,6 +223,10 @@ class Bloc
     {
         // Suppression du fichier lié
         if (!empty($this->image)) unlink('upload/' . $this->image);
+        if (!empty($this->image_1)) unlink('upload/' . $this->image_1);
+        if (!empty($this->image_2)) unlink('upload/' . $this->image_2);
+        if (!empty($this->image_3)) unlink('upload/' . $this->image_3);
+        if (!empty($this->image_4)) unlink('upload/' . $this->image_4);
 
         $sql = "DELETE FROM bloc WHERE id=:id";
         $pdo = connexion();
@@ -237,15 +252,15 @@ class Bloc
         $this->id = postInt('id');
         $this->ordre = postInt('ordre');
         $this->type = postString('type');
-        $this->texte = insecables(postString('texte'));
-        $this->texte_1 = insecables(postString('texte_1'));
-        $this->texte_2 = insecables(postString('texte_2'));
-        $this->texte_3 = insecables(postString('texte_3'));
-        $this->texte_4 = insecables(postString('texte_4'));
-        $this->texte_titre = insecables(postString('texte_titre'));
-        $this->texte_citation = insecables(postString('texte_citation'));
-        $this->texte_legende = insecables(postString('texte_legende'));
-        $this->texte_credit = insecables(postString('texte_credit'));
+        $this->texte = postString('texte');
+        $this->texte_1 = postString('texte_1');
+        $this->texte_2 = postString('texte_2');
+        $this->texte_3 = postString('texte_3');
+        $this->texte_4 = postString('texte_4');
+        $this->texte_titre = postString('texte_titre');
+        $this->texte_citation = postString('texte_citation');
+        $this->texte_legende = postString('texte_legende');
+        $this->texte_credit = postString('texte_credit');
         $this->style = postString('style');
         $this->image = postString('old-image');
         $this->image_1 = postString('old-image_1');
@@ -260,66 +275,61 @@ class Bloc
         // Récupère les informations sur le fichier uploadés si il existe
         $image = chargeFILE('image');
         if (!empty($image)) {
-            // Vérifie si l'ancien fichier existe et est un fichier
             if (is_file('upload/' . $this->image)) {
                 unlink('upload/' . $this->image);
             }
             $this->image = $image;
         }
-
+        $image_1 = chargeFILE('image_1');
+        if (!empty($image_1)) {
+            if (is_file('upload/' . $this->image_1)) {
+                unlink('upload/' . $this->image_1);
+            }
+            $this->image_1 = $image_1;
+        }
+        $image_2 = chargeFILE('image_2');
+        if (!empty($image_2)) {
+            if (is_file('upload/' . $this->image_2)) {
+                unlink('upload/' . $this->image_2);
+            }
+            $this->image_2 = $image_2;
+        }
+        $image_3 = chargeFILE('image_3');
+        if (!empty($image_3)) {
+            if (is_file('upload/' . $this->image_3)) {
+                unlink('upload/' . $this->image_3);
+            }
+            $this->image_3 = $image_3;
+        }
+        $image_4 = chargeFILE('image_4');
+        if (!empty($image_4)) {
+            if (is_file('upload/' . $this->image_4)) {
+                unlink('upload/' . $this->image_4);
+            }
+            $this->image_4 = $image_4;
+        }
         $audio = chargeFILE('audio');
         if (!empty($audio)) {
-            // Vérifie si l'ancien fichier existe et est un fichier
             if (is_file('upload/' . $this->audio)) {
                 unlink('upload/' . $this->audio);
             }
             $this->audio = $audio;
         }
-
-        // $audio = chargeFILE('audio');
-        // if (!empty($audio)) {
-        //     // Supprime l'ancienne image si update
-        //     unlink('upload/' . $this->audio);
-        //     $this->audio = $audio;
-        // }
-        $image_1 = chargeFILE('image_1');
-        if (!empty($image_1)) {
-            // Supprime l'ancienne image si update
-            unlink('upload/' . $this->image_1);
-            $this->image_1 = $image_1;
-        }
-        $image_2 = chargeFILE('image_2');
-        if (!empty($image_2)) {
-            // Supprime l'ancienne image si update
-            unlink('upload/' . $this->image_2);
-            $this->image_2 = $image_2;
-        }
-        $image_3 = chargeFILE('image_3');
-        if (!empty($image_3)) {
-            // Supprime l'ancienne image si update
-            unlink('upload/' . $this->image_3);
-            $this->image_3 = $image_3;
-        }
-        $image_4 = chargeFILE('image_4');
-        if (!empty($image_4)) {
-            // Supprime l'ancienne image si update
-            unlink('upload/' . $this->image_4);
-            $this->image_4 = $image_4;
-        }
-
         $video = chargeFILE('video');
         if (!empty($video)) {
-            // Supprime l'ancienne image si update
-            unlink('upload/' . $this->video);
+            if (is_file('upload/' . $this->video)) {
+                unlink('upload/' . $this->video);
+            }
             $this->video = $video;
         }
-
         $infographie = chargeFILE('infographie');
         if (!empty($infographie)) {
-            // Supprime l'ancienne image si update
-            unlink('upload/' . $this->infographie);
+            if (is_file('upload/' . $this->infographie)) {
+                unlink('upload/' . $this->infographie);
+            }
             $this->infographie = $infographie;
         }
+
     }
 
 
@@ -353,15 +363,12 @@ class Bloc
                 $modele = 'form/' . $id . '.twig.html';
                 $id_article_selectionne =
                     isset($_GET['id_article']) ? intval($_GET['id_article']) : null;
-
                 $data = [
                     'bloc' => Bloc::readOne($id), // Si vous avez des données associées à $id
                     'id' => $id,                  // Passez l'id à Twig
                     'listearticle' => Article::readAll(),
                     'id_article_selectionne' => $id_article_selectionne
                 ];
-
-
                 break;
 
             case 'create':
@@ -402,12 +409,8 @@ class Bloc
 
             case 'update':
                 $bloc = new Bloc();
-                // var_dump($_POST);
-                $bloc->chargePOST();    // utilise maintenant la vraie variable $_POST;
-                var_dump($bloc);
-
+                $bloc->chargePOST();
                 $bloc->update();
-                // var_dump($bloc);
                 header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
                 exit();
                 break;
@@ -420,7 +423,6 @@ class Bloc
 
             default:
                 echo 'Action non reconnue';
-
                 break;
         }
     }

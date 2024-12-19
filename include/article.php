@@ -25,6 +25,11 @@ class Article
         $this->id_chapitre = intval($this->id_chapitre);
     }
 
+    function insecables()
+    {
+        if ($this->chapo) $this->chapo = insecables($this->chapo);
+    }
+
     static function readAll()
     {
         $sql = 'SELECT * FROM article ORDER BY ordre';
@@ -164,9 +169,9 @@ class Article
     {
         $this->id_article = postInt('id_article');
         $this->ordre = postInt('ordre');
-        $this->titre = html_entity_decode(postString('titre'));
-        $this->auteur = html_entity_decode(postString('auteur'));
-        $this->chapo = insecables(postString('chapo'));
+        $this->titre = postString('titre');
+        $this->auteur = postString('auteur');
+        $this->chapo = postString('chapo');
         $this->image = postString('old-image');
         $this->alt = postString('alt');
         $this->id_chapitre = postInt('id_chapitre');
@@ -186,8 +191,10 @@ class Article
         switch ($action) {
             default:
                 $modele = 'article.twig.html';
+                $article = Article::readOne($id_article);
+                $article->insecables();
                 $data = [
-                    'article' => Article::readOne($id_article)
+                    'article' => $article
                 ];
                 break;
         }

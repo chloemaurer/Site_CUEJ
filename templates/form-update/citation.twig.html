@@ -1,91 +1,21 @@
-{% extends "base-admin.twig.html" %} 
-{% block content %}
+{% extends "form-update/base_form.twig.html" %}
 
-<div class="container mt-5">
-  <h1 class="text-center text-primary mb-4">Modification d'un bloc</h1>
-  
-  <form 
-    action="admin.php?page=bloc&action=update" 
-    method="post" 
-    enctype="multipart/form-data"
-    class="row g-4 bg-light p-4 rounded shadow-sm needs-validation" 
-    novalidate
-  >
-    <!-- ID du bloc -->
-    <input type="hidden" name="id" value="{{ bloc.id }}" />
-
-    <!-- Type de bloc -->
-    <div class="col-md-6">
-      <label for="type" class="form-label fw-bold">Type de bloc :</label>
-      <input 
-        type="hidden" 
-        name="type" 
-        value="{{ bloc.type }}" 
-        class="form-control" 
-      />
-      <input 
-        type="text" 
-        class="form-control" 
-        placeholder="Bloc sélectionné : {{ bloc.type }}" 
-        disabled 
-      />
-    </div>
-
-    <!-- Texte Citation -->
-    <div class="col-md-6">
-      <label for="texte_citation" class="form-label fw-bold">Citation :</label>
-      <textarea
-        name="texte_citation"
-        id="texte_citation"
-        placeholder="Saisir la citation"
-        class="form-control border-secondary"
-        rows="4"
-        required
-      >{{ bloc.texte_citation | raw}}</textarea>
-    </div>
+{% block form_update %}
 
 
-    <div class="col-md-6">
-      <label for="texte_legende" class="form-label fw-bold">Auteur de la citation :</label>
-      <textarea 
-        name="texte_legende" 
-        id="texte_legende" 
-        placeholder="Saisir la légende" 
-        class="form-control border-secondary" 
-        rows="2"
-      >{{bloc.texte_legende | raw}}</textarea>
-    </div>
-
-    <!-- Sélection de l'article -->
-    <div class="col-md-6">
-      <label for="id_article" class="form-label fw-bold">Article associé :</label>
-      <select 
-        name="id_article" 
-        id="id_article" 
-        class="form-select border-secondary" 
-        required
-      >
-        <option value="" disabled>Choisir un article</option>
-        {% for article in listearticle %}
-          <option value="{{ article.id_article }}"
-            {% if article.id_article == bloc.id_article %}selected{% endif %}
-          >
-            {{ article.titre }}
-          </option>
-        {% endfor %}
-      </select>
-    </div>
-
-    <!-- Bouton d'envoi -->
-    <div class="col-12 d-flex justify-content-center mt-4">
-      <button 
-        type="submit" 
-        class="btn btn-success px-4 py-2 rounded-pill shadow-sm"
-      >
-        <i class="fa-solid fa-save me-2"></i>Modifier le bloc
-      </button>
-    </div>
-  </form>
+<!-- Texte Citation -->
+<div class="col-md-6">
+  <label for="texte_citation" class="form-label fw-bold">Citation :</label>
+  <textarea name="texte_citation" id="texte_citation" placeholder="Saisir la citation"
+    class="form-control border-secondary" rows="4" required>{{ bloc.texte_citation | raw}}</textarea>
 </div>
+
+
+<div class="col-md-6">
+  <label for="texte_legende" class="form-label fw-bold">Auteur de la citation :</label>
+  <textarea name="texte_legende" id="texte_legende" placeholder="Saisir la légende"
+    class="form-control border-secondary" rows="2">{{bloc.texte_legende | raw}}</textarea>
+</div>
+
 
 {% endblock %}

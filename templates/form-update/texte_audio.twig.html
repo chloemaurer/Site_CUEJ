@@ -1,0 +1,118 @@
+{% extends "base-admin.twig.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-5 text-primary fw-bold">Création d'un bloc</h1>
+
+    <form action="admin.php?page=bloc&action=create&id={{ bloc.id }}" method="post" enctype="multipart/form-data"
+        class="row g-4 bg-light p-4 rounded shadow-sm needs-validation" novalidate>
+        <!-- Type de bloc (caché) -->
+        <div class="col-md-6">
+            <label for="type" class="form-label fw-bold">Type de bloc :</label>
+            <input type="hidden" name="type" value="{{ bloc.type }}" class="form-control" />
+            <input type="text" class="form-control" placeholder="Bloc sélectionné : {{ bloc.type }}" disabled />
+        </div>
+        <!-- ID du bloc -->
+        <input type="hidden" name="id" value="{{ bloc.id }}" />
+        <!-- Texte -->
+        <div class="col-md-6">
+            <label for="texte" class="form-label fw-bold">Texte :</label>
+            <textarea name="texte" id="texte" placeholder="Saisir le texte" class="form-control border-secondary"
+                rows="3">{{ bloc.texte  | raw}}</textarea>
+        </div>
+        <!-- Inter-titre -->
+        <div class="col-md-6">
+            <label for="texte_2" class="form-label fw-bold">Inter-titre :</label>
+            <textarea name="texte_2" id="texte" placeholder="Saisir le texte" class="form-control border-secondary"
+                rows="3">{{ bloc.texte_2  | raw}}</textarea>
+        </div>
+        <!-- Texte -->
+        <div class="col-md-6">
+            <label for="texte_1" class="form-label fw-bold">Texte après inter-titre :</label>
+            <textarea name="texte_1" id="texte" placeholder="Saisir le texte" class="form-control border-secondary"
+                rows="3">{{ bloc.texte_1  | raw}}</textarea>
+        </div>
+
+        <!-- Style -->
+        <div class="col-md-6">
+            <label for="style" class="form-label fw-bold">Style :</label>
+            <select name="style" id="style" class="form-select border-secondary" required>
+                <option value="corp_de_texte" {% if bloc.style == 'corp_de_texte' %}selected{% endif %}>Corps de texte
+                </option>
+                <option value="chapo" {% if bloc.style == 'chapo' %}selected{% endif %}>Chapô</option>
+                <option value="encadre" {% if bloc.style == 'encadre' %}selected{% endif %}>Encadré</option>
+                <option value="exergue_l" {% if bloc.style == 'exergue_l' %}selected{% endif %}>Exergue long</option>
+                <option value="exergue_c" {% if bloc.style == 'exergue_c' %}selected{% endif %}>Exergue court</option>
+                <option value="legende" {% if bloc.style == 'legende' %}selected{% endif %}>Légende</option>
+                <option value="credit_p" {% if bloc.style == 'credit_p' %}selected{% endif %}>Crédit photo</option>
+                <option value="credit_a" {% if bloc.style == 'credit_a' %}selected{% endif %}>Crédit article</option>
+            </select>
+        </div>
+
+        <!-- Image -->
+        <div class="col-md-6">
+            <label for="image" class="form-label fw-bold text-secondary">Image :</label>
+            <input type="file" name="image" accept="image/*" class="form-control border-secondary" />
+            <small class="text-muted">Taille maximale : 200 Ko</small>
+        </div>
+
+        <!-- Titre -->
+        <div class="col-md-6">
+            <label for="texte_titre" class="form-label fw-bold text-secondary">Titre du bloc :</label>
+            <input type="text" name="texte_titre" value="{{ bloc.texte_titre }}"
+                class="form-control border-secondary" />
+        </div>
+
+        <!-- Légende -->
+        <div class="col-md-6">
+            <label for="texte_legende" class="form-label fw-bold">Légende de l'image :</label>
+            <textarea name="texte_legende" id="texte_legende" placeholder="Saisir la légende"
+                class="form-control border-secondary" rows="2">{{bloc.texte_legende | raw}}</textarea>
+        </div>
+
+        <!-- Crédit -->
+        <div class="col-md-6">
+            <label for="texte_credit" class="form-label fw-bold text-secondary">Crédit :</label>
+            <input type="text" name="texte_credit" placeholder="Saisir le crédit"
+                class="form-control border-secondary" />
+        </div>
+
+        <!-- Audio -->
+        <div class="col-md-6">
+            <label for="audio" class="form-label fw-bold text-secondary">Audio :</label>
+            <input type="file" id="audio" name="audio" accept="audio/*" class="form-control border-secondary" />
+            <small class="text-muted">Taille maximale : 5 Mo</small>
+        </div>
+
+
+        {# Alt (Description) #}
+        <div class="col-md-6">
+            <label for="alt" class="form-label fw-bold text-secondary">Description de l'image :</label>
+            <input type="text" name="alt" value="{{ bloc.alt }}" placeholder="Description de l'image"
+                class="form-control border-secondary" />
+        </div>
+
+        <!-- Sélection de l'article -->
+        <div class="col-md-6">
+            <label for="id_article" class="form-label fw-bold">Article associé :</label>
+            <select name="id_article" id="id_article" class="form-select border-secondary" required>
+                <option value="" disabled>Choisir un article</option>
+                {% for article in listearticle %}
+                <option value="{{ article.id_article }}"
+                    {% if article.id_article == bloc.id_article %}selected{% endif %}>
+                    {{ article.titre }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Bouton de validation -->
+        <!-- Bouton d'envoi -->
+        <div class="col-12 d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill shadow-sm">
+                <i class="fa-solid fa-save me-2"></i>Mettre à jour
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

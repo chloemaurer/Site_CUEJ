@@ -221,13 +221,12 @@ class Article
 
 
             case 'create':
-                // Étape 2 : Créer un nouvel article
                 $article = new Article();
                 $article->chargePOST();
-                $article->create(); // Récupère l'ID de l'article créé
+                $article->create();
                 header('Location: admin.php?page=article&action=read&id=' . $id_article);
 
-                exit; // Toujours ajouter exit après un header
+                exit;
                 break;
                 ////////////////////////////////////
 

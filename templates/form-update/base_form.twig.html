@@ -1,0 +1,33 @@
+{% extends "base-admin.twig.html" %} {% block content %}
+<div class="container py-5">
+    <!-- Titre du formulaire -->
+    <h1 class="text-center mb-4 text-primary">Modification du titre</h1>
+
+    <!-- Card pour le formulaire -->
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+            <form action="admin.php?page=bloc&action=update&id={{bloc.id}}" method="post"
+                class="row g-4 needs-validation" novalidate>
+
+                {# ID DU BLOC #}
+                <input type="hidden" name="id" value="{{ bloc.id }}" />
+
+                <!-- Type de bloc (champ caché) -->
+                <input type="hidden" name="type" value="{{ bloc.type }}" />
+                <input type="hidden" name="id_article" value="{{ bloc.id_article }}" />
+
+                {% block form_update %}
+                    
+                {% endblock form_update %}
+
+                <!-- Bouton de soumission -->
+                <div class="col-12 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary btn-lg px-4">
+                        <i class="fa-solid fa-check"></i> Modifier
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

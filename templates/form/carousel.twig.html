@@ -1,124 +1,62 @@
-{% extends "base-admin.twig.html" %} {% block content %}
+{% extends "base-admin.twig.html" %}
 
-<h1 class="text-center p-5">Créaton d'un bloc</h1>
-<form action="admin.php?page=bloc&action=create" method="post" enctype="multipart/form-data"
-class="row g-4 needs-validation" novalidate>
-    {# type #}
-    <div class="col-md-4">
-        <label for="type" class="form-label mt-4">Type de bloc :</label>
-        <input type="hidden" name="type" value="{{id}}"
-            class="form-control w-75 ms-5 border-black" />
+{% block content %}
+<div class="container py-5">
+  <h1 class="text-center mb-4 text-primary fw-bold">Création d'un bloc</h1>
+
+  <form action="admin.php?page=bloc&action=create" method="post" enctype="multipart/form-data" class="row g-4 bg-light p-4 rounded shadow-lg needs-validation" novalidate>
+    <!-- Type -->
+    <input type="hidden" name="type" value="{{ id }}" />
+
+    <!-- Titre du carousel -->
+    <div class="col-md-12">
+      <label for="texte_titre" class="form-label fw-bold text-secondary">Titre du carousel :</label>
+      <input type="text" name="texte_titre" placeholder="Saisir le texte" class="form-control border-secondary" />
     </div>
 
-    {# Titre#}
-    <div class="col-md-4">
-        <label for="texte_titre" class="form-label mt-4">Titre du carousel :</label>
-        <input type="text" name="texte" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
-    </div> 
+    <!-- Boucle pour générer les slides -->
+    {% for i in 1..5 %}
+    <div class="col-md-6">
+      <label for="texte_{{ i }}" class="form-label fw-bold text-secondary">Texte slide {{ i }} :</label>
+      <input type="text" name="texte_{{ i }}" placeholder="Saisir le texte" class="form-control border-secondary" />
+    </div>
+    <div class="col-md-6">
+      <label for="image_{{ i }}" class="form-label fw-bold text-secondary">Image slide {{ i }} :</label>
+      <input type="file" name="image_{{ i }}" accept="image/*" class="form-control border-secondary" />
+    </div>
+    {% endfor %}
 
-    {# texte 1#}
-    <div class="col-md-4">
-        <label for="texte" class="form-label mt-4">Texte slide 1 :</label>
-        <input type="text" name="texte" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
+    <!-- Description des images -->
+    <div class="col-md-6">
+      <label for="alt" class="form-label fw-bold text-secondary">Description de l'image :</label>
+      <input type="text" name="alt" placeholder="Description de l'image" class="form-control border-secondary" />
     </div>
 
-    {# image 1#}
-    <div class="col-md-4">
-        <label for="image">image slide 1 :<span>(max 200 Ko)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
-        <input type="file" id="image" name="image" class="image" title="votre image" autocomplete="off" />
+    <!-- Crédit -->
+    <div class="col-md-6">
+      <label for="texte_credit" class="form-label fw-bold text-secondary">Crédit :</label>
+      <input type="text" name="texte_credit" placeholder="Crédit de l'image" class="form-control border-secondary" />
     </div>
 
-    {# texte 2#}
-    <div class="col-md-4">
-        <label for="texte_1" class="form-label mt-4">Texte slide 2 :</label>
-        <input type="text" name="texte_1" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
+    <!-- Article -->
+    <div class="col-md-12">
+      <label for="id_article" class="form-label fw-bold text-secondary">Article :</label>
+      <select name="id_article" id="id_article" class="form-select border-secondary" required>
+        <option value="" disabled selected>Choisir un article</option>
+        {% for article in listearticle %}
+        <option value="{{ article.id_article }}" {% if article.id_article == id_article_selectionne %}selected{% endif %}>
+          {{ article.titre }}
+        </option>
+        {% endfor %}
+      </select>
     </div>
 
-   {# image 2#}
-    <div class="col-md-4">
-        <label for="image_1">image slide 2 :<span>(max 200 Ko)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
-        <input type="file" name="image_1" accept="images/*" class="form-control w-75 ms-5 border-black" />
+    <!-- Bouton de soumission -->
+    <div class="col-12 text-center mt-4">
+      <button type="submit" class="btn btn-primary px-5 py-2 rounded-pill shadow">
+        <i class="fa-solid fa-save me-2"></i> Créer
+      </button>
     </div>
-
-
-    {# texte 3#}
-    <div class="col-md-4">
-        <label for="texte_2" class="form-label mt-4">Texte slide 3 :</label>
-        <input type="text" name="texte_2" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
-    </div>
-
-    {# image 3 #}
-    <div class="col-md-4">
-        <label for="image_2">image slide 3 :<span>(max 200 Ko)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
-        <input type="file" id="image" name="image_2" class="image" title="votre image" autocomplete="off" />
-    </div>
-
-
-    {# texte 4#}
-    <div class="col-md-4">
-        <label for="texte_3" class="form-label mt-4">Texte slide 4 :</label>
-        <input type="text" name="texte_3" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
-    </div>
-
-    {# image 4 #}
-    <div class="col-md-4">
-        <label for="image_3">image slide 4 :<span>(max 200 Ko)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
-        <input type="file" id="image" name="image_3" class="image" title="votre image" autocomplete="off" />
-    </div>
-
-
-
-    {# texte 5#}
-    <div class="col-md-4">
-        <label for="texte_4" class="form-label mt-4">Texte side 5 :</label>
-        <input type="text" name="texte_4" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
-    </div>
-
-    {# image 5#}
-    <div class="col-md-4">
-        <label for="image_4">image slide 5 :<span>(max 200 Ko)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
-        <input type="file" id="image" name="image_4" class="image" title="votre image" autocomplete="off" />
-    </div>
-
-    {# alt #}
-    <div class="col-md-4">
-        <label for="alt" class="form-label mt-4">Description de l'image : </label>
-        <input type="text" name="alt" placeholder="description de l'image (si type = image)"
-            class="form-control w-75 ms-5 border-black" />
-    </div>
-
-    {# Credit #}
-    <div class="col-md-4">
-        <label for="texte_credit" class="form-label mt-4">Texte side 5 :</label>
-        <input type="text" name="texte_credit" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
-    </div>
-
-
-    {# Article : Pré-sélection automatique #}
-        <div class="col-md-6">
-            <label for="id_article" class="form-label fw-bold text-secondary">Article :</label>
-            <select name="id_article" id="id_article" class="form-select border-secondary" required>
-                <option value="" disabled>Choisir un article</option>
-                {% for article in listearticle %}
-                    <option value="{{ article.id_article }}" 
-                        {% if article.id_article == id_article_selectionne %}selected{% endif %}>
-                        {{ article.titre }}
-                    </option>
-                {% endfor %}
-            </select>
-        </div>
-
-    {# bouton #}
-    <div class="d-flex justify-content-center">
-        <button type="submit" class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2">
-            Créer
-        </button>
-    </div>
-</form>
-
+  </form>
+</div>
 {% endblock %}

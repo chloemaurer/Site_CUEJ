@@ -398,6 +398,8 @@ class Bloc
             case 'update':
                 $bloc = new Bloc();
                 $bloc->chargePOST();    // utilise maintenant la vraie variable $_POST;
+                var_dump($bloc);
+
                 $bloc->update();
                 header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
                 exit();

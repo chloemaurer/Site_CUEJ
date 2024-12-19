@@ -31,7 +31,7 @@
           <a href="admin.php?page=article&action=delete&id={{ article.id_article }}" class="btn btn-danger">
             <i class="fa-solid fa-trash"></i> Supprimer
           </a>
-          <a href="admin.php?page=article&action=read" class="btn btn-secondary">
+          <a href="admin.php?page=chapitre&action=read&id={{article.id_chapitre}}" class="btn btn-secondary">
             <i class="fa-solid fa-arrow-left"></i> Retour à la liste
           </a>
         </div>
@@ -64,22 +64,8 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
       <!-- Affichage des blocs selon le type -->
       <div>
-        {# H1 #}
-        {% if bloc.type == "h1" %}
-        <h1 class="webdoc-h1">{{ bloc.texte | raw  |nl2br }}</h1>
-        <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=h1&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
-            <i class="fa-solid fa-pencil"></i>
-          </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
-            <i class="fa-solid fa-trash"></i>
-          </a>
-        </div>
-
         {# H2 #}
-        {% elseif bloc.type == "h2" %}
+        {% if bloc.type == "h2" %}
         <h2 class="titre-article-chapitre">{{ bloc.texte | raw  |nl2br }}</h2>
         <div class="btn-group">
           <a href="admin.php?page=bloc&action=modifier&id=h2&id_bloc={{ bloc.id }}"
@@ -90,6 +76,10 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>          
         </div>
 
         {# H3 #}
@@ -104,6 +94,10 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>             
         </div>
 
         {# H4 #}
@@ -118,6 +112,10 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>             
         </div>
 
         {# H5 #}
@@ -132,6 +130,10 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>             
         </div>
 
         {# PARAGAPHE #}
@@ -146,6 +148,10 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>  
         </div>
 
         {# IMAGE #} {% elseif bloc.type == "image" %}
@@ -162,6 +168,10 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>  
         </div>
 
         {# CITATION #} {% elseif bloc.type == "citation" %}
@@ -195,6 +205,10 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>  
         </div>
 
         {# CITATION TEXTE #} {% elseif bloc.type == "citation_texte" %}
@@ -230,6 +244,11 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>  
+
         </div>
 
         {# TEXTE CITATION #} {% elseif bloc.type == "texte_citation" %}
@@ -264,6 +283,10 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>  
         </div>
 
         {% elseif bloc.type == "audio" %}
@@ -296,6 +319,10 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>  
         </div>
 
         {# TEXTE IMAGE #}
@@ -333,6 +360,10 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>  
         </div>
 
         {% elseif bloc.type == "image_texte" %}
@@ -370,6 +401,10 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>  
         </div>
 
 
@@ -408,6 +443,10 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>  
         </div>
 
 
@@ -435,6 +474,10 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>  
         </div>
 
         {# carousel #}
@@ -548,6 +591,7 @@
         </div>
 
 
+
         {# audio_texte #}
         {% elseif bloc.type == "audio_texte" %}
         <div class="container  mb-5 {{ bloc.type }} d-flex">
@@ -585,6 +629,10 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>  
         </div>
 
 
@@ -635,6 +683,10 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>  
         </div>
 
 
@@ -673,6 +725,10 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>  
         </div>
 
 
@@ -711,6 +767,10 @@
             title="Supprimer">
             <i class="fa-solid fa-trash"></i>
           </a>
+          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
+            title="Echanger">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>  
         </div>
 
         {% else %}
@@ -721,7 +781,7 @@
 
       <!-- Boutons Modifier et Supprimer -->
     </div>
-    {% endfor %}
+  {% endfor %}
   </div>
 </div>
 {% endblock %}

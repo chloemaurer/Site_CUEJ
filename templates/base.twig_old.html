@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -46,59 +46,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement-plugins/2.5.0/jump-forward/jump-forward.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/ivorpad/mediaelement-changespeed/changespeed.js"></script>
 
-    <link rel="stylesheet" href="./CSS/accueil.css" />
+    <link rel="stylesheet" href="./CSS/view.css" />
   </head>
 
-  {% block page %}
-  <!-- Contenu par défaut -->
-  {% endblock %}
+  <body>
+    {% block main %}
+    <!-- Contenu par défaut -->
+    {% endblock %}
 
-
-    <!-- JavaScript -->
-    <script>
-      document
-        .getElementById("edito-btn")
-        .addEventListener("click", function () {
-          document.getElementById("edito").style.top = "0"; // Slide-down animation
-        });
-
-      document.getElementById("edito").addEventListener("click", function (e) {
-        if (e.target === this) {
-          this.style.top = "-100%"; // Fermer en remontant
-        }
-      });
-
-      function openChapterSection(chapterId) {
-        // Fermer toutes les sections ouvertes
-        document.querySelectorAll(".chapter-section").forEach((section) => {
-          section.classList.remove("show");
-        });
-        // Afficher la section spécifique
-        document.getElementById(chapterId).classList.add("show");
-      }
-
-      // Événements pour les chapitres
-      document.querySelector(".chapter-container:nth-child(2)").onclick = () =>
-        openChapterSection("chapter1");
-      document.querySelector(".chapter-container:nth-child(3)").onclick = () =>
-        openChapterSection("chapter2");
-      document.querySelector(".chapter-container:nth-child(4)").onclick = () =>
-        openChapterSection("chapter3");
-
-      document
-        .getElementById("edito-close-btn")
-        .addEventListener("click", function () {
-          document.getElementById("edito").style.top = "-100%"; // Fermer l'Édito
-        });
-
-      // Ajouter un événement pour chaque bouton de fermeture des chapitres
-      document.querySelectorAll(".close-chapter").forEach((button) => {
-        button.addEventListener("click", function () {
-          // Trouve la section parente et la cache
-          const chapterSection = this.closest(".chapter-section");
-          chapterSection.classList.remove("show");
-        });
-      });
-    </script>
+    <script src="js/accueil.js"></script>
   </body>
 </html>

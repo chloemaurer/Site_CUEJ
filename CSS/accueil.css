@@ -1,0 +1,340 @@
+/* Fond de la page */
+body {
+  background-image: url("https://www.airzen.fr/wp-content/uploads/2022/07/groupe-de-randonneurs-sur-une-petite-route-de-campagne-le-long-dune-prairie-avec-vaches-stockpack-adobe-stock-scaled-e1658912080200.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* Barre latérale gauche */
+.sidebar {
+  background-color: #281e16bd;
+  height: 100%;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 3;
+}
+
+/* Boutons ronds */
+.round-btn {
+  background-color: #fdcb02;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* Titre principal */
+.title {
+  position: absolute;
+  top: 15%;
+  right: 10%;
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+}
+
+/* Pied de page */
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #2a1e14;
+  color: white;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Conteneur de l'Édito */
+#edito {
+  position: fixed;
+  top: -100%;
+  /* Caché par défaut */
+  left: 120px;
+  /* À droite de la barre latérale */
+  width: calc(100% - 120px);
+  height: 100%;
+  background-color: #281e16bd;
+  display: flex;
+  align-items: center;
+  transition: top 0.5s ease;
+  z-index: 2;
+}
+
+#edito-content {
+  background-color: #fdcb02;
+  padding: 30px;
+  margin-left: 50px;
+  border-radius: 8px;
+  max-width: 45%;
+  line-height: 1.6;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+#edito-content h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#edito-content p {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+#edito img {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  height: 80%;
+  object-fit: cover;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+/* Bouton de fermeture dans l'Édito */
+#edito-close-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #fdcb02;
+  color: black;
+  font-weight: bold;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  font-size: 16px;
+}
+
+/* Chapitres */
+.chapter-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 86px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.chapter-container .rect-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #fdcb02;
+  border-radius: 100px;
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.chapter-container:hover .rect-bg {
+  width: 200px;
+}
+
+.circle-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+}
+
+/* Bordure pour le cercle du Chapitre 1 */
+.chapter1-container .circle-img {
+  border: 3px solid #6a7920; /* Vert pour Chapitre 1 */
+}
+
+/* Bordure pour le cercle du Chapitre 2 */
+.chapter2-container .circle-img {
+  border: 3px solid #6189a4; /* Bleu pour Chapitre 2 */
+}
+
+/* Bordure pour le cercle du Chapitre 3 */
+.chapter3-container .circle-img {
+  border: 3px solid #8a151b; /* Rouge pour Chapitre 3 */
+}
+
+.chapter-title {
+  position: absolute;
+  left: 100%;
+  font-size: 1.2rem;
+  color: white;
+  padding-left: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.chapter-container:hover .chapter-title {
+  opacity: 1;
+}
+
+/* Couleur de survol spécifique pour Chapitre 1 */
+.chapter1-container .rect-bg {
+  background-color: #6a7920;
+  /* Vert pour Chapitre 1 */
+}
+
+/* Couleur de survol spécifique pour Chapitre 2 */
+.chapter2-container .rect-bg {
+  background-color: #6189a4;
+  /* Bleu pour Chapitre 2 */
+}
+
+/* Couleur de survol spécifique pour Chapitre 3 */
+.chapter3-container .rect-bg {
+  background-color: #8a151b;
+  /* Rouge pour Chapitre 3 */
+}
+
+/* Centrer le 3e article dans la section du Chapitre 3 */
+#chapter3 .chapter-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Grille de 2 colonnes */
+  gap: 20px;
+  width: 60%; /* Même largeur que les autres chapitres */
+  margin: 20px auto; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+}
+
+#chapter3 .chapter-cards .card:nth-child(3) {
+  grid-column: span 2; /* Occupe les deux colonnes */
+  justify-self: center; /* Centre le 3e article */
+}
+
+/* Section Chapitre qui entre par la gauche */
+.chapter-section {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  /* Caché initialement */
+  height: 100%;
+  width: calc(100% - 120px);
+  /* Espace à droite de la barre latérale */
+  background-color: #515c2bc1;
+  /* Rouge par défaut */
+  transition: left 0.5s ease;
+  /* Animation d'entrée */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* Centre verticalement */
+  justify-content: center;
+  /* Centre horizontalement */
+  color: white;
+  z-index: 2;
+}
+
+.chapter-section.show {
+  left: 120px;
+  /* Se place à droite de la barre */
+}
+
+.chapter-section .chapter-text {
+  width: 40%;
+  padding-right: 20px;
+  margin: 20px;
+}
+
+.chapter-section h2 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.chapter-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.chapter-section .chapter-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* Grille 2 colonnes */
+  gap: 20px;
+  width: 60%;
+  /* Prend 60% de l'espace */
+  margin: 20px;
+  /* Centre la grille au milieu */
+}
+
+.chapter-cards .card {
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.chapter-cards img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.chapter-cards p {
+  margin: 10px 0;
+  color: black;
+  font-weight: bold;
+}
+
+/* Bouton de fermeture pour les sections Chapitres */
+.close-chapter {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #ece6db;
+  color: black;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  transition: background-color 0.3s ease;
+}
+
+.close-chapter:hover {
+  background-color: #fdcb02;
+}

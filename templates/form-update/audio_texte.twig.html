@@ -9,7 +9,7 @@
         <!-- Type de bloc (caché) -->
         <div class="col-md-6">
             <label for="type" class="form-label fw-bold">Type de bloc :</label>
-            <input type="hidden" name="type" value="{{ bloc.type }}" class="form-control" />
+            <input type="hidden" name="type" value="{{ bloc.type | raw}}" class="form-control" />
             <input type="text" class="form-control" placeholder="Bloc sélectionné : {{ bloc.type }}" disabled />
         </div>
 
@@ -45,7 +45,7 @@
         {# Crédit #}
         <div class="col-md-6">
             <label for="texte_credit" class="form-label fw-bold text-secondary">Crédit :</label>
-            <input type="text" name="texte_credit" id="texte_credit" value="{{ bloc.texte_credit }}"
+            <input type="text" name="texte_credit" id="texte_credit" value="{{ bloc.texte_credit | raw}}"
                 placeholder="Saisir le crédit" class="form-control border-secondary" />
         </div>
 
@@ -60,7 +60,7 @@
         {# Alt (Description) #}
         <div class="col-md-6">
             <label for="alt" class="form-label fw-bold text-secondary">Description de l'image :</label>
-            <input type="text" name="alt" value="{{ bloc.alt }}" placeholder="Description de l'image"
+            <input type="text" name="alt" value="{{ bloc.alt | raw }}" placeholder="Description de l'image"
                 class="form-control border-secondary" />
         </div>
 
@@ -68,13 +68,13 @@
         <div class="col-md-6">
             <label for="texte" class="form-label fw-bold">Texte :</label>
             <textarea name="texte" id="texte" placeholder="Saisir le texte" class="form-control border-secondary"
-                rows="3">{{ bloc.texte  | raw}}</textarea>
+                rows="3">{{ bloc.texte | raw |nl2br }}</textarea>
         </div>
         <!-- Inter-titre -->
         <div class="col-md-6">
             <label for="texte_2" class="form-label fw-bold">Inter-titre :</label>
             <textarea name="texte_2" id="texte" placeholder="Saisir le texte" class="form-control border-secondary"
-                rows="3">{{ bloc.texte_2  | raw}}</textarea>
+                rows="3">{{ bloc.texte_2 | raw |nl2br }}</textarea>
         </div>
         <!-- Texte -->
         <div class="col-md-6">

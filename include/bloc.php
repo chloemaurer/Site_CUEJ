@@ -267,21 +267,21 @@ class Bloc
             $this->image = $image;
         }
 
-        // $audio = chargeFILE('audio');
-        // if (!empty($audio)) {
-        //     // Vérifie si l'ancien fichier existe et est un fichier
-        //     if (is_file('upload/' . $this->audio)) {
-        //         unlink('upload/' . $this->audio);
-        //     }
-        //     $this->audio = $audio;
-        // }
-
         $audio = chargeFILE('audio');
         if (!empty($audio)) {
-            // Supprime l'ancienne image si update
-            unlink('upload/' . $this->audio);
+            // Vérifie si l'ancien fichier existe et est un fichier
+            if (is_file('upload/' . $this->audio)) {
+                unlink('upload/' . $this->audio);
+            }
             $this->audio = $audio;
         }
+
+        // $audio = chargeFILE('audio');
+        // if (!empty($audio)) {
+        //     // Supprime l'ancienne image si update
+        //     unlink('upload/' . $this->audio);
+        //     $this->audio = $audio;
+        // }
         $image_1 = chargeFILE('image_1');
         if (!empty($image_1)) {
             // Supprime l'ancienne image si update
@@ -369,6 +369,7 @@ class Bloc
                 $bloc->chargePOST();
                 $bloc->create();
                 header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
+                exit;
                 break;
 
             case 'delete':
@@ -397,8 +398,10 @@ class Bloc
 
             case 'update':
                 $bloc = new Bloc();
+                // var_dump($_POST);
                 $bloc->chargePOST();    // utilise maintenant la vraie variable $_POST;
                 $bloc->update();
+                // var_dump($bloc);
                 header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
                 exit();
                 break;

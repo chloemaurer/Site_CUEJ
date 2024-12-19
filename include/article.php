@@ -225,12 +225,12 @@ class Article
                 $article = new Article();
                 $article->chargePOST();
                 $article->create(); // Récupère l'ID de l'article créé
-                header('Location: admin.php?page=chapitre&action=read&id=' . $article->id_chapitre);
+                header('Location: admin.php?page=article&action=read&id=' . $id_article);
 
                 exit; // Toujours ajouter exit après un header
                 break;
                 ////////////////////////////////////
-                
+
             case 'delete':
                 // Récupère l'ID du chapitre avant de supprimer l'article
                 $article = Article::readOne($id_article);
@@ -269,6 +269,8 @@ class Article
 
             case 'update':
                 // Récupère les données du formulaire pour mettre à jour l'article
+                $id = isset($_GET['id']) ? $_GET['id'] : null;
+
                 $article = new Article();
                 $article->chargePOST(); // Charge les nouvelles données
                 $article->update();     // Met à jour dans la BDD

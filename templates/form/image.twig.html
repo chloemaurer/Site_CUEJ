@@ -10,19 +10,11 @@
 
         {# image #}
         <div class="col-md-4">
-            <label for="image">Image :<span>(max 200 Ko)</span></label>
+            <label for="image">Image ou infographie:<span>(max 200 Ko)</span></label>
             <input type="hidden" name="MAX_FILE_SIZE" value="200000" title="la taille max du fichier" autocomplete="off" />
             <input type="file" name="image" accept="images/*" class="form-control w-75 ms-5 border-black" />
         </div>
 
-        {# Infographie #}
-        <div class="col-md-6">
-            <label for="infographie" class="form-label fw-bold text-secondary">
-                Infographie <span class="text-muted">(max 5 Mo)</span> :
-            </label>
-            <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
-            <input type="file" id="infographie" name="infographie" class="form-control" />
-        </div>
 
         {# Légende #}
         <div class="col-md-6">

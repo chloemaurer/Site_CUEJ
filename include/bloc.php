@@ -400,6 +400,8 @@ class Bloc
                 $bloc = new Bloc();
                 // var_dump($_POST);
                 $bloc->chargePOST();    // utilise maintenant la vraie variable $_POST;
+                var_dump($bloc);
+
                 $bloc->update();
                 // var_dump($bloc);
                 header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);

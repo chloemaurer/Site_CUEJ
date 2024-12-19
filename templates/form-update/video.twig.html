@@ -1,0 +1,71 @@
+{% extends "base-admin.twig.html" %}
+{% block content %}
+
+<div class="container py-5">
+    <h1 class="text-center mb-5 text-primary">Création d'un bloc</h1>
+
+    <form action="admin.php?page=bloc&action=create&id={{ bloc.id }}" method="post" enctype="multipart/form-data"
+        class="row g-4 bg-light p-4 rounded shadow-sm needs-validation" novalidate>
+        {# Type de bloc #}
+        <div class="col-md-6">
+            <label for="type" class="form-label fw-bold">Type de bloc :</label>
+            <input type="hidden" name="type" value="{{ bloc.type }}" class="form-control" />
+            <input type="text" class="form-control" placeholder="Bloc sélectionné : {{ bloc.type }}" disabled />
+        </div>
+
+        <!-- ID du bloc -->
+        <input type="hidden" name="id" value="{{ bloc.id }}" />
+        {# Vidéo #}
+        <div class="col-md-6">
+            <label for="video" class="form-label fw-bold text-secondary">
+                Vidéo <small class="text-muted">(max 200 Mo)</small> :
+            </label>
+            <input type="file" name="video" accept="video/*" class="form-control border-secondary" required />
+        </div>
+
+        {# image #}
+        <div class="col-md-6">
+            <label for="image" class="form-label fw-bold text-secondary">Image ou infographie:</label>
+            {% if bloc.image %}
+            <div class="mb-3">
+                <img src="upload/{{ bloc.image }}" alt="Image actuelle" class="img-thumbnail" style="max-width: 150px;">
+            </div>
+            <input type="hidden" name="old_image" value="{{ bloc.image }}" />
+            {% endif %}
+            <input type="file" name="image" id="image" accept="image/*" class="form-control" />
+            <small class="text-muted">Taille maximale : 200 Ko</small>
+        </div>
+
+        {# Alt (Description) #}
+        <div class="col-md-6">
+            <label for="alt" class="form-label fw-bold text-secondary">Description de l'image :</label>
+            <input type="text" name="alt" value="{{ bloc.alt }}" placeholder="Description de l'image"
+                class="form-control border-secondary" />
+        </div>
+
+        {# Sélection du chapitre pré-sélectionné #}
+        <div class="col-md-6">
+            <label for="id_article" class="form-label fw-bold text-secondary">
+                Article associé :
+            </label>
+            <select name="id_article" id="id_article" class="form-select border-secondary" required>
+                <option value="" disabled>Choisir un article</option>
+                {% for article in listearticle %}
+                <option value="{{ article.id_article }}"
+                    {% if article.id_article == id_article_selectionne %}selected{% endif %}>
+                    {{ article.titre }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Bouton d'envoi -->
+        <div class="col-12 d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill shadow-sm">
+                <i class="fa-solid fa-save me-2"></i>Mettre à jour
+            </button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

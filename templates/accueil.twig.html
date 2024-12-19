@@ -44,6 +44,7 @@
         <img src="upload/{{ article.image }}" alt="Article 1" />
         <p>{{ article.titre }}</p>
       </div>
+      {% endfor %}
       <div class="card">
         <img
           src="./images/lukasz-szmigiel-2ShvY8Lf6l0-unsplash.jpg"
@@ -131,20 +132,7 @@
         <img src="upload/{{ article.image }}" alt="Article 1" />
         <p>{{ article.titre }}</p>
       </div>
-      <div class="card">
-        <img
-          src="./images/lukasz-szmigiel-2ShvY8Lf6l0-unsplash.jpg"
-          alt="Article 2"
-        />
-        <p>Lorem ipsum dolor sit amet</p>
-      </div>
-      <div class="card">
-        <img
-          src="./images/lukasz-szmigiel-2ShvY8Lf6l0-unsplash.jpg"
-          alt="Article 3"
-        />
-        <p>Nom de l’article plus court</p>
-      </div>
+      {% endfor %}
     </div>
   </div>
 

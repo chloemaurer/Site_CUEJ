@@ -98,7 +98,7 @@ function insecables($texte)
 	$texte = preg_replace('/«\s/u', '«&nbsp;', $texte);
 	$texte = preg_replace('/\s»/u', '&nbsp;»', $texte);
 
-	$texte = preg_replace('/\/\/(.*)\/\//', '<em>\1</em>', $texte);
+	$texte = preg_replace('/\/\/(.*?)\/\//', '<em>\1</em>', $texte);
 	$texte = preg_replace('/\=\=(.*)\=\=/', '<strong>\1</strong>', $texte);
 
 	// Remplace ((url|serveur.com)) par <a href="url">serveur.com</a>

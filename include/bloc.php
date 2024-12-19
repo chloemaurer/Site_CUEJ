@@ -401,7 +401,7 @@ class Bloc
                 var_dump($bloc);
 
                 $bloc->update();
-                header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
+                // header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
                 exit();
                 break;
 

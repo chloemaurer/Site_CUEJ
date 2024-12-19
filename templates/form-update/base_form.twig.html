@@ -9,6 +9,9 @@
             <form action="admin.php?page=bloc&action=update&id={{bloc.id}}" method="post" enctype="multipart/form-data"
                 class="row g-4 needs-validation" novalidate>
 
+                {# Ordre #}
+                <input type="hidden" name="ordre" value="{{ bloc.ordre }}" />
+
                 {# ID DU BLOC #}
                 <input type="hidden" name="id" value="{{ bloc.id }}" />
 

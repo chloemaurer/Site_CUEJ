@@ -1,7 +1,7 @@
 {% extends "base-admin.twig.html" %} {% block content %}
 {% block css %}
-  <link rel="stylesheet" href="./CSS/article.css" />
-  <link rel="stylesheet" href=".CSS/bloc.css">
+<link rel="stylesheet" href="./CSS/article.css" />
+<link rel="stylesheet" href=".CSS/bloc.css">
 {% endblock %}
 <div class="container py-5">
   <!-- Titre de la section -->
@@ -160,9 +160,12 @@
 
         {# IMAGE #} {% elseif bloc.type == "image" %}
         <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" class="img-fluid mb-3" />
-        <p class="legende">
-          {{bloc.texte_legende}} <br>{{bloc.texte_credit}}</br>
-        </p>
+        <div>
+          <p class="legende">
+            {{bloc.texte_credit | raw}}
+          </p>
+          <p class="credit">©{{bloc.texte_credit | raw}}</p>
+        </div>
         <div class="btn-group">
           <a href="admin.php?page=bloc&action=modifier&id=image&id_bloc={{ bloc.id }}"
             class="btn btn-outline-warning btn-sm" title="Modifier">
@@ -194,8 +197,7 @@
                 </div>
               </div>
               <figcaption class="blockquote-footer">
-                <p>{{ bloc.texte_legende | raw  |nl2br }}</p>
-                <cite title="Source Title">{{ bloc.texte_credit| raw}}</cite>
+                <cite title="Source Title">{{ bloc.texte_legende| raw}}</cite>
               </figcaption>
             </figure>
           </div>
@@ -224,9 +226,8 @@
                 <p class="fw-bold fs-3 text-danger mb-0">
                   "{{ bloc.texte_citation | raw  |nl2br }}"
                 </p>
-                <figcaption class="blockquote-footer">
-                  <p>{{ bloc.texte_legende | raw  |nl2br }}</p>
-                  <cite title="Source Title">{{ bloc.texte_credit }}</cite>
+                <figcaption class="blockquote-footer legende">
+                  <cite title="Source Title">{{ bloc.texte_legende }}</cite>
                 </figcaption>
               </blockquote>
             </figure>
@@ -270,9 +271,8 @@
                 <p class="fw-bold fs-3 text-danger mb-0">
                   "{{ bloc.texte_citation | raw  |nl2br }}"
                 </p>
-                <figcaption class="blockquote-footer">
-                  <p>{{ bloc.texte_legende | raw  |nl2br }}</p>
-                  <cite title="Source Title">©{{ bloc.texte_credit }}</cite>
+                <figcaption class="blockquote-footer legende">
+                  <cite title="Source Title">{{ bloc.texte_legende }}</cite>
                 </figcaption>
               </blockquote>
             </figure>
@@ -303,7 +303,7 @@
             <!-- Bloc de l'image et de la légende à gauche -->
             <div class="col-md-7 p-4 bg-danger">
               <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" alt="{{ bloc.alt }}" class="img-fluid mb-3">
-              <p class="text-white text-start">{{ bloc.texte_legende }}</p>
+              <p class="text-white text-start legende">{{ bloc.texte_legende }}</p>
             </div>
 
             <!-- Bloc de Citation à droite -->
@@ -347,7 +347,7 @@
             </div>
             <div class="col-md-7 p-4 bg-danger">
               <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" alt="{{ bloc.alt }}" class="img-fluid mb-3">
-              <p class="text-white text-start">{{ bloc.texte_legende }}</p>
+              <p class="text-white text-start legende">{{ bloc.texte_legende }}</p>
             </div>
 
           </div>
@@ -372,9 +372,8 @@
         <div class="container  mb-5 {{ bloc.type }}">
           <div class="podcast">
             <h3 class="podcast__episode_title">{{ bloc.texte_titre | raw  |nl2br }}</h3>
-            <h5 class="podcast__title">
+            <h5 class="podcast__title legende">
               {{ bloc.texte_legende }}
-              <i>Episode 152</i>
             </h5>
 
             <div class="podcast__meta">
@@ -404,7 +403,7 @@
           </a>
         </div>
 
-        
+
 
         {# TEXTE IMAGE #}
         {% elseif bloc.type == "texte_image" %}
@@ -424,8 +423,8 @@
                   <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
                     alt="{{ bloc.alt }}" />
                   <figcaption class="figure-caption mt-2 mb-0 d-flex">
-                    <p>{{ bloc.texte_legende }}</p>
-                    <p>©{{ bloc.texte_credit }}</p>
+                    <p class="legende">{{ bloc.texte_legende }}</p>
+                    <p class="credit">©{{ bloc.texte_credit }}</p>
                   </figcaption>
                 </figure>
               </div>
@@ -458,8 +457,8 @@
                   <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
                     alt="{{ bloc.alt }}" />
                   <figcaption class="figure-caption mt-2 mb-0 d-flex">
-                    <p>{{ bloc.texte_legende }}</p>
-                    <p>©{{ bloc.texte_credit }}</p>
+                    <p class="legende">{{ bloc.texte_legende }}</p>
+                    <p class="credit">©{{ bloc.texte_credit }}</p>
                   </figcaption>
                 </figure>
               </div>
@@ -494,25 +493,23 @@
         {% elseif bloc.type == "image_titre_texte" %}
         <div class="container-fluid ">
           <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
-          {% if bloc.image is not empty %}
-            
-          {% endif %}
-          <div class="row mb-5">
+
+          <div class="{% if bloc.image is not empty %}row{% endif %} mb-5">
             <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
-            <div class="col-6 d-flex justify-content-center pe-2">
+            <div class="{% if bloc.image is not empty %}col-6{% endif %} d-flex justify-content-center pe-2">
               <div class="bg-danger p-3">
                 <figure class="figure mb-5">
                   <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
                     alt="{{ bloc.alt }}" />
                   <figcaption class="figure-caption mt-2 mb-0 d-flex">
-                    <p>{{ bloc.texte_legende }}</p>
-                    <p>©{{ bloc.texte_credit }}</p>
+                    <p class="legende">{{ bloc.texte_legende }}</p>
+                    <p class="credit">{% if bloc.image is not empty %}©{% endif %}{{ bloc.texte_credit }}</p>
                   </figcaption>
                 </figure>
               </div>
             </div>
             <!-- Texte à gauche (col-8 pour le texte) -->
-            <div class="col-6 align-baseline">
+            <div class="{% if bloc.image is not empty %}col-6{% endif %} align-baseline">
               <h3>{{ bloc.texte_titre | raw  |nl2br }}</h3>
               <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
             </div>
@@ -551,8 +548,8 @@
                 <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
                   alt="{{ bloc.alt }}" />
                 <figcaption class="figure-caption mt-2 mb-0 d-flex">
-                  <p>{{ bloc.texte_legende }}</p>
-                  <p>{% if bloc.image_1 is not empty %}©{% endif %}{{ bloc.texte_credit }}</p>
+                  <p class="legende">{{ bloc.texte_legende }}</p>
+                  <p class="credit">{% if bloc.image is not empty %}©{% endif %}{{ bloc.texte_credit }}</p>
                 </figcaption>
               </figure>
             </div>
@@ -691,7 +688,7 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-          <p>©{{ bloc.texte_credit }}</p>
+          <p class="credit">©{{ bloc.texte_credit }}</p>
         </div>
 
         <div class="btn-group">
@@ -718,9 +715,8 @@
             <div class="podcast_meta">
               <div class="ps-5">
                 <h3 class="podcast__episode_title">{{ bloc.texte_titre | raw  |nl2br }}</h3>
-                <h5 class="podcast__title text-light">
-                  {{ bloc.texte_legende }}
-                  <i>©{{ bloc.texte_credit }}</i>
+                <h5 class="podcast__title text-light credit">
+                  ©{{ bloc.texte_credit }}
                 </h5>
               </div>
               <div class="podcast_meta">
@@ -765,9 +761,8 @@
             <div class="podcast_meta">
               <div class="ps-5">
                 <h3 class="podcast__episode_title">{{ bloc.texte_titre | raw  |nl2br }}</h3>
-                <h5 class="podcast__title text-light">
-                  {{ bloc.texte_legende }}
-                  <i>©{{ bloc.texte_credit }}</i>
+                <h5 class="podcast__title text-light credit">
+                  ©{{ bloc.texte_credit }}
                 </h5>
               </div>
               <div class="podcast_meta">

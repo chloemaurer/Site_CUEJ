@@ -1,5 +1,7 @@
-{% extends 'base.twig.html' %} {% block page %}
-
+{% extends 'base.twig.html' %} {% block css %}
+<link rel="stylesheet" href="./CSS/accueil.css" />
+{% endblock %} {% block page %}
+<body>
   <!-- Barre latérale gauche -->
   <div class="sidebar">
     <div class="round-btn" id="edito-btn">Édito</div>
@@ -86,7 +88,6 @@
           <p>{{ article.titre }}</p>
         </div>
       </a>
-
       {% endfor %}
     </div>
   </div>
@@ -114,5 +115,6 @@
     </div>
     <img src="./images/Code.code-workspace.webp" alt="Paysage" />
   </div>
+</body>
 
 {% endblock %}

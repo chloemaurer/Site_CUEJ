@@ -164,7 +164,7 @@
 
 
         {# image_citation #}
-        {% elseif bloc.type == "image_citation "%}
+        {% elseif bloc.type == "image_citation"%}
 
         <div class="container my-5">
           <div class="row g-4">
@@ -173,9 +173,9 @@
             <!-- Bloc de l'image et de la légende à gauche -->
             <div class="col-md-7 p-4" style="background-color: #8a151b;">
               <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" alt="{{ bloc.alt }}" class="img-fluid mb-3 w-100">
-              <div>
+              <div class="d-flex">
                 <p class="text-white text-start legende">{{ bloc.texte_legende }}</p>
-                <p class="credit_p">{{ bloc.texte_credit }}</p>
+                <p class="credit_p text-white">©{{ bloc.texte_credit }}</p>
               </div>
             </div>
 

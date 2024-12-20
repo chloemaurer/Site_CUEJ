@@ -53,17 +53,11 @@
   <small class="text-muted">Taille maximale : 200 Ko</small>
 </div>
 
-<!-- Crédits -->
+{# Crédit de l'image #}
 <div class="col-md-6">
-  <label for="credit" class="form-label">Crédits :</label>
-  <input
-    type="text"
-    name="credit"
-    id="credit"
-    placeholder="Saisir les crédits"
-    class="form-control"
-    value="{{bloc.texte_credit}}"
-  />
+    <label for="texte_credit" class="form-label fw-bold text-secondary">Crédit :</label>
+    <input type="text" name="texte_credit" value="{{ bloc.texte_credit }}" placeholder="Saisir le crédit"
+        class="form-control border-secondary" />
 </div>
 
 {# Alt (Description) #}

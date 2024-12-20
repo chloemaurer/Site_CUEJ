@@ -45,6 +45,7 @@ new MediaElementPlayer(
   });
 })();
 
+
 function showVideo(imageElement) {
     // Masquer l'image
     imageElement.style.display = 'none';

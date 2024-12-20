@@ -246,42 +246,52 @@ class Article
                 // Lire l'article en cours
                 $article = Article::readOne($id_article);
 
-                // Lire tous les articles du chapitre
+                // Vérification : si l'article n'existe pas, on peut gérer une redirection ou une erreur
+                if (!$article) {
+                    header('Location: index.php?page=404'); // Redirige vers une page 404
+                    exit;
+                }
+
+                // Lire tous les articles du chapitre correspondant à cet article
                 $listearticleBychapitre = Article::readAllByChapitre($article->id_chapitre);
 
                 // Trouver l'index de l'article actuel dans la liste des articles du chapitre
                 $currentArticleIndex = array_search($id_article, array_column($listearticleBychapitre, 'id_article'));
 
-                // S'assurer que les textes sont bien formatés avec les espaces insécables
+                // S'assurer que l'article est correctement formaté avec des espaces insécables
                 $article->insecables();
 
-                // Récupérer tous les blocs associés à l'article
+                // Récupérer tous les chapitres et leurs articles
+                $listechapitre = Chapitre::readAll();
+                foreach ($listechapitre as $chapitre) {
+                    $chapitre->articles = Article::readAllByChapitre($chapitre->id_chapitre);
+                }
+
+                // Récupérer tous les blocs associés à l'article en cours
                 $listebloc = Bloc::readAllByArticle($id_article);
                 foreach ($listebloc as $bloc) {
                     $bloc->insecables();
                 }
 
                 // Définir les articles précédent et suivant dans le chapitre
-                $previousArticle = null;
-                $nextArticle = null;
+                $previousArticle = $currentArticleIndex > 0
+                    ? $listearticleBychapitre[$currentArticleIndex - 1]
+                    : null;
 
-                if ($currentArticleIndex > 0) {
-                    $previousArticle = $listearticleBychapitre[$currentArticleIndex - 1];
-                }
-
-                if ($currentArticleIndex < count($listearticleBychapitre) - 1) {
-                    $nextArticle = $listearticleBychapitre[$currentArticleIndex + 1];
-                }
+                $nextArticle = $currentArticleIndex < count($listearticleBychapitre) - 1
+                    ? $listearticleBychapitre[$currentArticleIndex + 1]
+                    : null;
 
                 // Définir les données à transmettre au template
                 $data = [
-                    'listearticleBychapitre' => $listearticleBychapitre,
-                    'article' => $article,
-                    'listebloc' => $listebloc,
-                    'previousArticle' => $previousArticle,
-                    'nextArticle' => $nextArticle,
-                    'totalArticlesInChapter' => count($listearticleBychapitre), // Total d'articles
-                    'currentArticleIndex' => $currentArticleIndex // Index actuel
+                    'listearticleBychapitre' => $listearticleBychapitre, // Articles du chapitre
+                    'article' => $article,                              // Article actuel
+                    'listebloc' => $listebloc,                          // Blocs associés à l'article
+                    'previousArticle' => $previousArticle,              // Article précédent
+                    'nextArticle' => $nextArticle,                      // Article suivant
+                    'totalArticlesInChapter' => count($listearticleBychapitre), // Total d'articles dans le chapitre
+                    'currentArticleIndex' => $currentArticleIndex + 1,  // Index actuel (commençant à 1)
+                    'listechapitre' => $listechapitre                   // Liste complète des chapitres
                 ];
                 break;
         }

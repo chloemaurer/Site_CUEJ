@@ -90,10 +90,10 @@ footer a {
   padding: 30px;
   border-top-right-radius: 30px;
   border-bottom-left-radius: 30px;
-  margin-top: 70px;
+  margin-top: 150px;
   margin-left: 30px;
-  max-width: 45%;
-  line-height: 1.6;
+  max-width: 90%;
+  line-height: 1.2;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   z-index: 2;
 }
@@ -109,14 +109,6 @@ footer a {
   margin: 10px 0;
 }
 
-#edito img {
-  position: absolute;
-  top: 20%;
-  right: 0;
-  height: 70%;
-  object-fit: cover;
-  z-index: 1;
-}
 
 #edito-close-btn {
   position: absolute;

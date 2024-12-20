@@ -46,11 +46,30 @@ new MediaElementPlayer(
 })();
 
 
-function showVideo(imageElement) {
-    // Masquer l'image
-    imageElement.style.display = 'none';
-    // Afficher la vidéo
-    const video = imageElement.nextElementSibling;
-    video.style.display = 'block';
-    video.play(); // Lancer la vidéo automatiquement
+function showVideo(element) {
+    // Récupère le conteneur parent
+    const container = element.closest('div');
+
+    // Récupère l'image de superposition
+    const overlayImage = container.querySelector('.video-overlay');
+
+    // Récupère le bouton de lecture
+    const playIcon = container.querySelector('.play-icon');
+
+    // Récupère la vidéo
+    const video = container.querySelector('video');
+
+    // Masque l'image et le bouton
+    if (overlayImage) {
+        overlayImage.style.display = 'none';
+    }
+    if (playIcon) {
+        playIcon.style.display = 'none';
+    }
+
+    // Affiche et lance la vidéo
+    if (video) {
+        video.style.display = 'block';
+        video.play();
+    }
 }

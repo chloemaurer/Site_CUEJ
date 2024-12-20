@@ -160,9 +160,9 @@
 
         {# IMAGE #} {% elseif bloc.type == "image" %}
         <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" class="img-fluid mb-3" />
-        <div>
+        <div class="d-flex">
           <p class="legende">
-            {{bloc.texte_credit | raw}}
+            {{bloc.texte_legende | raw}}
           </p>
           <p class="credit">©{{bloc.texte_credit | raw}}</p>
         </div>
@@ -383,8 +383,7 @@
               </audio>
 
               <div class="artwork mb-2">
-                <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}"
-                  />
+                <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" />
               </div>
             </div>
           </div>
@@ -423,9 +422,8 @@
                 <figure class="figure mb-5">
                   <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
                     alt="{{ bloc.alt }}" />
-                  <figcaption class="figure-caption mt-2 mb-0 d-flex">
-                    <p class="legende">{{ bloc.texte_legende }}</p>
-                    <p class="credit">©{{ bloc.texte_credit }}</p>
+                  <figcaption class="figure-caption mt-2 mb-0">
+                    <p><span class="legende">{{ bloc.texte_legende }}</span> ©{{ bloc.texte_credit }}</p>
                   </figcaption>
                 </figure>
               </div>
@@ -457,9 +455,8 @@
                 <figure class="figure mb-5">
                   <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
                     alt="{{ bloc.alt }}" />
-                  <figcaption class="figure-caption mt-2 mb-0 d-flex">
-                    <p class="legende">{{ bloc.texte_legende }}</p>
-                    <p class="credit">©{{ bloc.texte_credit }}</p>
+                  <figcaption class="figure-caption mt-2 mb-0 ">
+                    <p><span class="legende">{{ bloc.texte_legende }}</span> ©{{ bloc.texte_credit }}</p>
                   </figcaption>
                 </figure>
               </div>
@@ -503,8 +500,8 @@
                   <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
                     alt="{{ bloc.alt }}" />
                   <figcaption class="figure-caption mt-2 mb-0 d-flex">
-                    <p class="legende">{{ bloc.texte_legende }}</p>
-                    <p class="credit">{% if bloc.image is not empty %}©{% endif %}{{ bloc.texte_credit }}</p>
+                    <p><span class="legende">{{ bloc.texte_legende }}</span>
+                      {% if bloc.image is not empty %}©{% endif %}{{ bloc.texte_credit }}</p>
                   </figcaption>
                 </figure>
               </div>
@@ -548,8 +545,7 @@
                 <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
                   alt="{{ bloc.alt }}" />
                 <figcaption class="figure-caption mt-2 mb-0 d-flex justify-content-between">
-                  <p class="legende">{{ bloc.texte_legende }}</p>
-                  <p class="credit">© {{ bloc.texte_credit }}</p>
+                  {% if bloc.image is not empty %}©{% endif %}{{ bloc.texte_credit }}
                 </figcaption>
               </figure>
             </div>

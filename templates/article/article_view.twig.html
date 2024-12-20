@@ -17,20 +17,17 @@
       <div class="left-box">
         <div class="nav">
           <img class="menu" src="images/Menu.png" alt="Menu nav">
-          <div class="d-flex gap-3 align-items-center justify-content-center">
+          <div class="d-flex gap-3 nav-article">
             <i class="icon fa-solid fa-chevron-left"></i>
-            <p>Article 1/4</p>
-            <i class="icon fa-solid fa-chevron-right"></i>
+            <p>1/4</p>
+            <i class="number icon fa-solid fa-chevron-right"></i>
           </div>
         </div>
         <div class="titre-credit">
           <h3 class="titre-article">{{article.titre}}</h3>
           <hr />
           <div class="credits">
-            <p class="credit_p"><strong>Rédaction :</strong> Équipe éditoriale (NPT)</p>
-            <p class="credit_p"><strong>Illustrations :</strong> Non précisées</p>
-            <p class="credit_p"><strong>Photographie :</strong> Non précisée</p>
-            <p class="credit_p"><strong>Vidéo :</strong> Non précisée</p>
+              {{article.chapo}}
           </div>
           <hr />
         </div>

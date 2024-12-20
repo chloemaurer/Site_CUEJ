@@ -1,0 +1,151 @@
+/* Styles généraux */
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ece6db; /* Beige */
+  color: #281e16; /* Couleur du texte */
+}
+
+.header {
+  position: relative; /* Permet de positionner les éléments enfants */
+}
+
+.header img {
+  width: 100%; /* Assure que l'image s'adapte au conteneur */
+  height: auto;
+}
+
+.header .credit {
+  position: absolute;
+  bottom: 10px; /* Distance par rapport au bas de l'image */
+  left: 10px; /* Distance par rapport au bord gauche de l'image */
+  background-color: white; /* Fond blanc */
+  color: black; /* Couleur du texte */
+  padding: 5px 10px; /* Espacement interne pour un design agréable */
+  border-radius: 5px; /* Coins arrondis */
+  font-size: 0.9rem; /* Taille de texte ajustée */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Ombre pour le contraste */
+}
+
+main {
+  padding-left: 144px; /* Espace à gauche */
+  padding-right: 144px; /* Espace à droite */
+}
+/* Container centré */
+.container {
+  margin-bottom: 30px;
+  text-align: center; /* Centrer le contenu de cette section */
+}
+
+.img-fluid {
+  max-height: 100px;
+  width: auto;
+}
+
+/* Personnalisation des titres */
+h1,
+h2,
+h3 {
+  font-family: "Anybody", cursive;
+  text-transform: lowercase; /* Titres en minuscules */
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+/* Crédits section */
+.credits-section {
+  padding: 40px 20px;
+}
+
+.credits-section h2 {
+  color: #ece6db;
+  background-color: #281e16;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.credits-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Galerie (2x3 layout avec un gap de 20px) */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
+  grid-gap: 20px; /* Espacement de 20px entre les images */
+  padding: 20px;
+  background-color: #fff; /* Fond de la galerie */
+}
+
+.gallery img {
+  width: 400px;
+  height: 300px;
+
+  object-fit: cover;
+}
+
+ul {
+  list-style: none; /* Enlever les puces */
+  padding: 0; /* Enlever le padding par défaut */
+}
+.equipe {
+  margin: 0 auto;
+  text-align: center;
+  text-decoration: underline;
+  color: #ece6db; /* Blanc */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #281e16; /* Couleur de fond */
+  width: 400px;
+  height: 300px;
+}
+/* Section Logos */
+.logos {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #fff; /* Fond blanc */
+}
+
+.logos .flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.logos .logo-placeholder {
+  max-width: 150px;
+  margin: 10px;
+}
+
+/* Responsivité pour les images */
+@media (max-width: 768px) {
+  .credits-section h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Ajuster la galerie pour les petits écrans */
+  .gallery {
+    grid-template-columns: 1fr 1fr; /* 2 colonnes pour les petits écrans */
+  }
+
+  /* Espacement réduit pour les petits écrans */
+  body {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}

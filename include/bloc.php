@@ -317,6 +317,7 @@ class Bloc
             }
             $this->audio = $audio;
         }
+        
         $video = chargeFILE('video');
         if (!empty($video)) {
             if (is_file('upload/' . $this->video)) {

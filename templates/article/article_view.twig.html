@@ -1,4 +1,3 @@
-
 {% extends 'base.twig.html' %}
 
 {% block css %}
@@ -8,10 +7,11 @@
 {% endblock %}
 
 {% block page %}
+
 <body>
   <section class="intituler">
     <!-- Contenu principal -->
-    
+
     <div class="article-content">
       <!-- Carré gauche -->
       <div class="left-box">
@@ -44,33 +44,33 @@
   </section>
 
   <section id="article" class="container">
-<div class="mt-5 d-flex flex-column justify-content-center align-items-center">
-    {% for bloc in listebloc %}
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <!-- Affichage des blocs selon le type -->
-      <div>
-        {# H2 #}
-        {% if bloc.type == "h2" %}
-        <h2 class="titre-article-chapitre">{{ bloc.texte | raw  |nl2br }}</h2>
-
-        {# H3 #}
-        {% elseif bloc.type == "h3" %}
-        <h3 class="section-article">{{ bloc.texte | raw  |nl2br }}</h3>
+    <div class="mt-5 d-flex flex-column justify-content-center align-items-center">
+      {% for bloc in listebloc %}
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- Affichage des blocs selon le type -->
+        <div>
+          {# H2 #}
+          {% if bloc.type == "h2" %}
+          <h2 class="titre-article-chapitre">{{ bloc.texte | raw  |nl2br }}</h2>
 
 
-        {# H4 #}
-        {% elseif bloc.type == "h4" %}
-        <h4 class="titre-caroussel">{{ bloc.texte | raw  |nl2br }}</h4>
+          {# H3 #}
+          {% elseif bloc.type == "h3" %}
+          <h3 class="section-article">{{ bloc.texte | raw  |nl2br }}</h3>
+          <div class="btn-group">
+
+            {# H4 #}
+            {% elseif bloc.type == "h4" %}
+            <h4 class="titre-caroussel">{{ bloc.texte | raw  |nl2br }}</h4>
 
 
-        {# H5 #}
-        {% elseif bloc.type == "h5" %}
-        <h5 class="intertitre">{{ bloc.texte | raw  |nl2br }}</h5>
+            {# H5 #}
+            {% elseif bloc.type == "h5" %}
+            <h5 class="intertitre">{{ bloc.texte | raw  |nl2br }}</h5>
 
-
-        {# PARAGAPHE #}
-        {% elseif bloc.type == "p" %}
-        <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
+            {# PARAGAPHE #}
+            {% elseif bloc.type == "p" %}
+            <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
 
 
         {# IMAGE #} {% elseif bloc.type == "image" %}
@@ -86,28 +86,27 @@
 
 
 
-        {# CITATION #} {% elseif bloc.type == "citation" %}
-        <div class="container">
-          <div class="mx-auto" style="max-width: 960px">
-            <figure class="text-center">
-              <div class="d-flex justify-content-center">
-                <div class="align-baseline">
-                  <img src="images/Exergue.svg" alt="{{ bloc.alt }}" style="width: 40px" />
-                </div>
-                <blockquote class="blockquote my-3">
-                  <p class="exergue_l">{{ bloc.texte_citation | raw  |nl2br }}</p>
-                </blockquote>
-                <div class="align_baseline">
-                  <img src="images/Exergue.svg" alt="{{ bloc.alt }}" style="width: 40px" />
-                </div>
+            {# CITATION #} {% elseif bloc.type == "citation" %}
+            <div class="container">
+              <div class="mx-auto" style="max-width: 960px">
+                <figure class="text-center">
+                  <div class="d-flex justify-content-center">
+                    <div class="align-baseline">
+                      <img src="images/Exergue.svg" alt="{{ bloc.alt }}" style="width: 40px" />
+                    </div>
+                    <blockquote class="blockquote my-3">
+                      <p class="exergue_l">{{ bloc.texte_citation | raw  |nl2br }}</p>
+                    </blockquote>
+                    <div class="align_baseline">
+                      <img src="images/Exergue.svg" alt="{{ bloc.alt }}" style="width: 40px" />
+                    </div>
+                  </div>
+                  <figcaption class="blockquote-footer">
+                    <cite title="Source Title">{{ bloc.texte_legende| raw}}</cite>
+                  </figcaption>
+                </figure>
               </div>
-              <figcaption class="blockquote-footer">
-                <p>{{ bloc.texte_legende | raw  |nl2br }}</p>
-                <cite title="Source Title">{{ bloc.texte_credit| raw}}</cite>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
+            </div>
 
 
         {# CITATION TEXTE #} {% elseif bloc.type == "citation_texte" %}
@@ -127,14 +126,16 @@
             </figure>
           </div>
 
-          <!-- Bloc de Texte à droite -->
-          <div class="col-md-7 p-4 bg-light">
-            <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
-            <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
-            <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
-          </div>
-        </div>
+              <!-- Bloc de Texte à droite -->
+              <div class="col-md-7 p-4 bg-light">
+                <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
+                <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
+                <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
+              </div>
+            </div>
 
+
+          </div>
 
         {# TEXTE CITATION #} {% elseif bloc.type == "texte_citation" %}
         <div class="row">
@@ -179,66 +180,66 @@
               </div>
             </div>
 
-            <!-- Bloc de Citation à droite -->
-            <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
-              <figure class="m-0">
-                <blockquote class="blockquote text-center">
-                  <p class="fw-bold fs-3 text-danger mb-0">"{{ bloc.texte_citation }}"</p>
-                </blockquote>
-              </figure>
-            </div>
+              <!-- Bloc de Citation à droite -->
+              <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
+                <figure class="m-0">
+                  <blockquote class="blockquote text-center">
+                    <p class="fw-bold fs-3 text-danger mb-0">"{{ bloc.texte_citation }}"</p>
+                  </blockquote>
+                </figure>
+              </div>
 
+            </div>
           </div>
-        </div>
 
-        {# citation_image #}
-        {% elseif bloc.type == "citation_image "%}
 
-        <div class="container my-5">
-          <div class="row g-4">
+          {# citation_image #}
+          {% elseif bloc.type == "citation_image"%}
 
-            <!-- Bloc de Citation à droite -->
-            <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
-              <figure class="m-0">
-                <blockquote class="blockquote text-center">
-                  <p class="fw-bold fs-3 text-danger mb-0">"{{ bloc.texte_citation }}"</p>
-                </blockquote>
-              </figure>
+          <div class="container my-5">
+            <div class="row g-4">
+
+              <!-- Bloc de Citation à droite -->
+              <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
+                <figure class="m-0">
+                  <blockquote class="blockquote text-center">
+                    <p class="fw-bold fs-3 text-danger mb-0">"{{ bloc.texte_citation }}"</p>
+                  </blockquote>
+                </figure>
+              </div>
+              <div class="col-md-7 p-4 bg-danger">
+                <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" alt="{{ bloc.alt }}" class="img-fluid mb-3">
+                <p class="text-white text-start legende">{{ bloc.texte_legende }}</p>
+              </div>
+
             </div>
-            <div class="col-md-7 p-4 bg-danger">
-              <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" alt="{{ bloc.alt }}" class="img-fluid mb-3">
-              <p class="text-white text-start">{{ bloc.texte_legende }}</p>
-            </div>
-
           </div>
-        </div>
 
 
-        {# audio #}
-        {% elseif bloc.type == "audio" %}
-        <div class="container  mb-5 {{ bloc.type }}">
-          <div class="podcast">
-            <h3 class="podcast__episode_title">{{ bloc.texte_titre | raw  |nl2br }}</h3>
-            <h5 class="podcast__title">
-              {{ bloc.texte_legende }}
-              <i>Episode 152</i>
-            </h5>
+          {# audio #}
+          {% elseif bloc.type == "audio" %}
+          <div class="container  mb-5 {{ bloc.type }}">
+            <div class="podcast">
+              <h3 class="podcast__episode_title">{{ bloc.texte_titre | raw  |nl2br }}</h3>
+              <h5 class="podcast__title legende">
+                {{ bloc.texte_legende }}
+              </h5>
 
-            <div class="podcast__meta">
-              <audio controls width="100px">
-                <source src="upload/{{ bloc.audio }}" />
-                Your browser does not support the audio tag.
-              </audio>
+              <div class="podcast__meta">
+                <audio controls width="100px">
+                  <source src="upload/{{ bloc.audio }}" />
+                  Your browser does not support the audio tag.
+                </audio>
 
-              <div class="artwork mb-2">
-                <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" style="width: 200px; height: 200px" />
+                <div class="artwork mb-2">
+                  <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" />
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
 
-        
+
 
         {# TEXTE IMAGE #}
         {% elseif bloc.type == "texte_image" %}
@@ -303,268 +304,242 @@
 
 
 
-      {# IMAGE TITRE TEXTE #}
-      {% elseif bloc.type == "image_titre_texte" %}
-      <div class="container-fluid ">
-        <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
+          {# IMAGE TITRE TEXTE #}
+          {% elseif bloc.type == "image_titre_texte" %}
+          <div class="container-fluid ">
+            <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
 
-        <div class="{% if bloc.image is not empty %}row{% endif %} mb-5">
-          <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
-          <div class="{% if bloc.image is not empty %}col-6{% endif %} d-flex justify-content-center pe-2">
-            <div class="bg-danger p-3">
-              <figure class="figure mb-5">
-                <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
-                  alt="{{ bloc.alt }}" />
-                <figcaption class="figure-caption mt-2 mb-0 d-flex">
-                  <p>{{ bloc.texte_legende }}</p>
-                  <p>{% if bloc.image is not empty %}©{% endif %}{{ bloc.texte_credit }}</p>
-                </figcaption>
-              </figure>
+            <div class="{% if bloc.image is not empty %}row{% endif %} mb-5">
+              <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
+              <div class="{% if bloc.image is not empty %}col-6{% endif %} d-flex justify-content-center pe-2">
+                <div class="bg-danger p-3">
+                  <figure class="figure mb-5">
+                    <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
+                      alt="{{ bloc.alt }}" />
+                    <figcaption class="figure-caption mt-2 mb-0 d-flex">
+                      <p><span class="legende">{{ bloc.texte_legende }}</span>
+                        {% if bloc.image is not empty %} © {% endif %}{{ bloc.texte_credit }}</p>
+                    </figcaption>
+                  </figure>
+                </div>
+              </div>
+              <!-- Texte à gauche (col-8 pour le texte) -->
+              <div class="{% if bloc.image is not empty %}col-6{% endif %} align-baseline">
+                <h3>{{ bloc.texte_titre | raw  |nl2br }}</h3>
+                <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
+              </div>
             </div>
           </div>
-          <!-- Texte à gauche (col-8 pour le texte) -->
-          <div class="{% if bloc.image is not empty %}col-6{% endif %} align-baseline">
+
+
+          {# TITRE TEXTE IMAGE #}
+          {% elseif bloc.type == "titre_texte_image" %}
+          <div class="container-fluid {{ bloc.style }} d-flex flex-wrap">
+            <div class="row w-100">
+              <!-- Texte à gauche -->
+              <div class="col-12 {% if bloc.image is not empty %}col-md-6{% endif %} align-baseline">
+                <h3 class="ps-4">{{ bloc.texte_titre | raw | nl2br }}</h3>
+                <p class="{{ bloc.style }}">{{ bloc.texte | raw | nl2br }}</p>
+              </div>
+
+              <!-- Image à droite -->
+              {% if bloc.image is not empty %}
+              <div class="col-12 col-md-6 d-flex justify-content-center pe-2">
+                <figure class="figure mb-5">
+                  <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
+                    alt="{{ bloc.alt }}" />
+                  <figcaption class="figure-caption mt-2 mb-0 d-flex justify-content-between">
+                    {% if bloc.image is not empty %} © {% endif %}{{ bloc.texte_credit }}
+                  </figcaption>
+                </figure>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <!-- Boutons d'administration -->
+
+
+
+
+
+          {# VIDEO #} {% elseif bloc.type == "video" %}
+          <div class="mx-auto" style="max-width: 960px; position: relative;">
+            <!-- L'image par-dessus la vidéo -->
+            <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" class="video-overlay"
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; z-index: 10;"
+              onclick="showVideo(this)" />
+
+            <!-- La vidéo -->
+            <video controls width="640" class="mb-5 {{ bloc.type }}">
+              <source src="upload/{{ bloc.video }}" type="video/mp4" />
+              Votre navigateur ne supporte pas la vidéo.
+            </video>
+          </div>
+
+
+
+          {# carousel #}
+          {% elseif bloc.type == "carousel" %}
+          <div class="  mb-5 {{ bloc.type }}">
             <h3>{{ bloc.texte_titre | raw  |nl2br }}</h3>
-            <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
-          </div>
-        </div>
-      </div>
+            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
 
-
-      {# TITRE TEXTE IMAGE #}
-      {% elseif bloc.type == "titre_texte_image" %}
-      <div class="container-fluid {{ bloc.style }} d-flex">
-        <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
-        <div class="{% if bloc.image is not empty %}row{% endif %} ">
-          <!-- Texte à gauche (col-8 pour le texte) -->
-          <div class="{% if bloc.image is not empty %}col-6 {% endif %} align-baseline">
-            <h3 class="ps-4">{{ bloc.texte_titre | raw  |nl2br }}</h3>
-            <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
-          </div>
-        </div>
-        <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
-        <div class="{% if bloc.image is not empty %}col-6 {% endif %} d-flex justify-content-center pe-2">
-          <div class=" p-3">
-            <figure class="figure mb-5">
-              <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
-                alt="{{ bloc.alt }}" />
-              <figcaption class="figure-caption mt-2 mb-0 d-flex">
-                <p>{{ bloc.texte_legende }}</p>
-                <p>{% if bloc.image is not empty %}©{% endif %}{{ bloc.texte_credit }}</p>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </div>
-
-
-
-        {# VIDEO #} {% elseif bloc.type == "video" %}
-        <div class="mx-auto" style="max-width: 960px; position: relative;">
-          <!-- L'image par-dessus la vidéo -->
-          <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" class="video-overlay"
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; z-index: 10;"
-            onclick="showVideo(this)" />
-
-          <!-- La vidéo -->
-          <video controls width="640" class="mb-5 {{ bloc.type }}">
-            <source src="upload/{{ bloc.video }}" type="video/mp4" />
-            Votre navigateur ne supporte pas la vidéo.
-          </video>
-        </div>
-
-
-
-        {# carousel #}
-        {% elseif bloc.type == "carousel" %}
-        <div class="  mb-5 {{ bloc.type }}">
-          <h3>{{ bloc.texte_titre | raw  |nl2br }}</h3>
-          <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-
-              {# slide 1 #}
-              <div class="carousel-item active" data-bs-interval="10000">
-                <div class="d-flex row">
-                  <div class="col p-3">
-                    <p>{{ bloc.texte | raw  |nl2br }}</p>
-                  </div>
-                  <div class="col d-flex align-items-center">
-                    <img src="upload/{{ bloc.image }}" class="d-block w-100" alt="{{ bloc.alt }}" />
+                {# slide 1 #}
+                <div class="carousel-item active" data-bs-interval="10000">
+                  <div class="d-flex row">
+                    <div class="col p-3">
+                      <p>{{ bloc.texte | raw  |nl2br }}</p>
+                    </div>
+                    <div class="col d-flex align-items-center">
+                      <img src="upload/{{ bloc.image }}" class="d-block w-100" alt="{{ bloc.alt }}" />
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {# slide 2 #}
-              {% if bloc.image_1 is not empty %}
-              <div class="carousel-item" data-bs-interval="2000">
-                <div class="d-flex row">
-                  <div class="col">
-                    <p>{{ bloc.texte_1 }}</p>
-                  </div>
-                  <div class="col d-flex align-items-center">
-                    <img src="upload/{{ bloc.image_1 }}" class="d-block w-100" alt="{{ bloc.alt }}">
-                  </div>
-                </div>
-              </div>
-              {% endif %}
-
-              {# slide 3 #}
-              {% if bloc.image_2 is not empty %}
-              <div class="carousel-item">
-                <div class="d-flex row">
-                  <div class="col">
-                    <p>{{ bloc.texte_2 }}</p>
-                  </div>
-                  <div class="col d-flex align-items-center">
-                    <img src="upload/{{ bloc.image_2 }}" class="d-block w-100" alt="{{ bloc.alt }}">
+                {# slide 2 #}
+                {% if bloc.image_1 is not empty %}
+                <div class="carousel-item" data-bs-interval="2000">
+                  <div class="d-flex row">
+                    <div class="col">
+                      <p>{{ bloc.texte_1 }}</p>
+                    </div>
+                    <div class="col d-flex align-items-center">
+                      <img src="upload/{{ bloc.image_1 }}" class="d-block w-100" alt="{{ bloc.alt }}">
+                    </div>
                   </div>
                 </div>
-              </div>
-              {% endif %}
+                {% endif %}
 
-              {# slide 4 #}
-              {% if bloc.image_3 is not empty %}
-              <div class="carousel-item">
-                <div class="d-flex row">
-                  <div class="col">
-                    <p>{{ bloc.texte_3 }}</p>
-                  </div>
-                  <div class="col d-flex align-items-center">
-                    <img src="upload/{{ bloc.image_3 }}" class="d-block w-100" alt="{{ bloc.alt }}">
-                  </div>
-                </div>
-              </div>
-              {% endif %}
-
-              {# slide 5 #}
-              {% if bloc.image_4 is not empty %}
-              <div class="carousel-item">
-                <div class="d-flex row">
-                  <div class="col">
-                    <p>{{ bloc.texte_4 }}</p>
-                  </div>
-                  <div class="col d-flex align-items-center">
-                    <img src="upload/{{ bloc.image_4 }}" class="d-block w-100" alt="{{ bloc.alt }}">
+                {# slide 3 #}
+                {% if bloc.image_2 is not empty %}
+                <div class="carousel-item">
+                  <div class="d-flex row">
+                    <div class="col">
+                      <p>{{ bloc.texte_2 }}</p>
+                    </div>
+                    <div class="col d-flex align-items-center">
+                      <img src="upload/{{ bloc.image_2 }}" class="d-block w-100" alt="{{ bloc.alt }}">
+                    </div>
                   </div>
                 </div>
+                {% endif %}
+
+                {# slide 4 #}
+                {% if bloc.image_3 is not empty %}
+                <div class="carousel-item">
+                  <div class="d-flex row">
+                    <div class="col">
+                      <p>{{ bloc.texte_3 }}</p>
+                    </div>
+                    <div class="col d-flex align-items-center">
+                      <img src="upload/{{ bloc.image_3 }}" class="d-block w-100" alt="{{ bloc.alt }}">
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+
+                {# slide 5 #}
+                {% if bloc.image_4 is not empty %}
+                <div class="carousel-item">
+                  <div class="d-flex row">
+                    <div class="col">
+                      <p>{{ bloc.texte_4 }}</p>
+                    </div>
+                    <div class="col d-flex align-items-center">
+                      <img src="upload/{{ bloc.image_4 }}" class="d-block w-100" alt="{{ bloc.alt }}">
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+
               </div>
-              {% endif %}
-
-
-          <p>©{{ bloc.texte_credit }}</p>
-        </div>
-
-
-
-
-
-        {# audio_texte #}
-        {% elseif bloc.type == "audio_texte" %}
-        <div class="container  mb-5 {{ bloc.type }} d-flex">
-          <div class="podcast d-flex flex-column align-items-center rounded-3" style="width: 410px; height: 475px;">
-            <div class="audio-image mb-2 p-3 ">
-              <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" style="width: 200px; height: 200px;">
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
             </div>
+            <p class="credit"> © {{ bloc.texte_credit }}</p>
+          </div>
 
-            <div class="podcast_meta">
-              <div class="ps-5">
-                <h3 class="podcast__episode_title">{{ bloc.texte_titre | raw  |nl2br }}</h3>
-                <h5 class="podcast__title text-light">
-                  {{ bloc.texte_legende }}
-                  <i>©{{ bloc.texte_credit }}</i>
-                </h5>
+
+
+
+          {# audio_texte #}
+          {% elseif bloc.type == "audio_texte" %}
+          <div class="container  mb-5 {{ bloc.type }} d-flex">
+            <div class="podcast d-flex flex-column align-items-center rounded-3" style="width: 410px; height: 475px;">
+              <div class="audio-image mb-2 p-3 ">
+                <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" style="width: 200px; height: 200px; ">
               </div>
+
               <div class="podcast_meta">
-                <audio controls width="100px">
-                  <source src="upload/{{ bloc.audio }}">
-                  Your browser does not support the audio tag.
-                </audio>
+                <div class="ps-5">
+                  <h3 class="podcast__episode_title">{{ bloc.texte_titre | raw  |nl2br }}</h3>
+                  <h5 class="podcast__title text-light credit">
+                    © {{ bloc.texte_credit }}
+                  </h5>
+                </div>
+                <div class="podcast_meta">
+                  <audio controls width="100px">
+                    <source src="upload/{{ bloc.audio }}">
+                    Your browser does not support the audio tag.
+                  </audio>
+                </div>
               </div>
             </div>
+            <p class="p-3 {{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
+            <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
+            <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
           </div>
-          <p class="p-3 {{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
-          <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
-          <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
-        </div>
 
 
 
-        {# texte_audio #}
-        {% elseif bloc.type == "texte_audio" %}
-        <div class="container  mb-5 {{ bloc.type }} d-flex justify-content-center">
-          <p class="p-3 {{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
-          <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
-          <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
-          <div class="podcast d-flex flex-column align-items-center rounded-3" style="width: 410px; height: 475px;">
-            <div class="audio-image mb-2 p-3 ">
-              <img src="upload/upload/{{ bloc.image }}" alt="{{ bloc.alt }}" style="width: 200px; height: 200px;">
-            </div>
-
-            <div class="podcast_meta">
-              <div class="ps-5">
-                <h3 class="podcast__episode_title">{{ bloc.texte_titre | raw  |nl2br }}</h3>
-                <h5 class="podcast__title text-light">
-                  {{ bloc.texte_legende }}
-                  <i>©{{ bloc.texte_credit }}</i>
-                </h5>
+          {# texte_audio #}
+          {% elseif bloc.type == "texte_audio" %}
+          <div class="container  mb-5 {{ bloc.type }} d-flex justify-content-center">
+            <p class="p-3 {{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
+            <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
+            <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
+            <div class="podcast d-flex flex-column align-items-center rounded-3" style="width: 410px; height: 475px;">
+              <div class="audio-image mb-2 p-3 ">
+                <img src="upload/upload/{{ bloc.image }}" alt="{{ bloc.alt }}" style="width: 200px; height: 200px;">
               </div>
+
               <div class="podcast_meta">
-                <audio controls width="100px">
-                  <source src="{{ bloc.audio }}">
-                  Your browser does not support the audio tag.
-                </audio>
+                <div class="ps-5">
+                  <h3 class="podcast__episode_title">{{ bloc.texte_titre | raw  |nl2br }}</h3>
+                  <h5 class="podcast__title text-light credit">
+                    © {{ bloc.texte_credit }}
+                  </h5>
+                </div>
+                <div class="podcast_meta">
+                  <audio controls width="100px">
+                    <source src="{{ bloc.audio }}">
+                    Your browser does not support the audio tag.
+                  </audio>
+                </div>
               </div>
             </div>
           </div>
+
+
+
+          {% else %}
+
+          <p>Type de bloc inconnu : {{ bloc.type }}</p>
+          {% endif %}
         </div>
 
-
-
-
-
-
-        {% else %}
-
-        <p>Type de bloc inconnu : {{ bloc.type }}</p>
-        {% endif %}
+        <!-- Boutons Modifier et Supprimer -->
       </div>
-
-      <!-- Boutons Modifier et Supprimer -->
+      {% endfor %}
     </div>
-    {% endfor %}
-  </div>
-  </section>
-
-
-
-<section class="continue-reading">
-  <h2 class="continue-title">Continuer votre lecture</h2>
-  
-  <div class="article-cards">
-    {% for article in listearticleBychapitre %}
-    <a class="card" href="index.php?page=article&action=read&id={{ article.id_article }}">
-      <img src="upload/{{ article.image }}" alt="{{ article.alt }}" class="card-image" />
-      <p class="card-title">{{ article.titre }}</p>
-    </a>
-    {% endfor %}
-  </div>
-  <div class="return-home">
-    <a href="index.php" class="home-button">Retour à l'Accueil</a>
-  </div>
-</section>
-
-  <footer class="footer">
-    <div class="footer-links">
-      <a href="#">Plan du site</a>
-      <span>|</span>
-      <a href="#">© crédits</a>
-      <span>|</span>
-      <a href="#">Mentions légales</a>
     </div>
-  </footer>
-
-
-
-</body>
-
-{% endblock %}
+    {% endblock %}

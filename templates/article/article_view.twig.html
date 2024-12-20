@@ -7,28 +7,39 @@
 {% endblock %}
 
 {% block page %}
-
 <body>
-  <section class="intituler">
+  <section class="intituler" data-chapitre="{{ article.id_chapitre }}">
     <!-- Contenu principal -->
 
     <div class="article-content">
       <!-- Carré gauche -->
       <div class="left-box">
         <div class="nav">
-          <img class="menu" src="images/Menu.png" alt="Menu nav">
+          <img class="menu" src="images/Menu.png" alt="Menu nav" />
           <div class="d-flex gap-3 nav-article">
-            <i class="icon fa-solid fa-chevron-left"></i>
-            <p>1/4</p>
-            <i class="number icon fa-solid fa-chevron-right"></i>
+              {# Lien vers l'article précédent #}
+              {% if previousArticle %}
+                  <a href="index.php?page=article&action=read&id={{ previousArticle.id_article }}">
+                      <i class="icon fa-solid fa-chevron-left"></i>
+                  </a>
+              {% endif %}
+
+              <p>{{ currentArticleIndex + 1 }}/{{ totalArticlesInChapter }}</p>
+
+              {# Lien vers l'article suivant #}
+              {% if nextArticle %}
+                  <a href="index.php?page=article&action=read&id={{ nextArticle.id_article }}">
+                      <i class="icon fa-solid fa-chevron-right"></i>
+                  </a>
+              {% endif %}
           </div>
+
+
         </div>
         <div class="titre-credit">
           <h3 class="titre-article">{{article.titre}}</h3>
           <hr />
-          <div class="credits">
-            {{article.chapo | raw |nl2br }}
-          </div>
+          <div class="credits">{{article.chapo | raw |nl2br }}</div>
           <hr />
         </div>
       </div>
@@ -43,21 +54,20 @@
     </div>
   </section>
 
-  <section id="article" class="container">
-    <div class="mt-5 d-flex flex-column justify-content-center align-items-center">
-      {% for bloc in listebloc %}
-      <div class=" align-items-center mb-3">
-        <!-- Affichage des blocs selon le type -->
-        <div>
-          {# H2 #}
-          {% if bloc.type == "h2" %}
-          <h2 class="titre-article-chapitre">{{ bloc.texte | raw  |nl2br }}</h2>
+  <section id="article" class="wrapper">
+<div class="mt-5 d-flex flex-column justify-content-center align-items-center">
+    {% for bloc in listebloc %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <!-- Affichage des blocs selon le type -->
+      <div>
+        {# H2 #}
+        {% if bloc.type == "h2" %}
+        <h2 class="titre-article-chapitre">{{ bloc.texte | raw  |nl2br }}</h2>
 
+        {# H3 #}
+        {% elseif bloc.type == "h3" %}
+        <h3 class="section-article">{{ bloc.texte | raw  |nl2br }}</h3>
 
-          {# H3 #}
-          {% elseif bloc.type == "h3" %}
-          <h3 class="section-article">{{ bloc.texte | raw  |nl2br }}</h3>
-          <div class="btn-group">
 
             {# H4 #}
             {% elseif bloc.type == "h4" %}
@@ -135,19 +145,21 @@
           <div class="row">
             <!-- Bloc de Texte à gauche -->
             <div class="col-md-7 p-4 bg-light">
-              <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
-              <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
-              <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
+              <p class="{{ bloc.style }}">{{ bloc.texte | raw |nl2br }}</p>
+              <h5 class="intertitre">{{ bloc.texte_2 | raw |nl2br }}</h5>
+              <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw |nl2br }}</p>
             </div>
             <!-- Bloc de Citation à droite -->
             <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
               <figure class="m-0">
                 <blockquote class="blockquote text-center">
-                  <p class="fw-bold fs-3 mb-0" style="color: #8a151b;">
-                    "{{ bloc.texte_citation | raw  |nl2br }}"
+                  <p class="fw-bold fs-3 mb-0" style="color: #8a151b">
+                    "{{ bloc.texte_citation | raw |nl2br }}"
                   </p>
                   <figcaption class="blockquote-footer">
-                    <cite class="credit_p" title="Source Title">{{ bloc.texte_legende | raw  |nl2br }}</cite>
+                    <cite class="credit_p" title="Source Title"
+                      >{{ bloc.texte_legende | raw |nl2br }}</cite
+                    >
                   </figcaption>
                 </blockquote>
               </figure>
@@ -156,13 +168,14 @@
 
 
 
+          {# image_citation #} {% elseif bloc.type == "image_citation"%}
 
             {# image_citation #}
             {% elseif bloc.type == "image_citation"%}
 
-            <div class="container my-5">
-              <div class="row g-4">
-                <!-- Ajout de l'espacement entre les blocs -->
+          <div class="container my-5">
+            <div class="row g-4">
+              <!-- Ajout de l'espacement entre les blocs -->
 
                 <!-- Bloc de l'image et de la légende à gauche -->
                 <div class="col-md-7 p-4" style="background-color: #8a151b;">
@@ -186,6 +199,20 @@
               </div>
             </div>
 
+              <!-- Bloc de Citation à droite -->
+              <div
+                class="col-md-5 d-flex align-items-center bg-light p-4 border"
+              >
+                <figure class="m-0">
+                  <blockquote class="blockquote text-center">
+                    <p class="fw-bold fs-3 text-danger mb-0">
+                      "{{ bloc.texte_citation }}"
+                    </p>
+                  </blockquote>
+                </figure>
+              </div>
+            </div>
+          </div>
 
             {# citation_image #}
             {% elseif bloc.type == "citation_image"%}
@@ -262,28 +289,33 @@
               </div>
             </div>
 
-
-
-
-            {# Image Texte #}
-            {% elseif bloc.type == "image_texte" %}
-            <div class="container-fluid">
-              <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
-              <div class="row mb-5">
-
-                <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
-                <div class="col-6 d-flex justify-content-center pe-2">
-                  <div class="p-3" style="background-color: #8a151b ;">
-                    <figure class="figure mb-5">
-                      <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-100"
-                        alt="{{ bloc.alt }}" />
-                      <figcaption class="figure-caption mt-2 mb-0 d-flex" style="color: whitesmoke">
-                        <p> <span class="legende">{{bloc.texte_legende | raw}}</span><span class="credit_p"> ©
-                            {{bloc.texte_credit | raw}}</span></p>
-                      </figcaption>
-                    </figure>
-                  </div>
+          {# Image Texte #} {% elseif bloc.type == "image_texte" %}
+          <div class="container-fluid">
+            <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
+            <div class="row mb-5">
+              <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
+              <div class="col-6 d-flex justify-content-center pe-2">
+                <div class="p-3" style="background-color: #8a151b">
+                  <figure class="figure mb-5">
+                    <img
+                      src="upload/{{ bloc.image }}{{ bloc.infographie }}"
+                      class="img-fluid rounded w-100"
+                      alt="{{ bloc.alt }}"
+                    />
+                    <figcaption
+                      class="figure-caption mt-2 mb-0 d-flex"
+                      style="color: whitesmoke"
+                    >
+                      <p>
+                        <span class="legende">{{bloc.texte_legende | raw}}</span
+                        ><span class="credit_p">
+                          © {{bloc.texte_credit | raw}}</span
+                        >
+                      </p>
+                    </figcaption>
+                  </figure>
                 </div>
+              </div>
 
                 <!-- Texte à gauche (col-8 pour le texte) -->
                 <div class="col-6 align-baseline">
@@ -298,10 +330,10 @@
 
 
 
-            {# IMAGE TITRE TEXTE #}
-            {% elseif bloc.type == "image_titre_texte" %}
-            <div class="container-fluid ">
-              <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
+          {# IMAGE TITRE TEXTE #}
+          {% elseif bloc.type == "image_titre_texte" %}
+          <div class="container-fluid ">
+            <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
 
               <div class="{% if bloc.image is not empty %}row{% endif %} mb-5">
                 <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
@@ -552,4 +584,31 @@
         {% endfor %}
       </div>
     </div>
+  </section>
+
+    <section class="continue-reading w-100">
+      <h2 class="continue-title">Continuer votre lecture</h2>
+
+      <div class="article-cards">
+        {% for article in listearticleBychapitre %}
+        <a class="card" href="index.php?page=article&action=read&id={{ article.id_article }}">
+          <img src="upload/{{ article.image }}" alt="{{ article.alt }}" class="card-image" />
+          <p class="card-title">{{ article.titre }}</p>
+        </a>
+        {% endfor %}
+      </div>
+      <div class="return-home">
+        <a href="index.php" class="home-button">Retour à l'Accueil</a>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="#">Plan du site</a>
+        <span>|</span>
+        <a href="#">© crédits</a>
+        <span>|</span>
+        <a href="#">Mentions légales</a>
+      </div>
+  </footer>
+    
     {% endblock %}

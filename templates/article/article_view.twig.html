@@ -11,7 +11,57 @@
       <!-- Carré gauche -->
       <div class="left-box">
         <div class="nav">
-          <img class="menu" src="images/Menu.png" alt="Menu nav" />
+          <img id="logo" src="./images/Logo_blanc.svg" alt="Logo" class="logo" />
+
+          <!-- Full-screen menu overlay -->
+          <div id="menu-overlay">
+            <span class="close-btn" id="close-menu">&times;</span>
+            <div class="overlay-content">
+              <div class="menu-left">
+                <div class="menu-title">Les mobilisations du monde rural</div>
+
+                <div class="menu-section">
+                  <h3>Faire collectif, se mobiliser</h3>
+                  <ul>
+                    <li><a href="article1.html">Comment construire un collectif solide ?</a></li>
+                    <li><a href="article2.html">Les étapes essentielles pour une mobilisation</a></li>
+                    <li><a href="article3.html">Mobiliser pour une cause</a></li>
+                    <li><a href="article4.html">Faire face aux défis</a></li>
+                  </ul>
+                </div>
+
+                <div class="menu-section">
+                  <h3>Le pouvoir de la mobilisation citoyenne</h3>
+                  <ul>
+                    <li><a href="article5.html">Réunir les énergies pour un changement</a></li>
+                    <li><a href="article6.html">S'organiser pour des actions concrètes</a></li>
+                    <li><a href="article7.html">Structurer une initiative collective</a></li>
+                    <li><a href="article8.html">Créer des liens pour transformer</a></li>
+                  </ul>
+                </div>
+
+                <div class="menu-section">
+                  <h3>Unir nos forces pour réussir</h3>
+                  <ul>
+                    <li><a href="article9.html">Construire un projet commun</a></li>
+                    <li><a href="article10.html">Les avantages d'un collectif</a></li>
+                    <li><a href="article11.html">Pourquoi la solidarité renforce l'impact</a></li>
+                    <li><a href="article12.html">Mobilisation citoyenne : bonnes pratiques</a></li>
+                  </ul>
+                </div>
+                <div class="home-button-container">
+                  <a href="#" class="home-button">Accueil</a>
+                  <a href="#" class="home-button">Crédits</a>
+                </div>
+              </div>
+
+
+              <div class="menu-right">
+                <img src="./images/france-clair.png" alt="Carte de France" />
+              </div>
+            </div>
+          </div>
+
           <div class="d-flex gap-3 nav-article">
               {# Lien vers l'article précédent #}
               {% if previousArticle %}
@@ -592,5 +642,29 @@
         <a href="#">Mentions légales</a>
       </div>
   </footer>
+
+
+  <script>
+    const logo = document.getElementById('logo');
+    const menuOverlay = document.getElementById('menu-overlay');
+    const closeMenu = document.getElementById('close-menu');
+  
+    // Show menu
+    logo.addEventListener('click', () => {
+      menuOverlay.classList.add('show');
+    });
+  
+    // Hide menu
+    closeMenu.addEventListener('click', () => {
+      menuOverlay.classList.remove('show');
+    });
+  
+    // Close menu when clicking outside
+    menuOverlay.addEventListener('click', (e) => {
+      if (e.target === menuOverlay) {
+        menuOverlay.classList.remove('show');
+      }
+    });
+  </script>
     
     {% endblock %}

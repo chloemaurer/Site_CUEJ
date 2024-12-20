@@ -37,7 +37,10 @@ class Bloc
         $this->id = intval($this->id);
         $this->ordre = intval($this->ordre);
         $this->id_article = intval($this->id_article);
+    }
 
+    function insecables()
+    {
         if ($this->texte) $this->texte = insecables($this->texte);
         if ($this->texte_1) $this->texte_1 = insecables($this->texte_1);
         if ($this->texte_2) $this->texte_2 = insecables($this->texte_2);
@@ -404,9 +407,7 @@ class Bloc
             case 'update':
                 $bloc = new Bloc();
                 $bloc->chargePOST();
-             
                 $bloc->update();
-             
                 header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
                 exit();
                 break;

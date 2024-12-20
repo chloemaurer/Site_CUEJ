@@ -193,10 +193,12 @@ class Article
             default:
                 $modele = 'article/article_view.twig.html';
                 $article = Article::readOne($id_article);
-                // $article->insecables();
+                $article->insecables();
+                $listebloc = Bloc::readAllByArticle($id_article);
+                foreach ($listebloc as $bloc) $bloc->insecables();
                 $data = [
                     'article' => $article,
-                    'listebloc' => Bloc::readAllByArticle($id_article),
+                    'listebloc' => $listebloc,
                 ];
                 break;
         }

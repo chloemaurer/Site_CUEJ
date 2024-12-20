@@ -1,7 +1,6 @@
-{% extends "base-admin.twig.html" %} {% block content %}
-{% block css %}
+{% extends "base-admin.twig.html" %} {% block content %} {% block css %}
 
-<link rel="stylesheet" href=".CSS/bloc.css">
+<link rel="stylesheet" href=".CSS/bloc.css" />
 {% endblock %}
 <div class="container py-5">
   <!-- Titre de la section -->
@@ -13,7 +12,11 @@
       <!-- Affichage de l'image de l'article -->
       {% if article.image %}
       <div class="col-md-4">
-        <img src="upload/{{ article.image }}" alt="Image de l'article" class="img-fluid rounded-start" />
+        <img
+          src="upload/{{ article.image }}"
+          alt="Image de l'article"
+          class="img-fluid rounded-start"
+        />
       </div>
       {% endif %}
 
@@ -29,13 +32,22 @@
           </p>
         </div>
         <div class="card-footer d-flex justify-content-between">
-          <a href="admin.php?page=article&action=modifier&id={{ article.id_article }}" class="btn btn-warning">
+          <a
+            href="admin.php?page=article&action=modifier&id={{ article.id_article }}"
+            class="btn btn-warning"
+          >
             <i class="fa-solid fa-pencil"></i> Modifier
           </a>
-          <a href="admin.php?page=article&action=delete&id={{ article.id_article }}" class="btn btn-danger">
+          <a
+            href="admin.php?page=article&action=delete&id={{ article.id_article }}"
+            class="btn btn-danger"
+          >
             <i class="fa-solid fa-trash"></i> Supprimer
           </a>
-          <a href="admin.php?page=chapitre&action=read&id={{article.id_chapitre}}" class="btn btn-secondary">
+          <a
+            href="admin.php?page=chapitre&action=read&id={{article.id_chapitre}}"
+            class="btn btn-secondary"
+          >
             <i class="fa-solid fa-arrow-left"></i> Retour à la liste
           </a>
         </div>
@@ -54,7 +66,10 @@
             Cliquez sur le bouton ci-dessous pour choisir un type de bloc dans
             ce chapitre
           </p>
-          <a href="admin.php?page=choix&id_article={{ article.id_article }}" class="btn btn-success">
+          <a
+            href="admin.php?page=choix&id_article={{ article.id_article }}"
+            class="btn btn-success"
+          >
             <i class="fa-solid fa-plus"></i> Choisir un bloc
           </a>
         </div>
@@ -68,116 +83,166 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
       <!-- Affichage des blocs selon le type -->
       <div>
-        {# H2 #}
-        {% if bloc.type == "h2" %}
-        <h2 class="titre-article-chapitre">{{ bloc.texte | raw  |nl2br }}</h2>
+        {# H2 #} {% if bloc.type == "h2" %}
+        <h2 class="titre-article-chapitre">{{ bloc.texte | raw |nl2br }}</h2>
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=h2&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=h2&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Echanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Echanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
 
-        {# H3 #}
-        {% elseif bloc.type == "h3" %}
-        <h3 class="section-article">{{ bloc.texte | raw  |nl2br }}</h3>
+        {# H3 #} {% elseif bloc.type == "h3" %}
+        <h3 class="section-article">{{ bloc.texte | raw |nl2br }}</h3>
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=h3&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=h3&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Echanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Echanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
 
-        {# H4 #}
-        {% elseif bloc.type == "h4" %}
-        <h4 class="titre-caroussel">{{ bloc.texte | raw  |nl2br }}</h4>
+        {# H4 #} {% elseif bloc.type == "h4" %}
+        <h4 class="titre-caroussel">{{ bloc.texte | raw |nl2br }}</h4>
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=h4&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=h4&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Echanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Echanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
 
-        {# H5 #}
-        {% elseif bloc.type == "h5" %}
-        <h5 class="intertitre">{{ bloc.texte | raw  |nl2br }}</h5>
+        {# H5 #} {% elseif bloc.type == "h5" %}
+        <h5 class="intertitre">{{ bloc.texte | raw |nl2br }}</h5>
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=h5&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=h5&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Echanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Echanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
 
-        {# PARAGAPHE #}
-        {% elseif bloc.type == "p" %}
-        <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
+        {# PARAGAPHE #} {% elseif bloc.type == "p" %}
+        <p class="{{ bloc.style }}">{{ bloc.texte | raw |nl2br }}</p>
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=p&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=p&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Echanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Echanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
 
-        {# IMAGE #} 
-        {% elseif bloc.type == "image" %}
-        <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" class="img-fluid mb-3" />
+        {# IMAGE #} {% elseif bloc.type == "image" %}
+        <img
+          src="upload/{{ bloc.image }}"
+          alt="{{ bloc.alt }}"
+          class="img-fluid mb-3"
+        />
         <div class="d-flex">
-          <p class="legende">
-            {{bloc.texte_legende | raw}}
-          </p>
-          <p class="credit">  © {{bloc.texte_credit | raw}}</p>
+          <p class="legende">{{bloc.texte_legende | raw}}</p>
+          <p class="credit">© {{bloc.texte_credit | raw}}</p>
         </div>
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=image&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=image&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Echanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Echanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
@@ -188,13 +253,23 @@
             <figure class="text-center">
               <div class="d-flex justify-content-center">
                 <div class="align-baseline">
-                  <img src="images/Exergue.svg" alt="{{ bloc.alt }}" style="width: 40px" />
+                  <img
+                    src="images/Exergue.svg"
+                    alt="{{ bloc.alt }}"
+                    style="width: 40px"
+                  />
                 </div>
                 <blockquote class="blockquote my-3">
-                  <p class="exergue_l">{{ bloc.texte_citation | raw  |nl2br }}</p>
+                  <p class="exergue_l">
+                    {{ bloc.texte_citation | raw |nl2br }}
+                  </p>
                 </blockquote>
                 <div class="align_baseline">
-                  <img src="images/Exergue.svg" alt="{{ bloc.alt }}" style="width: 40px" />
+                  <img
+                    src="images/Exergue.svg"
+                    alt="{{ bloc.alt }}"
+                    style="width: 40px"
+                  />
                 </div>
               </div>
               <figcaption class="blockquote-footer">
@@ -204,16 +279,25 @@
           </div>
         </div>
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=citation&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=citation&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Echanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Echanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
@@ -225,7 +309,7 @@
             <figure class="m-0">
               <blockquote class="blockquote text-center">
                 <p class="fw-bold fs-3 text-danger mb-0">
-                  "{{ bloc.texte_citation | raw  |nl2br }}"
+                  "{{ bloc.texte_citation | raw |nl2br }}"
                 </p>
                 <figcaption class="blockquote-footer legende">
                   <cite title="Source Title">{{ bloc.texte_legende }}</cite>
@@ -236,41 +320,49 @@
 
           <!-- Bloc de Texte à droite -->
           <div class="col-md-7 p-4 bg-light">
-            <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
-            <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
-            <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
+            <p class="{{ bloc.style }}">{{ bloc.texte | raw |nl2br }}</p>
+            <h5 class="intertitre">{{ bloc.texte_2 | raw |nl2br }}</h5>
+            <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw |nl2br }}</p>
           </div>
         </div>
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=citation_texte&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=citation_texte&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Echanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Echanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
-
         </div>
 
         {# TEXTE CITATION #} {% elseif bloc.type == "texte_citation" %}
         <div class="row">
           <!-- Bloc de Texte à gauche -->
           <div class="col-md-7 p-4 bg-light">
-            <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
-            <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
-            <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
+            <p class="{{ bloc.style }}">{{ bloc.texte | raw |nl2br }}</p>
+            <h5 class="intertitre">{{ bloc.texte_2 | raw |nl2br }}</h5>
+            <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw |nl2br }}</p>
           </div>
           <!-- Bloc de Citation à droite -->
           <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
             <figure class="m-0">
               <blockquote class="blockquote text-center">
                 <p class="fw-bold fs-3 text-danger mb-0">
-                  "{{ bloc.texte_citation | raw  |nl2br }}"
+                  "{{ bloc.texte_citation | raw |nl2br }}"
                 </p>
                 <figcaption class="blockquote-footer legende">
                   <cite title="Source Title">{{ bloc.texte_legende }}</cite>
@@ -280,101 +372,137 @@
           </div>
         </div>
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=texte_citation&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=texte_citation&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Echanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Echanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
 
-        {# image_citation #}
-        {% elseif bloc.type == "image_citation" %}
+        {# image_citation #} {% elseif bloc.type == "image_citation" %}
         <div class="container my-5">
           <div class="row g-4">
-
             <!-- Bloc de l'image et de la légende à gauche -->
             <div class="col-md-7 p-4 bg-danger">
-              <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" alt="{{ bloc.alt }}" class="img-fluid mb-3">
-              <p class="text-white text-start legende">{{ bloc.texte_legende }}</p>
+              <img
+                src="upload/{{ bloc.image }}{{ bloc.infographie }}"
+                alt="{{ bloc.alt }}"
+                class="img-fluid mb-3"
+              />
+              <p class="text-white text-start legende">
+                {{ bloc.texte_legende }}
+              </p>
             </div>
 
             <!-- Bloc de Citation à droite -->
             <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
               <figure class="m-0">
                 <blockquote class="blockquote text-center">
-                  <p class="fw-bold fs-3 text-danger mb-0">"{{ bloc.texte_citation }}"</p>
+                  <p class="fw-bold fs-3 text-danger mb-0">
+                    "{{ bloc.texte_citation }}"
+                  </p>
                 </blockquote>
               </figure>
             </div>
-
           </div>
         </div>
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=image_citation&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=image_citation&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Echanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Echanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
 
-        {# citation_image #}
-        {% elseif bloc.type == "citation_image"%}
+        {# citation_image #} {% elseif bloc.type == "citation_image"%}
 
         <div class="container my-5">
           <div class="row g-4">
-
             <!-- Bloc de Citation à droite -->
             <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
               <figure class="m-0">
                 <blockquote class="blockquote text-center">
-                  <p class="fw-bold fs-3 text-danger mb-0">"{{ bloc.texte_citation }}"</p>
+                  <p class="fw-bold fs-3 text-danger mb-0">
+                    "{{ bloc.texte_citation }}"
+                  </p>
                 </blockquote>
               </figure>
             </div>
             <div class="col-md-7 p-4 bg-danger">
-              <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" alt="{{ bloc.alt }}" class="img-fluid mb-3">
-              <p class="text-white text-start legende">{{ bloc.texte_legende }}</p>
+              <img
+                src="upload/{{ bloc.image }}{{ bloc.infographie }}"
+                alt="{{ bloc.alt }}"
+                class="img-fluid mb-3"
+              />
+              <p class="text-white text-start legende">
+                {{ bloc.texte_legende }}
+              </p>
             </div>
-
           </div>
         </div>
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=citation_image&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=citation_image&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Echanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Echanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
 
-        {# audio #}
-        {% elseif bloc.type == "audio" %}
+        {# audio #} {% elseif bloc.type == "audio" %}
         <div class="container  mb-5 {{ bloc.type }}">
           <div class="podcast">
-            <h3 class="podcast__episode_title">{{ bloc.texte_titre | raw  |nl2br }}</h3>
-            <h5 class="podcast__title legende">
-              {{ bloc.texte_legende }}
-            </h5>
+            <h3 class="podcast__episode_title">
+              {{ bloc.texte_titre | raw |nl2br }}
+            </h3>
+            <h5 class="podcast__title legende">{{ bloc.texte_legende }}</h5>
 
             <div class="podcast__meta">
               <audio controls width="100px">
@@ -389,41 +517,53 @@
           </div>
         </div>
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=audio&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=audio&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Echanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Echanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
 
-
-
-        {# TEXTE IMAGE #}
-        {% elseif bloc.type == "texte_image" %}
-        <div class="container-fluid ">
+        {# TEXTE IMAGE #} {% elseif bloc.type == "texte_image" %}
+        <div class="container-fluid">
           <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
           <div class="row mb-5">
             <!-- Texte à gauche (col-8 pour le texte) -->
             <div class="col-6 align-baseline">
-              <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
-              <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
-              <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
+              <p class="{{ bloc.style }}">{{ bloc.texte | raw |nl2br }}</p>
+              <h5 class="intertitre">{{ bloc.texte_2 | raw |nl2br }}</h5>
+              <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw |nl2br }}</p>
             </div>
             <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
             <div class="col-6 d-flex justify-content-center pe-2">
               <div class="bg-danger p-3">
                 <figure class="figure mb-5">
-                  <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
-                    alt="{{ bloc.alt }}" />
+                  <img
+                    src="upload/{{ bloc.image }}{{ bloc.infographie }}"
+                    class="img-fluid rounded w-75"
+                    alt="{{ bloc.alt }}"
+                  />
                   <figcaption class="figure-caption mt-2 mb-0">
-                    <p><span class="legende">{{ bloc.texte_legende }}</span>  © {{ bloc.texte_credit }}</p>
+                    <p>
+                      <span class="legende">{{ bloc.texte_legende }}</span> © {{
+                      bloc.texte_credit }}
+                    </p>
                   </figcaption>
                 </figure>
               </div>
@@ -431,109 +571,149 @@
           </div>
         </div>
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=texte_image&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=texte_image&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Echanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Echanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
-        {# image_texte #}
-        {% elseif bloc.type == "image_texte" %}
-        <div class="container-fluid ">
+        {# image_texte #} {% elseif bloc.type == "image_texte" %}
+        <div class="container-fluid">
           <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
           <div class="row mb-5">
             <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
             <div class="col-6 d-flex justify-content-center pe-2">
               <div class="bg-danger p-3">
                 <figure class="figure mb-5">
-                  <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
-                    alt="{{ bloc.alt }}" />
-                  <figcaption class="figure-caption mt-2 mb-0 ">
-                    <p><span class="legende">{{ bloc.texte_legende }}</span>  © {{ bloc.texte_credit }}</p>
+                  <img
+                    src="upload/{{ bloc.image }}{{ bloc.infographie }}"
+                    class="img-fluid rounded w-75"
+                    alt="{{ bloc.alt }}"
+                  />
+                  <figcaption class="figure-caption mt-2 mb-0">
+                    <p>
+                      <span class="legende">{{ bloc.texte_legende }}</span> © {{
+                      bloc.texte_credit }}
+                    </p>
                   </figcaption>
                 </figure>
               </div>
             </div>
             <!-- Texte à gauche (col-8 pour le texte) -->
             <div class="col-6 align-baseline">
-              <h3>{{ bloc.texte_titre | raw  |nl2br }}</h3>
-              <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
-              <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
-              <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
+              <h3>{{ bloc.texte_titre | raw |nl2br }}</h3>
+              <p class="{{ bloc.style }}">{{ bloc.texte | raw |nl2br }}</p>
+              <h5 class="intertitre">{{ bloc.texte_2 | raw |nl2br }}</h5>
+              <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw |nl2br }}</p>
             </div>
           </div>
         </div>
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=image_texte&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=image_texte&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Echanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Echanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
 
-
-
-        {# IMAGE TITRE TEXTE #}
-        {% elseif bloc.type == "image_titre_texte" %}
-        <div class="container-fluid ">
+        {# IMAGE TITRE TEXTE #} {% elseif bloc.type == "image_titre_texte" %}
+        <div class="container-fluid">
           <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
 
           <div class="{% if bloc.image is not empty %}row{% endif %} mb-5">
             <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
-            <div class="{% if bloc.image is not empty %}col-6{% endif %} d-flex justify-content-center pe-2">
+            <div
+              class="{% if bloc.image is not empty %}col-6{% endif %} d-flex justify-content-center pe-2"
+            >
               <div class="bg-danger p-3">
                 <figure class="figure mb-5">
-                  <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
-                    alt="{{ bloc.alt }}" />
+                  <img
+                    src="upload/{{ bloc.image }}{{ bloc.infographie }}"
+                    class="img-fluid rounded w-75"
+                    alt="{{ bloc.alt }}"
+                  />
                   <figcaption class="figure-caption mt-2 mb-0 d-flex">
-                    <p><span class="legende">{{ bloc.texte_legende }}</span>
-                      {% if bloc.image is not empty %}  © {% endif %}{{ bloc.texte_credit }}</p>
+                    <p>
+                      <span class="legende">{{ bloc.texte_legende }}</span> {%
+                      if bloc.image is not empty %} © {% endif %}{{
+                      bloc.texte_credit }}
+                    </p>
                   </figcaption>
                 </figure>
               </div>
             </div>
             <!-- Texte à gauche (col-8 pour le texte) -->
-            <div class="{% if bloc.image is not empty %}col-6{% endif %} align-baseline">
-              <h3>{{ bloc.texte_titre | raw  |nl2br }}</h3>
-              <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
+            <div
+              class="{% if bloc.image is not empty %}col-6{% endif %} align-baseline"
+            >
+              <h3>{{ bloc.texte_titre | raw |nl2br }}</h3>
+              <p class="{{ bloc.style }}">{{ bloc.texte | raw |nl2br }}</p>
             </div>
           </div>
         </div>
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=image_titre_texte&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=image_titre_texte&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Echanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Echanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
 
-        {# TITRE TEXTE IMAGE #}
-        {% elseif bloc.type == "titre_texte_image" %}
+        {# TITRE TEXTE IMAGE #} {% elseif bloc.type == "titre_texte_image" %}
         <div class="container-fluid {{ bloc.style }} d-flex flex-wrap">
           <div class="row w-100">
             <!-- Texte à gauche -->
-            <div class="col-12 {% if bloc.image is not empty %}col-md-6{% endif %} align-baseline">
+            <div
+              class="col-12 {% if bloc.image is not empty %}col-md-6{% endif %} align-baseline"
+            >
               <h3 class="ps-4">{{ bloc.texte_titre | raw | nl2br }}</h3>
               <p class="{{ bloc.style }}">{{ bloc.texte | raw | nl2br }}</p>
             </div>
@@ -542,10 +722,16 @@
             {% if bloc.image is not empty %}
             <div class="col-12 col-md-6 d-flex justify-content-center pe-2">
               <figure class="figure mb-5">
-                <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
-                  alt="{{ bloc.alt }}" />
-                <figcaption class="figure-caption mt-2 mb-0 d-flex justify-content-between">
-                  {% if bloc.image is not empty %}  © {% endif %}{{ bloc.texte_credit }}
+                <img
+                  src="upload/{{ bloc.image }}{{ bloc.infographie }}"
+                  class="img-fluid rounded w-75"
+                  alt="{{ bloc.alt }}"
+                />
+                <figcaption
+                  class="figure-caption mt-2 mb-0 d-flex justify-content-between"
+                >
+                  {% if bloc.image is not empty %} © {% endif %}{{
+                  bloc.texte_credit }}
                 </figcaption>
               </figure>
             </div>
@@ -554,29 +740,47 @@
         </div>
         <!-- Boutons d'administration -->
         <div class="btn-group mt-3">
-          <a href="admin.php?page=bloc&action=modifier&id=titre_texte_image&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=titre_texte_image&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-secondary btn-sm"
-            title="Échanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-secondary btn-sm"
+            title="Échanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
 
-
-
-
         {# VIDEO #} {% elseif bloc.type == "video" %}
-        <div class="mx-auto" style="max-width: 960px; position: relative;">
+        <div class="mx-auto" style="max-width: 960px; position: relative">
           <!-- L'image par-dessus la vidéo -->
-          <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" class="video-overlay"
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; z-index: 10;"
-            onclick="showVideo(this)" />
+          <img
+            src="upload/{{ bloc.image }}"
+            alt="{{ bloc.alt }}"
+            class="video-overlay"
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              cursor: pointer;
+              z-index: 10;
+            "
+            onclick="showVideo(this)"
+          />
 
           <!-- La vidéo -->
           <video controls width="640" class="mb-5 {{ bloc.type }}">
@@ -586,187 +790,251 @@
         </div>
 
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=video&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=video&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Echanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Echanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
 
-        {# carousel #}
-        {% elseif bloc.type == "carousel" %}
+        {# carousel #} {% elseif bloc.type == "carousel" %}
         <div class="  mb-5 {{ bloc.type }}">
-          <h3>{{ bloc.texte_titre | raw  |nl2br }}</h3>
-          <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+          <h3>{{ bloc.texte_titre | raw |nl2br }}</h3>
+          <div
+            id="carouselExampleInterval"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
             <div class="carousel-inner">
-
               {# slide 1 #}
               <div class="carousel-item active" data-bs-interval="10000">
                 <div class="d-flex row">
                   <div class="col p-3">
-                    <p>{{ bloc.texte | raw  |nl2br }}</p>
+                    <p>{{ bloc.texte | raw |nl2br }}</p>
                   </div>
                   <div class="col d-flex align-items-center">
-                    <img src="upload/{{ bloc.image }}" class="d-block w-100" alt="{{ bloc.alt }}" />
+                    <img
+                      src="upload/{{ bloc.image }}"
+                      class="d-block w-100"
+                      alt="{{ bloc.alt }}"
+                    />
                   </div>
                 </div>
               </div>
 
-              {# slide 2 #}
-              {% if bloc.image_1 is not empty %}
+              {# slide 2 #} {% if bloc.image_1 is not empty %}
               <div class="carousel-item" data-bs-interval="2000">
                 <div class="d-flex row">
                   <div class="col">
                     <p>{{ bloc.texte_1 }}</p>
                   </div>
                   <div class="col d-flex align-items-center">
-                    <img src="upload/{{ bloc.image_1 }}" class="d-block w-100" alt="{{ bloc.alt }}">
+                    <img
+                      src="upload/{{ bloc.image_1 }}"
+                      class="d-block w-100"
+                      alt="{{ bloc.alt }}"
+                    />
                   </div>
                 </div>
               </div>
-              {% endif %}
-
-              {# slide 3 #}
-              {% if bloc.image_2 is not empty %}
+              {% endif %} {# slide 3 #} {% if bloc.image_2 is not empty %}
               <div class="carousel-item">
                 <div class="d-flex row">
                   <div class="col">
                     <p>{{ bloc.texte_2 }}</p>
                   </div>
                   <div class="col d-flex align-items-center">
-                    <img src="upload/{{ bloc.image_2 }}" class="d-block w-100" alt="{{ bloc.alt }}">
+                    <img
+                      src="upload/{{ bloc.image_2 }}"
+                      class="d-block w-100"
+                      alt="{{ bloc.alt }}"
+                    />
                   </div>
                 </div>
               </div>
-              {% endif %}
-
-              {# slide 4 #}
-              {% if bloc.image_3 is not empty %}
+              {% endif %} {# slide 4 #} {% if bloc.image_3 is not empty %}
               <div class="carousel-item">
                 <div class="d-flex row">
                   <div class="col">
                     <p>{{ bloc.texte_3 }}</p>
                   </div>
                   <div class="col d-flex align-items-center">
-                    <img src="upload/{{ bloc.image_3 }}" class="d-block w-100" alt="{{ bloc.alt }}">
+                    <img
+                      src="upload/{{ bloc.image_3 }}"
+                      class="d-block w-100"
+                      alt="{{ bloc.alt }}"
+                    />
                   </div>
                 </div>
               </div>
-              {% endif %}
-
-              {# slide 5 #}
-              {% if bloc.image_4 is not empty %}
+              {% endif %} {# slide 5 #} {% if bloc.image_4 is not empty %}
               <div class="carousel-item">
                 <div class="d-flex row">
                   <div class="col">
                     <p>{{ bloc.texte_4 }}</p>
                   </div>
                   <div class="col d-flex align-items-center">
-                    <img src="upload/{{ bloc.image_4 }}" class="d-block w-100" alt="{{ bloc.alt }}">
+                    <img
+                      src="upload/{{ bloc.image_4 }}"
+                      class="d-block w-100"
+                      alt="{{ bloc.alt }}"
+                    />
                   </div>
                 </div>
               </div>
               {% endif %}
-
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-              data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleInterval"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
               <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-              data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleInterval"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-          <p class="credit">   © {{ bloc.texte_credit }}</p>
+          <p class="credit">© {{ bloc.texte_credit }}</p>
         </div>
 
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=carousel&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=carousel&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
         </div>
 
-
-
-        {# audio_texte #}
-        {% elseif bloc.type == "audio_texte" %}
+        {# audio_texte #} {% elseif bloc.type == "audio_texte" %}
         <div class="container  mb-5 {{ bloc.type }} d-flex">
-          <div class="podcast d-flex flex-column align-items-center rounded-3" style="width: 410px; height: 475px;">
-            <div class="audio-image mb-2 p-3 ">
-              <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" style="width: 200px; height: 200px; ">
+          <div
+            class="podcast d-flex flex-column align-items-center rounded-3"
+            style="width: 410px; height: 475px"
+          >
+            <div class="audio-image mb-2 p-3">
+              <img
+                src="upload/{{ bloc.image }}"
+                alt="{{ bloc.alt }}"
+                style="width: 200px; height: 200px"
+              />
             </div>
 
             <div class="podcast_meta">
               <div class="ps-5">
-                <h3 class="podcast__episode_title">{{ bloc.texte_titre | raw  |nl2br }}</h3>
+                <h3 class="podcast__episode_title">
+                  {{ bloc.texte_titre | raw |nl2br }}
+                </h3>
                 <h5 class="podcast__title text-light credit">
-                     © {{ bloc.texte_credit }}
+                  © {{ bloc.texte_credit }}
                 </h5>
               </div>
               <div class="podcast_meta">
                 <audio controls width="100px">
-                  <source src="upload/{{ bloc.audio }}">
+                  <source src="upload/{{ bloc.audio }}" />
                   Your browser does not support the audio tag.
                 </audio>
               </div>
             </div>
           </div>
-          <p class="p-3 {{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
-          <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
-          <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
+          <p class="p-3 {{ bloc.style }}">{{ bloc.texte | raw |nl2br }}</p>
+          <h5 class="intertitre">{{ bloc.texte_2 | raw |nl2br }}</h5>
+          <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw |nl2br }}</p>
         </div>
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=audio_texte&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=audio_texte&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Echanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Echanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
 
-
-        {# texte_audio #}
-        {% elseif bloc.type == "texte_audio" %}
-        <div class="container  mb-5 {{ bloc.type }} d-flex justify-content-center">
-          <p class="p-3 {{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
-          <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
-          <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
-          <div class="podcast d-flex flex-column align-items-center rounded-3" style="width: 410px; height: 475px;">
-            <div class="audio-image mb-2 p-3 ">
-              <img src="upload/upload/{{ bloc.image }}" alt="{{ bloc.alt }}" style="width: 200px; height: 200px;">
+        {# texte_audio #} {% elseif bloc.type == "texte_audio" %}
+        <div
+          class="container  mb-5 {{ bloc.type }} d-flex justify-content-center"
+        >
+          <p class="p-3 {{ bloc.style }}">{{ bloc.texte | raw |nl2br }}</p>
+          <h5 class="intertitre">{{ bloc.texte_2 | raw |nl2br }}</h5>
+          <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw |nl2br }}</p>
+          <div
+            class="podcast d-flex flex-column align-items-center rounded-3"
+            style="width: 410px; height: 475px"
+          >
+            <div class="audio-image mb-2 p-3">
+              <img
+                src="upload/upload/{{ bloc.image }}"
+                alt="{{ bloc.alt }}"
+                style="width: 200px; height: 200px"
+              />
             </div>
 
             <div class="podcast_meta">
               <div class="ps-5">
-                <h3 class="podcast__episode_title">{{ bloc.texte_titre | raw  |nl2br }}</h3>
+                <h3 class="podcast__episode_title">
+                  {{ bloc.texte_titre | raw |nl2br }}
+                </h3>
                 <h5 class="podcast__title text-light credit">
-                    © {{ bloc.texte_credit }}
+                  © {{ bloc.texte_credit }}
                 </h5>
               </div>
               <div class="podcast_meta">
                 <audio controls width="100px">
-                  <source src="{{ bloc.audio }}">
+                  <source src="{{ bloc.audio }}" />
                   Your browser does not support the audio tag.
                 </audio>
               </div>
@@ -775,16 +1043,25 @@
         </div>
 
         <div class="btn-group">
-          <a href="admin.php?page=bloc&action=modifier&id=texte_audio&id_bloc={{ bloc.id }}"
-            class="btn btn-outline-warning btn-sm" title="Modifier">
+          <a
+            href="admin.php?page=bloc&action=modifier&id=texte_audio&id_bloc={{ bloc.id }}"
+            class="btn btn-outline-warning btn-sm"
+            title="Modifier"
+          >
             <i class="fa-solid fa-pencil"></i>
           </a>
-          <a href="admin.php?page=bloc&action=delete&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Supprimer">
+          <a
+            href="admin.php?page=bloc&action=delete&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Supprimer"
+          >
             <i class="fa-solid fa-trash"></i>
           </a>
-          <a href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}" class="btn btn-outline-danger btn-sm"
-            title="Echanger">
+          <a
+            href="admin.php?page=bloc&action=exchange&id={{ bloc.id }}"
+            class="btn btn-outline-danger btn-sm"
+            title="Echanger"
+          >
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>

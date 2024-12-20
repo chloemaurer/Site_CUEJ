@@ -1,72 +1,63 @@
-{% extends "base-admin.twig.html" %} {% block content %}
+{% extends "base-admin.twig.html" %} 
+{% block content %}
 
-<h1 class="text-center p-5">Créaton d'un bloc</h1>
-<form action="admin.php?page=bloc&action=create" method="post" enctype="multipart/form-data"
-class="row g-4 needs-validation" novalidate>
-    {# type #}
-    <div class="col-md-4">
-        <input type="hidden" name="type" placeholder="Quel type ?" value="{{id}}"
-            class="form-control w-75 ms-5 border-black" />
-    </div>
+<h1 class="text-center py-4">Création d'un bloc</h1>
+<div class="container">
+    <form action="admin.php?page=bloc&action=create" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+        <!-- Type -->
+        <input type="hidden" name="type" value="{{ id }}" />
 
-
-    {# image #}
-    <div class="col-md-4">
-        <label for="image">Image :<span>(max 1,5 Mo)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="1572864" title="la taille max du fichier" autocomplete="off" />
-        <input type="file" name="image" accept="images/*" class="form-control w-75 ms-5 border-black" />
-    </div>
-
-
-    {# texte #}
-    <div class="col-md-4">
-        <label for="texte_legende" class="form-label mt-4">Légende de l'image :</label>
-        <input type="text" name="texte_legende" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
-    </div>
-
-    {# texte #}
-    <div class="col-md-4">
-        <label for="texte_citation" class="form-label mt-4">Citation:</label>
-        <input type="text" name="texte_citation" placeholder="Saisir le texte" class="form-control w-75 ms-5 border-black" />
-    </div>
-
-
-    {# infographie #}
-    <div class="col-md-4">
-        <label for="video">video :<span>(max 5 Mo)</span></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="5000000" title="la taille max du fichier"
-            autocomplete="off" />
-        <input type="file" id="video" name="audio" class="video" title="votre video" autocomplete="off" />
-    </div>
-
-
-    {# alt #}
-    <div class="col-md-4">
-        <label for="alt" class="form-label mt-4">Description de l'image : </label>
-        <input type="text" name="alt" placeholder="description de l'image (si type = image)"
-            class="form-control w-75 ms-5 border-black" />
-    </div>
-
-    {# Article : Pré-sélection automatique #}
+        <!-- Image -->
         <div class="col-md-6">
-            <label for="id_article" class="form-label fw-bold text-secondary">Article :</label>
-            <select name="id_article" id="id_article" class="form-select border-secondary" required>
-                <option value="" disabled>Choisir un article</option>
+            <label for="image" class="form-label">Image :</label>
+            <input type="hidden" name="MAX_FILE_SIZE" value="1572864" />
+            <input type="file" name="image" id="image" accept="image/*" class="form-control" />
+            <small class="text-muted">Taille maximale : 1,5 Mo</small>
+        </div>
+
+        <!-- Texte légende -->
+        <div class="col-md-6">
+            <label for="texte_legende" class="form-label">Légende de l'image :</label>
+            <input type="text" name="texte_legende" id="texte_legende" placeholder="Saisir le texte" class="form-control" />
+        </div>
+
+        <!-- Texte citation -->
+        <div class="col-md-6">
+            <label for="texte_citation" class="form-label">Citation :</label>
+            <input type="text" name="texte_citation" id="texte_citation" placeholder="Saisir la citation" class="form-control" />
+        </div>
+
+
+        <!-- Alt (Description de l'image) -->
+        <div class="col-md-6">
+            <label for="alt" class="form-label">Description de l'image :</label>
+            <input type="text" name="alt" id="alt" placeholder="Description de l'image (si type = image)" class="form-control" />
+        </div>
+
+        <!-- Article : Pré-sélection automatique -->
+        <div class="col-md-6">
+            <label for="id_article" class="form-label">Article :</label>
+            <select name="id_article" id="id_article" class="form-select" required>
+                <option value="" disabled selected>Choisir un article</option>
                 {% for article in listearticle %}
-                    <option value="{{ article.id_article }}" 
-                        {% if article.id_article == id_article_selectionne %}selected{% endif %}>
+                    <option value="{{ article.id_article }}" {% if article.id_article == id_article_selectionne %}selected{% endif %}>
                         {{ article.titre }}
                     </option>
                 {% endfor %}
             </select>
         </div>
 
-    {# bouton #}
-    <div class="d-flex justify-content-center">
-        <button type="submit" class="submit border-light-subtle p-2 rounded-2 bg-secondary-subtle w-25 mt-2">
-            Créer
-        </button>
-    </div>
-</form>
+        <!-- Crédits -->
+        <div class="col-md-6">
+            <label for="credit" class="form-label">Crédits :</label>
+            <input type="text" name="credit" id="credit" placeholder="Saisir les crédits" class="form-control" />
+        </div>
+
+        <!-- Bouton de soumission -->
+        <div class="col-12 d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary px-4 py-2">Créer</button>
+        </div>
+    </form>
+</div>
 
 {% endblock %}

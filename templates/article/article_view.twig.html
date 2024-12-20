@@ -166,7 +166,7 @@
         {# image_citation #}
         {% elseif bloc.type == "image_citation"%}
 
-        <div class="container my-5">
+        <div>
           <div class="row g-4">
             <!-- Ajout de l'espacement entre les blocs -->
 
@@ -367,7 +367,7 @@
             onclick="showVideo(this)" />
 
           <!-- La vidéo -->
-          <video controls width="640" class="mb-5 {{ bloc.type }}">
+          <video controls width="100%" class="mb-5 {{ bloc.type }}">
             <source src="upload/{{ bloc.video }}" type="video/mp4" />
             Votre navigateur ne supporte pas la vidéo.
           </video>

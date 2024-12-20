@@ -15,7 +15,7 @@
   font-family: "Anybody", sans-serif; /* Police */
   font-weight: 900; /* Black */
   font-size: 36px; /* Taille de police */
-  color: var(--white); /* Couleur du texte : blanc */
+  color: whitesmoke; /* Couleur du texte : blanc */
   text-align: left; /* Alignement centré */
   text-transform: none; /* Pas de majuscules forcées */
   line-height: 1.2; /* Hauteur de ligne */

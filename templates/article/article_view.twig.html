@@ -521,7 +521,34 @@
     {% endfor %}
   </div>
   </section>
+
+
+
+<section class="continue-reading">
+  <h2 class="continue-title">Continuer votre lecture</h2>
   
+  <div class="article-cards">
+    {% for article in listearticleBychapitre %}
+    <a class="card" href="index.php?page=article&action=read&id={{ article.id_article }}">
+      <img src="upload/{{ article.image }}" alt="{{ article.alt }}" class="card-image" />
+      <p class="card-title">{{ article.titre }}</p>
+    </a>
+    {% endfor %}
+  </div>
+  <div class="return-home">
+    <a href="index.php" class="home-button">Retour à l'Accueil</a>
+  </div>
+</section>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="#">Plan du site</a>
+      <span>|</span>
+      <a href="#">© crédits</a>
+      <span>|</span>
+      <a href="#">Mentions légales</a>
+    </div>
+  </footer>
 
 
 

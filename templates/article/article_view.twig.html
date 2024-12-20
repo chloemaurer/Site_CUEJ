@@ -13,10 +13,24 @@
         <div class="nav">
           <img class="menu" src="images/Menu.png" alt="Menu nav" />
           <div class="d-flex gap-3 nav-article">
-            <i class="icon fa-solid fa-chevron-left"></i>
-            <p>1/4</p>
-            <i class="number icon fa-solid fa-chevron-right"></i>
+              {# Lien vers l'article précédent #}
+              {% if previousArticle %}
+                  <a href="index.php?page=article&action=read&id={{ previousArticle.id_article }}">
+                      <i class="icon fa-solid fa-chevron-left"></i>
+                  </a>
+              {% endif %}
+
+              <p>{{ currentArticleIndex + 1 }}/{{ totalArticlesInChapter }}</p>
+
+              {# Lien vers l'article suivant #}
+              {% if nextArticle %}
+                  <a href="index.php?page=article&action=read&id={{ nextArticle.id_article }}">
+                      <i class="icon fa-solid fa-chevron-right"></i>
+                  </a>
+              {% endif %}
           </div>
+
+
         </div>
         <div class="titre-credit">
           <h3 class="titre-article">{{article.titre}}</h3>

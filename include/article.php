@@ -72,6 +72,22 @@ class Article
         return intval($objet->maximum);
     }
 
+
+    public static function countAllInChapter($id_chapitre)
+    {
+        $sql = "SELECT COUNT(*) AS total 
+            FROM article 
+            WHERE id_chapitre = :id_chapitre";
+        $pdo = connexion();
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':id_chapitre', $id_chapitre, PDO::PARAM_INT);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return $result['total'];
+    }
+
+
+
     // Echange l'ordre de deux articles
     function exchangeOrder()
     {
@@ -186,21 +202,86 @@ class Article
     }
 
 
+
+    public static function getPreviousInChapter($id_article, $id_chapitre)
+    {
+        $sql = "SELECT id_article 
+                FROM article 
+                WHERE id_article < :id_article 
+                  AND id_chapitre = :id_chapitre 
+                ORDER BY id_article DESC 
+                LIMIT 1";
+        $pdo = connexion();
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':id_article', $id_article, PDO::PARAM_INT);
+        $query->bindValue(':id_chapitre', $id_chapitre, PDO::PARAM_INT);
+        $query->execute();
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // Récupérer l'article suivant dans le même chapitre
+    public static function getNextInChapter($id_article, $id_chapitre)
+    {
+        $sql = "SELECT id_article 
+                FROM article 
+                WHERE id_article > :id_article 
+                  AND id_chapitre = :id_chapitre 
+                ORDER BY id_article ASC 
+                LIMIT 1";
+        $pdo = connexion();
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':id_article', $id_article, PDO::PARAM_INT);
+        $query->bindValue(':id_chapitre', $id_chapitre, PDO::PARAM_INT);
+        $query->execute();
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+
+
     static function controleur($action, $id_article, &$modele, &$data)
     {
         switch ($action) {
-
             default:
                 $modele = 'article/article_view.twig.html';
+
+                // Lire l'article en cours
                 $article = Article::readOne($id_article);
-                $listearticleBychapitre = Article::readAllBychapitre($article->id_chapitre);
+
+                // Lire tous les articles du chapitre
+                $listearticleBychapitre = Article::readAllByChapitre($article->id_chapitre);
+
+                // Trouver l'index de l'article actuel dans la liste des articles du chapitre
+                $currentArticleIndex = array_search($id_article, array_column($listearticleBychapitre, 'id_article'));
+
+                // S'assurer que les textes sont bien formatés avec les espaces insécables
                 $article->insecables();
+
+                // Récupérer tous les blocs associés à l'article
                 $listebloc = Bloc::readAllByArticle($id_article);
-                foreach ($listebloc as $bloc) $bloc->insecables();
+                foreach ($listebloc as $bloc) {
+                    $bloc->insecables();
+                }
+
+                // Définir les articles précédent et suivant dans le chapitre
+                $previousArticle = null;
+                $nextArticle = null;
+
+                if ($currentArticleIndex > 0) {
+                    $previousArticle = $listearticleBychapitre[$currentArticleIndex - 1];
+                }
+
+                if ($currentArticleIndex < count($listearticleBychapitre) - 1) {
+                    $nextArticle = $listearticleBychapitre[$currentArticleIndex + 1];
+                }
+
+                // Définir les données à transmettre au template
                 $data = [
                     'listearticleBychapitre' => $listearticleBychapitre,
                     'article' => $article,
                     'listebloc' => $listebloc,
+                    'previousArticle' => $previousArticle,
+                    'nextArticle' => $nextArticle,
+                    'totalArticlesInChapter' => count($listearticleBychapitre), // Total d'articles
+                    'currentArticleIndex' => $currentArticleIndex // Index actuel
                 ];
                 break;
         }

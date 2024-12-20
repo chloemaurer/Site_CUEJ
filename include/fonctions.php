@@ -37,7 +37,7 @@ function chargeFILE($type)
 		if ($fileError === 0) {
 			$allowed = ['jpg', 'jpeg', 'png', 'mp3', 'mp4', 'svg'];
 			if (in_array($fileActualExt, $allowed)) {
-				if ($fileSize < 80000000) {
+				if ($fileSize < 800000000) {
 					$fileNameNew = uniqid('', true) . "." . $fileActualExt;
 					$fileDestination = 'upload/' . $fileNameNew;
 					move_uploaded_file($fileTmpName, $fileDestination);
@@ -100,6 +100,7 @@ function insecables($texte)
 
 	$texte = preg_replace('/\/\/(.*?)\/\//', '<em>\1</em>', $texte);
 	$texte = preg_replace('/\=\=(.*)\=\=/', '<strong>\1</strong>', $texte);
+	$texte = preg_replace('/\*\*(.*?)\*\*/', '<sup>\1</sup>', $texte);
 
 	// Remplace ((url|serveur.com)) par <a href="url">serveur.com</a>
 	$texte = preg_replace('/\(\(([^\s\|]*)\|(.*)\)\)/', '<a href="\1">\2</a>', $texte);

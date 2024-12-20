@@ -1,120 +1,204 @@
 {% extends 'base.twig.html' %} {% block css %}
 <link rel="stylesheet" href="./CSS/accueil.css" />
 {% endblock %} {% block page %}
+
 <body>
-  <!-- Barre latérale gauche -->
-  <div class="sidebar">
-    <div class="round-btn" id="edito-btn">Édito</div>
+    <!-- Barre latérale gauche -->
+    <div class="sidebar">
+        <div class="round-btn" id="edito-btn">Édito</div>
 
-    {% set chapter_classes = ['chapter1-container', 'chapter2-container',
-    'chapter3-container'] %} {% for chapitre in listechapitre %}
-    <div class="chapter-container {{ chapter_classes[loop.index0] }}">
-      <div class="rect-bg"></div>
-      <img
-        src="upload/{{ chapitre.image }}"
-        alt="{{ chapitre.alt }}"
-        class="circle-img"
-      />
-      <div class="chapter-title">{{ chapitre.titre }}</div>
-    </div>
-    {% endfor %}
 
-    <div class="round-btn">Crédits</div>
-  </div>
-
-  <!-- Titre principal -->
-  <div class="title">
-    Titre du <br />webdocumentaire
-
-    <a href="admin.php?page=chapitre"
-      ><i class="fa-solid fa-user" style="color: white"></i
-    ></a>
-  </div>
-
-  <!-- Section pour Chapitre 1 -->
-  <div id="chapter1" class="chapter-section">
-    <button class="close-chapter">&times;</button>
-    <div class="chapter-text">
-      <h2>{{listechapitre.0.titre}}</h2>
-      <p>{{listechapitre.0.chapo}}</p>
-    </div>
-
-    <div class="chapter-cards">
-      {% for article in listechapitre.0.articles %}
-      <a href="index.php?page=article&action=read&id={{ article.id_article }}">
-        <div class="card">
-          <img src="upload/{{ article.image }}" alt="Article 1" />
-          <p>{{ article.titre }}</p>
+        {% set chapter_classes = ['chapter1-container', 'chapter2-container',
+        'chapter3-container'] %} {% for chapitre in listechapitre %}
+        <div class="chapter-container {{ chapter_classes[loop.index0] }}" data-bg="url(upload/{{ chapitre.image }})">
+        <div class="rect-bg"></div>
+        <img
+            src="upload/{{ chapitre.image }}"
+            alt="{{ chapitre.alt }}"
+            class="circle-img"
+        />
+        <div class="chapter-title">{{ chapitre.titre }}</div>
         </div>
-      </a>
+        {% endfor %}
 
-      {% endfor %}
-    </div>
-  </div>
 
-  <!-- Section pour Chapitre 2 -->
-  <div id="chapter2" class="chapter-section">
-    <button class="close-chapter">&times;</button>
-    <div class="chapter-text">
-      <h2>{{listechapitre.1.titre}}</h2>
-      <p>{{listechapitre.1.chapo}}</p>
+
+        <div class="round-btn">Crédits</div>
     </div>
 
-    <div class="chapter-cards">
-      {% for article in listechapitre.1.articles %}
-      <a href="index.php?page=article&action=read&id={{ article.id_article }}">
-        <div class="card">
-          <img src="upload/{{ article.image }}" alt="{{ article.alt }}" />
-          <p>{{ article.titre }}</p>
+    <!-- Titre principal -->
+    <div class="title">Titre du <br />webdocumentaire
+        <a href="admin.php?page=chapitre"
+      >
+      {# <i class="fa-solid fa-user" style="color: white"></i> #}
+    </a>
+    </div>
+
+    <!-- Section pour Chapitre 1 -->
+    <div id="chapter1" class="chapter-section">
+        <button class="close-chapter">&times;</button>
+        <div class="chapter-text">
+            <h2>{{listechapitre.0.titre}}</h2>
+            <p>
+                {{listechapitre.0.chapo | raw}}
+            </p>
         </div>
-      </a>
-      {% endfor %}
-    </div>
-  </div>
+        <div class="chapter-cards">
+            {% for article in listechapitre.0.articles %}
+            <a href="index.php?page=article&action=read&id={{ article.id_article }}">
+                <div class="card">
+                <img src="upload/{{ article.image }}" alt="Article 1" />
+                <p>{{ article.titre }}</p>
+                </div>
+            </a>
 
-  <!-- Section pour Chapitre 3 -->
-  <div id="chapter3" class="chapter-section">
-    <button class="close-chapter">&times;</button>
-    <div class="chapter-text">
-      <h2>{{listechapitre.2.titre}}</h2>
-      <p>{{listechapitre.2.chapo}}</p>
-    </div>
-
-    <div class="chapter-cards">
-      {% for article in listechapitre.2.articles %}
-      <a href="index.php?page=article&action=read&id={{ article.id_article }}">
-        <div class="card">
-          <img src="upload/{{ article.image }}" alt="{{ article.alt }}" />
-          <p>{{ article.titre }}</p>
+            {% endfor %}
         </div>
-      </a>
-      {% endfor %}
+        </div>
     </div>
-  </div>
 
-  <!-- Section Édito -->
-  <div id="edito">
-    <button id="edito-close-btn">×</button>
-    <div id="edito-content">
-      <h2>ÉDITO</h2>
-      <p>
-        La France, pays d’athées ? En 2022, 42% des Français se déclarent « sans
-        religion », un chiffre qui atteint 60% chez les moins de 25 ans. Mais
-        les dieux n’ont pas dit leur dernier mot.
-      </p>
-      <p>
-        Alors que le catholicisme poursuit sa chute, des mosquées se
-        construisent, des églises évangéliques font le plein et des temples
-        bouddhistes attirent des personnes en quête spirituelle.
-      </p>
-      <p>
-        Bienvenue dans le monde des croyants, des pratiquants, des mystiques,
-        des anticléricaux, des athées et des autres.
-      </p>
-      <p><strong>Bienvenue dans le monde des humains !</strong></p>
+    <!-- Section pour Chapitre 2 -->
+    <div id="chapter2" class="chapter-section" style="background-color: #6e849ed8;">
+        <button class="close-chapter">&times;</button>
+        <div class="chapter-text">
+            <h2>{{listechapitre.1.titre}}</h2>
+            <p>{{listechapitre.1.chapo | raw}}</p>
+        </div>
+
+        <div class="chapter-cards">
+        {% for article in listechapitre.1.articles %}
+        <a href="index.php?page=article&action=read&id={{ article.id_article }}">
+            <div class="card">
+            <img src="upload/{{ article.image }}" alt="{{ article.alt }}" />
+            <p>{{ article.titre }}</p>
+            </div>
+        </a>
+        {% endfor %}
+        </div>       
     </div>
-    <img src="./images/Code.code-workspace.webp" alt="Paysage" />
-  </div>
+
+    <!-- Section pour Chapitre 3 -->
+    <div id="chapter3" class="chapter-section">
+        <button class="close-chapter">&times;</button>
+        <div class="chapter-text">
+        <h2>{{listechapitre.2.titre}}</h2>
+        <p> {{listechapitre.2.chapo | raw}}</p>
+        </div>
+
+        <div class="chapter-cards">
+        {% for article in listechapitre.2.articles %}
+            <a href="index.php?page=article&action=read&id={{ article.id_article }}" class="card">
+              
+                <img src="upload/{{ article.image }}" alt="{{ article.alt }}" />
+                <p>{{ article.titre }}</p>
+                
+            </a>
+        {% endfor %}
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Section Édito -->
+    <div id="edito">
+        <button id="edito-close-btn">×</button>
+
+        <div id="edito-content">
+            <h2>ÉDITO</h2>
+            <p>
+                La France, pays d’athées ? En 2022, 42% des Français se déclarent « sans religion »,
+                un chiffre qui atteint 60% chez les moins de 25 ans. Mais les dieux n’ont pas dit leur dernier mot.
+            </p>
+            <p>
+                Alors que le catholicisme poursuit sa chute, des mosquées se construisent, des églises évangéliques
+                font le plein et des temples bouddhistes attirent des personnes en quête spirituelle.
+            </p>
+            <p>
+                Bienvenue dans le monde des croyants, des pratiquants, des mystiques, des anticléricaux, des athées et
+                des autres.
+            </p>
+            <p><strong>Bienvenue dans le monde des humains !</strong></p>
+        </div>
+        <img src="https://plus.unsplash.com/premium_photo-1673775932461-0d0e220b99ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Paysage" />
+    </div>
+
+    <!-- JavaScript -->
+   <script>
+    document.getElementById("edito-btn").addEventListener("click", function () {
+        document.getElementById("edito").style.top = "0"; // Slide-down animation
+    });
+
+    document.getElementById("edito").addEventListener("click", function (e) {
+        if (e.target === this) {
+            this.style.top = "-100%"; // Fermer en remontant
+        }
+    });
+
+    function openChapterSection(chapterId) {
+        // Fermer toutes les sections ouvertes
+        document.querySelectorAll(".chapter-section").forEach(section => {
+            section.classList.remove("show");
+        });
+        // Afficher la section spécifique
+        document.getElementById(chapterId).classList.add("show");
+    }
+
+    // Fonction pour fermer l'édito
+    function closeEdito() {
+        document.getElementById("edito").style.top = "-100%";
+    }
+
+    // Événements pour les chapitres
+    document.querySelector(".chapter-container:nth-child(2)").onclick = () => {
+        closeEdito(); // Ferme l'édito
+        openChapterSection("chapter1");
+    };
+    document.querySelector(".chapter-container:nth-child(3)").onclick = () => {
+        closeEdito(); // Ferme l'édito
+        openChapterSection("chapter2");
+    };
+    document.querySelector(".chapter-container:nth-child(4)").onclick = () => {
+        closeEdito(); // Ferme l'édito
+        openChapterSection("chapter3");
+    };
+
+    document.getElementById("edito-close-btn").addEventListener("click", function () {
+        closeEdito(); // Fermer l'Édito
+    });
+
+    // Ajouter un événement pour chaque bouton de fermeture des chapitres
+    document.querySelectorAll(".close-chapter").forEach(button => {
+        button.addEventListener("click", function () {
+            // Trouve la section parente et la cache
+            const chapterSection = this.closest(".chapter-section");
+            chapterSection.classList.remove("show");
+        });
+    });
+
+    // Sélectionner tous les conteneurs de chapitres
+    const chapters = document.querySelectorAll(".chapter-container");
+    const body = document.body;
+
+    // Ajouter des événements pour chaque chapitre
+    chapters.forEach(chapter => {
+        // Changer l'image de fond au survol
+        chapter.addEventListener("mouseenter", () => {
+            const bgImage = chapter.getAttribute("data-bg");
+            body.style.backgroundImage = bgImage;
+        });
+
+        // Réinitialiser l'image de fond lorsqu'on quitte le cercle
+        chapter.addEventListener("mouseleave", () => {
+            body.style.backgroundImage = "url('./images/tobias-keller-73F4pKoUkM0-unsplash.jpg')";
+        });
+
+        // Fermer l'édito lorsqu'on clique sur un chapitre
+        chapter.addEventListener("click", closeEdito);
+    });
+</script>
+
 </body>
 
 {% endblock %}

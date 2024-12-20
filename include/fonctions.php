@@ -92,7 +92,7 @@ function insecables($texte)
 	$texte = preg_replace('/(\d)\s+(€|%)/u', '$1&nbsp;$2', $texte); // 100 € → 100&nbsp;€
 
 	// Espaces insécables pour les grands nombres (ex. 200 000 → 200&nbsp;000)
-	$texte = preg_replace('/(\d)(?=(\d{3})+(?!\d))/u', '$1&nbsp;', $texte);
+	$texte = preg_replace('/(\d) (\d{3})/', '$1&nbsp;$2', $texte);
 
 	// Espaces insécables entre guillemets français « ... » et les mots
 	$texte = preg_replace('/«\s/u', '«&nbsp;', $texte);

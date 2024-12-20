@@ -198,7 +198,7 @@ class Article
                 $listebloc = Bloc::readAllByArticle($id_article);
                 foreach ($listebloc as $bloc) $bloc->insecables();
                 $data = [
-                    'listearticleBychapitre'=>$listearticleBychapitre,
+                    'listearticleBychapitre' => $listearticleBychapitre,
                     'article' => $article,
                     'listebloc' => $listebloc,
                 ];

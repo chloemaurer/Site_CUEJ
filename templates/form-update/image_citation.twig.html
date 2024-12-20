@@ -1,43 +1,77 @@
-{% extends "form-update/base_form.twig.html" %}
+{% extends "form-update/base_form.twig.html" %} {% block form_update %}
 
-{% block form_update %}
+<!-- Légende -->
+<div class="col-md-6">
+  <label for="texte_legende" class="form-label fw-bold">Légende :</label>
+  <textarea
+    name="texte_legende"
+    id="texte_legende"
+    placeholder="Saisir la légende"
+    class="form-control border-secondary"
+    rows="2"
+  >
+{{bloc.texte_legende | raw}}</textarea
+  >
+</div>
 
+<!-- Citation -->
+<div class="col-md-6">
+  <label for="texte_citation" class="form-label fw-bold">Citation :</label>
+  <textarea
+    name="texte_citation"
+    id="texte_citation"
+    placeholder="Saisir la citation"
+    class="form-control border-secondary"
+    rows="3"
+  >
+{{ bloc.texte_citation | raw}}</textarea
+  >
+</div>
 
+<div class="col-md-6">
+  <label for="image" class="form-label fw-bold text-secondary"
+    >Image ou infographie:</label
+  >
+  {% if bloc.image %}
+  <div class="mb-3">
+    <img
+      src="upload/{{ bloc.image }}"
+      alt="Image actuelle"
+      class="img-thumbnail"
+      style="max-width: 150px"
+    />
+  </div>
+  <input type="hidden" name="old-image" value="{{ bloc.image }}" />
+  {% endif %}
+  <input
+    type="file"
+    name="image"
+    id="image"
+    accept="image/*"
+    class="form-control"
+  />
+  <small class="text-muted">Taille maximale : 200 Ko</small>
+</div>
 
-    <!-- Légende -->
-    <div class="col-md-6">
-        <label for="texte_legende" class="form-label fw-bold">Légende :</label>
-        <textarea name="texte_legende" id="texte_legende" placeholder="Saisir la légende"
-            class="form-control border-secondary" rows="2">{{bloc.texte_legende | raw}}</textarea>
-    </div>
+{# Crédit de l'image #}
+<div class="col-md-6">
+    <label for="texte_credit" class="form-label fw-bold text-secondary">Crédit :</label>
+    <input type="text" name="texte_credit" value="{{ bloc.texte_credit }}" placeholder="Saisir le crédit"
+        class="form-control border-secondary" />
+</div>
 
-    <!-- Citation -->
-    <div class="col-md-6">
-        <label for="texte_citation" class="form-label fw-bold">Citation :</label>
-        <textarea name="texte_citation" id="texte_citation" placeholder="Saisir la citation"
-            class="form-control border-secondary" rows="3">{{ bloc.texte_citation | raw}}</textarea>
-    </div>
-
-    <div class="col-md-6">
-        <label for="image" class="form-label fw-bold text-secondary">Image ou infographie:</label>
-        {% if bloc.image %}
-        <div class="mb-3">
-            <img src="upload/{{ bloc.image }}" alt="Image actuelle" class="img-thumbnail" style="max-width: 150px;">
-        </div>
-        <input type="hidden" name="old-image" value="{{ bloc.image }}" />
-        {% endif %}
-        <input type="file" name="image" id="image" accept="image/*" class="form-control" />
-        <small class="text-muted">Taille maximale : 200 Ko</small>
-    </div>
-
-
-    {# Alt (Description) #}
-    <div class="col-md-6">
-        <label for="alt" class="form-label fw-bold text-secondary">Description de l'image :</label>
-        <input type="text" name="alt" value="{{ bloc.alt }}" placeholder="Description de l'image"
-            class="form-control border-secondary" />
-    </div>
-
-
+{# Alt (Description) #}
+<div class="col-md-6">
+  <label for="alt" class="form-label fw-bold text-secondary"
+    >Description de l'image :</label
+  >
+  <input
+    type="text"
+    name="alt"
+    value="{{ bloc.alt }}"
+    placeholder="Description de l'image"
+    class="form-control border-secondary"
+  />
+</div>
 
 {% endblock %}

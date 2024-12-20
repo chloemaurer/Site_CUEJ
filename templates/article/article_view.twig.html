@@ -46,7 +46,7 @@
   <section id="article" class="container">
     <div class="mt-5 d-flex flex-column justify-content-center align-items-center">
       {% for bloc in listebloc %}
-      <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class=" align-items-center mb-3">
         <!-- Affichage des blocs selon le type -->
         <div>
           {# H2 #}
@@ -73,9 +73,17 @@
             <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
 
 
-            {# IMAGE #}
-            {% elseif bloc.type == "image" %}
-            <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" class="img-fluid mb-3" />
+        {# IMAGE #} {% elseif bloc.type == "image" %}
+        <img
+          src="upload/{{ bloc.image }}"
+          alt="{{ bloc.alt }}"
+          class="img-fluid mb-3"
+        />
+        <div class="d-flex">
+          <p class="legende">{{bloc.texte_legende | raw}}</p>
+          <p class="credit_p">© {{bloc.texte_credit | raw}}</p>
+        </div>
+
 
 
             {# CITATION #} {% elseif bloc.type == "citation" %}
@@ -101,21 +109,22 @@
             </div>
 
 
-            {# CITATION TEXTE #} {% elseif bloc.type == "citation_texte" %}
-            <div class="row">
-              <!-- Bloc de Citation à gauche -->
-              <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
-                <figure class="m-0">
-                  <blockquote class="blockquote text-center">
-                    <p class="fw-bold fs-3 text-danger mb-0">
-                      "{{ bloc.texte_citation | raw  |nl2br }}"
-                    </p>
-                    <figcaption class="blockquote-footer legende">
-                      <cite title="Source Title">{{ bloc.texte_legende }}</cite>
-                    </figcaption>
-                  </blockquote>
-                </figure>
-              </div>
+        {# CITATION TEXTE #} {% elseif bloc.type == "citation_texte" %}
+        <div class="row">
+          <!-- Bloc de Citation à gauche -->
+          <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
+            <figure class="m-0">
+              <blockquote class="blockquote text-center">
+                <p class="fw-bold fs-3 mb-0" style="color: #8a151b;">
+                  "{{ bloc.texte_citation | raw  |nl2br }}"
+                </p>
+                <figcaption class="blockquote-footer">
+                  <p class="legende">{{ bloc.texte_legende | raw  |nl2br }}</p>
+                  <cite class="credit_p" title="Source Title">{{ bloc.texte_credit }}</cite>
+                </figcaption>
+              </blockquote>
+            </figure>
+          </div>
 
               <!-- Bloc de Texte à droite -->
               <div class="col-md-7 p-4 bg-light">
@@ -128,40 +137,48 @@
 
           </div>
 
-          {# TEXTE CITATION #} {% elseif bloc.type == "texte_citation" %}
-          <div class="row">
-            <!-- Bloc de Texte à gauche -->
-            <div class="col-md-7 p-4 bg-light">
-              <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
-              <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
-              <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
-            </div>
-            <!-- Bloc de Citation à droite -->
-            <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
-              <figure class="m-0">
-                <blockquote class="blockquote text-center">
-                  <p class="fw-bold fs-3 text-danger mb-0">
-                    "{{ bloc.texte_citation | raw  |nl2br }}"
-                  </p>
-                  <figcaption class="blockquote-footer legende">
-                    <cite title="Source Title">{{ bloc.texte_legende }}</cite>
-                  </figcaption>
-                </blockquote>
-              </figure>
-            </div>
+        {# TEXTE CITATION #} {% elseif bloc.type == "texte_citation" %}
+        <div class="row">
+          <!-- Bloc de Texte à gauche -->
+          <div class="col-md-7 p-4 bg-light">
+            <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
+            <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
+            <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
+          </div>
+          <!-- Bloc de Citation à droite -->
+          <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
+            <figure class="m-0">
+              <blockquote class="blockquote text-center">
+                <p class="fw-bold fs-3 mb-0" style="color: #8a151b;">
+                  "{{ bloc.texte_citation | raw  |nl2br }}"
+                </p>
+                <figcaption class="blockquote-footer">
+                  <p class="legende">{{ bloc.texte_legende | raw  |nl2br }}</p>
+                  <cite class="credit_p" title="Source Title">{{ bloc.texte_credit }}</cite>
+                </figcaption>
+              </blockquote>
+            </figure>
           </div>
 
 
-          {# image_citation #}
-          {% elseif bloc.type == "image_citation" %}
-          <div class="container my-5">
-            <div class="row g-4">
+        </div>
 
-              <!-- Bloc de l'image et de la légende à gauche -->
-              <div class="col-md-7 p-4 bg-danger">
-                <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" alt="{{ bloc.alt }}" class="img-fluid mb-3">
+
+        {# image_citation #}
+        {% elseif bloc.type == "image_citation"%}
+
+        <div class="container my-5">
+          <div class="row g-4">
+            <!-- Ajout de l'espacement entre les blocs -->
+
+            <!-- Bloc de l'image et de la légende à gauche -->
+            <div class="col-md-7 p-4" style="background-color: #8a151b;">
+              <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" alt="{{ bloc.alt }}" class="img-fluid mb-3 w-100">
+              <div class="d-flex">
                 <p class="text-white text-start legende">{{ bloc.texte_legende }}</p>
+                <p class="credit_p text-white">©{{ bloc.texte_credit }}</p>
               </div>
+            </div>
 
               <!-- Bloc de Citation à droite -->
               <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
@@ -224,59 +241,66 @@
 
 
 
-          {# TEXTE IMAGE #}
-          {% elseif bloc.type == "texte_image" %}
-          <div class="container-fluid ">
-            <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
-            <div class="row mb-5">
-              <!-- Texte à gauche (col-8 pour le texte) -->
-              <div class="col-6 align-baseline">
-                <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
-                <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
-                <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
-              </div>
-              <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
-              <div class="col-6 d-flex justify-content-center pe-2">
-                <div class="bg-danger p-3">
-                  <figure class="figure mb-5">
-                    <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
-                      alt="{{ bloc.alt }}" />
-                    <figcaption class="figure-caption mt-2 mb-0">
-                      <p><span class="legende">{{ bloc.texte_legende }}</span> © {{ bloc.texte_credit }}</p>
-                    </figcaption>
-                  </figure>
-                </div>
+        {# TEXTE IMAGE #}
+        {% elseif bloc.type == "texte_image" %}
+        <div class="container-fluid">
+          <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
+          <div class="row mb-5">
+            <!-- Texte à gauche (col-8 pour le texte) -->
+            <div class="col-6 align-baseline">
+              <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
+              <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
+              <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
+            </div>
+            <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
+            <div class="col-6 d-flex justify-content-center pe-2">
+              <div class="p-3" style="background-color: #8a151b ;">
+                <figure class="figure mb-5">
+                  <img  src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-100"
+                    alt="{{ bloc.alt }}" />
+                  <figcaption class="figure-caption mt-2 mb-0 d-flex" style="color: whitesmoke">
+                    <p class="legende">{{ bloc.texte_legende }}</p>
+                    <p class="credit_p">©{{ bloc.texte_credit }}</p>
+                  </figcaption>
+                </figure>
               </div>
             </div>
           </div>
+        </div>
 
-          {# image_texte #}
-          {% elseif bloc.type == "image_texte" %}
-          <div class="container-fluid ">
-            <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
-            <div class="row mb-5">
-              <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
-              <div class="col-6 d-flex justify-content-center pe-2">
-                <div class="bg-danger p-3">
-                  <figure class="figure mb-5">
-                    <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
-                      alt="{{ bloc.alt }}" />
-                    <figcaption class="figure-caption mt-2 mb-0 ">
-                      <p><span class="legende">{{ bloc.texte_legende }}</span> © {{ bloc.texte_credit }}</p>
-                    </figcaption>
-                  </figure>
-                </div>
-              </div>
-              <!-- Texte à gauche (col-8 pour le texte) -->
-              <div class="col-6 align-baseline">
-                <h3>{{ bloc.texte_titre | raw  |nl2br }}</h3>
-                <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
-                <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
-                <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
+
+
+
+        {# Image Texte #}
+        {% elseif bloc.type == "image_texte" %}
+        <div class="container-fluid">
+          <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
+          <div class="row mb-5">
+
+            <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
+            <div class="col-6 d-flex justify-content-center pe-2">
+              <div class="p-3" style="background-color: #8a151b ;">
+                <figure class="figure mb-5">
+                  <img  src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-100"
+                    alt="{{ bloc.alt }}" />
+                  <figcaption class="figure-caption mt-2 mb-0 d-flex" style="color: whitesmoke">
+                    <p class="legende">{{ bloc.texte_legende }}</p>
+                    <p class="credit_p">©{{ bloc.texte_credit }}</p>
+                  </figcaption>
+                </figure>
               </div>
             </div>
-          </div>
 
+            <!-- Texte à gauche (col-8 pour le texte) -->
+            <div class="col-6 align-baseline">
+              <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
+              <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
+              <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
+            </div>
+          </div>
+        </div>
+
+       
 
 
 

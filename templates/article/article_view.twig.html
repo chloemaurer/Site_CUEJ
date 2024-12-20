@@ -37,7 +37,7 @@
       </div>
       <!-- Image à droite -->
       <div class="right-box">
-        <img src="upload/{{article.image}}" alt="{{article.alt}}" />
+        <img src="{{article.image}}" alt="{{article.alt}}" />
       </div>
     </div>
     <!-- Rectangle en bas -->
@@ -290,60 +290,59 @@
 
 
 
-        {# IMAGE TITRE TEXTE #}
-        {% elseif bloc.type == "image_titre_texte" %}
-        <div class="container-fluid ">
-          <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
-          <div class="row mb-5">
-            <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
-            <div class="col-6 d-flex justify-content-center pe-2">
-              <div class="bg-danger p-3">
-                <figure class="figure mb-5">
-                  <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
-                    alt="{{ bloc.alt }}" />
-                  <figcaption class="figure-caption mt-2 mb-0 d-flex">
-                    <p>{{ bloc.texte_legende }}</p>
-                    <p>©{{ bloc.texte_credit }}</p>
-                  </figcaption>
-                </figure>
-              </div>
-            </div>
-            <!-- Texte à gauche (col-8 pour le texte) -->
-            <div class="col-6 align-baseline">
-              <h3>{{ bloc.texte_titre | raw  |nl2br }}</h3>
-              <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
-            </div>
-          </div>
-        </div>
+      {# IMAGE TITRE TEXTE #}
+      {% elseif bloc.type == "image_titre_texte" %}
+      <div class="container-fluid ">
+        <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
 
-
-        {# TITRE TEXTE IMAGE #}
-        {% elseif bloc.type == "titre_texte_image" %}
-        <div class="container-fluid ">
-          <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
-          <div class="row mb-5">
-
-            <!-- Texte à gauche (col-8 pour le texte) -->
-            <div class="col-6 align-baseline">
-              <h3>{{ bloc.texte_titre | raw  |nl2br }}</h3>
-              <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
-            </div>
-          </div>
+        <div class="{% if bloc.image is not empty %}row{% endif %} mb-5">
           <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
-          <div class="col-6 d-flex justify-content-center pe-2">
+          <div class="{% if bloc.image is not empty %}col-6{% endif %} d-flex justify-content-center pe-2">
             <div class="bg-danger p-3">
               <figure class="figure mb-5">
                 <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
                   alt="{{ bloc.alt }}" />
                 <figcaption class="figure-caption mt-2 mb-0 d-flex">
                   <p>{{ bloc.texte_legende }}</p>
-                  <p>©{{ bloc.texte_credit }}</p>
+                  <p>{% if bloc.image is not empty %}©{% endif %}{{ bloc.texte_credit }}</p>
                 </figcaption>
               </figure>
             </div>
           </div>
+          <!-- Texte à gauche (col-8 pour le texte) -->
+          <div class="{% if bloc.image is not empty %}col-6{% endif %} align-baseline">
+            <h3>{{ bloc.texte_titre | raw  |nl2br }}</h3>
+            <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
+          </div>
         </div>
+      </div>
 
+
+      {# TITRE TEXTE IMAGE #}
+      {% elseif bloc.type == "titre_texte_image" %}
+      <div class="container-fluid {{ bloc.style }} d-flex">
+        <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
+        <div class="{% if bloc.image is not empty %}row{% endif %} ">
+          <!-- Texte à gauche (col-8 pour le texte) -->
+          <div class="{% if bloc.image is not empty %}col-6 {% endif %} align-baseline">
+            <h3 class="ps-4">{{ bloc.texte_titre | raw  |nl2br }}</h3>
+            <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
+          </div>
+        </div>
+        <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
+        <div class="{% if bloc.image is not empty %}col-6 {% endif %} d-flex justify-content-center pe-2">
+          <div class=" p-3">
+            <figure class="figure mb-5">
+              <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
+                alt="{{ bloc.alt }}" />
+              <figcaption class="figure-caption mt-2 mb-0 d-flex">
+                <p>{{ bloc.texte_legende }}</p>
+                <p>{% if bloc.image is not empty %}©{% endif %}{{ bloc.texte_credit }}</p>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
 
 
 
@@ -527,6 +526,5 @@
 
 
 </body>
-{% endblock %}
 
-
+</html>

@@ -371,11 +371,7 @@ class Bloc
 
             case 'create':
                 $bloc = new Bloc();
-                // var_dump($_POST);
-
                 $bloc->chargePOST();
-                // var_dump($bloc);
-
                 $bloc->create();
                 header('Location: admin.php?page=article&action=read&id=' . $bloc->id_article);
                 exit;

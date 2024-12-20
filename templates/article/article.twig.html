@@ -1,6 +1,6 @@
 {% extends "base-admin.twig.html" %} {% block content %}
 {% block css %}
-<link rel="stylesheet" href="./CSS/article.css" />
+
 <link rel="stylesheet" href=".CSS/bloc.css">
 {% endblock %}
 <div class="container py-5">
@@ -158,13 +158,14 @@
           </a>
         </div>
 
-        {# IMAGE #} {% elseif bloc.type == "image" %}
+        {# IMAGE #} 
+        {% elseif bloc.type == "image" %}
         <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" class="img-fluid mb-3" />
         <div class="d-flex">
           <p class="legende">
             {{bloc.texte_legende | raw}}
           </p>
-          <p class="credit">©{{bloc.texte_credit | raw}}</p>
+          <p class="credit">  © {{bloc.texte_credit | raw}}</p>
         </div>
         <div class="btn-group">
           <a href="admin.php?page=bloc&action=modifier&id=image&id_bloc={{ bloc.id }}"
@@ -294,11 +295,9 @@
         </div>
 
         {# image_citation #}
-        {% elseif bloc.type == "image_citation "%}
-
+        {% elseif bloc.type == "image_citation" %}
         <div class="container my-5">
           <div class="row g-4">
-            <!-- Ajout de l'espacement entre les blocs -->
 
             <!-- Bloc de l'image et de la légende à gauche -->
             <div class="col-md-7 p-4 bg-danger">
@@ -331,6 +330,7 @@
             <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
+
         {# citation_image #}
         {% elseif bloc.type == "citation_image "%}
 
@@ -423,7 +423,7 @@
                   <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
                     alt="{{ bloc.alt }}" />
                   <figcaption class="figure-caption mt-2 mb-0">
-                    <p><span class="legende">{{ bloc.texte_legende }}</span> ©{{ bloc.texte_credit }}</p>
+                    <p><span class="legende">{{ bloc.texte_legende }}</span>  © {{ bloc.texte_credit }}</p>
                   </figcaption>
                 </figure>
               </div>
@@ -456,7 +456,7 @@
                   <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
                     alt="{{ bloc.alt }}" />
                   <figcaption class="figure-caption mt-2 mb-0 ">
-                    <p><span class="legende">{{ bloc.texte_legende }}</span> ©{{ bloc.texte_credit }}</p>
+                    <p><span class="legende">{{ bloc.texte_legende }}</span>  © {{ bloc.texte_credit }}</p>
                   </figcaption>
                 </figure>
               </div>
@@ -501,7 +501,7 @@
                     alt="{{ bloc.alt }}" />
                   <figcaption class="figure-caption mt-2 mb-0 d-flex">
                     <p><span class="legende">{{ bloc.texte_legende }}</span>
-                      {% if bloc.image is not empty %}©{% endif %}{{ bloc.texte_credit }}</p>
+                      {% if bloc.image is not empty %}  © {% endif %}{{ bloc.texte_credit }}</p>
                   </figcaption>
                 </figure>
               </div>
@@ -545,7 +545,7 @@
                 <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-75"
                   alt="{{ bloc.alt }}" />
                 <figcaption class="figure-caption mt-2 mb-0 d-flex justify-content-between">
-                  {% if bloc.image is not empty %}©{% endif %}{{ bloc.texte_credit }}
+                  {% if bloc.image is not empty %}  © {% endif %}{{ bloc.texte_credit }}
                 </figcaption>
               </figure>
             </div>
@@ -687,7 +687,7 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-          <p class="credit">©{{ bloc.texte_credit }}</p>
+          <p class="credit">   © {{ bloc.texte_credit }}</p>
         </div>
 
         <div class="btn-group">
@@ -715,7 +715,7 @@
               <div class="ps-5">
                 <h3 class="podcast__episode_title">{{ bloc.texte_titre | raw  |nl2br }}</h3>
                 <h5 class="podcast__title text-light credit">
-                  ©{{ bloc.texte_credit }}
+                     © {{ bloc.texte_credit }}
                 </h5>
               </div>
               <div class="podcast_meta">
@@ -761,7 +761,7 @@
               <div class="ps-5">
                 <h3 class="podcast__episode_title">{{ bloc.texte_titre | raw  |nl2br }}</h3>
                 <h5 class="podcast__title text-light credit">
-                  ©{{ bloc.texte_credit }}
+                    © {{ bloc.texte_credit }}
                 </h5>
               </div>
               <div class="podcast_meta">

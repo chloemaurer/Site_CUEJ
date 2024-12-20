@@ -1,67 +1,108 @@
 {% extends "form-update/base_form.twig.html" %}
-
 {% block form_update %}
 
-
-{# texte 1#}
 <!-- Texte -->
 <div class="col-md-6">
-    <label for="texte" class="form-label fw-bold">Texte slide 1 :</label>
-    <textarea name="texte" id="texte" placeholder="Saisir le texte" class="form-control border-secondary"
-        rows="3">{{ bloc.texte  | raw}}</textarea>
+  <label for="texte" class="form-label fw-bold">Texte slide 1 :</label>
+  <textarea
+    name="texte"
+    id="texte"
+    placeholder="Saisir le texte"
+    class="form-control border-secondary"
+    rows="3"
+  >{{ bloc.texte | raw }}</textarea>
 </div>
 
 <div class="col-md-6">
-    <label for="texte" class="form-label fw-bold text-secondary">Texte slide 1 :</label>
-    <input type="text" name="texte" placeholder="Saisir le texte" class="form-control border-secondary" />
+  <label for="texte" class="form-label fw-bold text-secondary">Texte slide 1 :</label>
+  <input
+    type="text"
+    name="texte"
+    placeholder="Saisir le texte"
+    class="form-control border-secondary"
+  />
 </div>
+
 <div class="col-md-6">
-    <label for="image" class="form-label fw-bold text-secondary">Image ou infographie:</label>
-    {% if bloc.image %}
-    <div class="mb-3">
-        <img src="upload/{{ bloc.image }}" alt="Image actuelle" class="img-thumbnail" style="max-width: 150px;">
-    </div>
-    <input type="hidden" name="old-image" value="{{ bloc.image }}" />
-    {% endif %}
-    <input type="file" name="image" id="image" accept="image/*" class="form-control" />
-    <small class="text-muted">Taille maximale : 200 Ko</small>
+  <label for="image" class="form-label fw-bold text-secondary">Image ou infographie :</label>
+  {% if bloc.image %}
+  <div class="mb-3">
+    <img
+      src="upload/{{ bloc.image }}"
+      alt="Image actuelle"
+      class="img-thumbnail"
+      style="max-width: 150px"
+    />
+  </div>
+  <input type="hidden" name="old-image" value="{{ bloc.image }}" />
+  {% endif %}
+  <input
+    type="file"
+    name="image"
+    id="image"
+    accept="image/*"
+    class="form-control"
+  />
+  <small class="text-muted">Taille maximale : 200 Ko</small>
 </div>
 
-
-
+<!-- Slides 2 à 5 -->
 {% for i in 1..4 %}
 <div class="col-md-6">
-    <label for="texte_{{ i }}" class="form-label fw-bold text-secondary">Texte slide {{ i + 1 }} :</label>
-    <input type="text" name="texte_{{ i }}" placeholder="Saisir le texte" class="form-control border-secondary" />
+  <label for="texte_{{ i }}" class="form-label fw-bold text-secondary">Texte slide {{ i + 1 }} :</label>
+  <input
+    type="text"
+    name="texte_{{ i }}"
+    placeholder="Saisir le texte"
+    class="form-control border-secondary"
+  />
 </div>
 <div class="col-md-6">
-    <label for="image_{{ i }}" class="form-label fw-bold text-secondary">Image slide {{ i + 1 }} :</label>
-    {% if bloc.image_{{ i }} %}
-    <div class="mb-3">
-        <img src="upload/{{ bloc.image_{{ i }} }}" alt="Image actuelle" class="img-thumbnail" style="max-width: 150px;">
-    </div>
-    <input type="hidden" name="old-image_{{ i }}" value="{{ bloc.image_{{ i }} }}" />
-    {% endif %}
-    <input type="file" name="image_{{ i }}" accept="image/*" class="form-control border-secondary" />
-    <small class="text-muted">Taille maximale : 200 Ko</small>
+  <label for="image_{{ i }}" class="form-label fw-bold text-secondary">Image slide {{ i + 1 }} :</label>
+  {% if attribute(bloc, 'image_' ~ i) %}
+  <div class="mb-3">
+    <img
+      src="upload/{{ attribute(bloc, 'image_' ~ i) }}"
+      alt="Image actuelle"
+      class="img-thumbnail"
+      style="max-width: 150px"
+    />
+  </div>
+  <input type="hidden" name="old-image_{{ i }}" value="{{ attribute(bloc, 'image_' ~ i) }}" />
+  {% endif %}
+  <input
+    type="file"
+    name="image_{{ i }}"
+    accept="image/*"
+    class="form-control border-secondary"
+  />
+  <small class="text-muted">Taille maximale : 200 Ko</small>
 </div>
 {% endfor %}
 
-
-{# Alt (Description) #}
+<!-- Alt (Description) -->
 <div class="col-md-6">
-    <label for="alt" class="form-label fw-bold text-secondary">Description de l'image :</label>
-    <input type="text" name="alt" value="{{ bloc.alt }}" placeholder="Description de l'image"
-        class="form-control border-secondary" />
+  <label for="alt" class="form-label fw-bold text-secondary">Description de l'image :</label>
+  <input
+    type="text"
+    name="alt"
+    value="{{ bloc.alt }}"
+    placeholder="Description de l'image"
+    class="form-control border-secondary"
+  />
 </div>
 
-{# Crédit #}
+<!-- Crédit -->
 <div class="col-md-6">
-    <label for="texte_credit" class="form-label fw-bold text-secondary">Crédit :</label>
-    <input type="text" name="texte_credit" id="texte_credit" value="{{ bloc.texte_credit }}"
-        placeholder="Saisir le crédit" class="form-control border-secondary" />
+  <label for="texte_credit" class="form-label fw-bold text-secondary">Crédit :</label>
+  <input
+    type="text"
+    name="texte_credit"
+    id="texte_credit"
+    value="{{ bloc.texte_credit }}"
+    placeholder="Saisir le crédit"
+    class="form-control border-secondary"
+  />
 </div>
-
-
 
 {% endblock %}

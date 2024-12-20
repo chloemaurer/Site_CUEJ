@@ -15,9 +15,8 @@
   font-family: "Anybody", sans-serif; /* Police */
   font-weight: 900; /* Black */
   font-size: 36px; /* Taille de police */
-  color: #000000; /* Couleur du texte : blanc */
-  padding: 10px 20px; /* Espacement interne pour aérer */
-  text-align: center; /* Alignement centré */
+  color: var(--white); /* Couleur du texte : blanc */
+  text-align: left; /* Alignement centré */
   text-transform: none; /* Pas de majuscules forcées */
   line-height: 1.2; /* Hauteur de ligne */
   margin: 0 auto; /* Centre l'élément */
@@ -51,6 +50,8 @@
   font-size: 20px;
   font-weight: bold;
   color: #8a151b;
+  text-align: center;
+  width: 100%;
 }
 
 .corp_de_texte {

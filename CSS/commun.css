@@ -1,0 +1,31 @@
+:root {
+  --orange: #fb6500;
+  --dark-red: #8a151b;
+  --green: #68994f;
+  --yellow: #dabb2b;
+  --dark-blue: #1b3d6b;
+  --light-yellow: #e1be3c;
+  --white: #ece6db;
+}
+
+p {
+  font-family: "Montserrat", sans-serif; /* Police Montserrat */
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.icon {
+  font-size: 30px; /* Augmente la taille de l'icône */
+  color: rgba(
+    0,
+    0,
+    0,
+    0.3
+  ); /* Couleur noire avec une opacité de 70% (gris foncé) */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Animation au survol */
+}
+
+.icon:hover {
+  transform: scale(1.1); /* Agrandit légèrement l'icône au survol */
+  opacity: 0.9; /* Rendu légèrement plus visible au survol */
+}

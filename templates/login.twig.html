@@ -1,0 +1,9 @@
+{% extends 'base.twig.html' %}
+
+{% block page %}
+<h1>Login</h1>
+<form action="index.php?page=valid_login" method="POST">
+    <input type="password" placeholder="Mot de passe admin" name="login">
+    <input type="submit" value="Se connecter à l'interface d'administration">
+</form>
+{% endblock %}

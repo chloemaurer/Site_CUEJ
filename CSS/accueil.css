@@ -1,5 +1,5 @@
 body {
-  background-image: url("https://images.unsplash.com/photo-1695732988782-8fa0d2af0f76?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-image: url("upload/PAGE ACCUEIL-2.jpg");
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -311,3 +311,96 @@ footer a {
 .close-chapter:hover {
   background-color: #fdcb02;
 }
+
+/* @media (max-width: 768px),
+(min-width: 500px) {
+  .sidebar {
+    width: 100px;
+  }
+
+  .body {
+    max-width: fit-content;
+    max-height: fit-content;
+  }
+
+  .chapter-section {
+    width: calc(100% - 120px);
+    display: flex;
+    flex-direction: column;
+    color: white;
+    z-index: 2;
+  }
+
+  .round-btn {
+    width: 80px;
+    height: 60px;
+    border-radius: 10%;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #edito {
+    position: fixed;
+    top: 0;
+    left: 100px;
+    height: 80%;
+    width: 100%;
+    background-color: #281e163c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: left 0.5s ease;
+    z-index: 2;
+  }
+
+  #edito-close-btn {
+    position: absolute;
+    left: 20px;
+    background-color: #FDCB02;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+
+  #edito-content {
+    padding: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    margin-top: 30px;
+    line-height: 1.6;
+  }
+
+  #edito-content h2 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  #edito-content p {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+
+  #chapter1,
+  #chapter2,
+  #chapter3 {
+    max-width: 768px;
+  }
+
+  .circle-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: none;
+  }
+} */

@@ -71,3 +71,4 @@ chapters.forEach((chapter) => {
   // Fermer l'édito lorsqu'on clique sur un chapitre
   chapter.addEventListener("click", closeEdito);
 });
+

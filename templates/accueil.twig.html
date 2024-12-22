@@ -30,9 +30,9 @@
     <div class="title">
       <p>Cœurs déter'</p>
       <p class="fs-4"> S'engager dans sa ruralité </p>
-        <a href="admin.php?page=chapitre">
+        {# <a href="admin.php?page=chapitre">
       <i class="fa-solid fa-user" style="color: white"></i>
-    </a>
+    </a> #}
     </div>
 
     <!-- Section pour Chapitre 1 -->
@@ -46,11 +46,9 @@
         </div>
         <div class="chapter-cards">
             {% for article in listechapitre.0.articles %}
-            <a href="index.php?page=article&action=read&id={{ article.id_article }}">
-                <div class="card">
-                <img src="upload/{{ article.image }}" alt="Article 1" />
-                <p>{{ article.titre }}</p>
-                </div>
+            <a class="card" href="index.php?page=article&action=read&id={{ article.id_article }}">
+                    <img src="upload/{{ article.image }}" alt="Article 1" />
+                    <p>{{ article.titre }}</p>
             </a>
 
             {% endfor %}
@@ -68,11 +66,11 @@
 
         <div class="chapter-cards">
         {% for article in listechapitre.1.articles %}
-        <a href="index.php?page=article&action=read&id={{ article.id_article }}">
-            <div class="card">
-            <img src="upload/{{ article.image }}" alt="{{ article.alt }}" />
-            <p>{{ article.titre }}</p>
-            </div>
+        <a class="card" href="index.php?page=article&action=read&id={{ article.id_article }}">
+            
+                <img src="upload/{{ article.image }}" alt="{{ article.alt }}" />
+                <p>{{ article.titre }}</p>
+            
         </a>
         {% endfor %}
         </div>       
@@ -89,10 +87,12 @@
 
         <div class="chapter-cards">
         {% for article in listechapitre.2.articles %}
-            <a href="index.php?page=article&action=read&id={{ article.id_article }}" class="card">
+            <a class="card" href="index.php?page=article&action=read&id={{ article.id_article }}" class="card">
               
+          
                 <img src="upload/{{ article.image }}" alt="{{ article.alt }}" />
                 <p>{{ article.titre }}</p>
+            
                 
             </a>
         {% endfor %}

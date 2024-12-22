@@ -129,12 +129,15 @@
    <script>
     document.getElementById("edito-btn").addEventListener("click", function () {
         document.getElementById("edito").style.top = "0"; // Slide-down animation
+        body.style.backgroundImage = "url(images/fond-acceuil.jpg)";
+
     });
 
     document.getElementById("edito").addEventListener("click", function (e) {
         if (e.target === this) {
             this.style.top = "-100%"; // Fermer en remontant
         }
+
     });
 
     function openChapterSection(chapterId) {
@@ -149,6 +152,7 @@
     // Fonction pour fermer l'édito
     function closeEdito() {
         document.getElementById("edito").style.top = "-100%";
+
     }
 
     // Événements pour les chapitres

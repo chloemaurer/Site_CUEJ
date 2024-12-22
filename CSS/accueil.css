@@ -1,5 +1,5 @@
 body {
-  background-image: url("./images/fond-acceuil.jpg");
+  background-image: url("../images/fond-acceuil.jpg");
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -8,6 +8,7 @@ body {
   font-family: "Montserrat", serif;
   font-optical-sizing: auto;
   transition: background 0.5s ease-in-out;
+  z-index: -1;
 }
 
 .sidebar {
@@ -78,7 +79,7 @@ footer a {
   left: 170px;
   width: calc(100% - 150px);
   height: 100%;
-  background-color: #281e163c;
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;

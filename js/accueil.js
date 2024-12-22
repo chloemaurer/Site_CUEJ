@@ -1,48 +1,73 @@
-const nav = document.getElementById("nav");
-const menu = document.getElementById("menu");
-const closeMenu = document.getElementById("closeMenu");
-
-nav.addEventListener("click", () => {
-  menu.classList.add("active");
+document.getElementById("edito-btn").addEventListener("click", function () {
+  document.getElementById("edito").style.top = "0"; // Slide-down animation
 });
 
-closeMenu.addEventListener("click", () => {
-  menu.classList.remove("active");
+document.getElementById("edito").addEventListener("click", function (e) {
+  if (e.target === this) {
+    this.style.top = "-100%"; // Fermer en remontant
+  }
 });
 
-const chapitres = [
-  { image: "chapitre1-image", section: "chapitre1", xIcon: "x-icon1" },
-  { image: "chapitre2-image", section: "chapitre2", xIcon: "x-icon2" },
-  { image: "chapitre3-image", section: "chapitre3", xIcon: "x-icon3" },
-];
-
-// Fonction pour masquer tous les chapitres
-function hideAllChapitres() {
-  chapitres.forEach(({ section, image }) => {
-    const chapitre = document.getElementById(section);
-    const chapitreImage = document.getElementById(image);
-    chapitre.classList.remove("d-flex");
-    chapitre.classList.add("d-none");
-    chapitreImage.classList.remove("active"); // Supprime la bordure blanche
+function openChapterSection(chapterId) {
+  // Fermer toutes les sections ouvertes
+  document.querySelectorAll(".chapter-section").forEach((section) => {
+    section.classList.remove("show");
   });
+  // Afficher la section spécifique
+  document.getElementById(chapterId).classList.add("show");
 }
 
-// Ajouter les écouteurs dynamiquement
-chapitres.forEach(({ image, section, xIcon }) => {
-  const chapitreImage = document.getElementById(image);
-  const chapitreSection = document.getElementById(section);
-  const chapitreXIcon = document.getElementById(xIcon);
+// Fonction pour fermer l'édito
+function closeEdito() { 
+  document.getElementById("edito").style.top = "-100%";
+}
 
-  chapitreImage.addEventListener("click", () => {
-    hideAllChapitres(); // Masquer tous les chapitres
-    chapitreSection.classList.toggle("d-none");
-    chapitreSection.classList.toggle("d-flex");
-    chapitreImage.classList.toggle("active"); // Ajoute la bordure blanche à l'image cliquée
+// Événements pour les chapitres
+document.querySelector(".chapter-container:nth-child(2)").onclick = () => {
+  closeEdito(); // Ferme l'édito
+  openChapterSection("chapter1");
+};
+document.querySelector(".chapter-container:nth-child(3)").onclick = () => {
+  closeEdito(); // Ferme l'édito
+  openChapterSection("chapter2");
+};
+document.querySelector(".chapter-container:nth-child(4)").onclick = () => {
+  closeEdito(); // Ferme l'édito
+  openChapterSection("chapter3");
+};
+
+document
+  .getElementById("edito-close-btn")
+  .addEventListener("click", function () {
+    closeEdito(); // Fermer l'Édito
   });
 
-  chapitreXIcon.addEventListener("click", () => {
-    chapitreSection.classList.remove("d-flex");
-    chapitreSection.classList.add("d-none");
-    chapitreImage.classList.remove("active"); // Supprime la bordure blanche lorsque le chapitre est fermé
+// Ajouter un événement pour chaque bouton de fermeture des chapitres
+document.querySelectorAll(".close-chapter").forEach((button) => {
+  button.addEventListener("click", function () {
+    // Trouve la section parente et la cache
+    const chapterSection = this.closest(".chapter-section");
+    chapterSection.classList.remove("show");
   });
+});
+
+// Sélectionner tous les conteneurs de chapitres
+const chapters = document.querySelectorAll(".chapter-container");
+const body = document.body;
+
+// Ajouter des événements pour chaque chapitre
+chapters.forEach((chapter) => {
+  // Changer l'image de fond au survol
+  chapter.addEventListener("mouseenter", () => {
+    const bgImage = chapter.getAttribute("data-bg");
+    body.style.backgroundImage = bgImage;
+  });
+
+  // Réinitialiser l'image de fond lorsqu'on quitte le cercle
+  chapter.addEventListener("mouseleave", () => {
+    body.style.backgroundImage = "url(images/fond-acceuil.jpg)";
+  });
+
+  // Fermer l'édito lorsqu'on clique sur un chapitre
+  chapter.addEventListener("click", closeEdito);
 });

@@ -23,7 +23,7 @@
 
 
 
-        <div class="round-btn">Crédits</div>
+        <a href="credit.php" class="round-btn">Crédits</a>
     </div>
 
     <!-- Titre principal -->
@@ -32,7 +32,7 @@
       <p class="fs-4"> S'engager dans sa ruralité </p>
         <a href="index.php?page=login">
       <i class="fa-solid fa-user" style="color: white"></i>
-    </a>
+    </a> 
     </div>
 
     <!-- Section pour Chapitre 1 -->
@@ -46,11 +46,9 @@
         </div>
         <div class="chapter-cards">
             {% for article in listechapitre.0.articles %}
-            <a href="index.php?page=article&action=read&id={{ article.id_article }}">
-                <div class="card">
-                <img src="upload/{{ article.image }}" alt="Article 1" />
-                <p>{{ article.titre }}</p>
-                </div>
+            <a class="card" href="index.php?page=article&action=read&id={{ article.id_article }}">
+                    <img src="upload/{{ article.image }}" alt="Article 1" />
+                    <p>{{ article.titre }}</p>
             </a>
 
             {% endfor %}
@@ -68,18 +66,19 @@
 
         <div class="chapter-cards">
         {% for article in listechapitre.1.articles %}
-        <a href="index.php?page=article&action=read&id={{ article.id_article }}">
-            <div class="card">
-            <img src="upload/{{ article.image }}" alt="{{ article.alt }}" />
-            <p>{{ article.titre }}</p>
-            </div>
+        <a class="card" href="index.php?page=article&action=read&id={{ article.id_article }}">
+            
+                <img src="upload/{{ article.image }}" alt="{{ article.alt }}" />
+                <p>{{ article.titre }}</p>
+            
         </a>
         {% endfor %}
         </div>       
     </div>
 
     <!-- Section pour Chapitre 3 -->
-    <div id="chapter3" class="chapter-section">
+    <div id="chapter3" class="chapter-section" style="background-color: rgba(138, 21, 27, 0.8);"
+>
         <button class="close-chapter">&times;</button>
         <div class="chapter-text">
         <h2>{{listechapitre.2.titre}}</h2>
@@ -88,10 +87,12 @@
 
         <div class="chapter-cards">
         {% for article in listechapitre.2.articles %}
-            <a href="index.php?page=article&action=read&id={{ article.id_article }}" class="card">
+            <a class="card" href="index.php?page=article&action=read&id={{ article.id_article }}" class="card">
               
+          
                 <img src="upload/{{ article.image }}" alt="{{ article.alt }}" />
                 <p>{{ article.titre }}</p>
+            
                 
             </a>
         {% endfor %}
@@ -130,12 +131,15 @@
    <script>
     document.getElementById("edito-btn").addEventListener("click", function () {
         document.getElementById("edito").style.top = "0"; // Slide-down animation
+        body.style.backgroundImage = "url(images/fond-acceuil.jpg)";
+
     });
 
     document.getElementById("edito").addEventListener("click", function (e) {
         if (e.target === this) {
             this.style.top = "-100%"; // Fermer en remontant
         }
+
     });
 
     function openChapterSection(chapterId) {
@@ -150,6 +154,7 @@
     // Fonction pour fermer l'édito
     function closeEdito() {
         document.getElementById("edito").style.top = "-100%";
+
     }
 
     // Événements pour les chapitres

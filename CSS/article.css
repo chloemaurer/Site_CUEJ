@@ -62,7 +62,8 @@ body {
 .right-box img {
   width: 100%;
   background-color: darkred;
-  /* object-fit: cover; */
+  object-fit: cover;
+  height: 500px;
 }
 
 .bottom-box {

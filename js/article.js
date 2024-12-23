@@ -11,11 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
     3: "#8a151b",
   };
 
-  const chapitreColorsDark = {
-    1: "#4f5b19",
-    2: "#3f596a",
-    3: "#5b0f12",
-  };
 
 
 
@@ -52,10 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelectorAll(".podcast").forEach((element) => {
       element.style.backgroundColor = chapitreColors[chapitreId];
-    });
-
-    document.querySelectorAll(".podcast_meta").forEach((element) => {
-      element.style.backgroundColor = chapitreColorsDark[chapitreId];
     });
 
   }

@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     encadre.style.backgroundColor = chapitreColors[chapitreId];
     continue_reading.style.backgroundColor = chapitreColors[chapitreId];
     exergue_c.style.color = chapitreColors[chapitreId];
+    bg_chapitre.style.backgroundColor = chapitreColors[chapitreId];
     
   }
 

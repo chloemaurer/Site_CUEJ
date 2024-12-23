@@ -125,7 +125,7 @@
           {# IMAGE #} {% elseif bloc.type == "image" %}
           <img src="upload/{{ bloc.image }}" alt="{{ bloc.alt }}" class="img-fluid mb-3" />
           <div class="d-flex">
-            <p> <span class="legende">{{bloc.texte_legende | raw}}</span> © {{bloc.texte_credit | raw}}</p>
+            <p> <span class="legende">{{bloc.texte_legende | raw}}</span> <span class="credit_p">© {{bloc.texte_credit | raw}}</span> </p>
           </div>
 
 
@@ -528,7 +528,7 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
-        <p class="credit"> © {{ bloc.texte_credit }}</p>
+        <p class="credit_p"> © {{ bloc.texte_credit }}</p>
       </div>
 
 

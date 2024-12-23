@@ -73,3 +73,6 @@ function showVideo(element) {
         video.play();
     }
 }
+
+
+

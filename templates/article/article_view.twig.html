@@ -105,7 +105,7 @@
 
         {# H3 #}
         {% elseif bloc.type == "h3" %}
-        <h3 class="section-article">{{ bloc.texte | raw  |nl2br }}</h3>
+        <h3 class="section_article">{{ bloc.texte | raw  |nl2br }}</h3>
 
 
         {# H4 #}
@@ -156,13 +156,13 @@
         {# CITATION TEXTE #} {% elseif bloc.type == "citation_texte" %}
         <div class="row">
           <!-- Bloc de Citation à gauche -->
-          <div class="col-md-5 d-flex align-items-center bg-light p-4 border">
+          <div class="col-md-5 d-flex align-items-center p-4">
             <figure class="m-0">
               <blockquote class="blockquote text-center">
-                <p class="fw-bold fs-3 mb-0" style="color: #8a151b;">
+                <p class="fw-bold fs-3 mb-0">
                   "{{ bloc.texte_citation | raw  |nl2br }}"
                 </p>
-                <figcaption class="blockquote-footer">
+                <figcaption class="blockquote-footer pt-3">
                   <cite class="credit_p" title="Source Title">{{ bloc.texte_legende | raw  |nl2br }}</cite>
                 </figcaption>
               </blockquote>
@@ -170,7 +170,7 @@
           </div>
 
           <!-- Bloc de Texte à droite -->
-          <div class="col-md-7 p-4 bg-light">
+          <div class="col-md-7 p-4 ">
             <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
             <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
             <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>

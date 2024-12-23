@@ -1,12 +1,8 @@
-
 document.addEventListener("DOMContentLoaded", function () {
   const intituler = document.querySelector(".intituler");
   const chapitreId = intituler.getAttribute("data-chapitre");
   const logo = document.querySelector("#logo");
-  const encadre = document.querySelector(".encadre");
-  const exergue_c = document.querySelector(".exergue_c");
   const continue_reading = document.querySelector(".continue_reading");
-  const bgChapitre = document.querySelector(".bgChapitre");
 
   // Couleurs spécifiques par chapitre
   const chapitreColors = {
@@ -15,14 +11,52 @@ document.addEventListener("DOMContentLoaded", function () {
     3: "#8a151b",
   };
 
+  const chapitreColorsDark = {
+    1: "#4f5b19",
+    2: "#3f596a",
+    3: "#5b0f12",
+  };
+
+
+
   // Appliquez la couleur
   if (chapitreColors[chapitreId]) {
     if (intituler) intituler.style.backgroundColor = chapitreColors[chapitreId];
     if (logo) logo.style.backgroundColor = chapitreColors[chapitreId];
-    if (encadre) encadre.style.backgroundColor = chapitreColors[chapitreId];
     if (continue_reading) continue_reading.style.backgroundColor = chapitreColors[chapitreId];
-    if (exergue_c) exergue_c.style.color = chapitreColors[chapitreId];
-    if (bgChapitre) bgChapitre.style.backgroundColor = chapitreColors[chapitreId];
+    document.querySelectorAll(".encadre").forEach((element) => {
+      element.style.backgroundColor = chapitreColors[chapitreId];
+    });
+
+    document.querySelectorAll(".continue_reading").forEach((element) => {
+      element.style.backgroundColor = chapitreColors[chapitreId];
+    });
+
+    document.querySelectorAll(".exergue_c").forEach((element) => {
+      element.style.color = chapitreColors[chapitreId];
+    });
+
+    document.querySelectorAll(".bgChapitre").forEach((element) => {
+      element.style.backgroundColor = chapitreColors[chapitreId];
+    });
+
+    document.querySelectorAll(".blockquote").forEach((element) => {
+      element.style.color = chapitreColors[chapitreId];
+    });
+    document.querySelectorAll(".intertitre").forEach((element) => {
+      element.style.color = chapitreColors[chapitreId];
+    });
+    document.querySelectorAll(".section_article").forEach((element) => {
+      element.style.color = chapitreColors[chapitreId];
+    });
+
+    document.querySelectorAll(".podcast").forEach((element) => {
+      element.style.backgroundColor = chapitreColors[chapitreId];
+    });
+
+    document.querySelectorAll(".podcast_meta").forEach((element) => {
+      element.style.backgroundColor = chapitreColorsDark[chapitreId];
+    });
 
   }
 

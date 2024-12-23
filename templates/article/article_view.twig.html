@@ -93,12 +93,12 @@
   </div>
 </section>
 
-<section id="article" class="wrapper">
+<section id="article" class="wrapper pb-5">
   <div class="mt-5 d-flex flex-column justify-content-center align-items-center">
     {% for bloc in listebloc %}
-    <div class="mb-3 w-100">
+    
       <!-- Affichage des blocs selon le type -->
-      <div>
+      
         {# H2 #}
         {% if bloc.type == "h2" %}
         <h2 class="titre-article-chapitre">{{ bloc.texte | raw  |nl2br }}</h2>
@@ -605,9 +605,9 @@
   </div>
 
   <!-- Boutons Modifier et Supprimer -->
-  </div>
+ 
   {% endfor %}
-  </div>
+  
   </div>
 </section>
 

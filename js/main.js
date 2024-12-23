@@ -18,32 +18,37 @@ const options = {
     ]
 }
 
-new MediaElementPlayer(
-    document.querySelector("audio"),
-    options
-);
-
-// Separate the audio controls so I can style them better.
-(() => {
-    const elementTop = document.createElement('div');
-    const elementBottom = document.createElement('div');
-    elementTop.classList.add('mejs-prepended-buttons');
-    elementBottom.classList.add('mejs-appended-buttons');
-
-    const controls = document.querySelector('.mejs__controls');
-    controls.prepend(elementTop);
-    controls.append(elementBottom);
-
-    const controlsChildren = Array.from(controls.childNodes).filter(v => v.className.startsWith("mejs_"));
-
-    controlsChildren.slice(0, 3).forEach(elem => {
-        elementTop.append(elem)
+// Initialise MediaElementPlayer pour tous les audios
+document.addEventListener("DOMContentLoaded", () => {
+    const audios = document.querySelectorAll("audio");
+    audios.forEach(audio => {
+        new MediaElementPlayer(audio, options);
     });
+});
 
-  controlsChildren.slice(3, controlsChildren.length).forEach((elem) => {
-    elementBottom.append(elem);
-  });
-})();
+// Réorganise les contrôles pour chaque audio
+document.addEventListener("DOMContentLoaded", () => {
+    const players = document.querySelectorAll(".mejs__controls");
+    players.forEach(controls => {
+        const elementTop = document.createElement('div');
+        const elementBottom = document.createElement('div');
+        elementTop.classList.add('mejs-prepended-buttons');
+        elementBottom.classList.add('mejs-appended-buttons');
+
+        controls.prepend(elementTop);
+        controls.append(elementBottom);
+
+        const controlsChildren = Array.from(controls.childNodes).filter(v => v.className.startsWith("mejs_"));
+
+        controlsChildren.slice(0, 3).forEach(elem => {
+            elementTop.append(elem);
+        });
+
+        controlsChildren.slice(3, controlsChildren.length).forEach(elem => {
+            elementBottom.append(elem);
+        });
+    });
+});
 
 
 function showVideo(element) {

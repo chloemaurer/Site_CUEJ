@@ -38,7 +38,7 @@ switch ($page) {
 
     case 'login':
         $view = 'login.twig.html';
-        $data=[];
+        $data = [];
         break;
 
     case 'valid_login':
@@ -60,6 +60,11 @@ switch ($page) {
             // Accès hors formulaire : retour à la page d'accueil
             header('Location: index.php');
         }
+        break;
+
+    case 'credit':
+        $view = 'credit.twig.html';
+        $data = [];
         break;
 
     default:

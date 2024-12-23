@@ -141,6 +141,7 @@ class Chapitre
     static function controleur($action, $id_chapitre, &$modele, &$data)
     {
         switch ($action) {
+
             default:
 
                 $modele = 'accueil.twig.html';

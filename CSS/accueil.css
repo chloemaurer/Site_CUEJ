@@ -14,7 +14,7 @@
   }
 
   body {
-    background-image: url("upload/PAGE ACCUEIL-2.jpg");
+    background-image: url("../upload/PAGE-ACCUEIL-2.jpg");
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -121,7 +121,7 @@ footer a {
 
 #edito-content {
   background-color: #fdcb02;
-  padding: 30px;
+  padding: 15px;
   border-top-right-radius: 30px;
   border-bottom-left-radius: 30px;
   margin-top: 3rem;

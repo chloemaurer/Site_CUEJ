@@ -28,7 +28,7 @@
         <p>Cœurs déter'</p>
         <p class="fs-4"> S'engager dans sa ruralité </p>
         <a href="index.php?page=login">
-            <i class="fa-solid fa-user" style="color: white"></i>
+            <i class="fa-solid fa-user fs-3" style="color: white"></i>
         </a>
     </div>
 
@@ -156,7 +156,7 @@
 <script>
     document.getElementById("edito-btn").addEventListener("click", function () {
         document.getElementById("edito").style.top = "0"; // Slide-down animation
-        body.style.backgroundImage = "url(images/fond-acceuil.jpg)";
+        body.style.backgroundImage = "url('upload/PAGE-ACCUEIL-2.jpg')";
 
     });
 
@@ -223,7 +223,7 @@
 
         // Réinitialiser l'image de fond lorsqu'on quitte le cercle
         chapter.addEventListener("mouseleave", () => {
-            body.style.backgroundImage = "url('upload/PAGE ACCUEIL-2.jpg')"
+            body.style.backgroundImage = "url('upload/PAGE-ACCUEIL-2.jpg')"
         });
 
         // Fermer l'édito lorsqu'on clique sur un chapitre
@@ -231,6 +231,5 @@
     });
 </script>
 
-</body>
 
 {% endblock %}

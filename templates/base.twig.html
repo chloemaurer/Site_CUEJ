@@ -60,15 +60,15 @@
     <!-- Contenu par défaut -->
     {% endblock %}
 
-  <footer class="footer">
-    <div class="footer-links">
-      <a href="#">Plan du site</a>
-      <span>|</span>
-      <a href="#">© crédits</a>
-      <span>|</span>
-      <a href="https://cuej.unistra.fr/mentions-legales/">Mentions légales</a>
-    </div>
-  </footer>
+    <footer class="footer">
+      <div class="footer-links">
+        <div id="plan-du-site" href="#">Plan du site</div>
+        <span>|</span>
+        <a href="index.php?page=credit">© crédits</a>
+        <span>|</span>
+        <a href="https://cuej.unistra.fr/mentions-legales/">Mentions légales</a>
+      </div>
+    </footer>
 
     {% block javascript %} {% endblock %}
     <!-- JavaScript -->
@@ -118,6 +118,27 @@
           const chapterSection = this.closest(".chapter-section");
           chapterSection.classList.remove("show");
         });
+      });
+
+      const plan_du_site = document.getElementById("plan-du-site");
+      const menuOverlay = document.getElementById("menu-overlay");
+      const closeMenu = document.getElementById("close-menu");
+
+      // Show menu
+      plan_du_site.addEventListener("click", () => {
+        menuOverlay.classList.add("show");
+      });
+
+      // Hide menu
+      closeMenu.addEventListener("click", () => {
+        menuOverlay.classList.remove("show");
+      });
+
+      // Close menu when clicking outside
+      menuOverlay.addEventListener("click", (e) => {
+        if (e.target === menuOverlay) {
+          menuOverlay.classList.remove("show");
+        }
       });
     </script>
   </body>

@@ -1,15 +1,4 @@
 /*------------------------------- STYLE DES BLOCS -----------------------------------------*/
-.webdoc-h1 {
-  font-family: "Anybody", sans-serif; /* Police Anybody */
-  font-weight: 900; /* Black (équivalent à Bold extrême) */
-  font-size: 45px; /* Taille de police 48px */
-  line-height: 1.1; /* Hauteur de ligne ajustée pour les titres */
-  letter-spacing: 0; /* Aucun espacement entre les lettres */
-  color: #000000; /* Couleur noire pure */
-  text-transform: uppercase; /* Texte en majuscules pour un effet fort */
-  margin: 0; /* Supprime les marges par défaut */
-  text-align: left; /* Alignement à gauche */
-}
 
 .titre-article {
   font-family: "Anybody", sans-serif; /* Police */
@@ -50,14 +39,14 @@
   font-size: 20px;
   font-weight: bold;
   color: #8a151b;
-  text-align: center;
+  text-align: start;
   width: 100%;
 }
 
 .corp_de_texte {
   font-family: "Montserrat", sans-serif; /* Police Montserrat */
   font-weight: 400; /* Regular */
-  font-size: 20px; /* Taille de police 20px */
+  font-size: 16px; /* Taille de police 20px */
   line-height: 1.7; /* Hauteur de ligne pour une bonne lisibilité */
   letter-spacing: 0; /* Espacement entre les lettres */
   color: #343434; /* Couleur noire légèrement adoucie */
@@ -97,13 +86,13 @@
 .legende {
   font-family: "Montserrat", sans-serif;
   font-style: italic;
-  font-size: 16px;
+  font-size: 13px;
   margin-right: 15px;
 }
 
 .credit_p {
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
+  font-size: 13px;
 }
 
 /* .credit_a {
@@ -113,6 +102,6 @@
   font-style: italic;
 }
 
-.video_image{
+.video_image {
   z-index: 1;
 }

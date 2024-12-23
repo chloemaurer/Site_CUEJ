@@ -317,7 +317,7 @@ class Bloc
             }
             $this->audio = $audio;
         }
-        
+
         $video = chargeFILE('video');
         if (!empty($video)) {
             if (is_file('upload/' . $this->video)) {
@@ -335,13 +335,15 @@ class Bloc
     }
 
 
+
     static function controleur($action, $id, &$modele, &$data)
     {
         switch ($action) {
             default:
+
                 $modele = 'bloc/liste_blocs.twig.html';
                 $data = [
-                    'bloc' => Bloc::readOne($id)
+                    'bloc' => Bloc::readOne($id),
                 ];
                 break;
         }

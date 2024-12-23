@@ -11,7 +11,7 @@
   margin: 0 auto; /* Centre l'élément */
 }
 
-.section-article {
+.section_article {
   font-family: "Anybody", sans-serif; /* Police */
   font-weight: bold; /* Semi-bold (gras léger) */
   font-size: 32px; /* Taille de la police */

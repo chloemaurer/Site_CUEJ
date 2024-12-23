@@ -14,6 +14,17 @@ p {
   font-size: 20px;
 }
 
+h1 {
+  font-family: "Anybody", sans-serif; /* Police spécifiée */
+  font-weight: 900; /* Black correspond souvent à font-weight 900 */
+  font-size: 48px; /* Taille spécifiée */
+  color: #ffffff; /* Noir */
+  letter-spacing: 0; /* L'espacement des lettres semble standard */
+  line-height: auto; /* Ajustement automatique de la hauteur des lignes */
+  margin: 0; /* Supprime les marges par défaut */
+  padding: 0; /* Supprime les paddings par défaut */
+}
+
 .icon {
   font-size: 30px; /* Augmente la taille de l'icône */
   color: rgba(

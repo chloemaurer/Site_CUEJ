@@ -98,12 +98,14 @@ body {
   color: white;
   z-index: 10;
   transition: top 0.5s ease-in-out;
-  pointer-events: none; /* Prevent blocking clicks when hidden */
+  pointer-events: none;
+  /* Prevent blocking clicks when hidden */
 }
 
 #menu-overlay.show {
   top: 0;
-  pointer-events: auto; /* Re-enable interactions when shown */
+  pointer-events: auto;
+  /* Re-enable interactions when shown */
 }
 
 .overlay-content {
@@ -115,7 +117,7 @@ body {
 }
 
 .menu-left {
-    padding-top: 200px;
+  padding-top: 200px;
   width: 50%;
   margin-left: 50px;
 }
@@ -142,6 +144,7 @@ body {
 .menu-section:nth-child(2) h3 {
   background-color: #6189a4;
 }
+
 .menu-section:nth-child(3) h3 {
   background-color: #6c1014;
 }
@@ -184,9 +187,15 @@ body {
   position: fixed;
   top: 15px;
   left: 15px;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
 }
 
 /* -------------------------------MAIN ------------------------*/
@@ -201,7 +210,7 @@ body {
 }
 
 /* -------------------------------FOOTER ------------------------*/
-.continue-reading {
+.continue_reading {
   text-align: center;
   padding: 2rem;
   background-color: #700000;
@@ -221,22 +230,23 @@ body {
 
 .card {
   background-color: #fafafa;
-  padding-top: 20px;
+  padding: 20px;
   text-align: center;
-  max-width: 200px;
-  max-height: 200px;
+  width: 200px;
+  height: 250px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .card-image {
-  width: 100%;
-  height: 240px;
+  width: 150;
+  height: 150px;
   margin-bottom: 1rem;
 }
 
 .card-title {
   font-size: 1rem;
   color: #000;
+  padding-bottom: 50px;
 }
 
 /* Return Home Button */
@@ -258,7 +268,7 @@ body {
   height: 200px;
   margin: auto;
   margin-bottom: 50px;
-  text-align: center; 
+  text-align: center;
 
 
 }
@@ -284,4 +294,3 @@ body {
   background-color: #e6c200;
 }
 
-/* Responsive */

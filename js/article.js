@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const encadre = document.querySelector(".encadre");
   const exergue_c = document.querySelector(".exergue_c");
   const continue_reading = document.querySelector(".continue_reading");
+  const bg_chapitre = document.querySelector(".bg_chapitre");
 
   // Couleurs spécifiques par chapitre
   const chapitreColors = {

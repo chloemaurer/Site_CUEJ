@@ -11,15 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
     3: "#8a151b",
   };
 
-
-
-
   // Appliquez la couleur
   if (chapitreColors[chapitreId]) {
     if (intituler) intituler.style.backgroundColor = chapitreColors[chapitreId];
     if (logo) logo.style.backgroundColor = chapitreColors[chapitreId];
     if (continue_reading) continue_reading.style.backgroundColor = chapitreColors[chapitreId];
-    
+
     document.querySelectorAll(".encadre").forEach((element) => {
       element.style.backgroundColor = chapitreColors[chapitreId];
     });
@@ -44,6 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     document.querySelectorAll(".section_article").forEach((element) => {
       element.style.color = chapitreColors[chapitreId];
+      element.style.borderTop = `1px solid ${chapitreColors[chapitreId]}`;
+      element.style.borderBottom = `1px solid ${chapitreColors[chapitreId]}`;
     });
 
     document.querySelectorAll(".podcast").forEach((element) => {

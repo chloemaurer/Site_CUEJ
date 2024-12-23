@@ -11,6 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
     3: "#8a151b",
   };
 
+  const chapitreColorsDark = {
+    1: "#4f5b19",
+    2: "#3f596a",
+    3: "#5b0f12",
+  };
+
 
 
   // Appliquez la couleur
@@ -37,17 +43,19 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".blockquote").forEach((element) => {
       element.style.color = chapitreColors[chapitreId];
     });
+    document.querySelectorAll(".intertitre").forEach((element) => {
+      element.style.color = chapitreColors[chapitreId];
+    });
+    document.querySelectorAll(".section_article").forEach((element) => {
+      element.style.color = chapitreColors[chapitreId];
+    });
 
     document.querySelectorAll(".podcast").forEach((element) => {
       element.style.backgroundColor = chapitreColors[chapitreId];
     });
 
     document.querySelectorAll(".podcast_meta").forEach((element) => {
-      element.style.backgroundColor = chapitreColors[chapitreId];
-    });
-
-    document.querySelectorAll(".podcast_meta").forEach((element) => {
-      element.style.backgroundColor = chapitreColors[chapitreId];
+      element.style.backgroundColor = chapitreColorsDark[chapitreId];
     });
 
   }

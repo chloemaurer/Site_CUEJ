@@ -43,15 +43,12 @@
     background-position: center;
     margin: 0;
     overflow: hidden;
-    font-family: "Montserrat",
-      serif;
+    font-family: "Montserrat", serif;
     font-optical-sizing: auto;
     transition: background 0.5s ease-in-out;
     z-index: -1;
   }
 }
-
-
 
 .round-btn {
   background-color: #fdcb02;
@@ -68,7 +65,6 @@
   font-size: 12px;
   cursor: pointer;
 }
-
 
 .title {
   font-family: "Anybody", serif;
@@ -178,7 +174,6 @@ footer a {
     transition: top 0.5s ease;
     z-index: 6;
     background-color: rgba(0, 0, 0, 0.315);
-
   }
   #edito-content {
     margin-left: 50px;
@@ -190,7 +185,6 @@ footer a {
     left: 50px;
   }
 }
-
 
 .chapter-container {
   position: relative;
@@ -283,14 +277,13 @@ footer a {
   justify-content: center;
   color: white;
   z-index: 2;
-
 }
 
 .chapter-section.show {
   left: 170px;
 }
 
-@media(max-width: 760px) {
+@media (max-width: 760px) {
   .chapter-section {
     position: fixed;
     top: 0;
@@ -321,17 +314,14 @@ footer a {
     left: 0%;
     top: 47%;
   }
-
-
 }
-
 
 .chapter-section .chapter-text {
   width: 30%;
   padding-right: 10px;
 }
 
-@media(max-width: 760px) {
+@media (max-width: 760px) {
   .chapter-section .chapter-text {
     padding-right: 10px;
     position: relative;
@@ -350,8 +340,10 @@ footer a {
     top: 5%;
   }
 
-
   .chapter-section .chapter-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+
     width: 60%;
     height: 80%;
     margin: 20px;
@@ -359,10 +351,7 @@ footer a {
     padding: 30px;
     margin-top: 200px;
   }
-
-
 }
-
 
 .chapter-section h2 {
   font-family: "Anybody", serif;
@@ -377,16 +366,17 @@ footer a {
   line-height: 1.6;
 }
 
-@media(min-width: 760px) {
+@media (min-width: 760px) {
   .chapter-section .chapter-cards {
     display: grid;
     grid-template-columns: repeat(2, 0.4fr);
-    width: 46%;
+    gap: 1rem;
+    width: 60%;
     height: 80%;
-    margin: 20px;
+    /* margin: 20px; */
     margin-top: 90px;
     align-items: center;
-    padding: 30px;
+    /* padding: 30px; */
   }
 }
 
@@ -394,11 +384,15 @@ footer a {
   background-color: #ffffff;
   border-top-right-radius: 30px;
   border-bottom-left-radius: 30px;
-  grid-template-columns: repeat(2, minmax(200px, 1fr));
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
   height: 200px;
+  width: 270px;
+}
+
+.chapter-cards p {
+  text-align: center;
 }
 
 #chapter3 .chapter-cards .card:nth-child(3) {
@@ -413,13 +407,17 @@ footer a {
 }
 
 .chapter-cards img {
-  width: 150px;
-  height: 120px;
+  width: 100%;
+  height: 75%;
   object-fit: cover;
 }
 
+.article-name {
+  height: 25%;
+}
+
 .chapter-cards p {
-  /* margin: 15px 0; */
+  margin: 0 0.3rem;
   color: black;
   font-weight: bold;
 }

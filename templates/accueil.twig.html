@@ -45,7 +45,10 @@
             {% for article in listechapitre.0.articles %}
             <a class="card" href="index.php?page=article&action=read&id={{ article.id_article }}">
                 <img src="upload/{{ article.image }}" alt="Article 1" />
-                <p>{{ article.titre }}</p>
+                <div class="d-flex justify-content-center align-items-center article-name">
+                    <p>{{ article.titre }}</p>
+
+                </div>
             </a>
 
             {% endfor %}
@@ -66,7 +69,10 @@
         <a class="card" href="index.php?page=article&action=read&id={{ article.id_article }}">
 
             <img src="upload/{{ article.image }}" alt="{{ article.alt }}" />
-            <p>{{ article.titre }}</p>
+            <div class="d-flex justify-content-center align-items-center article-name">
+                <p>{{ article.titre }}</p>
+
+            </div>
 
         </a>
         {% endfor %}
@@ -87,7 +93,10 @@
 
 
             <img src="upload/{{ article.image }}" alt="{{ article.alt }}" />
-            <p>{{ article.titre }}</p>
+            <div class="d-flex justify-content-center align-items-center article-name">
+                <p>{{ article.titre }}</p>
+
+            </div>
 
 
         </a>

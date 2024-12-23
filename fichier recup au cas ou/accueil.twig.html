@@ -3,7 +3,6 @@
 {% endblock %} {% block page %}
 
 <body>
-
     <!-- Barre latérale gauche -->
     <div class="sidebar">
         <div class="round-btn" id="edito-btn">Édito</div>
@@ -12,24 +11,28 @@
         {% set chapter_classes = ['chapter1-container', 'chapter2-container',
         'chapter3-container'] %} {% for chapitre in listechapitre %}
         <div class="chapter-container {{ chapter_classes[loop.index0] }}" data-bg="url(upload/{{ chapitre.image }})">
-            <div class="rect-bg"></div>
-            <img src="upload/{{ chapitre.image }}" alt="{{ chapitre.alt }}" class="circle-img" />
-            <div class="chapter-title">{{ chapitre.titre }}</div>
+        <div class="rect-bg"></div>
+        <img
+            src="upload/{{ chapitre.image }}"
+            alt="{{ chapitre.alt }}"
+            class="circle-img"
+        />
+        <div class="chapter-title">{{ chapitre.titre }}</div>
         </div>
         {% endfor %}
 
 
 
-        <a href="index.php?page=credit" class="round-btn">Crédits</a>
+        <div class="round-btn">Crédits</div>
     </div>
 
     <!-- Titre principal -->
     <div class="title">
-        <p>Cœurs déter'</p>
-        <p class="fs-4"> S'engager dans sa ruralité </p>
+      <p>Cœurs déter'</p>
+      <p class="fs-4"> S'engager dans sa ruralité </p>
         <a href="index.php?page=login">
-            <i class="fa-solid fa-user" style="color: white"></i>
-        </a>
+      <i class="fa-solid fa-user" style="color: white"></i>
+    </a>
     </div>
 
     <!-- Section pour Chapitre 1 -->
@@ -43,119 +46,96 @@
         </div>
         <div class="chapter-cards">
             {% for article in listechapitre.0.articles %}
-            <a class="card" href="index.php?page=article&action=read&id={{ article.id_article }}">
+            <a href="index.php?page=article&action=read&id={{ article.id_article }}">
+                <div class="card">
                 <img src="upload/{{ article.image }}" alt="Article 1" />
                 <p>{{ article.titre }}</p>
+                </div>
             </a>
 
             {% endfor %}
         </div>
-    </div>
-</body>
-
-<!-- Section pour Chapitre 2 -->
-<div id="chapter2" class="chapter-section" style="background-color: #6e849ed8;">
-    <button class="close-chapter">&times;</button>
-    <div class="chapter-text">
-        <h2>{{listechapitre.1.titre}}</h2>
-        <p>{{listechapitre.1.chapo | raw}}</p>
+        </div>
     </div>
 
-    <div class="chapter-cards">
+    <!-- Section pour Chapitre 2 -->
+    <div id="chapter2" class="chapter-section" style="background-color: #6e849ed8;">
+        <button class="close-chapter">&times;</button>
+        <div class="chapter-text">
+            <h2>{{listechapitre.1.titre}}</h2>
+            <p>{{listechapitre.1.chapo | raw}}</p>
+        </div>
+
+        <div class="chapter-cards">
         {% for article in listechapitre.1.articles %}
-        <a class="card" href="index.php?page=article&action=read&id={{ article.id_article }}">
-
+        <a href="index.php?page=article&action=read&id={{ article.id_article }}">
+            <div class="card">
             <img src="upload/{{ article.image }}" alt="{{ article.alt }}" />
             <p>{{ article.titre }}</p>
-
+            </div>
         </a>
         {% endfor %}
+        </div>       
     </div>
-</div>
 
-<!-- Section pour Chapitre 3 -->
-<div id="chapter3" class="chapter-section" style="background-color: rgba(138, 21, 27, 0.8);">
-    <button class="close-chapter">&times;</button>
-    <div class="chapter-text">
+    <!-- Section pour Chapitre 3 -->
+    <div id="chapter3" class="chapter-section">
+        <button class="close-chapter">&times;</button>
+        <div class="chapter-text">
         <h2>{{listechapitre.2.titre}}</h2>
         <p> {{listechapitre.2.chapo | raw}}</p>
-    </div>
+        </div>
 
-    <div class="chapter-cards">
+        <div class="chapter-cards">
         {% for article in listechapitre.2.articles %}
-        <a class="card" href="index.php?page=article&action=read&id={{ article.id_article }}" class="card">
-
-
-            <img src="upload/{{ article.image }}" alt="{{ article.alt }}" />
-            <p>{{ article.titre }}</p>
-
-
-        </a>
+            <a href="index.php?page=article&action=read&id={{ article.id_article }}" class="card">
+              
+                <img src="upload/{{ article.image }}" alt="{{ article.alt }}" />
+                <p>{{ article.titre }}</p>
+                
+            </a>
         {% endfor %}
+        </div>
     </div>
-</div>
 
 
 
 
 
-<!-- Section Édito -->
-<div id="edito">
-    <button id="edito-close-btn">×</button>
+    <!-- Section Édito -->
+    <div id="edito">
+        <button id="edito-close-btn">×</button>
 
-    <div id="edito-content">
-        <h2>ÉDITO</h2>
-        <p>
-            Comment les nommer ? La province ? Trop parisien. Les territoires ? Trop marketé. Les régions ? Trop
-            administratif. Les campagnes ? Trop champêtre. Et pourquoi pas les mondes ruraux ? Au pluriel. Comme
-            autant de nuances.
-        </p>
-        <p>
-            Plus question de parler pour eux. L’heure est à la mobilisation. Les mondes ruraux sont en
-            mouvement.
-            Déterminés à faire porter leurs voix, réclamer des moyens, mener leurs combats à bien. En un mot,
-            élargir le champ des possibles.
-        </p>
-        <p>
-            Au-delà des slogans de manifestation, des discours politiques et des flyers d’office de tourisme,
-            nous
-            avons donné la parole à celles et ceux qui vivent et travaillent dans les mondes ruraux. À celles et
-            ceux qui veulent faire rimer terroir avec territoire, pour qui le combat prend fin ou au contraire
-            ne
-            fait que commencer. Nous avons arpenté leurs terres, terrains de conflits, de revendications,
-            d'appartenance. Des espaces où l’isolement social et géographique n’empêche pas de faire front
-            commun.
-            Nous sommes allé·es à leur rencontre avec une ambition : donner à lire, à voir, à entendre ce qu’ils
-            ont
-            sur le cœur.
-        </p>
-        <p>
-            Voies rapides, routes de montagne, sentiers forestiers… Nous avons parcouru plus de 13 000
-            kilomètres et
-            traversé 43 départements pour découvrir leur réalité. Leur ruralité.
-        </p>
-
-        <p><strong> Ismérie Vergne </strong></p>
+        <div id="edito-content">
+            <h2>ÉDITO</h2>
+            <p>
+                Comment les nommer ?  La province ? Trop parisien. Les territoires ? Trop marketé. Les régions ? Trop administratif. Les campagnes ? Trop champêtre. Et pourquoi pas les mondes ruraux ? Au pluriel. Comme autant de nuances.
+            </p>
+            <p>
+                Plus question de parler pour eux. L’heure est à la mobilisation. Les mondes ruraux sont en mouvement. Déterminés à faire porter leurs voix, réclamer des moyens, mener leurs combats à bien. En un mot, élargir le champ des possibles. 
+            </p>
+            <p>
+                Au-delà des slogans de manifestation, des discours politiques et des flyers d’office de tourisme, nous avons donné la parole à celles et ceux qui vivent et travaillent dans les mondes ruraux. À celles et ceux qui veulent faire rimer terroir avec territoire, pour qui le combat prend fin ou au contraire ne fait que commencer. Nous avons arpenté leurs terres, terrains de conflits, de revendications, d'appartenance. Des espaces où l’isolement social et géographique n’empêche pas de faire front commun. Nous sommes allé·es à leur rencontre avec une ambition : donner à lire, à voir, à entendre ce qu’ils ont sur le cœur. 
+            </p>
+            <p>
+                Voies rapides, routes de montagne, sentiers forestiers… Nous avons parcouru plus de 13 000 kilomètres et
+                traversé 43 départements pour découvrir leur réalité. Leur ruralité.
+            </p>
+           
+            <p><strong> Ismérie Vergne </strong></p>
+        </div>
     </div>
-</div>
 
-
-
-
-<!-- JavaScript -->
-
-<script>
+    <!-- JavaScript -->
+   <script>
     document.getElementById("edito-btn").addEventListener("click", function () {
         document.getElementById("edito").style.top = "0"; // Slide-down animation
-        body.style.backgroundImage = "url(images/fond-acceuil.jpg)";
-
     });
 
     document.getElementById("edito").addEventListener("click", function (e) {
         if (e.target === this) {
             this.style.top = "-100%"; // Fermer en remontant
         }
-
     });
 
     function openChapterSection(chapterId) {
@@ -170,7 +150,6 @@
     // Fonction pour fermer l'édito
     function closeEdito() {
         document.getElementById("edito").style.top = "-100%";
-
     }
 
     // Événements pour les chapitres

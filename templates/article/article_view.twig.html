@@ -443,7 +443,7 @@
 
       {# carousel #}
       {% elseif bloc.type == "carousel" %}
-      <div class="  mb-5 {{ bloc.type }}">
+      <div class="  mb-5 encadre {{ bloc.type }}">
         <h3>{{ bloc.texte_titre | raw  |nl2br }}</h3>
         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
@@ -611,7 +611,7 @@
     </div>
   </section>
 
-  <section class="continue-reading w-100">
+  <section class="continue_reading w-100">
     <h2 class="continue-title">Continuer votre lecture</h2>
 
     <div class="article-cards">
@@ -626,7 +626,7 @@
       <a href="index.php" class="home-button">Retour à l'Accueil</a>
     </div>
   </section>
-  <footer class="footer">
+  {# <footer class="footer">
     <div class="footer-links">
       <a href="#">Plan du site</a>
       <span>|</span>
@@ -634,7 +634,7 @@
       <span>|</span>
       <a href="#">Mentions légales</a>
     </div>
-  </footer>
+  </footer> #}
 
 
   <script>

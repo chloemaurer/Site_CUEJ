@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
   const intituler = document.querySelector(".intituler");
   const chapitreId = intituler.getAttribute("data-chapitre");
@@ -11,6 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
     2: "#6189a4",
     3: "#8a151b",
   };
+
+
 
   // Appliquez la couleur
   if (chapitreColors[chapitreId]) {
@@ -35,6 +36,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelectorAll(".blockquote").forEach((element) => {
       element.style.color = chapitreColors[chapitreId];
+    });
+
+    document.querySelectorAll(".podcast").forEach((element) => {
+      element.style.backgroundColor = chapitreColors[chapitreId];
+    });
+
+    document.querySelectorAll(".podcast_meta").forEach((element) => {
+      element.style.backgroundColor = chapitreColors[chapitreId];
+    });
+
+    document.querySelectorAll(".podcast_meta").forEach((element) => {
+      element.style.backgroundColor = chapitreColors[chapitreId];
     });
 
   }

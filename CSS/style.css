@@ -51,7 +51,6 @@
 }
 
 .podcast {
-  background: #987606;
   padding: 30px;
   border-radius: 3px;
 }
@@ -82,7 +81,6 @@
   margin-left: 10px;
 }
 .podcast__meta {
-  background: #7e4602;
   margin: 40px -30px -30px -30px;
   padding: 0 30px 30px 30px;
   display: flex;

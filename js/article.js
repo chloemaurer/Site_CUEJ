@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (intituler) intituler.style.backgroundColor = chapitreColors[chapitreId];
     if (logo) logo.style.backgroundColor = chapitreColors[chapitreId];
     if (continue_reading) continue_reading.style.backgroundColor = chapitreColors[chapitreId];
+    
     document.querySelectorAll(".encadre").forEach((element) => {
       element.style.backgroundColor = chapitreColors[chapitreId];
     });

@@ -18,13 +18,10 @@ const options = {
     ]
 }
 
-// Initialise MediaElementPlayer pour tous les audios
-document.addEventListener("DOMContentLoaded", () => {
-    const audios = document.querySelectorAll("audio");
-    audios.forEach(audio => {
-        new MediaElementPlayer(audio, options);
-    });
-});
+new MediaElementPlayer(
+    document.querySelector("audio"),
+    options
+);
 
 // Réorganise les contrôles pour chaque audio
 document.addEventListener("DOMContentLoaded", () => {
@@ -49,6 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+
+
 
 
 function showVideo(element) {

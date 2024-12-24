@@ -45,6 +45,21 @@ a {
   text-decoration: none;
 }
 
+.logo {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
 /* FOOTER */
 /* Footer */
 .footer {

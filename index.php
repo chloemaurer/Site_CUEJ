@@ -64,7 +64,11 @@ switch ($page) {
 
     case 'credit':
         $view = 'credit.twig.html';
-        $data = [];
+        $listechapitre = Chapitre::readAll();
+        foreach ($listechapitre as $chapitre) {
+            $chapitre->articles = Article::readAllByChapitre($chapitre->id_chapitre);
+        }
+        $data = ['listechapitre' => $listechapitre];
         break;
 
     default:

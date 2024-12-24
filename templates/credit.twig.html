@@ -10,10 +10,132 @@
 </head>
 
 <body>
+    <nav>
+        <img id="logo" src="./images/Logo_blanc.svg" alt="Logo" class="logo" />
+                 <div id="menu-overlay">
+            <span class="close-btn" id="close-menu">&times;</span>
+            <div class="overlay-content">
+              <!-- Contenu gauche avec la liste des chapitres et leurs articles -->
+              <div class="menu-left">
+                {% for chapitre in listechapitre %}
+                <div class="menu-section">
+                  <!-- Titre du chapitre -->
+                  <h3>{{ chapitre.titre }}</h3>
+                  <ul>
+                    <!-- Articles associés au chapitre -->
+                    {% for article in chapitre.articles %}
+                    <li>
+                      <a href="index.php?page=article&action=read&id={{ article.id_article }}">
+                        {{ article.titre }}
+                      </a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                {% endfor %}
+              </div>
+
+            <!-- Contenu droit (exemple pour image ou autre) -->
+            <div class="menu-right">
+              <img src="./images/france-clair.png" alt="Menu Image" />
+            </div>
+
+          </div>
+          <div class="home-button-container">
+            <a href="index.php?" class="home-button">Accueil</a>
+            <a href="index.php?page=credit" class="home-button">Crédits</a>
+          </div>
+        </div>
+    </nav>
+     <header class="header">
+        <img src="./images/full.jpg" alt="l'équipe en entier">
+        <p class="credit">Crédits : Louis Le Bacquer</p>
+    </header>
+        <main>
+        <!-- Section Remerciements -->
+        <section class="credits-section">
+            <div class="container text-center">
+                <img src="./images/logo.svg" alt="logo du webdoc" class="img-fluid mb-3">
+                <h1 class="fw-bold display-4 text-dark">crédits</h1>
+                <p class="lead">Remerciements et contributions</p>
+            </div>
+
+            <h2 class="fw-bold mb-4">Remerciements</h2>
+            <p>
+                Un grand merci aux personnes ayant donné de leur temps pour ce
+                web-documentaire, en particulier à Emma Conquet pour ses conseils avisés, à
+                celles et ceux qui apparaissent dans les sujets, aux encadrant·es et aux étudiantes
+                de l’IUT d’Haguenau.
+            </p>
+
+            <div class="gallery">
+                <img src="./images/1.jpg" alt="">
+                <img src="./images/2.jpg" alt="">
+                <img src="./images/3.jpg" alt="">
+                <img src="./images/4.jpg" alt="">
+                <img src="./images/5.jpg" alt="">
+                <img src="./images/6.jpg" alt="">
+            </div>
+
+
+        </section>
+
+        <!-- Section Équipe -->
+        <section class="credits-section">
+            <h3 class="fw-bold mb-4">directeur de publication</h3>
+            <p>Cédric Pellen</p>
+
+            <h3 class="fw-bold mb-4">étudiants du cuej</h3>
+            <ul>
+                <li>Rédaction en chef : Ismérie Vergne</li>
+                <li>Responsables iconographie : Liza Hervy-Marquer et Leyla Sobler</li>
+                <li>Responsables édition : Yanis Drouin et Marie Starecki</li>
+                <li>Rédacteurs et rédactrices : François Bertrand, Léa Bouquet, Garance Cailliet, Lucie Campoy, Louisa Chausse-Dumont, Yanis Drouin, Camille Fraioli, Arthur Guillamo, Liza Hervy-Marquer, Kenza Lalouni, Loïc Michels, Gustave Pinard, Aurore Ployer, Louise Pointin, Yves Poulain, Chantal Ried, Lya Roisin-Pillot, Almamy Sané, Jules Schnitzler, Leyla Sobler, Marie Starecki, Tristan Vanuxem, Ismérie Vergne, Élise Walle</li>
+            </ul>
+
+            <h3 class="fw-bold mb-4">étudiants en but métiers du multimédia et de l'internet</h3>
+            <ul>
+                <li>Team Création Numérique : Océane Cardot, Léa Dima, Amanda Marmillod, Sadaf Zebetian</li>
+                <li>Team Dévelopement Web : Chloé Maurer, Anja Rasamoelina</li>
+            </ul>
+
+            <h3 class="fw-bold mb-4">encadrement</h3>
+            <p>CUEJ : Antoine Bonin, Jean-Christophe Gallen, Antoine Giniaux, Joseph Pasquier, Mathias Thura</p>
+            <p>IUT de Haguenau : Sophie Béhal, Antonio Capobianco, David Cazier</p>
+        </section>
+        <h3 class="fw-bold mb-4">l'équipe en images</h3>
+        <!-- Section Photos supplémentaires -->
+        <section class="gallery">
+
+            <img src="./images/12.jpg" alt="">
+            <img src="./images/11.jpg" alt="">
+            <img src="./images/10.jpg" alt="">
+            <img src="./images/9.jpg" alt="">
+            <img src="./images/8.jpg" alt="">
+            <p>Crédits photos : Chantal Ried</p>
+
+        </section>
+
+        <!-- Section Logos -->
+        <section class="logos">
+            <h3>en partenariat avec</h3>
+            <div class="flex">
+
+                <img src="./images/cuej.png" alt="Cuej" class="img-fluid" style="max-height: 100px; width: auto;">
+
+
+                <img src="./images/iut.png" alt="IUT Haguenau" class="img-fluid" style="max-height: 100px; width: auto;">
+            </div>
+
+        </section>
+    </main>
+
     
     
     <!-- En-tête -->
-    <header class="header">
+
+    {# <header class="header">
+
         <img src="./images/full.jpg" alt="l'équipe en entier">
         <p class="credit">Crédits : Louis Le Bacquer</p>
     </header>
@@ -90,5 +212,28 @@
             </div>
 
         </section>
-    </main>
+    </main> #}
+
+      <script>
+    const logo = document.getElementById('logo');
+    const menuOverlay = document.getElementById('menu-overlay');
+    const closeMenu = document.getElementById('close-menu');
+
+    // Show menu
+    logo.addEventListener('click', () => {
+      menuOverlay.classList.add('show');
+    });
+
+    // Hide menu
+    closeMenu.addEventListener('click', () => {
+      menuOverlay.classList.remove('show');
+    });
+
+    // Close menu when clicking outside
+    menuOverlay.addEventListener('click', (e) => {
+      if (e.target === menuOverlay) {
+        menuOverlay.classList.remove('show');
+      }
+    });
+  </script>
     {% endblock %}

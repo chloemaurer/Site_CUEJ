@@ -1,7 +1,9 @@
 {% extends 'base.twig.html' %}
 
 {% block css %}
+<link rel="stylesheet" href="./CSS/commun.css" />
 <link rel="stylesheet" href="./CSS/article.css" />
+<link rel="stylesheet" href="./CSS/bloc.css" />
 {% endblock %}
 
 {% block page %}
@@ -296,7 +298,7 @@
 
 
     {# TEXTE IMAGE #}
-    {% elseif bloc.type == "texte_image" %} 
+    {% elseif bloc.type == "texte_image" %}
     <div class="container-fluid">
       <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
       <div class="row mb-5">
@@ -327,7 +329,7 @@
       <!-- Ajout de px-5 pour un padding de 144px sur les côtés -->
       <div class="row mb-5">
         <!-- Encadré rouge avec padding et image (col-4 pour l'image) -->
-        <div class="col-md-6 col-12 d-flex justify-content-center pe-2">
+        <div class="col-6 d-flex justify-content-center pe-2">
           <div class="p-3 bgChapitre">
             <figure class="figure mb-5">
               <img src="upload/{{ bloc.image }}{{ bloc.infographie }}" class="img-fluid rounded w-100"
@@ -343,7 +345,7 @@
         </div>
 
         <!-- Texte à gauche (col-8 pour le texte) -->
-        <div class="col-md-6 col-12 align-baseline">
+        <div class="col-6 align-baseline">
           <p class="{{ bloc.style }}">{{ bloc.texte | raw  |nl2br }}</p>
           <h5 class="intertitre">{{ bloc.texte_2 | raw  |nl2br }}</h5>
           <p class="{{ bloc.style }}">{{ bloc.texte_1 | raw  |nl2br }}</p>
@@ -624,7 +626,15 @@
     <a href="index.php" class="home-button">Retour à l'Accueil</a>
   </div>
 </section>
-
+{# <footer class="footer">
+    <div class="footer-links">
+      <a href="#">Plan du site</a>
+      <span>|</span>
+      <a href="#">© crédits</a>
+      <span>|</span>
+      <a href="#">Mentions légales</a>
+    </div>
+  </footer> #}
 
   <script>
     const logo = document.getElementById('logo');
